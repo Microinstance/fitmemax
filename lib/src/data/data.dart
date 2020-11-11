@@ -47,5 +47,61 @@ class Data {
     },
   ];
 
+  var profile = [
+    {
+      'image' : 'assets/profile/profile1.png',
+    },
+    {
+      'image' : 'assets/profile/profile1.png',
+    },
+    {
+      'image' : 'assets/profile/profile1.png',
+    },
+    {
+      'image' : 'assets/profile/profile1.png',
+    },
+    {
+      'image' : 'assets/profile/profile1.png',
+    },
+    {
+      'image' : 'assets/profile/profile1.png',
+    },
+    {
+      'image' : 'assets/profile/profile1.png',
+    },
+    {
+      'image' : 'assets/profile/profile1.png',
+    },
+    {
+      'image' : 'assets/profile/profile1.png',
+    },
+    {
+      'image' : 'assets/profile/profile1.png',
+    },{
+      'image' : 'assets/profile/profile1.png',
+    },{
+      'image' : 'assets/profile/profile1.png',
+    },{
+      'image' : 'assets/profile/profile1.png',
+    },{
+      'image' : 'assets/profile/profile1.png',
+    },{
+      'image' : 'assets/profile/profile1.png',
+    },{
+      'image' : 'assets/profile/profile1.png',
+    },{
+      'image' : 'assets/profile/profile1.png',
+    },{
+      'image' : 'assets/profile/profile1.png',
+    },{
+      'image' : 'assets/profile/profile1.png',
+    },{
+      'image' : 'assets/profile/profile1.png',
+    },
+
+
+
+
+  ];
 
 }
