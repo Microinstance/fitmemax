@@ -131,7 +131,7 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                       },
                       children: <Widget>[
                         Home(),
-                        Coach(),
+                        Home(),
                         Home(),
                         Plan(),
                         Home(),

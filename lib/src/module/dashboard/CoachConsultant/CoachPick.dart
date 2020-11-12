@@ -98,12 +98,19 @@ class _CoachPickState extends State<CoachPick> with SingleTickerProviderStateMix
   }
   Widget _pickCoach(){
     return Padding(
-      padding: const EdgeInsets.only(left: 15,right: 15,top: 15),
+      padding: const EdgeInsets.only(left: 15,right: 15,top: 20),
       child: Container(
         height: 130,
         decoration: BoxDecoration(
           color: Colors.grey[50],
-          borderRadius: BorderRadius.all(Radius.circular(15)),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 2,
+              spreadRadius: 2
+            )
+          ]
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
