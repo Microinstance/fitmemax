@@ -41,6 +41,8 @@ dependencies:
   calendar_timeline: ^0.6.3
   flutter_speed_dial_material_design: ^2.0.0
   font_awesome_flutter: ^8.10.0
+  dotted_border: ^1.0.6
+
 
 dev_dependencies:
   flutter_test:
