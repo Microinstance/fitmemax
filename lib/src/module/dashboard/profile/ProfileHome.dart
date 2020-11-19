@@ -169,7 +169,6 @@ class _ProfileHomeState extends State<ProfileHome> {
                     width: _width,
                     color: Colors.white.withOpacity(0.1),
                   ),
-
                 ],
               ),
             ),
