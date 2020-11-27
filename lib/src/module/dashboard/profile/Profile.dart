@@ -1,10 +1,10 @@
 import 'dart:async';
-
 import 'package:fitmemax/src/data/data.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileHome.dart';
+import 'package:fitmemax/src/module/dashboard/profile/ProfilePost.dart';
+import 'package:fitmemax/src/module/dashboard/profile/ProfileSearch.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Profile extends StatefulWidget {
@@ -13,8 +13,8 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
-  TabController _tabController;
 
+  TabController _tabController;
   int _currentPage = 0;
   final PageController _pageController = PageController(initialPage: 0);
 
@@ -27,7 +27,8 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
       } else {
         _currentPage = 0;
       }
-    });
+    },
+    );
     _tabController = TabController(length: 5, vsync: this);
   }
 
@@ -166,27 +167,68 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                                 child: SafeArea(
                                   child: Padding(
                                     padding: EdgeInsets.only(top: 5, right: 10),
-                                    child: Stack(
-                                      overflow: Overflow.visible,
-                                      alignment: Alignment.bottomRight,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
-                                        CircleAvatar(
-                                          radius: 23,
-                                          backgroundColor:
-                                              Colors.grey[50].withOpacity(0.1),
-                                          child: CircleAvatar(
-                                            radius: 21,
-                                            backgroundColor: Colors.transparent,
-                                            backgroundImage: AssetImage(
-                                                "assets/profile/me.png"),
-                                          ),
+                                        Stack(
+                                          overflow: Overflow.visible,
+                                          alignment: Alignment.bottomRight,
+                                          children: [
+                                            CircleAvatar(
+                                              radius: 23,
+                                              backgroundColor:
+                                                  Colors.grey[50].withOpacity(0.1),
+                                              child: CircleAvatar(
+                                                radius: 21,
+                                                backgroundColor: Colors.transparent,
+                                                backgroundImage: AssetImage(
+                                                    "assets/profile/me.png"),
+                                              ),
+                                            ),
+                                            Positioned(
+                                                bottom: -5,
+                                                child: Icon(
+                                                  Icons.check_circle,
+                                                  color: Colors.blueAccent,
+                                                ))
+                                          ],
                                         ),
-                                        Positioned(
-                                            bottom: -5,
-                                            child: Icon(
-                                              Icons.check_circle,
-                                              color: Colors.blueAccent,
-                                            ))
+                                        SizedBox(height: 20,),
+                                        Stack(
+                                          alignment: Alignment.topRight,
+                                          children: [
+                                            IconButton(
+                                              icon: Icon(
+                                                Icons.favorite_border,
+                                                size: 30,
+                                                // color: Palette.x1Color,
+                                                color: Colors.white,
+                                              ),
+                                              onPressed: () {},
+                                            ),
+                                            CircleAvatar(
+                                                radius: 10,
+                                                backgroundColor: Palette.x1Color,
+                                                child: Center(
+                                                    child: Text(
+                                                  "3",
+                                                  style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontSize: 15,
+                                                      fontFamily: 'Roboto',
+                                                      fontWeight: FontWeight.bold),
+                                                ))),
+                                          ],
+                                        ),
+                                        IconButton(
+                                          icon: Icon(
+                                            Icons.settings_rounded,
+                                            size: 25,
+                                            // color: Palette.x1Color,
+                                            color: Colors.white,
+                                          ),
+                                          onPressed: () {},
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -550,33 +592,54 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                       // color: Palette.x1Color,
                       color: Colors.white,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.fade,
+                          child: ProfileSearch(),),);
+                    },
                   ),
-                  Stack(
-                    alignment: Alignment.topRight,
-                    children: [
-                      IconButton(
-                        icon: Icon(
-                          Icons.favorite_border,
-                          size: 30,
-                          // color: Palette.x1Color,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {},
-                      ),
-                      CircleAvatar(
-                          radius: 10,
-                          backgroundColor: Palette.x1Color,
-                          child: Center(
-                              child: Text(
-                            "3",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 15,
-                                fontFamily: 'Roboto',
-                                fontWeight: FontWeight.bold),
-                          ))),
-                    ],
+                  // Stack(
+                  //   alignment: Alignment.topRight,
+                  //   children: [
+                  //     IconButton(
+                  //       icon: Icon(
+                  //         Icons.favorite_border,
+                  //         size: 30,
+                  //         // color: Palette.x1Color,
+                  //         color: Colors.white,
+                  //       ),
+                  //       onPressed: () {},
+                  //     ),
+                  //     CircleAvatar(
+                  //         radius: 10,
+                  //         backgroundColor: Palette.x1Color,
+                  //         child: Center(
+                  //             child: Text(
+                  //           "3",
+                  //           style: TextStyle(
+                  //               color: Colors.black,
+                  //               fontSize: 15,
+                  //               fontFamily: 'Roboto',
+                  //               fontWeight: FontWeight.bold),
+                  //         ))),
+                  //   ],
+                  // ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.camera_alt_outlined,
+                      size: 30,
+                      // color: Palette.x1Color,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.fade,
+                          child: ProfilePost(),),);
+                    },
                   ),
                   IconButton(
                     icon: Icon(
@@ -585,7 +648,13 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                       // color: Palette.x1Color,
                       color: Colors.white,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      // Navigator.push(
+                      //   context,
+                      //   PageTransition(
+                      //     type: PageTransitionType.fade,
+                      //     child: Profile(),),);
+                    },
                   ),
                   IconButton(
                     icon: Icon(
@@ -593,7 +662,13 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                       size: 30,
                       color: Palette.x1Color,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      // Navigator.push(
+                      //   context,
+                      //   PageTransition(
+                      //     type: PageTransitionType.fade,
+                      //     child: Profile(),),);
+                    },
                   ),
                 ],
               ),

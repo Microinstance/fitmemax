@@ -1,6 +1,11 @@
 import 'package:dotted_border/dotted_border.dart';
+import 'package:fitmemax/Data/StoryData/data.dart';
 import 'package:fitmemax/src/module/dashboard/profile/Profile.dart';
+import 'package:fitmemax/src/module/dashboard/profile/ProfilePost.dart';
+import 'package:fitmemax/src/module/dashboard/profile/ProfileSearch.dart';
+import 'package:fitmemax/src/module/dashboard/profile/StoryScreen.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
+import 'package:fitmemax/src/widgets/w_post.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -10,6 +15,7 @@ class ProfileHome extends StatefulWidget {
 }
 
 class _ProfileHomeState extends State<ProfileHome> {
+  // bool  _expanded = false;
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -25,7 +31,13 @@ class _ProfileHomeState extends State<ProfileHome> {
             size: 25,
             color: Colors.white,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              PageTransition(
+                type: PageTransitionType.fade,
+                child: ProfilePost(),),);
+          },
         ),
         actions: [
           Padding(
@@ -88,7 +100,7 @@ class _ProfileHomeState extends State<ProfileHome> {
                     color: Colors.white.withOpacity(0.3),
                   ),
                   Container(
-                    height: 90,
+                    height: 75,
                     decoration: BoxDecoration(
                       color: Colors.black,
                     ),
@@ -104,62 +116,23 @@ class _ProfileHomeState extends State<ProfileHome> {
                               padding: const EdgeInsets.only(left: 15),
                               child: GestureDetector(
                                 onTap: () {},
-                                child: Stack(
-                                  alignment: Alignment.center,
-                                  children: [
-                                    DottedBorder(
-                                      borderType: BorderType.Circle,
+                                child: CircleAvatar(
+                                  radius: 27,
+                                  backgroundColor: Palette.x1Color.withOpacity(0.7),
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.black,
+                                    radius: 25,
+                                    child: Icon(
+                                      Icons.add,
+                                      size: 30,
                                       color: Palette.x1Color,
-                                      strokeWidth: 1,
-                                      dashPattern: [10],
-                                      child: ClipOval(
-                                        child: Container(
-                                          height: 60,
-                                          width: 60,
-                                          color: Colors.black,
-                                        ),
-                                      ),
                                     ),
-                                    CircleAvatar(
-                                      backgroundColor: Colors.black,
-                                      radius: 30,
-                                      child: Icon(
-                                        Icons.add,
-                                        size: 30,
-                                        color: Palette.x1Color,
-                                      ),
-                                    ),
-                                  ],
+                                  ),
                                 ),
                               ),
                             );
                           } else
-                            return Padding(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  DottedBorder(
-                                    borderType: BorderType.Circle,
-                                    color: Palette.x1Color.withOpacity(0.5),
-                                    strokeWidth: 2,
-                                    dashPattern: [10],
-                                    child: ClipOval(
-                                      child: Container(
-                                        height: 60,
-                                        width: 60,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                  CircleAvatar(
-                                    radius: 30,
-                                    backgroundImage: AssetImage(
-                                        "assets/profile/profile1.png"),
-                                  ),
-                                ],
-                              ),
-                            );
+                            return _StoryCircle();
                         },
                       ),
                     ),
@@ -169,6 +142,132 @@ class _ProfileHomeState extends State<ProfileHome> {
                     width: _width,
                     color: Colors.white.withOpacity(0.1),
                   ),
+                  Container(
+                    child: MediaQuery.removePadding(
+                      context: context,
+                      removeTop: true,
+                      removeBottom: true,
+                      removeLeft: true,
+                      removeRight: true,
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: 2,
+                        itemBuilder: (BuildContext context, int index){
+                          return w_post();
+                        },
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10,),
+                  Container(
+                    color: Colors.black,
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20,right: 20,top: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Suggested For You",style: TextStyle(color: Colors.white,fontSize: 18,fontFamily: 'Roboto'),),
+                              Icon(Icons.arrow_forward_ios_outlined,color: Palette.x1Color,)
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 250,
+                          child: MediaQuery.removePadding(
+                            context: context,
+                            removeTop: true,
+                            removeBottom: true,
+                            removeLeft: true,
+                            removeRight: true,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 10,
+                              itemBuilder: (BuildContext context, int index){
+                                return _Suggetions();
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: MediaQuery.removePadding(
+                      context: context,
+                      removeTop: true,
+                      removeBottom: true,
+                      removeLeft: true,
+                      removeRight: true,
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: 2,
+                        itemBuilder: (BuildContext context, int index){
+                          return w_post();
+                        },
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10,),
+                  Container(
+                    color: Colors.black,
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20,right: 20,top: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Recent Stories",style: TextStyle(color: Colors.white,fontSize: 18,fontFamily: 'Roboto'),),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 300,
+                          child: MediaQuery.removePadding(
+                            context: context,
+                            removeTop: true,
+                            removeBottom: true,
+                            removeLeft: true,
+                            removeRight: true,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 10,
+                              itemBuilder: (BuildContext context, int index){
+                                return _StoryBox();
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: MediaQuery.removePadding(
+                      context: context,
+                      removeTop: true,
+                      removeBottom: true,
+                      removeLeft: true,
+                      removeRight: true,
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: 2,
+                        itemBuilder: (BuildContext context, int index){
+                          return w_post();
+                        },
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 100,),
                 ],
               ),
             ),
@@ -204,7 +303,13 @@ class _ProfileHomeState extends State<ProfileHome> {
                         // color: Palette.x1Color,
                         color: Colors.white,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.fade,
+                            child: ProfileSearch(),),);
+                      },
                     ),
                     Stack(
                       alignment: Alignment.topRight,
@@ -216,7 +321,13 @@ class _ProfileHomeState extends State<ProfileHome> {
                             // color: Palette.x1Color,
                             color: Colors.white,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            // Navigator.push(
+                            //   context,
+                            //   PageTransition(
+                            //     type: PageTransitionType.fade,
+                            //     child: Profile(),),);
+                          },
                         ),
                         CircleAvatar(
                             radius: 10,
@@ -239,7 +350,13 @@ class _ProfileHomeState extends State<ProfileHome> {
                         // color: Palette.x1Color,
                         color: Colors.white,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        // Navigator.push(
+                        //   context,
+                        //   PageTransition(
+                        //     type: PageTransitionType.fade,
+                        //     child: Profile(),),);
+                      },
                     ),
                     IconButton(
                       icon: Icon(
@@ -265,7 +382,133 @@ class _ProfileHomeState extends State<ProfileHome> {
       ),
     );
   }
-  Widget _Post(){
-    return Container();
+  Widget _Suggetions(){
+    return Padding(
+      padding: const EdgeInsets.only(left: 20,top: 20,bottom: 20),
+      child: Container(
+        width: 150,
+        decoration: BoxDecoration(
+          color: Palette.profileColor,
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              radius: 50,
+              backgroundColor: Palette.x1Color.withOpacity(0.7),
+              child: CircleAvatar(
+                radius: 48,
+                backgroundImage: AssetImage(
+                    "assets/profile/profile1.png"),
+              ),
+            ),
+            SizedBox(height: 10,),
+            Text("Shivay Kumar",style: TextStyle(fontSize: 18,color: Colors.white),),
+            SizedBox(height: 5,),
+            MaterialButton(
+                height: 30,
+                color: Palette.x1Color,
+                onPressed: (){},
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5)),
+              child: Text("Follow"),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+  Widget _StoryBox(){
+   return Padding(
+      padding: const EdgeInsets.only(left: 20,top: 20,bottom: 20),
+      child: GestureDetector(
+        onTap: () {
+          // Navigator.push(
+          //   context,
+          //   PageTransition(
+          //     type: PageTransitionType.bottomToTop,
+          //     child: StoryScreen(stories: stories),),);
+        },
+        child: Stack(
+          children: [
+            Container(
+              width: 180,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                  image: DecorationImage(
+                    image: AssetImage("assets/profile/Post/post1.jpg"),
+                    fit: BoxFit.cover,
+                  ),
+                  border: Border.all(
+                    color: Colors.white.withOpacity(0.5),
+                    width: 1,
+                  )
+              ),
+            ),
+            Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+              Container(
+                width: 180,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.black.withOpacity(0.5),
+                        Colors.transparent,
+                      ],
+                      begin: FractionalOffset.bottomCenter,
+                      end: FractionalOffset.topCenter,
+
+                    )
+                ),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  CircleAvatar(
+                    radius: 40,
+                    backgroundColor: Palette.x1Color.withOpacity(0.7),
+                    child: CircleAvatar(
+                      radius: 38,
+                      backgroundImage: AssetImage(
+                          "assets/profile/profile1.png"),
+                    ),
+                  ),
+                  SizedBox(height: 10,),
+                  Text("s_paradox",style: TextStyle(color: Colors.white,fontSize: 18,fontFamily: 'Roboto'),),
+                  SizedBox(height: 15,),
+                ],
+              ),
+            ],)
+          ],
+        ),
+      )
+    );
+  }
+  Widget _StoryCircle(){
+    return Padding(
+      padding: const EdgeInsets.only(left: 15),
+      child: GestureDetector(
+        onTap: () {
+        //   Navigator.push(
+        //     context,
+        //     PageTransition(
+        //       type: PageTransitionType.bottomToTop,
+        //       child: StoryScreen(stories: stories),),);
+        },
+        child: CircleAvatar(
+          radius: 27,
+          backgroundColor: Palette.x1Color.withOpacity(0.7),
+          child: CircleAvatar(
+            radius: 25,
+            backgroundImage: AssetImage(
+                "assets/profile/profile1.png"),
+          ),
+        ),
+      ),
+    );
   }
 }

@@ -11,7 +11,6 @@ class _CoachPickState extends State<CoachPick> with SingleTickerProviderStateMix
   @override
   void initState() {
     _tabController = TabController(length: 3, vsync: this);
-
     super.initState();
   }
 
