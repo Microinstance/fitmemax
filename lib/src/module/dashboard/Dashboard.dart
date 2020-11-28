@@ -3,6 +3,7 @@ import 'package:fitmemax/src/module/dashboard/CoachConsultant/Coach.dart';
 import 'package:fitmemax/src/module/dashboard/home/Home.dart';
 import 'package:fitmemax/src/module/dashboard/plan/Plan.dart';
 import 'package:fitmemax/src/module/dashboard/profile/Profile.dart';
+import 'package:fitmemax/src/module/dashboard/profile/ProfileHome.dart';
 import 'package:fitmemax/src/module/signin_signup/SignupPage.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
@@ -148,7 +149,7 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                       selectedIndex: selectedIndex,
                       onSelectTab: (index) {
                         if(index == 2){
-                          Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: SignupPage()));
+                          Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: ProfileHome()));
                         }
                         if(index == 1){
                           Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Coach()));

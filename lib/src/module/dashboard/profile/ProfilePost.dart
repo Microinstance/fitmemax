@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:fitmemax/src/module/dashboard/profile/Chat/page/ProfileChatPage.dart';
 import 'package:fitmemax/src/module/dashboard/profile/Profile.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileHome.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileSearch.dart';
@@ -7,6 +8,7 @@ import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:page_transition/page_transition.dart';
@@ -230,6 +232,10 @@ class _ProfilePostState extends State<ProfilePost> {
                   SizedBox(
                     width: _width * 0.9,
                     child: TextField(
+                      keyboardType: TextInputType.multiline,
+                      maxLength: 50,
+                      minLines: 1,//Normal textInputField will be displayed
+                      maxLines: 1,// when user presses enter it will adapt to it
                       onChanged: (value) {
                         setState(() {
                           print(value);
@@ -254,31 +260,99 @@ class _ProfilePostState extends State<ProfilePost> {
                           ),
                         ),
                         filled: true,
-                        prefixIcon: Icon(
-                          Icons.title_outlined,
-                          color: Colors.black.withOpacity(0.8),
-                        ),
+                        // prefixIcon: Icon(
+                        //   Icons.title_outlined,
+                        //   color: Colors.black.withOpacity(0.8),
+                        // ),
                         contentPadding:
                         EdgeInsets.only(left: 10, right: 10),
                         fillColor: Colors.grey[100],
                       ),
                     ),
                   ),
-
-                  SizedBox(height: 20,),
+                  Padding(
+                    padding: EdgeInsets.only(right:_width*0.1)/2,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text("Max Word limit 50*",style: TextStyle(fontSize: 15,color: Palette.x1Color.withOpacity(0.5)),),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 10,),
                   Padding(
                     padding: const EdgeInsets.only(left: 20,bottom: 15),
                     child: Row(
                       children: [
-                        Text("HashTags",style: TextStyle(fontSize: 18,color: Colors.white.withOpacity(0.5)),),
+                        Text("Description",style: TextStyle(fontSize: 18,color: Colors.white.withOpacity(0.5)),),
                         Icon(Icons.star,color: Palette.x1Color,size: 10,),
                       ],
                     ),
                   ),
                   SizedBox(
-                    height: 300,
                     width: _width * 0.9,
                     child: TextField(
+                      keyboardType: TextInputType.multiline,
+                      maxLength: 200,
+                      minLines: 6,
+                      maxLines: 6,
+                      onChanged: (value) {
+                        setState(() {
+                          print(value);
+                        });
+                      },
+                      autofocus: false,
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black.withOpacity(0.9),
+                      ),
+                      decoration: InputDecoration(
+                        hintText: "Type Description...",
+                        hintStyle: TextStyle(
+                          fontSize: 15,
+                          color: Colors.black.withOpacity(0.5),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                        filled: true,
+                        contentPadding:
+                        EdgeInsets.only(left: 10, right: 10,top: 10,bottom: 10),
+                        fillColor: Colors.grey[100],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(right:_width*0.1)/2,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text("Max Word limit 500*",style: TextStyle(fontSize: 15,color: Palette.x1Color.withOpacity(0.5)),),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 10,),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20,bottom: 15),
+                    child: Row(
+                      children: [
+                        Text("# HashTags",style: TextStyle(fontSize: 18,color: Colors.white.withOpacity(0.5)),),
+                        Icon(Icons.star,color: Palette.x1Color,size: 10,),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    // height: 300,
+                    width: _width * 0.9,
+                    child: TextField(
+                      keyboardType: TextInputType.multiline,
+                      maxLength: 200,
+                      minLines: 6,
+                      maxLines: 6,
                       onChanged: (value) {
                         setState(() {
                           print(value);
@@ -303,16 +377,33 @@ class _ProfilePostState extends State<ProfilePost> {
                           ),
                         ),
                         filled: true,
-                        prefixIcon: Icon(
-                          Icons.title_outlined,
-                          color: Colors.black.withOpacity(0.8),
-                        ),
                         contentPadding:
-                        EdgeInsets.only(left: 10, right: 10),
+                        EdgeInsets.only(left: 10, right: 10,top: 10,bottom: 10),
                         fillColor: Colors.grey[100],
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: EdgeInsets.only(right:_width*0.1)/2,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text("Max Word limit 500*",style: TextStyle(fontSize: 15,color: Palette.x1Color.withOpacity(0.5)),),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 10,),
+                  MaterialButton(
+                    onPressed: (){},
+                    color: Palette.x1Color,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 10,bottom: 10,left: 40,right: 40),
+                      child: Text("Post",style: GoogleFonts.openSans(color: Colors.black,fontSize: 22,fontWeight: FontWeight.bold),),
+                    ),
+                  ),
+                  SizedBox(height: 140,),
                 ],
               ),
             ),
@@ -404,7 +495,13 @@ class _ProfilePostState extends State<ProfilePost> {
                         // color: Palette.x1Color,
                         color: Colors.white,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.fade,
+                            child: ProfileChatPage(),),);
+                      },
                     ),
                     IconButton(
                       icon: Icon(
@@ -412,7 +509,13 @@ class _ProfilePostState extends State<ProfilePost> {
                         size: 30,
                         color: Colors.white,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.fade,
+                            child: Profile(),),);
+                      },
                     ),
                   ],
                 ),

@@ -1,11 +1,14 @@
 import 'dart:async';
 import 'package:fitmemax/src/data/data.dart';
+import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileHome.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfilePost.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileSearch.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+
+import 'Chat/page/ProfileChatPage.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -137,7 +140,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                                       const EdgeInsets.only(left: 15, top: 10),
                                   child: GestureDetector(
                                       onTap: () {
-                                        Navigator.pop(context);
+                                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Dashboard()));
                                       },
                                       child: Icon(
                                         Icons.arrow_back_ios,
@@ -548,7 +551,8 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                                 ],
                               ),
                             ),
-                          )
+                          ),
+                          // SizedBox(height: 140,),
                         ],
                       ),
                     ),
@@ -649,11 +653,11 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                       color: Colors.white,
                     ),
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   PageTransition(
-                      //     type: PageTransitionType.fade,
-                      //     child: Profile(),),);
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.fade,
+                          child: ProfileChatPage(),),);
                     },
                   ),
                   IconButton(

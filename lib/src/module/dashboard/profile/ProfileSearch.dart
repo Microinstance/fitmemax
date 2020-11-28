@@ -1,9 +1,12 @@
+import 'package:fitmemax/src/module/dashboard/profile/Chat/page/ProfileChatPage.dart';
 import 'package:fitmemax/src/module/dashboard/profile/Profile.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileHome.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:page_transition/page_transition.dart';
+
+import 'ProfilePost.dart';
 
 class ProfileSearch extends StatefulWidget {
   @override
@@ -120,6 +123,7 @@ class _ProfileSearchState extends State<ProfileSearch> {
                     ),
                   ),
                   _SearchGrid(),
+                  SizedBox(height: 140,),
                 ],
               ),
             ),
@@ -169,35 +173,19 @@ class _ProfileSearchState extends State<ProfileSearch> {
                         //     child: Profile(),),);
                       },
                     ),
-                    Stack(
-                      alignment: Alignment.topRight,
-                      children: [
-                        IconButton(
-                          icon: Icon(
-                            Icons.favorite_border,
-                            size: 30,
-                            // color: Palette.x1Color,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {Navigator.push(
-                            context,
-                            PageTransition(
-                              type: PageTransitionType.fade,
-                              child: Profile(),),);},
-                        ),
-                        CircleAvatar(
-                            radius: 10,
-                            backgroundColor: Palette.x1Color,
-                            child: Center(
-                                child: Text(
-                                  "3",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 15,
-                                      fontFamily: 'Roboto',
-                                      fontWeight: FontWeight.bold),
-                                ),),),
-                      ],
+                    IconButton(
+                      icon: Icon(
+                        Icons.camera_enhance_outlined,
+                        size: 30,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.fade,
+                            child: ProfilePost(),),);
+                      },
                     ),
                     IconButton(
                       icon: Icon(
@@ -211,7 +199,7 @@ class _ProfileSearchState extends State<ProfileSearch> {
                           context,
                           PageTransition(
                             type: PageTransitionType.fade,
-                            child: Profile(),),);
+                            child: ProfileChatPage(),),);
                       },
                     ),
                     IconButton(

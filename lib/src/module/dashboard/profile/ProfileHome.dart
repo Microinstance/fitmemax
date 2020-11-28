@@ -1,5 +1,5 @@
-import 'package:dotted_border/dotted_border.dart';
 import 'package:fitmemax/Data/StoryData/data.dart';
+import 'package:fitmemax/src/module/dashboard/profile/Chat/page/ProfileChatPage.dart';
 import 'package:fitmemax/src/module/dashboard/profile/Profile.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfilePost.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileSearch.dart';
@@ -15,7 +15,6 @@ class ProfileHome extends StatefulWidget {
 }
 
 class _ProfileHomeState extends State<ProfileHome> {
-  // bool  _expanded = false;
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -25,19 +24,37 @@ class _ProfileHomeState extends State<ProfileHome> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(
-            Icons.camera_enhance_outlined,
-            size: 25,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              PageTransition(
-                type: PageTransitionType.fade,
-                child: ProfilePost(),),);
-          },
+        leading: Stack(
+          alignment: Alignment.topRight,
+          children: [
+            IconButton(
+              icon: Icon(
+                Icons.favorite_border,
+                size: 30,
+                // color: Palette.x1Color,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  PageTransition(
+                    type: PageTransitionType.fade,
+                    child: Profile(),),);
+              },
+            ),
+            CircleAvatar(
+                radius: 10,
+                backgroundColor: Palette.x1Color,
+                child: Center(
+                    child: Text(
+                      "3",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.bold),
+                    ))),
+          ],
         ),
         actions: [
           Padding(
@@ -267,7 +284,7 @@ class _ProfileHomeState extends State<ProfileHome> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 100,),
+                  SizedBox(height: 140,),
                 ],
               ),
             ),
@@ -281,7 +298,6 @@ class _ProfileHomeState extends State<ProfileHome> {
                 width: _width * 0.8,
                 decoration: BoxDecoration(
                   color: Palette.x2Color,
-                  // color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(30)),
                 ),
                 child: Row(
@@ -311,37 +327,19 @@ class _ProfileHomeState extends State<ProfileHome> {
                             child: ProfileSearch(),),);
                       },
                     ),
-                    Stack(
-                      alignment: Alignment.topRight,
-                      children: [
-                        IconButton(
-                          icon: Icon(
-                            Icons.favorite_border,
-                            size: 30,
-                            // color: Palette.x1Color,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   PageTransition(
-                            //     type: PageTransitionType.fade,
-                            //     child: Profile(),),);
-                          },
-                        ),
-                        CircleAvatar(
-                            radius: 10,
-                            backgroundColor: Palette.x1Color,
-                            child: Center(
-                                child: Text(
-                              "3",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 15,
-                                  fontFamily: 'Roboto',
-                                  fontWeight: FontWeight.bold),
-                            ))),
-                      ],
+                    IconButton(
+                      icon: Icon(
+                        Icons.camera_enhance_outlined,
+                        size: 30,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.fade,
+                            child: ProfilePost(),),);
+                      },
                     ),
                     IconButton(
                       icon: Icon(
@@ -351,11 +349,11 @@ class _ProfileHomeState extends State<ProfileHome> {
                         color: Colors.white,
                       ),
                       onPressed: () {
-                        // Navigator.push(
-                        //   context,
-                        //   PageTransition(
-                        //     type: PageTransitionType.fade,
-                        //     child: Profile(),),);
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.fade,
+                            child: ProfileChatPage(),),);
                       },
                     ),
                     IconButton(
@@ -425,11 +423,11 @@ class _ProfileHomeState extends State<ProfileHome> {
       padding: const EdgeInsets.only(left: 20,top: 20,bottom: 20),
       child: GestureDetector(
         onTap: () {
-          // Navigator.push(
-          //   context,
-          //   PageTransition(
-          //     type: PageTransitionType.bottomToTop,
-          //     child: StoryScreen(stories: stories),),);
+          Navigator.push(
+            context,
+            PageTransition(
+              type: PageTransitionType.bottomToTop,
+              child: StoryScreen(stories: stories),),);
         },
         child: Stack(
           children: [
@@ -493,11 +491,11 @@ class _ProfileHomeState extends State<ProfileHome> {
       padding: const EdgeInsets.only(left: 15),
       child: GestureDetector(
         onTap: () {
-        //   Navigator.push(
-        //     context,
-        //     PageTransition(
-        //       type: PageTransitionType.bottomToTop,
-        //       child: StoryScreen(stories: stories),),);
+          Navigator.push(
+            context,
+            PageTransition(
+              type: PageTransitionType.bottomToTop,
+              child: StoryScreen(stories: stories),),);
         },
         child: CircleAvatar(
           radius: 27,

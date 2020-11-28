@@ -26,7 +26,7 @@ final List<Story> stories = [
   ),
   Story(
     url:
-        'https://vod-progressive.akamaized.net/exp=1606348833~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F553%2F15%2F377769527%2F1578621905.mp4~hmac=0053bb59d51c499b9e126069689a3d2521fda0eeecf2a45772e379d83f5adb79/vimeo-prod-skyfire-std-us/01/553/15/377769527/1578621905.mp4?download=1&filename=video.mp4',
+        'https://vod-progressive.akamaized.net/exp=1606586071~acl=%2A%2F1002284853.mp4%2A~hmac=8778960f9b610da480d4d9d414a2c139a2f7f14cae8b74763684d4b94ff40b2e/vimeo-prod-skyfire-std-us/01/3994/10/269971860/1002284853.mp4?download=1&filename=Pexels+Videos+1093662.mp4',
     media: MediaType.video,
     duration: const Duration(seconds: 0),
     user: user,
