@@ -5,7 +5,8 @@ import 'package:fitmemax/src/module/dashboard/profile/ProfilePost.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileSearch.dart';
 import 'package:fitmemax/src/module/dashboard/profile/StoryScreen.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
-import 'package:fitmemax/src/widgets/w_post.dart';
+import 'package:fitmemax/src/widgets/w_post_image_asset.dart';
+import 'package:fitmemax/src/widgets/w_post_video_asset.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -170,9 +171,9 @@ class _ProfileHomeState extends State<ProfileHome> {
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         physics: NeverScrollableScrollPhysics(),
-                        itemCount: 2,
+                        itemCount: 5,
                         itemBuilder: (BuildContext context, int index){
-                          return w_post();
+                          return w_post_video_asset();
                         },
                       ),
                     ),
@@ -226,7 +227,7 @@ class _ProfileHomeState extends State<ProfileHome> {
                         physics: NeverScrollableScrollPhysics(),
                         itemCount: 2,
                         itemBuilder: (BuildContext context, int index){
-                          return w_post();
+                          return w_post_image_asset();
                         },
                       ),
                     ),
@@ -279,7 +280,7 @@ class _ProfileHomeState extends State<ProfileHome> {
                         physics: NeverScrollableScrollPhysics(),
                         itemCount: 2,
                         itemBuilder: (BuildContext context, int index){
-                          return w_post();
+                          return w_post_image_asset();
                         },
                       ),
                     ),

@@ -3,12 +3,15 @@ import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
-class w_post extends StatefulWidget {
+import 'AssetVideoPlayer.dart';
+import 'NetworkVideoPlayer.dart';
+
+class w_post_video_asset extends StatefulWidget {
   @override
-  _w_postState createState() => _w_postState();
+  _w_post_video_assetState createState() => _w_post_video_assetState();
 }
 
-class _w_postState extends State<w_post> {
+class _w_post_video_assetState extends State<w_post_video_asset> {
   bool  _expanded = false;
   bool  _like = false;
   bool  _bookmark = false;
@@ -55,22 +58,23 @@ class _w_postState extends State<w_post> {
                     ),
                   ),
                   SizedBox(height: 5,),
-                  AspectRatio(
-                    aspectRatio: 1,
-                    child: Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.white.withOpacity(0.1),
-                            width: 1,
-                          ),
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          image: DecorationImage(
-                            image: AssetImage("assets/profile/Post/post1.jpg"),
-                            fit: BoxFit.cover,
-                          )
-                      ),
-                    ),
-                  ),
+                  // AspectRatio(
+                  //   aspectRatio: 1,
+                  //   child: Container(
+                  //     decoration: BoxDecoration(
+                  //         border: Border.all(
+                  //           color: Colors.white.withOpacity(0.1),
+                  //           width: 1,
+                  //         ),
+                  //         borderRadius: BorderRadius.all(Radius.circular(10)),
+                  //         image: DecorationImage(
+                  //           image: AssetImage("assets/profile/Post/post1.jpg"),
+                  //           fit: BoxFit.cover,
+                  //         )
+                  //     ),
+                  //   ),
+                  // ),
+                  AssetVideoPlayer(),
                   SizedBox(height: 10,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -108,18 +112,18 @@ class _w_postState extends State<w_post> {
                         child: Text("35 min ago",style: TextStyle(color: Colors.white.withOpacity(0.5),fontFamily: 'Roboto',fontSize: 12),),
                       ),
                       _bookmark ? GestureDetector(
-                          onTap: (){
-                            setState(() {
-                              _bookmark = false;
-                            });
-                          },
-                          child: Icon(Icons.bookmark,color: Palette.x1Color,size: 25,),) : GestureDetector(
-                          onTap: (){
-                            setState(() {
-                              _bookmark = true;
-                            });
-                          },
-                          child: Icon(Icons.bookmark,color: Colors.white,size: 25,),),
+                        onTap: (){
+                          setState(() {
+                            _bookmark = false;
+                          });
+                        },
+                        child: Icon(Icons.bookmark,color: Palette.x1Color,size: 25,),) : GestureDetector(
+                        onTap: (){
+                          setState(() {
+                            _bookmark = true;
+                          });
+                        },
+                        child: Icon(Icons.bookmark,color: Colors.white,size: 25,),),
                     ],
                   ),
                   SizedBox(height: 5,),

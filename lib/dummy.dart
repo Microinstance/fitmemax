@@ -1,114 +1,148 @@
-
 import 'package:flutter/material.dart';
-import 'dart:math';
+import 'package:video_player/video_player.dart';
 
-const SCALE_FRACTION = 0.7;
-const FULL_SCALE = 1.0;
-const PAGER_HEIGHT = 200.0;
-
-class ItCrowdPage extends StatefulWidget {
+class dummy extends StatefulWidget {
   @override
-  _ItCrowdPageState createState() => _ItCrowdPageState();
+  _dummyState createState() => _dummyState();
 }
 
-class _ItCrowdPageState extends State<ItCrowdPage> {
-  double viewPortFraction = 0.5;
-
-  PageController pageController;
-
-  int currentPage = 2;
-
-  List<Map<String, String>> listOfCharacters = [{'image': "assets/profile/me.png", 'name': "Richmond"},
-    {'image': "assets/profile/me.png",'name': "Roy"},
-    {'image': "assets/profile/me.png", 'name': "Moss"},
-    {'image': "assets/profile/me.png", 'name': "Douglas"},
-    {'image': "assets/profile/me.png", 'name': "Jen"}
-  ];
-
-  double page = 2.0;
-
-  @override
-  void initState() {
-    pageController =
-        PageController(initialPage: currentPage, viewportFraction: viewPortFraction);
-    super.initState();
-  }
-
+class _dummyState extends State<dummy> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 1,
-        centerTitle: true,
-        backgroundColor: Colors.indigo,
-        title: Text(
-          "The IT Crowd",
-          style: TextStyle(color: Colors.white, fontSize: 20),
-        ),
-      ),
-      body: ListView(
-        children: <Widget>[
-          SizedBox(height: 20,),
-          Container(
-            height: PAGER_HEIGHT,
-            child: NotificationListener<ScrollNotification>(
-              onNotification: (ScrollNotification notification) {
-                if (notification is ScrollUpdateNotification) {
-                  setState(() {
-                    page = pageController.page;
-                  });
-                }
-              },
-              child: PageView.builder(
-                onPageChanged: (pos) {
-                  setState(() {
-                    currentPage = pos;
-                  });
-                },
-                physics: BouncingScrollPhysics(),
-                controller: pageController,
-                itemCount: listOfCharacters.length,
-                itemBuilder: (context, index) {
-                  final scale =
-                  max(SCALE_FRACTION, (FULL_SCALE - (index - page).abs()) + viewPortFraction);
-                  return circleOffer(
-                      listOfCharacters[index]['image'], scale);
-                },
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Text(
-              listOfCharacters[currentPage]['name'],
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20),
-            ),
-          ),
-
-        ],
+      body: Center(
+        child: AssetVideoPlayer(),
       ),
     );
   }
+}
 
-  Widget circleOffer(String image, double scale) {
+class AssetVideoPlayer extends StatefulWidget {
+  @override
+  _AssetVideoPlayerState createState() => _AssetVideoPlayerState();
+}
 
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: Container(
-        margin: EdgeInsets.only(bottom: 10),
-        height: PAGER_HEIGHT * scale,
-        width: PAGER_HEIGHT * scale,
-        child: Card(
-          elevation: 4,
-          clipBehavior: Clip.antiAlias,
-          shape: CircleBorder(side: BorderSide(color: Colors.grey.shade200, width: 5)),
-          child: Image.asset(
-            image,
-            fit: BoxFit.cover,
+class _AssetVideoPlayerState extends State<AssetVideoPlayer> {
+  // VideoPlayerController _controller;
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _controller = VideoPlayerController.asset('assets/Video/video3.mp4');
+  //   _controller.addListener(() {
+  //     setState(() {});
+  //   });
+  //   _controller.setLooping(true);
+  //   _controller.initialize().then((_) => setState(() {}));
+  //   _controller.play();
+  //   _controller.setVolume(0.1);
+  // }
+  //
+  // @override
+  // void dispose() {
+  //   _controller.dispose();
+  //   super.dispose();
+  // }
+
+  VideoPlayerController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = VideoPlayerController.network(
+      "http://neutronvision.com/shivay_video.mp4",
+    );
+    _controller.addListener(() {
+      setState(() {});
+    });
+      _controller.setLooping(true);
+      _controller.initialize().then((_) => setState(() {}));
+      _controller.play();
+      _controller.setVolume(1);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  String mintSec(sec){
+    var mint;
+    var secend;
+    var duration;
+    mint = sec/60.truncate();
+    secend = sec%60.round();
+    String vString = mint.toInt().toString();
+    duration = "${vString} : ${secend}";
+    return duration;
+  }
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: AspectRatio(
+              aspectRatio: 16/9,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.black,
+                ),
+                child: Stack(
+                  children: <Widget>[
+                    GestureDetector(
+                        onTap: (){
+                          setState(() {
+                            if(_controller.value.isPlaying){
+                              _controller.pause();
+                            } else {
+                              _controller.play();
+                            }
+                          });
+                        },
+                        child:ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: VideoPlayer(_controller))),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CircleAvatar(
+                          radius: 15,
+                          backgroundColor: Colors.black,
+                          child: Center(
+                            child: Icon(
+                              _controller.value.isPlaying ? Icons.pause :Icons.play_arrow,color: Colors.white,size: 20,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                         height: 30,
+                          width: 50,
+                          decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(0.5),
+                            borderRadius: BorderRadius.all(Radius.circular(15)),
+                          ),
+                          child: Center(
+                            child: Text(mintSec(_controller.value.position.inSeconds),style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
