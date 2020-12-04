@@ -1,4 +1,5 @@
 import 'package:fitmemax/Data/StoryData/data.dart';
+import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
 import 'package:fitmemax/src/module/dashboard/profile/Chat/page/ProfileChatPage.dart';
 import 'package:fitmemax/src/module/dashboard/profile/Profile.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfilePost.dart';
@@ -8,6 +9,7 @@ import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:fitmemax/src/widgets/w_post_image_asset.dart';
 import 'package:fitmemax/src/widgets/w_post_video_asset.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
 class ProfileHome extends StatefulWidget {
@@ -25,61 +27,50 @@ class _ProfileHomeState extends State<ProfileHome> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         elevation: 0,
-        leading: Stack(
-          alignment: Alignment.topRight,
-          children: [
-            IconButton(
-              icon: Icon(
-                Icons.favorite_border,
-                size: 30,
-                // color: Palette.x1Color,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  PageTransition(
-                    type: PageTransitionType.fade,
-                    child: Profile(),),);
-              },
-            ),
-            CircleAvatar(
-                radius: 10,
-                backgroundColor: Palette.x1Color,
-                child: Center(
-                    child: Text(
-                      "3",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.bold),
-                    ))),
-          ],
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: (){
+            Navigator.pushReplacement(
+              context,
+              PageTransition(
+                type: PageTransitionType.topToBottom,
+                child: Dashboard(),),);
+          },
+          icon: Icon(Icons.arrow_back_ios_rounded,color: Colors.white,size: 25,),
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 5, bottom: 5),
+            padding: const EdgeInsets.only(right: 15, top: 10),
             child: Stack(
-              overflow: Overflow.visible,
-              alignment: Alignment.bottomRight,
+              alignment: Alignment.topRight,
               children: [
-                CircleAvatar(
-                  radius: 20,
-                  backgroundColor: Colors.grey[200].withOpacity(0.3),
-                  child: CircleAvatar(
-                    radius: 17,
-                    backgroundColor: Colors.transparent,
-                    backgroundImage: AssetImage("assets/profile/me.png"),
+                IconButton(
+                  icon: Icon(
+                    Icons.favorite_border,
+                    size: 30,
+                    // color: Palette.x1Color,
+                    color: Colors.white,
                   ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.fade,
+                        child: Profile(),),);
+                  },
                 ),
-                Positioned(
-                    bottom: -1,
-                    child: Icon(
-                      Icons.check_circle,
-                      color: Colors.blueAccent,
-                      size: 15,
-                    ))
+                CircleAvatar(
+                    radius: 10,
+                    backgroundColor: Palette.x1Color,
+                    child: Center(
+                        child: Text(
+                          "3",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontFamily: 'Roboto',
+                              fontWeight: FontWeight.bold),
+                        ))),
               ],
             ),
           ),
@@ -118,7 +109,7 @@ class _ProfileHomeState extends State<ProfileHome> {
                     color: Colors.white.withOpacity(0.3),
                   ),
                   Container(
-                    height: 75,
+                    height: 110,
                     decoration: BoxDecoration(
                       color: Colors.black,
                     ),
@@ -133,19 +124,47 @@ class _ProfileHomeState extends State<ProfileHome> {
                             return Padding(
                               padding: const EdgeInsets.only(left: 15),
                               child: GestureDetector(
-                                onTap: () {},
-                                child: CircleAvatar(
-                                  radius: 27,
-                                  backgroundColor: Palette.x1Color.withOpacity(0.7),
-                                  child: CircleAvatar(
-                                    backgroundColor: Colors.black,
-                                    radius: 25,
-                                    child: Icon(
-                                      Icons.add,
-                                      size: 30,
-                                      color: Palette.x1Color,
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      type: PageTransitionType.bottomToTop,
+                                      child: StoryScreen(stories: stories),),);
+                                },
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Stack(
+                                      alignment: Alignment.bottomRight,
+                                      children: [
+                                        CircleAvatar(
+                                          radius: 37,
+                                          backgroundColor: Palette.x1Color.withOpacity(0.7),
+                                          child: CircleAvatar(
+                                            radius: 35,
+                                            backgroundImage: AssetImage(
+                                                "assets/profile/me.png"),
+                                          ),
+                                        ),
+                                        CircleAvatar(
+                                            radius: 13,
+                                            backgroundColor: Colors.blue,
+                                            child: Center(child: Icon(Icons.add,color: Colors.white,size: 25,)))
+                                      ],
                                     ),
-                                  ),
+                                    SizedBox(height: 5,),
+                                    SizedBox(
+                                      width: 80,
+                                      height: 16,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Flexible(child: Text("Your Story",style: GoogleFonts.roboto(color: Colors.white,fontSize: 14),)),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             );
@@ -498,14 +517,31 @@ class _ProfileHomeState extends State<ProfileHome> {
               type: PageTransitionType.bottomToTop,
               child: StoryScreen(stories: stories),),);
         },
-        child: CircleAvatar(
-          radius: 27,
-          backgroundColor: Palette.x1Color.withOpacity(0.7),
-          child: CircleAvatar(
-            radius: 25,
-            backgroundImage: AssetImage(
-                "assets/profile/profile1.png"),
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              radius: 37,
+              backgroundColor: Palette.x1Color.withOpacity(0.7),
+              child: CircleAvatar(
+                radius: 35,
+                backgroundImage: AssetImage(
+                    "assets/profile/profile1.png"),
+              ),
+            ),
+            SizedBox(height: 5,),
+            SizedBox(
+              width: 80,
+              height: 16,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Flexible(child: Text("s_paradox",style: GoogleFonts.roboto(color: Colors.white,fontSize: 15),)),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

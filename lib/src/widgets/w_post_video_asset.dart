@@ -105,7 +105,15 @@ class _w_post_video_assetState extends State<w_post_video_asset> {
                           },
                           child: Icon(Icons.chat_bubble_outline_rounded,color: Palette.x1Color,)),
                       SizedBox(width: 5,),
-                      Text("125",style: TextStyle(color: Colors.white,fontFamily: 'Roboto'),),
+                      GestureDetector(
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                type: PageTransitionType.bottomToTop,
+                                child: ProfileComment(),),);
+                          },
+                          child: Text("125",style: TextStyle(color: Colors.white,fontFamily: 'Roboto'),)),
                       Spacer(),
                       Padding(
                         padding: const EdgeInsets.only(right: 10),
@@ -229,9 +237,10 @@ class _w_post_video_assetState extends State<w_post_video_asset> {
             });
           },
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text("...less",style: TextStyle(fontSize: 15,color:Colors.white),),
+              Text("14 Oct",style: TextStyle(fontSize: 15,color:Colors.white),),
             ],
           ),
         )
@@ -257,6 +266,7 @@ class _w_post_video_assetState extends State<w_post_video_asset> {
             Text("Share",style: TextStyle(fontSize: 20,color: Palette.x1Color),),
             Text("Unfollow ",style: TextStyle(fontSize: 20,color: Palette.x1Color),),
             Text("Mute",style: TextStyle(fontSize: 20,color: Palette.x1Color),),
+            Text("Block",style: TextStyle(fontSize: 20,color: Palette.x1Color),),
           ],
         ),
       ),

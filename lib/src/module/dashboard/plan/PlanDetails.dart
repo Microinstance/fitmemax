@@ -38,6 +38,7 @@ class _PlanDetailsState extends State<PlanDetails> {
     });
   }
   int _current = 0;
+
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -876,45 +877,3 @@ class _PlanDetailsState extends State<PlanDetails> {
     );
   }
 }
-
-// class CustomSimulation extends Simulation {
-//   final double initPosition;
-//   final double velocity;
-//
-//   CustomSimulation({this.initPosition, this.velocity});
-//
-//   @override
-//   double x(double time) {
-//     var max =
-//     math.max(math.min(initPosition, 0.0), initPosition + velocity * time);
-//
-//     print(max.toString());
-//     return max;
-//   }
-//
-//   @override
-//   double dx(double time) {
-//     print(velocity.toString());
-//     return velocity;
-//   }
-//
-//   @override
-//   bool isDone(double time) {
-//     return false;
-//   }
-// }
-// class MyCustomScrollPhysics extends ScrollPhysics {
-//   @override
-//   ScrollPhysics applyTo(ScrollPhysics ancestor) {
-//     return MyCustomScrollPhysics();
-//   }
-//
-//   @override
-//   Simulation createBallisticSimulation(
-//       ScrollMetrics position, double velocity) {
-//     return CustomSimulation(
-//       initPosition: position.pixels,
-//       velocity: velocity,
-//     );
-//   }
-// }

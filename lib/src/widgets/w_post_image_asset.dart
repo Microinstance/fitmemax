@@ -224,10 +224,11 @@ class _w_post_image_assetState extends State<w_post_image_asset> {
               });
             });
           },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          child:Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text("...less",style: TextStyle(fontSize: 15,color:Colors.white),),
+              Text("14 Oct",style: TextStyle(fontSize: 15,color:Colors.white),),
             ],
           ),
         )
@@ -253,6 +254,7 @@ class _w_post_image_assetState extends State<w_post_image_asset> {
             Text("Share",style: TextStyle(fontSize: 20,color: Palette.x1Color),),
             Text("Unfollow ",style: TextStyle(fontSize: 20,color: Palette.x1Color),),
             Text("Mute",style: TextStyle(fontSize: 20,color: Palette.x1Color),),
+            Text("Block",style: TextStyle(fontSize: 20,color: Palette.x1Color),),
           ],
         ),
       ),
