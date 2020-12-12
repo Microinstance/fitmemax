@@ -1,6 +1,5 @@
+import 'dart:ui';
 import 'package:fitmemax/src/module/dashboard/profile/Profile.dart';
-import 'package:fitmemax/src/module/dashboard/profile/ProfileHome.dart';
-import 'package:fitmemax/src/module/dashboard/profile/ProfilePost.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -59,45 +58,47 @@ class _ProfileCommentState extends State<ProfileComment> {
                 ),
                 SizedBox(width: 10,),
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Text("s_paradox",style: GoogleFonts.openSans(fontSize: 15,color: Colors.white,fontWeight: FontWeight.bold),),
-                        SizedBox(
-                          width: 10,
+                    SizedBox(
+                      width: _width*0.8,
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "s_paradox",
+                              style: GoogleFonts.roboto(fontSize: 17,color: Colors.white,fontWeight: FontWeight.w400),
+                            ),
+                            TextSpan(
+                              text: "  Wow That\'s amazing!!Wow That\'s amazing amazing!!",
+                              style: GoogleFonts.roboto(fontSize: 14,color: Colors.white.withOpacity(0.5)),
+                            ),
+                            TextSpan(
+                              text: "  51 min",
+                              style: GoogleFonts.roboto(fontSize: 12,color: Colors.white.withOpacity(0.5)),
+                            ),
+                          ]
                         ),
-                        SizedBox(
-                            width: _width*0.5,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Flexible(child: Text("Thats Amazing..!!",style: TextStyle(fontSize: 15,color: Colors.white),)),
-                              ],
-                            )),
-                      ],
+                      ),
                     ),
                     SizedBox(height: 5,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text("52 min ",style: GoogleFonts.roboto(fontSize: 13,color: Colors.white.withOpacity(0.5)),),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        GestureDetector(
-                            onTap: (){
-                              setState(() {
-                                _reply = true;
-                              });
-                              print(_reply);
-                            },
-                            child: Text("Reply",style: GoogleFonts.roboto(fontSize: 13,color: Palette.x1Color.withOpacity(0.7)),)),
-                      ],
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "51 min",
+                            style: GoogleFonts.roboto(fontSize: 12,color: Colors.white.withOpacity(0.5)),
+                          ),
+                          TextSpan(
+                            text: "    Reply",
+                            style: GoogleFonts.roboto(fontSize: 13,color: Palette.x1Color.withOpacity(0.9)),
+                          ),
+                        ]
+                      ),
                     ),
                   ],
                 ),
+
               ],
             ),
           ),

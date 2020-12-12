@@ -4,6 +4,7 @@ import 'package:fitmemax/src/module/dashboard/home/Home.dart';
 import 'package:fitmemax/src/module/dashboard/plan/Plan.dart';
 import 'package:fitmemax/src/module/dashboard/profile/Profile.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileHome.dart';
+import 'package:fitmemax/src/module/others/ReferEarn.dart';
 import 'package:fitmemax/src/module/signin_signup/SignupPage.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
@@ -15,10 +16,10 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMixin{
-  final GlobalKey<ScaffoldState> _scaffoldKey =  GlobalKey<ScaffoldState>();
   PageController _pageController = PageController(
     initialPage: 0,
   );
+
   int selectedIndex = 0;
   double screenWidth, screenHeight;
   bool isCollapsed = true;
@@ -60,8 +61,7 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
             ],
             begin: FractionalOffset.centerRight,
             end: FractionalOffset.centerLeft,
-          )
-        // color: Palette.primaryColor
+          ),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -198,7 +198,6 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
       ),
     );
   }
-
   Widget menu(context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
@@ -345,9 +344,13 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Icon(Icons.call_split,color: Colors.white,size: 22,),
+                                Icon(Icons.share_rounded,color: Colors.white,size: 22,),
                                 SizedBox(width: 15,),
-                                Flexible(child: Text("Invite friends", style: TextStyle(color: Colors.white, fontSize: 20))),
+                                Flexible(child: GestureDetector(
+                                    onTap: (){
+                                      Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: ReferEarn()));
+                                    },
+                                    child: Text("Invite friends", style: TextStyle(color: Colors.white, fontSize: 20)))),
                               ],
                             ),
                           ),
@@ -359,17 +362,6 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                                 Icon(Icons.history,color: Colors.white,size: 22,),
                                 SizedBox(width: 15,),
                                 Flexible(child: Text("Transaction", style: TextStyle(color: Colors.white, fontSize: 20))),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(Icons.person_add,color: Colors.white,size: 22,),
-                                SizedBox(width: 15,),
-                                Flexible(child: Text("Refer and earn", style: TextStyle(color: Colors.white, fontSize: 20))),
                               ],
                             ),
                           ),

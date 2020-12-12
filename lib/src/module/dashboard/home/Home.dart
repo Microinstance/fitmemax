@@ -1,9 +1,13 @@
 import 'dart:async';
-import 'package:fitmemax/src/data/data.dart';
+import 'package:fitmemax/src/data/data2.dart';
+import 'package:fitmemax/src/module/CalTracker/CalTrackerDashboard.dart';
+import 'package:fitmemax/src/module/GoPro/GoPro.dart';
+import 'package:fitmemax/src/module/dashboard/profile/ProfileHome.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:page_transition/page_transition.dart';
 
 class Home extends StatefulWidget {
 
@@ -41,13 +45,11 @@ class _HomeState extends State<Home> {
     _pageController.dispose();
     _controller.dispose();
   }
-
   _onPageChanged(int index) {
     setState(() {
       _currentPage = index;
     });
   }
-
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -77,7 +79,9 @@ class _HomeState extends State<Home> {
               backgroundColor: Colors.red,
               label: 'Go Pro',
             labelStyle: TextStyle(fontSize: 18.0),
-              onTap: () => print('Go Pro'),
+              onTap: () {
+                Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop, child: GoPro()));
+              },
           ),
           SpeedDialChild(
             child: Icon(Icons.perm_camera_mic),
@@ -221,10 +225,15 @@ class _HomeState extends State<Home> {
                                               Row(
                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 children: [
-                                                  hItem(
-                                                    name: 'Track Calories',
-                                                    image: 'assets/icons/track_cal.png',
-                                                    context: context,
+                                                  GestureDetector(
+                                                    onTap: (){
+                                                      Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: CalTrackerDashboard()));
+                                                    },
+                                                    child: hItem(
+                                                      name: 'Track Calories',
+                                                      image: 'assets/icons/track_cal.png',
+                                                      context: context,
+                                                    ),
                                                   ),
                                                   hItem(
                                                     name: 'Activity',
@@ -670,7 +679,7 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

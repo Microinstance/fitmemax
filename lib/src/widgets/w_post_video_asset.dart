@@ -1,4 +1,5 @@
 import 'package:fitmemax/src/module/dashboard/profile/ProfileComment.dart';
+import 'package:fitmemax/src/module/dashboard/profile/ProfileVisit.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -176,16 +177,25 @@ class _w_post_video_assetState extends State<w_post_video_asset> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 5),
-                child: CircleAvatar(
-                  radius: 34,
-                  backgroundColor: Palette.x2Color,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.bottomToTop,
+                        child: ProfileVisit(),),);
+                  },
                   child: CircleAvatar(
-                    radius: 32,
-                    backgroundColor: Palette.x1Color.withOpacity(0.7),
+                    radius: 34,
+                    backgroundColor: Palette.x2Color,
                     child: CircleAvatar(
-                      radius: 30,
-                      backgroundImage: AssetImage(
-                          "assets/profile/profile1.png"),
+                      radius: 32,
+                      backgroundColor: Palette.x1Color.withOpacity(0.7),
+                      child: CircleAvatar(
+                        radius: 30,
+                        backgroundImage: AssetImage(
+                            "assets/profile/profile1.png"),
+                      ),
                     ),
                   ),
                 ),

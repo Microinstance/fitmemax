@@ -1,6 +1,6 @@
 import 'package:fitmemax/src/widgets/palette.dart';
+import 'package:fitmemax/src/widgets/profile_acitvity.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'Profile.dart';
 
@@ -27,8 +27,7 @@ class _ProfileActivityState extends State<ProfileActivity> {
             color: Colors.white,
           ),
           onPressed: () {
-            Navigator.pop(
-                context);
+            Navigator.pop(context);
           },
         ),
         actions: [
@@ -77,59 +76,95 @@ class _ProfileActivityState extends State<ProfileActivity> {
         ),
       ),
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           children: [
-            SizedBox(height: 15,),
-            ListView.builder(
-              itemCount: 3,
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemBuilder: (BuildContext context, int index){
-                return _like(_width);
-              },
-            )
-          ],
-        ),
-      ),
-    );
-  }
-  Widget _like(_width){
-    return Padding(
-      padding: const EdgeInsets.only(left: 15,right: 15,bottom: 15),
-      child: Container(
-        width: _width,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-              Container(
-                height: 45,
-                width: 45,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                  image: DecorationImage(
-                    image: AssetImage("assets/profile/me.png"),
-                    fit: BoxFit.cover,
-                  )
-                ),
+            SizedBox(height: 5,),
+            MediaQuery.removePadding(
+              removeBottom: true,
+              context: context,
+              removeTop: true,
+              child: ListView.builder(
+                itemCount: 5,
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (BuildContext context, int index){
+                  return  Padding(
+                    padding: const EdgeInsets.only(bottom: 5),
+                    child: FollowActivity(
+                        followerUsername: 'tenzin_choekyi',
+                        followerImageUrl: "images/userImage6.jpeg",
+                        isFollowed: false
+                    ),
+                  ) ;
+                },
               ),
-              SizedBox(width: 15,),
-              SizedBox(
-                  width: (_width-90),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Shivay kumar",style: GoogleFonts.openSans(fontSize: 15,color: Colors.white,fontWeight: FontWeight.w500),),
-                      SizedBox(width: 10,),
-                      Expanded(child: Text("accepted your follow requestcepted your follow reqcepted your follow req",style: GoogleFonts.openSans(fontSize: 14,color: Colors.white.withOpacity(0.7),fontWeight: FontWeight.w500),)),
-                      Text("Yeasterday",style: GoogleFonts.openSans(fontSize: 12,color: Colors.white.withOpacity(0.5),fontWeight: FontWeight.w500),),
-                    ],
-                  ),
-                ),
-              ],
             ),
+            MediaQuery.removePadding(
+              removeBottom: true,
+              context: context,
+              removeTop: true,
+              child: ListView.builder(
+                itemCount: 5,
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (BuildContext context, int index){
+                  return   Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: CommentActivity(
+                      isMention: true,
+                      otherUsername: 'ttruselph',
+                      otherUserProfileImageUrl: "images/userImage8.jpeg",
+                      comment: 'jpt journalist n jpt reporting',
+                      commentedOnMediaUrl: "images/userImage3.jpeg",
+                    ),
+                  ) ;
+                },
+              ),
+            ),
+            MediaQuery.removePadding(
+              context: context,
+              removeTop: true,
+              removeBottom: true,
+              child: ListView.builder(
+                itemCount: 5,
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (BuildContext context, int index){
+                  return  Padding(
+                    padding: const EdgeInsets.only(bottom: 15),
+                    child: LikeActivity(
+                      likedUserImageUrls: "images/userImage7.jpeg",
+                      likedUsernames: 'shivay_paradox',
+                      postUrl: 'images/userImage3.jpeg',
+                    ),
+                  ) ;
+                },
+              ),
+            ),
+            MediaQuery.removePadding(
+              removeBottom: true,
+              context: context,
+              removeTop: true,
+              child: ListView.builder(
+                itemCount: 5,
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (BuildContext context, int index){
+                  return   Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: CommentActivity(
+                      isMention: false,
+                      otherUsername: 'ttruselph',
+                      otherUserProfileImageUrl: "images/userImage8.jpeg",
+                      comment: 'jpt journalist n jpt reporting',
+                      commentedOnMediaUrl: "images/userImage3.jpeg",
+                    ),
+                  ) ;
+                },
+              ),
+            ),
+            SizedBox(height: 140,),
           ],
         ),
       ),

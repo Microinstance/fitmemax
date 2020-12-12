@@ -12,6 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
+import 'ProfileActivity.dart';
+
 class ProfileHome extends StatefulWidget {
   @override
   _ProfileHomeState createState() => _ProfileHomeState();
@@ -56,7 +58,7 @@ class _ProfileHomeState extends State<ProfileHome> {
                       context,
                       PageTransition(
                         type: PageTransitionType.fade,
-                        child: Profile(),),);
+                        child: ProfileActivity(),),);
                   },
                 ),
                 CircleAvatar(
