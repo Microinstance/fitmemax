@@ -1,5 +1,32 @@
 class Data {
 
+
+   List fast = [
+  {
+  'name': 'Circadian Rhythm TRF',
+  'time' : '13',
+  },
+  {
+  'name': '16:8 TRF',
+  'time' : '16',
+  },
+  {
+  'name': '18:6 TRF',
+  'time' : '18',
+  },
+  {
+  'name': '24:4 TRF',
+  'time' : '20',
+  }, {
+  'name': '36-Hour-Fast',
+      'time' : '36',
+  },
+  {
+  'name': 'Custom Fast',
+  'time' : '1-168',
+  },
+
+  ];
   var Shop = [
    {
      'name': 'Whey Protein',
