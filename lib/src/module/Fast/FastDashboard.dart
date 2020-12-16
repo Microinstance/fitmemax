@@ -23,27 +23,7 @@ class _FastDashboardState extends State<FastDashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF1f1e23),
-      appBar: AppBar(
-        brightness: Brightness.dark,
-        backgroundColor: Color(0xFF1f1e23),
-        elevation: 0,
 
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_outlined,color: Colors.white,size: 25,),
-          onPressed: (){
-            Navigator.pop(context);
-          },
-        ),
-        title: Text("Fast",style: GoogleFonts.lato(fontSize: 22,color: Colors.white),),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.settings,color: Colors.white,size: 25,),
-            onPressed: (){
-
-            },
-          ),
-        ],
-      ),
       body: PageView(
         controller: _pageController,
         onPageChanged: (page) {
