@@ -1,29 +1,93 @@
 class Data {
 
+ List User = [
+   'images/userImage1.jpeg',
+   'images/userImage2.jpeg',
+   'images/userImage3.jpeg',
+   'images/userImage4.jpeg',
+   'images/userImage5.jpeg',
+   'images/userImage6.jpeg',
+   'images/userImage7.jpeg',
+   'images/userImage8.jpeg',
+ ];
+
+ List mmWeekly =
+     [
+       {
+         'name': 'Sun',
+         'P_position': '1',
+         'F_position': '0.65',
+         'C_position': '0.87',
+       },
+       {
+         'name': 'Mon',
+         'P_position': '0.40',
+         'F_position': '0.60',
+         'C_position': '0.90',
+       },
+       {
+         'name': 'Tue',
+         'P_position': '0.50',
+         'F_position': '0.70',
+         'C_position': '0.80',
+       },
+       {
+         'name': 'Wed',
+         'P_position': '0.30',
+         'F_position': '0.40',
+         'C_position': '0.55',
+       },
+       {
+         'name': 'Thu',
+         'P_position': '0.25',
+         'F_position': '0.40',
+         'C_position': '0.35',
+       },
+       {
+         'name': 'Fry',
+         'P_position': '0.80',
+         'F_position': '0.50',
+         'C_position': '0.35',
+       },
+       {
+         'name': 'Sat',
+         'P_position': '0.85',
+         'F_position': '0.75',
+         'C_position': '0.95',
+       },
+     ];
+
+
 
    List fast = [
   {
   'name': 'Circadian Rhythm TRF',
   'time' : '13',
+    'desc' : "Based on the research of scientist Dr.Satchin Panda, this time-restricted feeding (TRF) fast emulates the time-restricted feeding (TRF) fast emulates the body's natural clock by fasting roughly after sunset until morning."
   },
   {
   'name': '16:8 TRF',
   'time' : '16',
+    'desc' : "The most popular TRF (time-restricted-feeding) fast, this is the protocol Jennifer Aniston and Hugh Jackman use to get in shape. With this approach, it's common to  fast from after dinner to lunch the next day. but some prefer to skip dinner to lunch the next day. but some prefer to skip dinner to reach their 16-hour goal."
   },
   {
   'name': '18:6 TRF',
   'time' : '18',
+    'desc' : 'Slightly more restrictive than the popular 16:8 fast, the 18:6 TRF (time-restricted-feeding) helps rid the liver of more glycogen, allows the body to begin using ketones dor fuel, and can activate autophagy to rid the body of damaged cells.'
   },
   {
   'name': '24:4 TRF',
   'time' : '20',
+    'desc' : "A challenging protocol for intermediate to advance faster, the 20:4 helps you work toward a One-Meal-A-Day regimen. With this fast, your body to become 'fat adapted' so your body learns how to use multiple sources of fuel including glycogen, fat, and glucose. "
   }, {
   'name': '36-Hour-Fast',
       'time' : '36',
+       'desc' : "This challenging fats, known by some as the 'Monk Fast', is regarded by many to promote powerful cellular cleansing benefits and help reset the metabolism. Some of our users like to start on a Sunday evening and break the fast Tuesday morning. We recommend doing no more "
   },
   {
   'name': 'Custom Fast',
   'time' : '1-168',
+    'desc' : 'Have at it! With our more flexible Custom Fast you can set your own pace. with support for fasts up to seven days in length (168 hours) even the most experienced faster will find this meets their needs.',
   },
 
   ];

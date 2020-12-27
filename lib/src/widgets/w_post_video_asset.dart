@@ -13,9 +13,11 @@ class w_post_video_asset extends StatefulWidget {
 }
 
 class _w_post_video_assetState extends State<w_post_video_asset> {
+  
   bool  _expanded = false;
   bool  _like = false;
   bool  _bookmark = false;
+
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;

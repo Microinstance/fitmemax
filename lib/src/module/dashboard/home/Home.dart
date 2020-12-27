@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:fitmemax/src/data/data2.dart';
 import 'package:fitmemax/src/module/CalTracker/CalTrackerDashboard.dart';
+import 'package:fitmemax/src/module/Fast/FastDashboard.dart';
 import 'package:fitmemax/src/module/GoPro/GoPro.dart';
-import 'package:fitmemax/src/module/dashboard/profile/ProfileHome.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -10,16 +10,12 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Home extends StatefulWidget {
-
-
   @override
   _HomeState createState() => _HomeState();
 }
-
 class _HomeState extends State<Home> {
   int _currentPage = 0;
   final PageController _pageController = PageController(initialPage: 0);
-
   ScrollController _controller;
   bool _isVisible = false;
   @override
@@ -54,7 +50,6 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
-
     return Scaffold(
       floatingActionButton: SpeedDial(
         marginRight: 18,
@@ -261,10 +256,15 @@ class _HomeState extends State<Home> {
                                                     image: 'assets/icons/fitbook3.png',
                                                     context: context,
                                                   ),
-                                                  hItem(
-                                                    name: 'Fast',
-                                                    image: 'assets/icons/fast.png',
-                                                    context: context,
+                                                  GestureDetector(
+                                                    onTap: (){
+                                                      Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: FastDashboard()));
+                                                    },
+                                                    child: hItem(
+                                                      name: 'Fast',
+                                                      image: 'assets/icons/fast.png',
+                                                      context: context,
+                                                    ),
                                                   ),
                                                 ],
                                               ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'Fast.dart';
+import 'FastStatistic.dart';
 
 class FastDashboard extends StatefulWidget {
   @override
@@ -21,6 +22,8 @@ class _FastDashboardState extends State<FastDashboard> {
   }
   @override
   Widget build(BuildContext context) {
+    double _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Color(0xFF1f1e23),
 
@@ -33,7 +36,7 @@ class _FastDashboardState extends State<FastDashboard> {
         },
         children: <Widget>[
          Fast(),
-         Icon(Icons.work,color: Colors.white,),
+         FastStatistic(),
          Icon(Icons.shopping_cart_outlined,color: Colors.white,),
         ],
       ),

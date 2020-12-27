@@ -1,7 +1,10 @@
 import 'package:fitmemax/src/data/data2.dart';
+import 'package:fitmemax/src/module/Fast/FastDetailsPage.dart';
+import 'package:fitmemax/src/module/Fast/FastStart.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 
 class Fast extends StatefulWidget {
   @override
@@ -124,7 +127,7 @@ class _FastState extends State<Fast> {
               ),
             ),
             Container(
-              height: 370,
+              height: 350,
               child: GridView.count(
                   crossAxisCount: 2,
                   shrinkWrap: true,
@@ -134,7 +137,11 @@ class _FastState extends State<Fast> {
                   padding: EdgeInsets.only(left: 20, right: 20),
                   children: List.generate(Data().fast.length, (int index) {
                     return GestureDetector(
-                      onTap: (){},
+                      onTap: (){
+                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: FastStart(
+                          titel: Data().fast[index]['name'],
+                        )));
+                      },
                       child: Stack(
                         alignment: Alignment.bottomRight,
                         children: [
@@ -160,7 +167,7 @@ class _FastState extends State<Fast> {
                                     style: GoogleFonts.lato(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
-                                        fontSize: 25),
+                                        fontSize: 22),
                                   ),
                                   SizedBox(
                                     height: 10,
@@ -174,7 +181,7 @@ class _FastState extends State<Fast> {
                                           style: GoogleFonts.lato(
                                               fontWeight: FontWeight.w900,
                                               color: Colors.white,
-                                              fontSize: 40),
+                                              fontSize: 35),
                                         ),
                                       ],
                                     ),
@@ -194,7 +201,7 @@ class _FastState extends State<Fast> {
                                               fontWeight: FontWeight.bold,
                                               color:
                                                   Colors.white.withOpacity(0.8),
-                                              fontSize: 20),
+                                              fontSize: 18),
                                         ),
                                       ],
                                     ),
@@ -208,7 +215,13 @@ class _FastState extends State<Fast> {
                                 Icons.info_outline_rounded,
                                 color: Colors.white,
                               ),
-                              onPressed: () {})
+                              onPressed: () {
+                                Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: FastDetailsPage(
+                                  titel: Data().fast[index]['name'],
+                                  desc: Data().fast[index]['desc'],
+                                  hours: Data().fast[index]['time'],
+                                )));
+                              })
                         ],
                       ),
                     );
