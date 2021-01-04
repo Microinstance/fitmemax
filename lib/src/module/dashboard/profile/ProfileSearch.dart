@@ -151,7 +151,7 @@ class _ProfileSearchState extends State<ProfileSearch> {
                         // color: Colors.white,
                       ),
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           PageTransition(
                             type: PageTransitionType.fade,
@@ -180,7 +180,7 @@ class _ProfileSearchState extends State<ProfileSearch> {
                         color: Colors.white,
                       ),
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           PageTransition(
                             type: PageTransitionType.fade,
@@ -195,7 +195,7 @@ class _ProfileSearchState extends State<ProfileSearch> {
                         color: Colors.white,
                       ),
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           PageTransition(
                             type: PageTransitionType.fade,
@@ -210,7 +210,7 @@ class _ProfileSearchState extends State<ProfileSearch> {
                         color: Colors.white,
                       ),
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                             context,
                             PageTransition(
                                 type: PageTransitionType.fade,

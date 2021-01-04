@@ -1,11 +1,11 @@
 # This is a generated file; do not edit or check into version control.
-flutter_plugin_android_lifecycle=/Users/paradox/Development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.11/
-fluttertoast=/Users/paradox/Development/flutter/.pub-cache/hosted/pub.dartlang.org/fluttertoast-7.1.6/
-image_picker=/Users/paradox/Development/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.7+17/
-path_provider=/Users/paradox/Development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.24/
-path_provider_linux=/Users/paradox/Development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-0.0.1+2/
-path_provider_macos=/Users/paradox/Development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-0.0.4+6/
-path_provider_windows=/Users/paradox/Development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-0.0.4+3/
-sqflite=/Users/paradox/Development/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-1.3.2+1/
-video_player=/Users/paradox/Development/flutter/.pub-cache/hosted/pub.dartlang.org/video_player-1.0.1/
-video_player_web=/Users/paradox/Development/flutter/.pub-cache/hosted/pub.dartlang.org/video_player_web-0.1.4+1/
+flutter_plugin_android_lifecycle=D:\\flutterSDK\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\flutter_plugin_android_lifecycle-1.0.11\\
+fluttertoast=D:\\flutterSDK\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\fluttertoast-7.1.6\\
+image_picker=D:\\flutterSDK\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\image_picker-0.6.7+17\\
+path_provider=D:\\flutterSDK\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider-1.6.24\\
+path_provider_linux=D:\\flutterSDK\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_linux-0.0.1+2\\
+path_provider_macos=D:\\flutterSDK\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_macos-0.0.4+6\\
+path_provider_windows=D:\\flutterSDK\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_windows-0.0.4+3\\
+sqflite=D:\\flutterSDK\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\sqflite-1.3.2+1\\
+video_player=D:\\flutterSDK\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\video_player-1.0.1\\
+video_player_web=D:\\flutterSDK\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\video_player_web-0.1.4+1\\

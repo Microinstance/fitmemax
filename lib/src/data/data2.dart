@@ -262,4 +262,35 @@ class Data {
     },
   ];
 
+ List posts =  [
+   {
+     'type' : 'video',
+     'url' : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+   },
+   {
+     'type' : 'video',
+     'url' : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+   },
+   {
+     'type' : 'image',
+     'url' : 'http://cdn.pixabay.com/user/2013/11/05/02-10-23-764_250x250.jpg',
+   },
+   {
+     'type' : 'video',
+     'url' : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+   },
+   {
+     'type' : 'image',
+     'url' : 'https://cdn.pixabay.com/user/2013/11/05/02-10-23-764_250x250.jpg',
+   },
+   {
+     'type' : 'image',
+     'url' : 'https://cdn.pixabay.com/user/2013/11/05/02-10-23-764_250x250.jpg',
+   },
+   {
+     'type' : 'video',
+     'url' : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+   },
+ ];
+
 }

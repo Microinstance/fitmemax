@@ -5,6 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
 class w_post_image_asset extends StatefulWidget {
+
+  final String imageURL;
+
+  const w_post_image_asset({Key key, this.imageURL}) : super(key: key);
+
   @override
   _w_post_image_assetState createState() => _w_post_image_assetState();
 }
@@ -13,6 +18,7 @@ class _w_post_image_assetState extends State<w_post_image_asset> {
   bool  _expanded = false;
   bool  _like = false;
   bool  _bookmark = false;
+
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -65,11 +71,16 @@ class _w_post_image_assetState extends State<w_post_image_asset> {
                             width: 1,
                           ),
                           borderRadius: BorderRadius.all(Radius.circular(10)),
-                          image: DecorationImage(
-                            image: AssetImage("assets/profile/Post/post1.jpg"),
-                            fit: BoxFit.cover,
-                          )
+                          // image: DecorationImage(
+                          //   image: (widget.imageURL == null) ? AssetImage("assets/profile/Post/post1.jpg") :
+                          //   FadeInImage.assetNetwork(placeholder: "assets/profile/Post/post1.jpg", image: widget.imageURL),
+                          //   // NetworkImage(widget.imageURL),
+                          //   fit: BoxFit.cover,
+                          // ),
                       ),
+                      child: (widget.imageURL == null) ?
+                      Image.asset("assets/profile/Post/post1.jpg", fit: BoxFit.cover,) :
+                      FadeInImage.assetNetwork(placeholder: "assets/profile/Post/post1.jpg", image: widget.imageURL, fit: BoxFit.cover,),
                     ),
                   ),
                   SizedBox(height: 10,),

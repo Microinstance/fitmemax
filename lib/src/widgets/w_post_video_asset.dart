@@ -8,6 +8,12 @@ import 'AssetVideoPlayer.dart';
 import 'NetworkVideoPlayer.dart';
 
 class w_post_video_asset extends StatefulWidget {
+
+  final String url;
+  final bool play;
+
+  const w_post_video_asset({Key key, this.url, this.play}) : super(key: key);
+
   @override
   _w_post_video_assetState createState() => _w_post_video_assetState();
 }
@@ -77,7 +83,7 @@ class _w_post_video_assetState extends State<w_post_video_asset> {
                   //     ),
                   //   ),
                   // ),
-                  AssetVideoPlayer(),
+                  AssetVideoPlayer(play: widget.play, url: widget.url),
                   SizedBox(height: 10,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,

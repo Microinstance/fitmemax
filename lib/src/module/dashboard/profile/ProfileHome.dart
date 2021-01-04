@@ -1,4 +1,5 @@
 import 'package:fitmemax/Data/StoryData/data.dart';
+import 'package:fitmemax/src/data/data2.dart';
 import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
 import 'package:fitmemax/src/module/dashboard/profile/Chat/page/ProfileChatPage.dart';
 import 'package:fitmemax/src/module/dashboard/profile/Profile.dart';
@@ -10,6 +11,7 @@ import 'package:fitmemax/src/widgets/w_post_image_asset.dart';
 import 'package:fitmemax/src/widgets/w_post_video_asset.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:inview_notifier_list/inview_notifier_list.dart';
 import 'package:page_transition/page_transition.dart';
 
 import 'ProfileActivity.dart';
@@ -30,14 +32,20 @@ class _ProfileHomeState extends State<ProfileHome> {
         elevation: 0,
         centerTitle: true,
         leading: IconButton(
-          onPressed: (){
+          onPressed: () {
             Navigator.pushReplacement(
               context,
               PageTransition(
                 type: PageTransitionType.topToBottom,
-                child: Dashboard(),),);
+                child: Dashboard(),
+              ),
+            );
           },
-          icon: Icon(Icons.arrow_back_ios_rounded,color: Colors.white,size: 25,),
+          icon: Icon(
+            Icons.arrow_back_ios_rounded,
+            color: Colors.white,
+            size: 25,
+          ),
         ),
         actions: [
           Padding(
@@ -57,7 +65,9 @@ class _ProfileHomeState extends State<ProfileHome> {
                       context,
                       PageTransition(
                         type: PageTransitionType.fade,
-                        child: ProfileActivity(),),);
+                        child: ProfileActivity(),
+                      ),
+                    );
                   },
                 ),
                 CircleAvatar(
@@ -65,13 +75,13 @@ class _ProfileHomeState extends State<ProfileHome> {
                     backgroundColor: Palette.x1Color,
                     child: Center(
                         child: Text(
-                          "3",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontFamily: 'Roboto',
-                              fontWeight: FontWeight.bold),
-                        ))),
+                      "3",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.bold),
+                    ))),
               ],
             ),
           ),
@@ -82,139 +92,264 @@ class _ProfileHomeState extends State<ProfileHome> {
           children: [
             Text(
               "Fit",
-              style: TextStyle(
-                  color: Palette.x1Color,
-                  fontSize: 25,
-                  fontWeight: FontWeight.w600),
+              style: TextStyle(color: Palette.x1Color, fontSize: 25, fontWeight: FontWeight.w600),
             ),
             Text(
               "Book",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25,
-                  fontWeight: FontWeight.w600),
+              style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.w600),
             ),
           ],
         ),
       ),
       body: Stack(
         children: [
-          SingleChildScrollView(
-            physics: ClampingScrollPhysics(),
-            child: SafeArea(
-              child: Column(
-                children: [
-                  Container(
-                    height: 0.5,
-                    width: _width,
-                    color: Colors.white.withOpacity(0.3),
-                  ),
-                  Container(
-                    height: 110,
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 15),
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 8,
-                        itemBuilder: (BuildContext context, int index) {
-                          if (index == 0) {
-                            return Padding(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    PageTransition(
-                                      type: PageTransitionType.bottomToTop,
-                                      child: StoryScreen(stories: stories),),);
-                                },
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Stack(
-                                      alignment: Alignment.bottomRight,
-                                      children: [
-                                        CircleAvatar(
-                                          radius: 37,
-                                          backgroundColor: Palette.x1Color.withOpacity(0.7),
-                                          child: CircleAvatar(
-                                            radius: 35,
-                                            backgroundImage: AssetImage(
-                                                "assets/profile/me.png"),
+          InViewNotifierList(
+              scrollDirection: Axis.vertical,
+              initialInViewIds: ['0'],
+              isInViewPortCondition:
+                  (double deltaTop, double deltaBottom, double viewPortDimension) {
+                return deltaTop < (0.4 * viewPortDimension) &&
+                    deltaBottom > (0.45 * viewPortDimension);
+              },
+              itemCount: 1,
+              builder: (BuildContext context, int indexMain) {
+                return SingleChildScrollView(
+                  physics: ClampingScrollPhysics(),
+                  child: SafeArea(
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 0.5,
+                          width: _width,
+                          color: Colors.white.withOpacity(0.3),
+                        ),
+                        Container(
+                          height: 110,
+                          decoration: BoxDecoration(
+                            color: Colors.black,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 15),
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 8,
+                              itemBuilder: (BuildContext context, int index1) {
+                                if (index1 == 0) {
+                                  return Padding(
+                                    padding: const EdgeInsets.only(left: 15),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          PageTransition(
+                                            type: PageTransitionType.bottomToTop,
+                                            child: StoryScreen(stories: stories),
                                           ),
-                                        ),
-                                        CircleAvatar(
-                                            radius: 13,
-                                            backgroundColor: Colors.blue,
-                                            child: Center(child: Icon(Icons.add,color: Colors.white,size: 25,)))
-                                      ],
-                                    ),
-                                    SizedBox(height: 5,),
-                                    SizedBox(
-                                      width: 80,
-                                      height: 16,
-                                      child: Row(
+                                        );
+                                      },
+                                      child: Column(
                                         mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
-                                          Flexible(child: Text("Your Story",style: GoogleFonts.roboto(color: Colors.white,fontSize: 14),)),
+                                          Stack(
+                                            alignment: Alignment.bottomRight,
+                                            children: [
+                                              CircleAvatar(
+                                                radius: 37,
+                                                backgroundColor: Palette.x1Color.withOpacity(0.7),
+                                                child: CircleAvatar(
+                                                  radius: 35,
+                                                  backgroundImage:
+                                                      AssetImage("assets/profile/me.png"),
+                                                ),
+                                              ),
+                                              CircleAvatar(
+                                                  radius: 13,
+                                                  backgroundColor: Colors.blue,
+                                                  child: Center(
+                                                      child: Icon(
+                                                    Icons.add,
+                                                    color: Colors.white,
+                                                    size: 25,
+                                                  )))
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          SizedBox(
+                                            width: 80,
+                                            height: 16,
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                Flexible(
+                                                    child: Text(
+                                                  "Your Story",
+                                                  style: GoogleFonts.roboto(
+                                                      color: Colors.white, fontSize: 14),
+                                                )),
+                                              ],
+                                            ),
+                                          ),
                                         ],
                                       ),
+                                    ),
+                                  );
+                                } else
+                                  return _StoryCircle();
+                              },
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 0.5,
+                          width: _width,
+                          color: Colors.white.withOpacity(0.1),
+                        ),
+                        Container(
+                          child: MediaQuery.removePadding(
+                            context: context,
+                            removeTop: true,
+                            removeBottom: true,
+                            removeLeft: true,
+                            removeRight: true,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: Data().posts.length,
+                              itemBuilder: (BuildContext context, int index2) {
+                                return (Data().posts[index2]['type'] == 'image')
+                                    ? Container(
+                                  margin: EdgeInsets.symmetric(vertical: 10.0),
+                                      child: w_post_image_asset(
+                                          imageURL: Data().posts[index2]['url'],
+                                        ),
+                                    )
+                                    : Container(
+                                        margin: EdgeInsets.symmetric(vertical: 10.0),
+                                        child: InViewNotifierWidget(
+                                          id: '$index2',
+                                          builder:
+                                              (BuildContext context, bool isInView, Widget child) {
+                                            return w_post_video_asset(
+                                              play: isInView,
+                                              url: Data().posts[index2]['url'],
+                                            );
+                                          },
+                                        ),
+                                      );
+                              },
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          color: Colors.black,
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20, right: 20, top: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Suggested For You",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 18, fontFamily: 'Roboto'),
+                                    ),
+                                    Icon(
+                                      Icons.arrow_forward_ios_outlined,
+                                      color: Palette.x1Color,
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                height: 250,
+                                child: MediaQuery.removePadding(
+                                  context: context,
+                                  removeTop: true,
+                                  removeBottom: true,
+                                  removeLeft: true,
+                                  removeRight: true,
+                                  child: ListView.builder(
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: 10,
+                                    itemBuilder: (BuildContext context, int index3) {
+                                      return _Suggetions();
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          child: MediaQuery.removePadding(
+                            context: context,
+                            removeTop: true,
+                            removeBottom: true,
+                            removeLeft: true,
+                            removeRight: true,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: 2,
+                              itemBuilder: (BuildContext context, int index4) {
+                                return w_post_image_asset();
+                              },
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          color: Colors.black,
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20, right: 20, top: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Recent Stories",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 18, fontFamily: 'Roboto'),
                                     ),
                                   ],
                                 ),
                               ),
-                            );
-                          } else
-                            return _StoryCircle();
-                        },
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 0.5,
-                    width: _width,
-                    color: Colors.white.withOpacity(0.1),
-                  ),
-                  Container(
-                    child: MediaQuery.removePadding(
-                      context: context,
-                      removeTop: true,
-                      removeBottom: true,
-                      removeLeft: true,
-                      removeRight: true,
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: 5,
-                        itemBuilder: (BuildContext context, int index){
-                          return w_post_video_asset();
-                        },
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10,),
-                  Container(
-                    color: Colors.black,
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20,right: 20,top: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("Suggested For You",style: TextStyle(color: Colors.white,fontSize: 18,fontFamily: 'Roboto'),),
-                              Icon(Icons.arrow_forward_ios_outlined,color: Palette.x1Color,)
+                              Container(
+                                height: 300,
+                                child: MediaQuery.removePadding(
+                                  context: context,
+                                  removeTop: true,
+                                  removeBottom: true,
+                                  removeLeft: true,
+                                  removeRight: true,
+                                  child: ListView.builder(
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: 10,
+                                    itemBuilder: (BuildContext context, int index5) {
+                                      return _StoryBox();
+                                    },
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),
                         Container(
-                          height: 250,
                           child: MediaQuery.removePadding(
                             context: context,
                             removeTop: true,
@@ -223,91 +358,28 @@ class _ProfileHomeState extends State<ProfileHome> {
                             removeRight: true,
                             child: ListView.builder(
                               shrinkWrap: true,
-                              scrollDirection: Axis.horizontal,
-                              itemCount: 10,
-                              itemBuilder: (BuildContext context, int index){
-                                return _Suggetions();
+                              scrollDirection: Axis.vertical,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: 2,
+                              itemBuilder: (BuildContext context, int index6) {
+                                return w_post_image_asset();
                               },
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: MediaQuery.removePadding(
-                      context: context,
-                      removeTop: true,
-                      removeBottom: true,
-                      removeLeft: true,
-                      removeRight: true,
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: 2,
-                        itemBuilder: (BuildContext context, int index){
-                          return w_post_image_asset();
-                        },
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10,),
-                  Container(
-                    color: Colors.black,
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20,right: 20,top: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("Recent Stories",style: TextStyle(color: Colors.white,fontSize: 18,fontFamily: 'Roboto'),),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          height: 300,
-                          child: MediaQuery.removePadding(
-                            context: context,
-                            removeTop: true,
-                            removeBottom: true,
-                            removeLeft: true,
-                            removeRight: true,
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              scrollDirection: Axis.horizontal,
-                              itemCount: 10,
-                              itemBuilder: (BuildContext context, int index){
-                                return _StoryBox();
-                              },
-                            ),
-                          ),
+                        SizedBox(
+                          height: 140,
                         ),
                       ],
                     ),
                   ),
-                  Container(
-                    child: MediaQuery.removePadding(
-                      context: context,
-                      removeTop: true,
-                      removeBottom: true,
-                      removeLeft: true,
-                      removeRight: true,
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: 2,
-                        itemBuilder: (BuildContext context, int index){
-                          return w_post_image_asset();
-                        },
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 140,),
-                ],
-              ),
+                );
+              }),
+          Align(
+            alignment: Alignment.center,
+            child: Container(
+              height: 1.0,
+              color: Colors.redAccent,
             ),
           ),
           Align(
@@ -341,11 +413,13 @@ class _ProfileHomeState extends State<ProfileHome> {
                         color: Colors.white,
                       ),
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           PageTransition(
                             type: PageTransitionType.fade,
-                            child: ProfileSearch(),),);
+                            child: ProfileSearch(),
+                          ),
+                        );
                       },
                     ),
                     IconButton(
@@ -355,11 +429,13 @@ class _ProfileHomeState extends State<ProfileHome> {
                         color: Colors.white,
                       ),
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           PageTransition(
                             type: PageTransitionType.fade,
-                            child: ProfilePost(),),);
+                            child: ProfilePost(),
+                          ),
+                        );
                       },
                     ),
                     IconButton(
@@ -370,11 +446,13 @@ class _ProfileHomeState extends State<ProfileHome> {
                         color: Colors.white,
                       ),
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           PageTransition(
                             type: PageTransitionType.fade,
-                            child: ProfileChatPage(),),);
+                            child: ProfileChatPage(),
+                          ),
+                        );
                       },
                     ),
                     IconButton(
@@ -385,11 +463,8 @@ class _ProfileHomeState extends State<ProfileHome> {
                         color: Colors.white,
                       ),
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.fade,
-                                child: Profile()));
+                        Navigator.pushReplacement(context,
+                            PageTransition(type: PageTransitionType.fade, child: Profile()));
                       },
                     ),
                   ],
@@ -401,9 +476,10 @@ class _ProfileHomeState extends State<ProfileHome> {
       ),
     );
   }
-  Widget _Suggetions(){
+
+  Widget _Suggetions() {
     return Padding(
-      padding: const EdgeInsets.only(left: 20,top: 20,bottom: 20),
+      padding: const EdgeInsets.only(left: 20, top: 20, bottom: 20),
       child: Container(
         width: 150,
         decoration: BoxDecoration(
@@ -419,19 +495,24 @@ class _ProfileHomeState extends State<ProfileHome> {
               backgroundColor: Palette.x1Color.withOpacity(0.7),
               child: CircleAvatar(
                 radius: 48,
-                backgroundImage: AssetImage(
-                    "assets/profile/profile1.png"),
+                backgroundImage: AssetImage("assets/profile/profile1.png"),
               ),
             ),
-            SizedBox(height: 10,),
-            Text("Shivay Kumar",style: TextStyle(fontSize: 18,color: Colors.white),),
-            SizedBox(height: 5,),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              "Shivay Kumar",
+              style: TextStyle(fontSize: 18, color: Colors.white),
+            ),
+            SizedBox(
+              height: 5,
+            ),
             MaterialButton(
-                height: 30,
-                color: Palette.x1Color,
-                onPressed: (){},
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5)),
+              height: 30,
+              color: Palette.x1Color,
+              onPressed: () {},
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
               child: Text("Follow"),
             )
           ],
@@ -439,75 +520,82 @@ class _ProfileHomeState extends State<ProfileHome> {
       ),
     );
   }
-  Widget _StoryBox(){
-   return Padding(
-      padding: const EdgeInsets.only(left: 20,top: 20,bottom: 20),
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            PageTransition(
-              type: PageTransitionType.bottomToTop,
-              child: StoryScreen(stories: stories),),);
-        },
-        child: Stack(
-          children: [
-            Container(
-              width: 180,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(5)),
-                  image: DecorationImage(
-                    image: AssetImage("assets/profile/Post/post1.jpg"),
-                    fit: BoxFit.cover,
-                  ),
-                  border: Border.all(
-                    color: Colors.white.withOpacity(0.5),
-                    width: 1,
-                  )
+
+  Widget _StoryBox() {
+    return Padding(
+        padding: const EdgeInsets.only(left: 20, top: 20, bottom: 20),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              PageTransition(
+                type: PageTransitionType.bottomToTop,
+                child: StoryScreen(stories: stories),
               ),
-            ),
-            Stack(
-              alignment: Alignment.bottomCenter,
-              children: [
+            );
+          },
+          child: Stack(
+            children: [
               Container(
                 width: 180,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(5)),
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.black.withOpacity(0.5),
-                        Colors.transparent,
-                      ],
-                      begin: FractionalOffset.bottomCenter,
-                      end: FractionalOffset.topCenter,
-
-                    )
-                ),
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  CircleAvatar(
-                    radius: 40,
-                    backgroundColor: Palette.x1Color.withOpacity(0.7),
-                    child: CircleAvatar(
-                      radius: 38,
-                      backgroundImage: AssetImage(
-                          "assets/profile/profile1.png"),
+                    image: DecorationImage(
+                      image: AssetImage("assets/profile/Post/post1.jpg"),
+                      fit: BoxFit.cover,
                     ),
-                  ),
-                  SizedBox(height: 10,),
-                  Text("s_paradox",style: TextStyle(color: Colors.white,fontSize: 18,fontFamily: 'Roboto'),),
-                  SizedBox(height: 15,),
-                ],
+                    border: Border.all(
+                      color: Colors.white.withOpacity(0.5),
+                      width: 1,
+                    )),
               ),
-            ],)
-          ],
-        ),
-      )
-    );
+              Stack(
+                alignment: Alignment.bottomCenter,
+                children: [
+                  Container(
+                    width: 180,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                        gradient: LinearGradient(
+                          colors: [
+                            Colors.black.withOpacity(0.5),
+                            Colors.transparent,
+                          ],
+                          begin: FractionalOffset.bottomCenter,
+                          end: FractionalOffset.topCenter,
+                        )),
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      CircleAvatar(
+                        radius: 40,
+                        backgroundColor: Palette.x1Color.withOpacity(0.7),
+                        child: CircleAvatar(
+                          radius: 38,
+                          backgroundImage: AssetImage("assets/profile/profile1.png"),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "s_paradox",
+                        style: TextStyle(color: Colors.white, fontSize: 18, fontFamily: 'Roboto'),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                    ],
+                  ),
+                ],
+              )
+            ],
+          ),
+        ));
   }
-  Widget _StoryCircle(){
+
+  Widget _StoryCircle() {
     return Padding(
       padding: const EdgeInsets.only(left: 15),
       child: GestureDetector(
@@ -516,7 +604,9 @@ class _ProfileHomeState extends State<ProfileHome> {
             context,
             PageTransition(
               type: PageTransitionType.bottomToTop,
-              child: StoryScreen(stories: stories),),);
+              child: StoryScreen(stories: stories),
+            ),
+          );
         },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -527,18 +617,23 @@ class _ProfileHomeState extends State<ProfileHome> {
               backgroundColor: Palette.x1Color.withOpacity(0.7),
               child: CircleAvatar(
                 radius: 35,
-                backgroundImage: AssetImage(
-                    "assets/profile/profile1.png"),
+                backgroundImage: AssetImage("assets/profile/profile1.png"),
               ),
             ),
-            SizedBox(height: 5,),
+            SizedBox(
+              height: 5,
+            ),
             SizedBox(
               width: 80,
               height: 16,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Flexible(child: Text("s_paradox",style: GoogleFonts.roboto(color: Colors.white,fontSize: 15),)),
+                  Flexible(
+                      child: Text(
+                    "s_paradox",
+                    style: GoogleFonts.roboto(color: Colors.white, fontSize: 15),
+                  )),
                 ],
               ),
             ),
