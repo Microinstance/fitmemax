@@ -64,7 +64,7 @@ class _VerifyPageState extends State<VerifyPage> {
               children: [
                 Flexible(
                     child: Image.asset(
-                      'assets/logo/splashScreen.png',
+                      'assets/logo/splash-Screen.png',
                       fit: BoxFit.fitWidth,
                     )),
               ],

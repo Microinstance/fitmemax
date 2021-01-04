@@ -290,6 +290,7 @@ class _ProfileHomeState extends State<ProfileHome> {
                             ],
                           ),
                         ),
+
                         Container(
                           child: MediaQuery.removePadding(
                             context: context,

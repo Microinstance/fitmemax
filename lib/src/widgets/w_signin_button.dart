@@ -5,7 +5,6 @@ class w_signin_button extends StatelessWidget {
 
   final String title;
   final Function onPressed;
-
   const w_signin_button({ this.title, this.onPressed});
 
   @override

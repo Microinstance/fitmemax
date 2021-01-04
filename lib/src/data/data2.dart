@@ -10,6 +10,15 @@ class Data {
    'images/userImage7.jpeg',
    'images/userImage8.jpeg',
  ];
+  List MedicalCC = [
+    'Thytroid',
+    'Thytroid',
+    'Thytroid',
+    'Thytroid',
+    'Thytroid',
+    'Thytroid',
+    'Thytroid',
+  ];
 
  List mmWeekly =
      [
@@ -286,6 +295,58 @@ class Data {
    {
      'type' : 'image',
      'url' : 'https://cdn.pixabay.com/user/2013/11/05/02-10-23-764_250x250.jpg',
+   },
+   {
+     'type' : 'video',
+     'url' : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+   },
+   {
+     'type' : 'video',
+     'url' : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+   },
+   {
+     'type' : 'video',
+     'url' : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+   },
+   {
+     'type' : 'video',
+     'url' : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+   },
+   {
+     'type' : 'video',
+     'url' : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+   },
+   {
+     'type' : 'video',
+     'url' : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+   },
+   {
+     'type' : 'video',
+     'url' : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+   },
+   {
+     'type' : 'video',
+     'url' : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+   },
+   {
+     'type' : 'video',
+     'url' : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+   },
+   {
+     'type' : 'video',
+     'url' : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+   },
+   {
+     'type' : 'video',
+     'url' : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+   },
+   {
+     'type' : 'video',
+     'url' : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+   },
+   {
+     'type' : 'video',
+     'url' : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
    },
    {
      'type' : 'video',

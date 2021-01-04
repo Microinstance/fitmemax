@@ -1,3 +1,4 @@
+import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
 import 'package:fitmemax/src/module/signin_signup/Forgotpage.dart';
 import 'package:fitmemax/src/module/signin_signup/SignupPage.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
@@ -6,6 +7,7 @@ import 'package:fitmemax/src/widgets/w_signin_button.dart';
 import 'package:fitmemax/src/widgets/w_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:page_transition/page_transition.dart';
 
 
 class SigninPage extends StatefulWidget {
@@ -37,7 +39,7 @@ class _SigninPageState extends State<SigninPage> {
                 children: [
                   Flexible(
                       child: Image.asset(
-                        'assets/logo/splashScreen.png',
+                        'assets/logo/splash-Screen.png',
                         fit: BoxFit.fitWidth,
                       )),
                 ],
@@ -76,8 +78,8 @@ class _SigninPageState extends State<SigninPage> {
                       Padding(
                         padding:  EdgeInsets.only(left:  _width * 0.05,right: _width *0.05),
                         child: w_textfield(
-                          hint: 'Email Id',
-                          lable: 'Email Id',
+                          hint: 'User Id',
+                          lable: 'User Id',
                           onChanged: (v){
                             print(v);
                           },
@@ -89,7 +91,7 @@ class _SigninPageState extends State<SigninPage> {
                       Padding(
                         padding:  EdgeInsets.only(left:  _width * 0.05,right: _width *0.05),
                         child: w_textfield(
-                          hint:'Phone Number',
+                          hint:'Password',
                           onChanged: (v){
                             print(v);
                           },
@@ -105,14 +107,7 @@ class _SigninPageState extends State<SigninPage> {
                           children: [
                             GestureDetector(
                                 onTap: (){
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) {
-                                        return Forgotpage();
-                                      },
-                                    ),
-                                  );
+                                  Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Forgotpage()));
                                 },
                                 child: Text('Forgot Password?',style: TextStyle(color: Palette.primaryColor,fontSize: 18,fontWeight: FontWeight.bold),)),
                           ],
@@ -126,7 +121,9 @@ class _SigninPageState extends State<SigninPage> {
                         children: [
                           w_signin_button(
                             title: 'Sign In',
-                            onPressed: (){},
+                            onPressed: (){
+                              Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Dashboard()));
+                            },
                           ),
                         ],
                       ),
@@ -193,14 +190,7 @@ class _SigninPageState extends State<SigninPage> {
                 SizedBox(width: 10,),
                 GestureDetector(
                     onTap: (){
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return SignupPage();
-                          },
-                        ),
-                      );
+                      Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: SignupPage()));
                     },
                     child: Text("Sign Up!",style: TextStyle(fontSize: 18,color: Palette.primaryColor,fontWeight: FontWeight.bold),)),
               ],
@@ -211,6 +201,7 @@ class _SigninPageState extends State<SigninPage> {
           ],
         ),
       ),
+      value: 0.0,
     );
   }
 }

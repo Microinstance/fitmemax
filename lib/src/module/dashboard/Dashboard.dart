@@ -85,13 +85,21 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                     appBar: AppBar(
                       elevation: 0,
                       backgroundColor: Palette.primaryColor,
+                      // title: Row(
+                      //   children: [
+                      //     Text('F',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 25),),
+                      //     Text('i',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 22),),
+                      //     Text('t',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 22),),
+                      //     Text('Me',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 22),),
+                      //     Text('Max',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 22),),
+                      //   ],
+                      // ),
                       title: Row(
                         children: [
                           Text('F',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 25),),
                           Text('i',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 22),),
                           Text('t',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 22),),
-                          Text('Me',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 22),),
-                          Text('Max',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 22),),
+                          Text('Book',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 22),),
                         ],
                       ),
                       leading: IconButton(

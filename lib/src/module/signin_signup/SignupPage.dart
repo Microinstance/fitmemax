@@ -7,6 +7,7 @@ import 'package:fitmemax/src/widgets/w_signin_button.dart';
 import 'package:fitmemax/src/widgets/w_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:page_transition/page_transition.dart';
 
 class SignupPage extends StatefulWidget {
   @override
@@ -39,7 +40,7 @@ class _SignupPageState extends State<SignupPage> {
                 children: [
                   Flexible(
                       child: Image.asset(
-                    'assets/logo/splashScreen.png',
+                    'assets/logo/splash-Screen.png',
                     fit: BoxFit.fitWidth,
                   )),
                 ],
@@ -153,14 +154,7 @@ class _SignupPageState extends State<SignupPage> {
                           w_signin_button(
                             title: 'Sign Up',
                             onPressed: (){
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return VerifyPage();
-                                  },
-                                ),
-                              );
+                              Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: VerifyPage()));
                             },
                           ),
                         ],
@@ -240,14 +234,7 @@ class _SignupPageState extends State<SignupPage> {
                 SizedBox(width: 10,),
                 GestureDetector(
                     onTap: (){
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return SigninPage();
-                          },
-                        ),
-                      );
+                      Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: SigninPage()));
                     },
                     child: Text("Sign In!",style: TextStyle(fontSize: 18,color: Palette.primaryColor,fontWeight: FontWeight.bold),)),
               ],
@@ -258,6 +245,7 @@ class _SignupPageState extends State<SignupPage> {
           ],
         ),
       ),
+      value: 0.0,
     );
   }
 }

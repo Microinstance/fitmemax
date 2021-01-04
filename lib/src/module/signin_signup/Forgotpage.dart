@@ -30,7 +30,7 @@ class _ForgotpageState extends State<Forgotpage> {
                 children: [
                   Flexible(
                       child: Image.asset(
-                        'assets/logo/splashScreen.png',
+                        'assets/logo/splash-Screen.png',
                         fit: BoxFit.fitWidth,
                       )),
                 ],
