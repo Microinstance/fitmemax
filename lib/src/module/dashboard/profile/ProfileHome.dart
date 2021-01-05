@@ -221,153 +221,297 @@ class _ProfileHomeState extends State<ProfileHome> {
                               physics: NeverScrollableScrollPhysics(),
                               itemCount: Data().posts.length,
                               itemBuilder: (BuildContext context, int index2) {
-                                return (Data().posts[index2]['type'] == 'image')
-                                    ? Container(
-                                  margin: EdgeInsets.symmetric(vertical: 10.0),
-                                      child: w_post_image_asset(
-                                          imageURL: Data().posts[index2]['url'],
+                                if (index2 == 7) {
+                                  return Column(
+                                    children: [
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Container(
+                                        color: Colors.black,
+                                        child: Column(
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 20, right: 20, top: 15),
+                                              child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    "Suggested For You",
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 18,
+                                                        fontFamily: 'Roboto'),
+                                                  ),
+                                                  Icon(
+                                                    Icons.arrow_forward_ios_outlined,
+                                                    color: Palette.x1Color,
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 250,
+                                              child: MediaQuery.removePadding(
+                                                context: context,
+                                                removeTop: true,
+                                                removeBottom: true,
+                                                removeLeft: true,
+                                                removeRight: true,
+                                                child: ListView.builder(
+                                                  shrinkWrap: true,
+                                                  scrollDirection: Axis.horizontal,
+                                                  itemCount: 10,
+                                                  itemBuilder: (BuildContext context, int index3) {
+                                                    return _Suggetions();
+                                                  },
+                                                ),
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                    )
-                                    : Container(
-                                        margin: EdgeInsets.symmetric(vertical: 10.0),
-                                        child: InViewNotifierWidget(
-                                          id: '$index2',
-                                          builder:
-                                              (BuildContext context, bool isInView, Widget child) {
-                                            return w_post_video_asset(
-                                              play: isInView,
-                                              url: Data().posts[index2]['url'],
-                                            );
-                                          },
+                                      ),
+                                      (Data().posts[index2]['type'] == 'image')
+                                          ? Container(
+                                              margin: EdgeInsets.symmetric(vertical: 10.0),
+                                              child: w_post_image_asset(
+                                                imageURL: Data().posts[index2]['url'],
+                                              ),
+                                            )
+                                          : Container(
+                                              margin: EdgeInsets.symmetric(vertical: 10.0),
+                                              child: InViewNotifierWidget(
+                                                id: '$index2',
+                                                builder: (BuildContext context, bool isInView,
+                                                    Widget child) {
+                                                  return w_post_video_asset(
+                                                    play: isInView,
+                                                    url: Data().posts[index2]['url'],
+                                                  );
+                                                },
+                                              ),
+                                            ),
+                                    ],
+                                  );
+                                } else if (index2 == 11) {
+                                  return Column(
+                                    children: [
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Container(
+                                        color: Colors.black,
+                                        child: Column(
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 20, right: 20, top: 15),
+                                              child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    "Recent Stories",
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 18,
+                                                        fontFamily: 'Roboto'),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 300,
+                                              child: MediaQuery.removePadding(
+                                                context: context,
+                                                removeTop: true,
+                                                removeBottom: true,
+                                                removeLeft: true,
+                                                removeRight: true,
+                                                child: ListView.builder(
+                                                  shrinkWrap: true,
+                                                  scrollDirection: Axis.horizontal,
+                                                  itemCount: 10,
+                                                  itemBuilder: (BuildContext context, int index5) {
+                                                    return _StoryBox();
+                                                  },
+                                                ),
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                      );
+                                      ),
+                                      (Data().posts[index2]['type'] == 'image')
+                                          ? Container(
+                                              margin: EdgeInsets.symmetric(vertical: 10.0),
+                                              child: w_post_image_asset(
+                                                imageURL: Data().posts[index2]['url'],
+                                              ),
+                                            )
+                                          : Container(
+                                              margin: EdgeInsets.symmetric(vertical: 10.0),
+                                              child: InViewNotifierWidget(
+                                                id: '$index2',
+                                                builder: (BuildContext context, bool isInView,
+                                                    Widget child) {
+                                                  return w_post_video_asset(
+                                                    play: isInView,
+                                                    url: Data().posts[index2]['url'],
+                                                  );
+                                                },
+                                              ),
+                                            ),
+                                    ],
+                                  );
+                                } else {
+                                  return (Data().posts[index2]['type'] == 'image')
+                                      ? Container(
+                                          margin: EdgeInsets.symmetric(vertical: 10.0),
+                                          child: w_post_image_asset(
+                                            imageURL: Data().posts[index2]['url'],
+                                          ),
+                                        )
+                                      : Container(
+                                          margin: EdgeInsets.symmetric(vertical: 10.0),
+                                          child: InViewNotifierWidget(
+                                            id: '$index2',
+                                            builder: (BuildContext context, bool isInView,
+                                                Widget child) {
+                                              return w_post_video_asset(
+                                                play: isInView,
+                                                url: Data().posts[index2]['url'],
+                                              );
+                                            },
+                                          ),
+                                        );
+                                }
                               },
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          color: Colors.black,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20, right: 20, top: 15),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Suggested For You",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 18, fontFamily: 'Roboto'),
-                                    ),
-                                    Icon(
-                                      Icons.arrow_forward_ios_outlined,
-                                      color: Palette.x1Color,
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                height: 250,
-                                child: MediaQuery.removePadding(
-                                  context: context,
-                                  removeTop: true,
-                                  removeBottom: true,
-                                  removeLeft: true,
-                                  removeRight: true,
-                                  child: ListView.builder(
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: 10,
-                                    itemBuilder: (BuildContext context, int index3) {
-                                      return _Suggetions();
-                                    },
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
-                        Container(
-                          child: MediaQuery.removePadding(
-                            context: context,
-                            removeTop: true,
-                            removeBottom: true,
-                            removeLeft: true,
-                            removeRight: true,
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              physics: NeverScrollableScrollPhysics(),
-                              itemCount: 2,
-                              itemBuilder: (BuildContext context, int index4) {
-                                return w_post_image_asset();
-                              },
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          color: Colors.black,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20, right: 20, top: 15),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Recent Stories",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 18, fontFamily: 'Roboto'),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                height: 300,
-                                child: MediaQuery.removePadding(
-                                  context: context,
-                                  removeTop: true,
-                                  removeBottom: true,
-                                  removeLeft: true,
-                                  removeRight: true,
-                                  child: ListView.builder(
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: 10,
-                                    itemBuilder: (BuildContext context, int index5) {
-                                      return _StoryBox();
-                                    },
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          child: MediaQuery.removePadding(
-                            context: context,
-                            removeTop: true,
-                            removeBottom: true,
-                            removeLeft: true,
-                            removeRight: true,
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              physics: NeverScrollableScrollPhysics(),
-                              itemCount: 2,
-                              itemBuilder: (BuildContext context, int index6) {
-                                return w_post_image_asset();
-                              },
-                            ),
-                          ),
-                        ),
+                        // SizedBox(
+                        //   height: 10,
+                        // ),
+                        // Container(
+                        //   color: Colors.black,
+                        //   child: Column(
+                        //     children: [
+                        //       Padding(
+                        //         padding: const EdgeInsets.only(left: 20, right: 20, top: 15),
+                        //         child: Row(
+                        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //           children: [
+                        //             Text(
+                        //               "Suggested For You",
+                        //               style: TextStyle(
+                        //                   color: Colors.white, fontSize: 18, fontFamily: 'Roboto'),
+                        //             ),
+                        //             Icon(
+                        //               Icons.arrow_forward_ios_outlined,
+                        //               color: Palette.x1Color,
+                        //             )
+                        //           ],
+                        //         ),
+                        //       ),
+                        //       Container(
+                        //         height: 250,
+                        //         child: MediaQuery.removePadding(
+                        //           context: context,
+                        //           removeTop: true,
+                        //           removeBottom: true,
+                        //           removeLeft: true,
+                        //           removeRight: true,
+                        //           child: ListView.builder(
+                        //             shrinkWrap: true,
+                        //             scrollDirection: Axis.horizontal,
+                        //             itemCount: 10,
+                        //             itemBuilder: (BuildContext context, int index3) {
+                        //               return _Suggetions();
+                        //             },
+                        //           ),
+                        //         ),
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
+                        //
+                        // Container(
+                        //   child: MediaQuery.removePadding(
+                        //     context: context,
+                        //     removeTop: true,
+                        //     removeBottom: true,
+                        //     removeLeft: true,
+                        //     removeRight: true,
+                        //     child: ListView.builder(
+                        //       shrinkWrap: true,
+                        //       scrollDirection: Axis.vertical,
+                        //       physics: NeverScrollableScrollPhysics(),
+                        //       itemCount: 2,
+                        //       itemBuilder: (BuildContext context, int index4) {
+                        //         return w_post_image_asset();
+                        //       },
+                        //     ),
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   height: 10,
+                        // ),
+                        // Container(
+                        //   color: Colors.black,
+                        //   child: Column(
+                        //     children: [
+                        //       Padding(
+                        //         padding: const EdgeInsets.only(left: 20, right: 20, top: 15),
+                        //         child: Row(
+                        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //           children: [
+                        //             Text(
+                        //               "Recent Stories",
+                        //               style: TextStyle(
+                        //                   color: Colors.white, fontSize: 18, fontFamily: 'Roboto'),
+                        //             ),
+                        //           ],
+                        //         ),
+                        //       ),
+                        //       Container(
+                        //         height: 300,
+                        //         child: MediaQuery.removePadding(
+                        //           context: context,
+                        //           removeTop: true,
+                        //           removeBottom: true,
+                        //           removeLeft: true,
+                        //           removeRight: true,
+                        //           child: ListView.builder(
+                        //             shrinkWrap: true,
+                        //             scrollDirection: Axis.horizontal,
+                        //             itemCount: 10,
+                        //             itemBuilder: (BuildContext context, int index5) {
+                        //               return _StoryBox();
+                        //             },
+                        //           ),
+                        //         ),
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
+                        // Container(
+                        //   child: MediaQuery.removePadding(
+                        //     context: context,
+                        //     removeTop: true,
+                        //     removeBottom: true,
+                        //     removeLeft: true,
+                        //     removeRight: true,
+                        //     child: ListView.builder(
+                        //       shrinkWrap: true,
+                        //       scrollDirection: Axis.vertical,
+                        //       physics: NeverScrollableScrollPhysics(),
+                        //       itemCount: 2,
+                        //       itemBuilder: (BuildContext context, int index6) {
+                        //         return w_post_image_asset();
+                        //       },
+                        //     ),
+                        //   ),
+                        // ),
                         SizedBox(
                           height: 140,
                         ),
