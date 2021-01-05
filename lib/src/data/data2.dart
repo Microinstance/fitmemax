@@ -52,18 +52,21 @@ class Data {
          'F_position': '0.40',
          'C_position': '0.35',
        },
+
        {
          'name': 'Fry',
          'P_position': '0.80',
          'F_position': '0.50',
          'C_position': '0.35',
        },
+
        {
          'name': 'Sat',
          'P_position': '0.85',
          'F_position': '0.75',
          'C_position': '0.95',
        },
+
      ];
 
 
