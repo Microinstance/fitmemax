@@ -41,6 +41,7 @@ class Data {
          'C_position': '0.80',
        },
        {
+
          'name': 'Wed',
          'P_position': '0.30',
          'F_position': '0.40',
