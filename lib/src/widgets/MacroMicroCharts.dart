@@ -18,7 +18,7 @@ class _MacroMicroChartsState extends State<MacroMicroCharts> {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     return Padding(
-      padding: const EdgeInsets.only(top: 20,bottom: 20,left: 20,right: 20),
+      padding: const EdgeInsets.only(top: 20, bottom: 20, left: 20, right: 20),
       child: Column(
         children: [
           Padding(
@@ -31,10 +31,19 @@ class _MacroMicroChartsState extends State<MacroMicroCharts> {
                     CircleAvatar(
                       backgroundColor: Palette.primaryColor.withOpacity(0.15),
                       radius: 18,
-                      child: Icon(Icons.accessibility,color: Palette.primaryColor,size: 23,),
+                      child: Icon(
+                        Icons.accessibility,
+                        color: Palette.primaryColor,
+                        size: 23,
+                      ),
                     ),
-                    SizedBox(width: 10,),
-                    Text("Macros and Micros",style: GoogleFonts.lato(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.black),),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Macros and Micros",
+                      style: GoogleFonts.lato(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),
+                    ),
                   ],
                 ),
                 _dropdownButtonTwo()
@@ -50,8 +59,13 @@ class _MacroMicroChartsState extends State<MacroMicroCharts> {
                     backgroundColor: Colors.red[400],
                     radius: 9,
                   ),
-                  SizedBox(width: 7,),
-                  Text("Protein",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18,color: Colors.black),),
+                  SizedBox(
+                    width: 7,
+                  ),
+                  Text(
+                    "Protein",
+                    style: GoogleFonts.lato(fontWeight: FontWeight.w500, fontSize: 18, color: Colors.black),
+                  ),
                 ],
               ),
               Row(
@@ -60,8 +74,13 @@ class _MacroMicroChartsState extends State<MacroMicroCharts> {
                     backgroundColor: Colors.yellow,
                     radius: 9,
                   ),
-                  SizedBox(width: 7,),
-                  Text("Fat",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18,color: Colors.black),),
+                  SizedBox(
+                    width: 7,
+                  ),
+                  Text(
+                    "Fat",
+                    style: GoogleFonts.lato(fontWeight: FontWeight.w500, fontSize: 18, color: Colors.black),
+                  ),
                 ],
               ),
               Row(
@@ -70,8 +89,13 @@ class _MacroMicroChartsState extends State<MacroMicroCharts> {
                     backgroundColor: Colors.green,
                     radius: 9,
                   ),
-                  SizedBox(width: 7,),
-                  Text("Carbs",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18,color: Colors.black),),
+                  SizedBox(
+                    width: 7,
+                  ),
+                  Text(
+                    "Carbs",
+                    style: GoogleFonts.lato(fontWeight: FontWeight.w500, fontSize: 18, color: Colors.black),
+                  ),
                 ],
               ),
             ],
@@ -80,10 +104,10 @@ class _MacroMicroChartsState extends State<MacroMicroCharts> {
             padding: const EdgeInsets.only(top: 15),
             child: Container(
               height: 350,
-              width: _width-20,
+              width: _width - 20,
               color: Colors.transparent,
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 15,top: 15),
+                padding: const EdgeInsets.only(bottom: 15, top: 15),
                 child: Row(
                   children: [
                     SizedBox(
@@ -92,31 +116,32 @@ class _MacroMicroChartsState extends State<MacroMicroCharts> {
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 20),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: List.generate(11, (index) {
-                            var x = index*10;
-                            var y = -(x-100);
-                            return Row(
-                              children: [
-                                Text('${y}',style: GoogleFonts.lato(color: Colors.black,fontSize: 10,fontWeight: FontWeight.bold),),
-                              ],
-                            );
-                          })
-                        ),
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: List.generate(11, (index) {
+                              var x = index * 10;
+                              var y = -(x - 100);
+                              return Row(
+                                children: [
+                                  Text(
+                                    '${y}',
+                                    style: GoogleFonts.lato(color: Colors.black, fontSize: 10, fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              );
+                            })),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 5),
                       child: SizedBox(
                         height: 317,
-                        width: _width-75,
+                        width: _width - 75,
                         child: ListView.builder(
                           itemCount: Data().mmWeekly.length,
                           scrollDirection: Axis.horizontal,
                           physics: BouncingScrollPhysics(),
                           shrinkWrap: true,
-                          itemBuilder: (BuildContext context, int index){
-
+                          itemBuilder: (BuildContext context, int index) {
                             var p_position = "${Data().mmWeekly[index]['P_position']}";
                             double p = double.parse(p_position);
 
@@ -127,10 +152,10 @@ class _MacroMicroChartsState extends State<MacroMicroCharts> {
                             double c = double.parse(c_position);
 
                             return pfcBar(
-                                name: Data().mmWeekly[index]['name'],
-                                P_position: p ,
-                                F_position: f ,
-                                C_position: c ,
+                              name: Data().mmWeekly[index]['name'],
+                              P_position: p,
+                              F_position: f,
+                              C_position: c,
                             );
                           },
                         ),
@@ -154,16 +179,23 @@ class _MacroMicroChartsState extends State<MacroMicroCharts> {
         child: ButtonTheme(
           alignedDropdown: true,
           child: DropdownButton(
-            icon: Icon(Icons.keyboard_arrow_down,size: 25,color: Colors.black,),
+            icon: Icon(
+              Icons.keyboard_arrow_down,
+              size: 25,
+              color: Colors.black,
+            ),
             isDense: true,
-            hint: Text("Weekly",style: GoogleFonts.lato(fontSize: 15,color: Colors.black,fontWeight: FontWeight.bold),),
+            hint: Text(
+              "Weekly",
+              style: GoogleFonts.lato(fontSize: 15, color: Colors.black, fontWeight: FontWeight.bold),
+            ),
             value: _timeLineTwoValue,
             items: timeLineOne.map((value) {
               return DropdownMenuItem(
                 value: value,
                 child: Text(
                   value,
-                  style: GoogleFonts.lato(fontSize: 15,color: Colors.black,fontWeight: FontWeight.bold),
+                  style: GoogleFonts.lato(fontSize: 15, color: Colors.black, fontWeight: FontWeight.bold),
                 ),
               );
             }).toList(),
@@ -179,11 +211,12 @@ class _MacroMicroChartsState extends State<MacroMicroCharts> {
       ),
     );
   }
-  Widget pfcBar({String name = "Mon", double P_position = 0.6, double F_position = 0.6, double C_position = 0.6}){
+
+  Widget pfcBar({String name = "Mon", double P_position = 0.6, double F_position = 0.6, double C_position = 0.6}) {
     double _height = MediaQuery.of(context).size.height;
     double _width = MediaQuery.of(context).size.width;
     double xheight = 297;
-    return  Column(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Padding(
@@ -204,14 +237,14 @@ class _MacroMicroChartsState extends State<MacroMicroCharts> {
                       ],
                       begin: FractionalOffset.topCenter,
                       end: FractionalOffset.bottomCenter,
-
-                    )
-                ),
+                    )),
               ),
-              SizedBox(width: 5,),
+              SizedBox(
+                width: 5,
+              ),
               Container(
                 width: 4,
-                height: xheight*F_position,
+                height: xheight * F_position,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                     gradient: LinearGradient(
@@ -221,14 +254,14 @@ class _MacroMicroChartsState extends State<MacroMicroCharts> {
                       ],
                       begin: FractionalOffset.topCenter,
                       end: FractionalOffset.bottomCenter,
-
-                    )
-                ),
+                    )),
               ),
-              SizedBox(width: 5,),
+              SizedBox(
+                width: 5,
+              ),
               Container(
                 width: 4,
-                height: xheight*C_position,
+                height: xheight * C_position,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                     gradient: LinearGradient(
@@ -238,9 +271,7 @@ class _MacroMicroChartsState extends State<MacroMicroCharts> {
                       ],
                       begin: FractionalOffset.topCenter,
                       end: FractionalOffset.bottomCenter,
-
-                    )
-                ),
+                    )),
               ),
             ],
           ),
@@ -250,7 +281,11 @@ class _MacroMicroChartsState extends State<MacroMicroCharts> {
           width: 45,
           child: Row(
             children: [
-              Flexible(child: Text(name,style: GoogleFonts.lato(fontSize: 12,color: Colors.black),)),
+              Flexible(
+                  child: Text(
+                name,
+                style: GoogleFonts.lato(fontSize: 12, color: Colors.black),
+              )),
             ],
           ),
         ),

@@ -33,6 +33,7 @@ class _SigninPageState extends State<SigninPage> {
   @override
   void initState() {
     super.initState();
+    _googleSignIn.disconnect();
     _googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount account) {
       setState(() {
         _currentUser = account;
@@ -103,10 +104,7 @@ class _SigninPageState extends State<SigninPage> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   boxShadow: [
-                    BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 5.0,
-                        spreadRadius: 5.0),
+                    BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 5.0, spreadRadius: 5.0),
                   ],
                   borderRadius: BorderRadius.all(Radius.circular(15)),
                 ),
@@ -125,10 +123,7 @@ class _SigninPageState extends State<SigninPage> {
                         children: [
                           Text(
                             'Welcome Back!',
-                            style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.black,
-                                letterSpacing: 0.2),
+                            style: TextStyle(fontSize: 30, color: Colors.black, letterSpacing: 0.2),
                           ),
                         ],
                       ),
@@ -136,8 +131,7 @@ class _SigninPageState extends State<SigninPage> {
                         height: 15,
                       ),
                       Padding(
-                        padding: EdgeInsets.only(
-                            left: _width * 0.05, right: _width * 0.05),
+                        padding: EdgeInsets.only(left: _width * 0.05, right: _width * 0.05),
                         child: w_textfield(
                           hint: 'User Id',
                           lable: 'User Id',
@@ -150,8 +144,7 @@ class _SigninPageState extends State<SigninPage> {
                         height: _height * 0.02,
                       ),
                       Padding(
-                        padding: EdgeInsets.only(
-                            left: _width * 0.05, right: _width * 0.05),
+                        padding: EdgeInsets.only(left: _width * 0.05, right: _width * 0.05),
                         child: w_textfield(
                           hint: 'Password',
                           onChanged: (v) {
@@ -163,24 +156,16 @@ class _SigninPageState extends State<SigninPage> {
                         height: 15,
                       ),
                       Padding(
-                        padding: EdgeInsets.only(
-                            left: _width * 0.07, right: _width * 0.05),
+                        padding: EdgeInsets.only(left: _width * 0.07, right: _width * 0.05),
                         child: Row(
                           children: [
                             GestureDetector(
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      PageTransition(
-                                          type: PageTransitionType.fade,
-                                          child: Forgotpage()));
+                                  Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Forgotpage()));
                                 },
                                 child: Text(
                                   'Forgot Password?',
-                                  style: TextStyle(
-                                      color: Palette.primaryColor,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold),
+                                  style: TextStyle(color: Palette.primaryColor, fontSize: 18, fontWeight: FontWeight.bold),
                                 )),
                           ],
                         ),
@@ -195,10 +180,12 @@ class _SigninPageState extends State<SigninPage> {
                             title: 'Sign In',
                             onPressed: () {
                               Navigator.push(
-                                  context,
-                                  PageTransition(
-                                      type: PageTransitionType.fade,
-                                      child: Dashboard()));
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: Dashboard(),
+                                ),
+                              );
                             },
                           ),
                         ],
@@ -207,8 +194,7 @@ class _SigninPageState extends State<SigninPage> {
                         height: _height * 0.02,
                       ),
                       Padding(
-                        padding: EdgeInsets.only(
-                            left: _width * 0.05, right: _width * 0.05),
+                        padding: EdgeInsets.only(left: _width * 0.05, right: _width * 0.05),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -218,8 +204,7 @@ class _SigninPageState extends State<SigninPage> {
                               color: Colors.black.withOpacity(0.3),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(
-                                  left: _width * 0.01, right: _width * 0.01),
+                              padding: EdgeInsets.only(left: _width * 0.01, right: _width * 0.01),
                               child: Text(
                                 'Or',
                                 style: TextStyle(color: Palette.primaryColor),
@@ -298,18 +283,11 @@ class _SigninPageState extends State<SigninPage> {
                 ),
                 GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          PageTransition(
-                              type: PageTransitionType.fade,
-                              child: SignupPage()));
+                      Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: SignupPage()));
                     },
                     child: Text(
                       "Sign Up!",
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: Palette.primaryColor,
-                          fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: 18, color: Palette.primaryColor, fontWeight: FontWeight.bold),
                     )),
               ],
             ),
@@ -338,10 +316,18 @@ class _SigninPageState extends State<SigninPage> {
       switch (result.status) {
         case FacebookLoginStatus.loggedIn:
           final token = result.accessToken.token;
-          final graphResponse = await http.get(
-              'https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email,picture.height(512)&access_token=$token');
-          final profile = json.decode(graphResponse.body);
-          print(profile['name'] ?? '');
+          final graphResponse =
+              await http.get('https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email,picture.height(512)&access_token=$token');
+          //final profile = json.decode(graphResponse.body);
+          print("Login SuccsessFull");
+
+          Navigator.push(
+            context,
+            PageTransition(
+              type: PageTransitionType.fade,
+              child: Dashboard(),
+            ),
+          );
 
           break;
         case FacebookLoginStatus.cancelledByUser:
