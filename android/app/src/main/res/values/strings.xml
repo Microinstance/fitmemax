@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">FitMeMax</string>
-    <string name="facebook_app_id">861934151293836</string>
-    <string name="fb_login_protocol_scheme">fb861934151293836</string>
+    <string name="facebook_app_id">854695411980825</string>
+    <string name="fb_login_protocol_scheme">fb854695411980825</string>
 </resources>
