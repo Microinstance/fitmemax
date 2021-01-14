@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
+import 'FitBookDetailsUpload.dart';
 import 'MedicalCondition.dart';
 
 class GoalChoice extends StatefulWidget {
@@ -40,7 +41,8 @@ class _GoalChoiceState extends State<GoalChoice> {
                       child: Image.asset(
                         'assets/logo/splash-Screen.png',
                         fit: BoxFit.fitWidth,
-                      )),
+                      ),
+                  ),
                 ],
               ),
             ),
@@ -105,7 +107,7 @@ class _GoalChoiceState extends State<GoalChoice> {
                           w_signin_button(
                             title: 'Continue',
                             onPressed: (){
-                              Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: Dashboard()));
+                              Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: FitBookDetailsUpload()));
                             },
                           ),
                         ],

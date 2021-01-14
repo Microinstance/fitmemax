@@ -20,6 +20,25 @@ class Data {
     'Thytroid',
   ];
 
+  List daaa = [
+    {
+      'otp' : '5555',
+      'number_varification' : 'verified',
+      'email_varification' : 'not verified',
+      'physical_condition' : 'true',
+      'medical_condition' : 'true',
+      'goal' : 'false',
+      'fitbook_details' : 'true',
+      'user_id' : '5555',
+      'token' : '5555',
+      "message": "You are Successfully Logged in",
+      "email": "ashokejoym@gmail.com",
+      "mobile": "+917585957638",
+      "name": "ashok",
+      "api_token": "x6JVNmI6QRJXul3ODazbZ9rQ3Jr4pXJeDJNNXyAVQO0ucbSBZfXptO2gphpi"
+    }
+  ];
+
  List mmWeekly =
      [
        {

@@ -1,8 +1,10 @@
+import 'package:fitmemax/src/module/signin_signup/Onboarding/PhysicalCondition.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:fitmemax/src/widgets/w_background.dart';
 import 'package:fitmemax/src/widgets/w_signin_button.dart';
 import 'package:fitmemax/src/widgets/w_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 
 class VerifyPage extends StatefulWidget {
@@ -124,7 +126,9 @@ class _VerifyPageState extends State<VerifyPage> {
                       children: [
                         w_signin_button(
                           title: 'Verify',
-                          onPressed: (){},
+                          onPressed: (){
+                            Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: PhysicalCondition()));
+                          },
                         ),
                       ],
                     ),
