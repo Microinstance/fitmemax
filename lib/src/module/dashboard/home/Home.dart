@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:fitmemax/src/data/data2.dart';
+import 'package:fitmemax/src/module/BattleGround/BattleGroundLoading.dart';
 import 'package:fitmemax/src/module/CalTracker/CalTrackerDashboard.dart';
 import 'package:fitmemax/src/module/Fast/FastDashboard.dart';
 import 'package:fitmemax/src/module/GoPro/GoPro.dart';
@@ -235,10 +236,15 @@ class _HomeState extends State<Home> {
                                                     image: 'assets/icons/activity.png',
                                                     context: context,
                                                   ),
-                                                  hItem(
-                                                    name: 'Battleground',
-                                                    image: "assets/icons/battleground.png",
-                                                    context: context,
+                                                  GestureDetector(
+                                                    onTap: (){
+                                                      Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: BattleGroundLoading()));
+                                                    },
+                                                    child: hItem(
+                                                      name: 'Battleground',
+                                                      image: "assets/icons/battleground.png",
+                                                      context: context,
+                                                    ),
                                                   ),
                                                 ],
                                               ),

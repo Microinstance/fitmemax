@@ -1,5 +1,6 @@
+import 'package:fitmemax/src/module/BattleGround/BattleGroundHome.dart';
+import 'package:fitmemax/src/module/BattleGround/BattleGroundLoading.dart';
 import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
-import 'package:fitmemax/src/module/signin_signup/SigninPage.dart';
 import 'package:flutter/material.dart';
 
 class LandingPage extends StatefulWidget {
@@ -10,6 +11,6 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
-    return SigninPage();
+    return Dashboard();
   }
 }
