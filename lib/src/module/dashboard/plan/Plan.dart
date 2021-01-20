@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:fitmemax/src/module/dashboard/CoachConsultant/CoachChange.dart';
 import 'package:fitmemax/src/module/dashboard/CoachConsultant/CoachPick.dart';
 import 'package:fitmemax/src/module/dashboard/plan/PlanDetails.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
@@ -87,7 +86,8 @@ class _PlanState extends State<Plan> {
                                           color: Colors.white,
                                           fontSize: 20,
                                           fontWeight: FontWeight.w600,
-                                          fontFamily: 'Roboto'),
+                                          fontFamily: 'Roboto',
+                                      ),
                                     ),
                                     SizedBox(
                                       height: 15,

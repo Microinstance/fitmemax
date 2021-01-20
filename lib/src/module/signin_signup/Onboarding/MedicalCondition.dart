@@ -80,7 +80,7 @@ class _MedicalConditionState extends State<MedicalCondition> {
                                 return  Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text("${Data().MedicalCC[index]['disease']}",style: GoogleFonts.lato(color: Colors.black,fontSize: 22,fontWeight: FontWeight.w500),),
+                                    Text("${Data().MedicalCC[index]}",style: GoogleFonts.lato(color: Colors.black,fontSize: 22,fontWeight: FontWeight.w500),),
                                     CustomSwitch(),
                                   ],
                                 );

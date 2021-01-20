@@ -2,6 +2,7 @@ import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:fitmemax/src/widgets/w_background.dart';
 import 'package:fitmemax/src/widgets/w_signin_button.dart';
+import 'package:fitmemax/src/widgets/w_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -89,6 +90,16 @@ class _FitBookDetailsUploadState extends State<FitBookDetailsUpload> {
                             ],
                           ),
                         ],
+                      ),
+                      SizedBox(height: 15,),
+                      Padding(
+                        padding:  EdgeInsets.only(left:  _width * 0.05,right: _width *0.05),
+                        child: w_textfield(
+                          hint: 'FitBook Id',
+                          onChanged: (v){
+                            print(v);
+                          },
+                        ),
                       ),
                       SizedBox(height: 25,),
                       Row(
