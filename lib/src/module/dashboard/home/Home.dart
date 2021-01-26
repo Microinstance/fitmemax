@@ -1,6 +1,7 @@
 import 'dart:async';
+import 'package:delayed_display/delayed_display.dart';
 import 'package:fitmemax/src/data/data2.dart';
-import 'package:fitmemax/src/module/BattleGround/BattleGroundLoading.dart';
+import 'package:fitmemax/src/module/BattleGround/BattleGroundDashBoard.dart';
 import 'package:fitmemax/src/module/CalTracker/CalTrackerDashboard.dart';
 import 'package:fitmemax/src/module/Fast/FastDashboard.dart';
 import 'package:fitmemax/src/module/GoPro/GoPro.dart';
@@ -8,6 +9,7 @@ import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Home extends StatefulWidget {
@@ -49,6 +51,7 @@ class _HomeState extends State<Home> {
   }
   @override
   Widget build(BuildContext context) {
+    final Duration initialDelay = Duration(milliseconds: 250);
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -116,70 +119,80 @@ class _HomeState extends State<Home> {
                 child: Column(
                   children: [
                     SizedBox(height: 10,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: 60,
-                          width: _width * 0.9,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.black.withOpacity(0.5),
-                                width: 1,
-                              ),
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
-                              gradient: LinearGradient(
-                                colors: [
-                                  Colors.white,
-                                  Colors.green[200],
-                                ],
-                                begin: FractionalOffset.centerLeft,
-                                end: FractionalOffset.centerRight,
 
-                              )
-                          ),
-                          child: Padding(
-                            padding:  EdgeInsets.only(right: _width * 0.02,left: _width * 0.02 ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Stack(
-                                  alignment: Alignment.center,
-                                  children:[
-                                    Icon(Icons.videocam,color: Colors.black,size: 40,),
-                                    Padding(
-                                      padding:  EdgeInsets.only(right: 5),
-                                      child: CircleAvatar(
-                                        radius: 5,backgroundColor: Colors.white,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                Text("Book a live workout now",style: TextStyle(fontSize: 20,color: Colors.black),),
-                                Icon(Icons.arrow_forward_ios,color: Palette.primaryColor,size: 30,),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 10,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("Hi Shivay",style: TextStyle(fontSize: 25,color: Colors.white,fontWeight:FontWeight.bold ),),
-                      ],
-                    ),
-                    SizedBox(height: 5,),
-                    Padding(
-                      padding:  EdgeInsets.only(left: _width * 0.04,right: _width * 0.04),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Flexible(child: Text("Based on your BMI (20.1) and goal you should consume 2000 calories a day",style: TextStyle(color: Colors.white,),textAlign: TextAlign.center,)),
-                        ],
-                      ),
-                    ),
+                   DelayedDisplay(
+                     // slidingBeginOffset: Offset(0.35, 0),
+                     delay: initialDelay,
+                     child: Column(
+                       children: [
+                         Row(
+                           mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                             Container(
+                               height: 60,
+                               width: _width * 0.9,
+                               decoration: BoxDecoration(
+                                   border: Border.all(
+                                     color: Colors.black.withOpacity(0.5),
+                                     width: 1,
+                                   ),
+                                   borderRadius: BorderRadius.all(Radius.circular(20)),
+                                   gradient: LinearGradient(
+                                     colors: [
+                                       Colors.white,
+                                       Colors.green[200],
+                                     ],
+                                     begin: FractionalOffset.centerLeft,
+                                     end: FractionalOffset.centerRight,
+
+                                   )
+                               ),
+                               child: Padding(
+                                 padding:  EdgeInsets.only(right: _width * 0.02,left: _width * 0.02 ),
+                                 child: Row(
+                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                   children: [
+                                     Stack(
+                                       alignment: Alignment.center,
+                                       children:[
+                                         Icon(Icons.videocam,color: Colors.black,size: 40,),
+                                         Padding(
+                                           padding:  EdgeInsets.only(right: 5),
+                                           child: CircleAvatar(
+                                             radius: 5,backgroundColor: Colors.white,
+                                           ),
+                                         )
+                                       ],
+                                     ),
+                                     Text("Book a live workout now",style: TextStyle(fontSize: 20,color: Colors.black),),
+                                     Icon(Icons.arrow_forward_ios,color: Palette.primaryColor,size: 30,),
+                                   ],
+                                 ),
+                               ),
+                             ),
+                           ],
+                         ),
+                         SizedBox(height: 10,),
+                         Row(
+                           mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                             Text("Hi Shivay",style: TextStyle(fontSize: 25,color: Colors.white,fontWeight:FontWeight.bold ),),
+                           ],
+                         ),
+                         SizedBox(height: 5,),
+                         Padding(
+                           padding:  EdgeInsets.only(left: _width * 0.04,right: _width * 0.04),
+                           child: Row(
+                             mainAxisAlignment: MainAxisAlignment.center,
+                             children: [
+                               Flexible(child: Text("Based on your BMI (20.1) and goal you should consume 2000 calories a day",style: TextStyle(color: Colors.white,),textAlign: TextAlign.center,)),
+                             ],
+                           ),
+                         ),
+                       ],
+                     ),
+                   ),
+
                     Padding(
                       padding:  EdgeInsets.all(_width*0.06),
                       child: Stack(
@@ -238,7 +251,7 @@ class _HomeState extends State<Home> {
                                                   ),
                                                   GestureDetector(
                                                     onTap: (){
-                                                      Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: BattleGroundLoading()));
+                                                      Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: BattleGroundDashBoard()));
                                                     },
                                                     child: hItem(
                                                       name: 'Battleground',
@@ -365,42 +378,39 @@ class _HomeState extends State<Home> {
                         ],
                       ),
                     ),
-                    Container(
-                      height: 55,
-                      child: ListView(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          hBar(
-                            color: Palette.primaryColor,
-                            context: context,
-                            gColor: Colors.green[50],
-                            icon: Icons.call,
-                            lebel: 'Book free call',
-                          ),
-                          hBar(
-                            color: Colors.orange,
-                            context: context,
-                            gColor:     Colors.orange[50],
-                            icon: Icons.book,
-                            lebel: 'eBook Courses'
-                          ),
-                          hBar(
-                              color: Colors.red,
+                    DelayedDisplay(
+                      slidingBeginOffset: Offset(0.35, 0),
+                      delay: initialDelay,
+                      child: Container(
+                        height: 55,
+                        child: ListView(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            hBar(
+                              color: Palette.primaryColor,
                               context: context,
-                              gColor:        Colors.red[50],
-                              icon: Icons.question_answer,
-                              lebel: 'Play E Quiz',
-                          ),
-                          hBar(
-                            color: Colors.deepPurple,
-                            context: context,
-                            gColor:        Colors.deepPurple[50],
-                            icon: Icons.gamepad,
-                            lebel: 'Online Battle',
-                          ),
-                          SizedBox(width: _width*0.65 *0.04,),
-                        ],
+                              gColor: Colors.green[50],
+                              icon: Icons.call,
+                              lebel: 'Book free call',
+                            ),
+                            hBar(
+                              color: Colors.orange,
+                              context: context,
+                              gColor:     Colors.orange[50],
+                              icon: Icons.book,
+                              lebel: 'eBook Courses'
+                            ),
+                            hBar(
+                              color: Colors.deepPurple,
+                              context: context,
+                              gColor:        Colors.deepPurple[50],
+                              icon: Icons.gamepad,
+                              lebel: 'Online Battle',
+                            ),
+                            SizedBox(width: _width*0.65 *0.04,),
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(height: 10,),
@@ -484,45 +494,57 @@ class _HomeState extends State<Home> {
                     Container(
                       color: Colors.white,
                       height: 230,
-                      child: GridView.count(
-                        crossAxisCount: 2,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        mainAxisSpacing: 10.0,
-                        crossAxisSpacing: 10.0,
-                        children: Data().Shop.map((index){
-                          return Container(
-                            height: 130,
-                            width: 130,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                            ), //
-                            child: Padding(
-                              padding: const EdgeInsets.only(left:8.0,top: 5),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    width: 80,
-                                    height: 80,
+                      child: AnimationLimiter(
+                        child: GridView.count(
+                          crossAxisCount: 2,
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          mainAxisSpacing: 10.0,
+                          crossAxisSpacing: 10.0,
+                          children: List.generate(Data().Shop.length, (index) =>
+                             AnimationConfiguration.staggeredGrid(
+                              columnCount: 2,
+                              position: index,
+                              duration: const Duration(milliseconds: 3000),
+                              child: ScaleAnimation(
+                                scale: 0.5,
+                                child: FadeInAnimation(
+                                  child: Container(
+                                    height: 130,
+                                    width: 130,
                                     decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        image: AssetImage(index['image']),
-                                        fit: BoxFit.cover,
-                                      ),
                                       borderRadius: BorderRadius.all(Radius.circular(10)),
+                                    ), //
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left:8.0,top: 5),
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            width: 80,
+                                            height: 80,
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage(Data().Shop[index]['image']),
+                                                fit: BoxFit.cover,
+                                              ),
+                                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(Data().Shop[index]['name'],style: TextStyle(
+                                            color: Colors.black,fontSize: 14,
+                                          ),)
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(index['name'],style: TextStyle(
-                                    color: Colors.black,fontSize: 14,
-                                  ),)
-                                ],
+                                ),
                               ),
-                            ),
-                          );
-                        }).toList(),
+                            )
+                )
+                        ),
                       ),
                     ),
                     Container(
