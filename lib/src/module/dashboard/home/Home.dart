@@ -5,6 +5,7 @@ import 'package:fitmemax/src/module/BattleGround/BattleGroundDashBoard.dart';
 import 'package:fitmemax/src/module/CalTracker/CalTrackerDashboard.dart';
 import 'package:fitmemax/src/module/Fast/FastDashboard.dart';
 import 'package:fitmemax/src/module/GoPro/GoPro.dart';
+import 'package:fitmemax/src/module/Workout/Workout.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -318,10 +319,15 @@ class _HomeState extends State<Home> {
                                                     image: "assets/icons/yoga1.png",
                                                     context: context,
                                                   ),
-                                                  hItem(
-                                                    name: 'Workout',
-                                                    image: "assets/icons/workout.png",
-                                                    context: context,
+                                                  GestureDetector(
+                                                    onTap: (){
+                                                      Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Workout()));
+                                                    },
+                                                    child: hItem(
+                                                      name: 'Workout',
+                                                      image: "assets/icons/workout.png",
+                                                      context: context,
+                                                    ),
                                                   ),
                                                   hItem(
                                                     name: 'Mediation',

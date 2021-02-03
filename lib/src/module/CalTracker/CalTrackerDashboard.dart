@@ -194,8 +194,8 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
                       decoration: BoxDecoration(color: const Color(0xFFF5F5F5),
                       ),
                       child: FlutterDatePickerTimeline(
-                        startDate: DateTime(2020, 12, 01),
-                        endDate: DateTime(2021, 01, 00),
+                        startDate: DateTime(2021, 01, 01),
+                        endDate: DateTime(2021, 12, 00),
                         initialSelectedDate: DateTime.now(),
                         selectedItemBackgroundColor: Palette.primaryColor,
                         selectedItemTextStyle: GoogleFonts.lato(fontSize: 17,color: Colors.white,fontWeight: FontWeight.bold),
