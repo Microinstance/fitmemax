@@ -1,6 +1,10 @@
+import 'package:animator/animator.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:page_transition/page_transition.dart';
+
+import 'WorkoutSearch.dart';
 
 class WorkoutExplore extends StatefulWidget {
   @override
@@ -15,6 +19,29 @@ class _WorkoutExploreState extends State<WorkoutExplore> {
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: false,
+        actions: [
+          Padding(
+          padding: const EdgeInsets.only(right: 5),
+          child: Animator(
+            tween: Tween<double>(begin: 0.8, end: 1.4),
+            curve: Curves.fastOutSlowIn,
+            cycles: 0,
+            builder: (_, animationState, __) => Transform.scale(
+              scale: animationState.value,
+              child:  IconButton(
+                onPressed: (){
+                  Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop, child: WorkoutSearch()));
+                },
+                icon: Icon(
+                  Icons.search,
+                  color: Colors.black,
+                  size: 20,
+                ),
+              ),
+            ),
+          ),
+        ),
+        ],
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios,color: Colors.black,size: 20,),
           onPressed: (){
@@ -29,10 +56,10 @@ class _WorkoutExploreState extends State<WorkoutExplore> {
             childAspectRatio: 1,
             scrollDirection: Axis.vertical,
             crossAxisCount: 2,
-            crossAxisSpacing: 15.0,
-            mainAxisSpacing: 12.0,
-            padding: EdgeInsets.only(left: 15,right: 15,top: 0,bottom: 30),
-            children: List.generate(20, (index) =>  AnimationConfiguration.staggeredGrid(
+            crossAxisSpacing: 25.0,
+            mainAxisSpacing: 25.0,
+            padding: EdgeInsets.only(left: 15,right: 15,top: 10,bottom: 30),
+            children: List.generate(8, (index) =>  AnimationConfiguration.staggeredGrid(
               columnCount: 2,
               position: index,
               duration: const Duration(milliseconds: 700),

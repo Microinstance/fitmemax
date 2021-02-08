@@ -60,6 +60,7 @@ dependencies:
   lottie: ^0.7.0+1
   flutter_staggered_animations: ^0.1.2
   delayed_display: ^1.1.0
+  animator: ^2.0.2
 
 dev_dependencies:
   flutter_test:
