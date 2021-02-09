@@ -43,11 +43,12 @@ class _VerifyPageState extends State<VerifyPage> {
           fontSize: 30,
           fontWeight: FontWeight.w400,
         ),
-        fieldsCount: 4,
-        eachFieldHeight: 60,
-        eachFieldWidth: 60,
+        fieldsCount: 6,
+        // eachFieldHeight: 60,
+        // eachFieldWidth: 60,
         // focusNode: _pinPutFocusNode,
-        submittedFieldDecoration: pinPutDecoration.copyWith(borderRadius: BorderRadius.circular(20)),
+        submittedFieldDecoration:
+            pinPutDecoration.copyWith(borderRadius: BorderRadius.circular(20)),
         pinAnimationType: PinAnimationType.slide,
         selectedFieldDecoration: pinPutDecoration,
         followingFieldDecoration: pinPutDecoration.copyWith(
@@ -91,7 +92,10 @@ class _VerifyPageState extends State<VerifyPage> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   boxShadow: [
-                    BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 5.0, spreadRadius: 5.0),
+                    BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 5.0,
+                        spreadRadius: 5.0),
                   ],
                   borderRadius: BorderRadius.all(Radius.circular(15)),
                 ),
@@ -99,7 +103,8 @@ class _VerifyPageState extends State<VerifyPage> {
                   context: context,
                   removeTop: true,
                   child: ListView(
-                    padding: EdgeInsets.only(left: _width * 0.05, right: _width * 0.05),
+                    padding: EdgeInsets.only(
+                        left: _width * 0.05, right: _width * 0.05),
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     children: [
@@ -111,7 +116,10 @@ class _VerifyPageState extends State<VerifyPage> {
                         children: [
                           Text(
                             'Verify Account!',
-                            style: TextStyle(fontSize: 30, color: Colors.black, letterSpacing: 0.2),
+                            style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.black,
+                                letterSpacing: 0.2),
                           ),
                         ],
                       ),
@@ -141,15 +149,21 @@ class _VerifyPageState extends State<VerifyPage> {
                           w_signin_button(
                             title: 'Verify',
                             onPressed: () async {
-                              String token = await MySharedPreferences().gettoken();
+                              String token =
+                                  await MySharedPreferences().gettoken();
                               String otp = await MySharedPreferences().getotp();
                               try {
                                 setState(() {
                                   isLoad = true;
                                 });
-                                var data = await ApiProvider().usersVerify(token, _pinPutController.text);
+                                var data = await ApiProvider()
+                                    .usersVerify(token, _pinPutController.text);
                                 if (data["success"] == true) {
-                                  Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: PhysicalCondition()));
+                                  Navigator.push(
+                                      context,
+                                      PageTransition(
+                                          type: PageTransitionType.fade,
+                                          child: PhysicalCondition()));
                                 } else {
                                   Fluttertoast.showToast(msg: data["message"]);
                                 }
@@ -192,14 +206,42 @@ class _VerifyPageState extends State<VerifyPage> {
                     color: Colors.black45,
                   ),
                 ),
-                Text(
-                  'Resend Code',
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.5,
-                    fontSize: 18,
-                    color: Palette.primaryColor,
+                InkWell(
+                  onTap: () async {
+                    String token = await MySharedPreferences().gettoken();
+
+                    try {
+                      setState(() {
+                        isLoad = true;
+                      });
+                      var data = await ApiProvider().usersResendOtp(token);
+                      if (data["success"] == true) {
+                        Fluttertoast.showToast(msg: data["message"]);
+                      } else {
+                        Fluttertoast.showToast(msg: "Something went to wrong");
+                      }
+                      setState(() {
+                        isLoad = false;
+                      });
+                    } catch (e) {
+                      setState(() {
+                        isLoad = false;
+                      });
+                    } finally {
+                      setState(() {
+                        isLoad = false;
+                      });
+                    }
+                  },
+                  child: Text(
+                    'Resend Code',
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1.5,
+                      fontSize: 18,
+                      color: Palette.primaryColor,
+                    ),
                   ),
                 )
               ],

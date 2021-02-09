@@ -62,4 +62,31 @@ class ApiProvider {
     }
     return result;
   }
+  
+  Future usersResendOtp(String token) async {
+    var result;
+    try {
+      var urlString = ConstanceData.BaseApiUrl + "user/resend-otp";
+      var response = await http.post(
+        Uri.encodeFull(urlString),
+        headers: {
+          "Accept": "application/json",
+        },
+        body: {
+          "token": token.trim(),
+        },
+      );
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body);
+        if (data != null) {
+          result = data;
+        }
+      } else {
+        return null;
+      }
+    } catch (e) {
+      print(e);
+    }
+    return result;
+  }
 }
