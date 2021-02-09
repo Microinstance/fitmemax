@@ -61,6 +61,8 @@ dependencies:
   flutter_staggered_animations: ^0.1.2
   delayed_display: ^1.1.0
   animator: ^2.0.2
+  http: ^0.12.2
+  shared_preferences: ^0.5.12+4
 
 dev_dependencies:
   flutter_test:
