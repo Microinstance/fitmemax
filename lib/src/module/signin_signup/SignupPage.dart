@@ -69,10 +69,7 @@ class _SignupPageState extends State<SignupPage> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 5.0,
-                          spreadRadius: 5.0),
+                      BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 5.0, spreadRadius: 5.0),
                     ],
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
@@ -91,10 +88,7 @@ class _SignupPageState extends State<SignupPage> {
                           children: [
                             Text(
                               'Create Account!',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.black,
-                                  letterSpacing: 0.2),
+                              style: TextStyle(fontSize: 30, color: Colors.black, letterSpacing: 0.2),
                             ),
                           ],
                         ),
@@ -102,8 +96,7 @@ class _SignupPageState extends State<SignupPage> {
                           height: 15,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                              left: _width * 0.05, right: _width * 0.05),
+                          padding: EdgeInsets.only(left: _width * 0.05, right: _width * 0.05),
                           child: w_textfield(
                             textInputType: TextInputType.text,
                             hint: 'Name',
@@ -119,8 +112,7 @@ class _SignupPageState extends State<SignupPage> {
                           height: _height * 0.02,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                              left: _width * 0.05, right: _width * 0.05),
+                          padding: EdgeInsets.only(left: _width * 0.05, right: _width * 0.05),
                           child: w_textfield(
                             textInputType: TextInputType.emailAddress,
                             hint: 'Email Id',
@@ -136,14 +128,11 @@ class _SignupPageState extends State<SignupPage> {
                           height: _height * 0.02,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                              left: _width * 0.05, right: _width * 0.05),
+                          padding: EdgeInsets.only(left: _width * 0.05, right: _width * 0.05),
                           child: Row(
                             children: [
                               Padding(
-                                padding: EdgeInsets.only(
-                                    right: _width * 0.005,
-                                    left: _width * 0.025),
+                                padding: EdgeInsets.only(right: _width * 0.005, left: _width * 0.025),
                                 child: Container(
                                   width: _width * 0.2,
                                   child: w_dropdown(
@@ -166,10 +155,7 @@ class _SignupPageState extends State<SignupPage> {
                                     onChanged: (v) {
                                       print(v);
                                       setState(() {
-                                        phone = _countryValue == null ||
-                                                _countryValue == ""
-                                            ? "+91" + v
-                                            : _countryValue + v;
+                                        phone = _countryValue == null || _countryValue == "" ? "+91" + v : _countryValue + v;
                                       });
                                     },
                                   ),
@@ -182,8 +168,7 @@ class _SignupPageState extends State<SignupPage> {
                           height: _height * 0.02,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                              left: _width * 0.05, right: _width * 0.05),
+                          padding: EdgeInsets.only(left: _width * 0.05, right: _width * 0.05),
                           child: w_textfield(
                             textInputType: TextInputType.visiblePassword,
                             hint: 'Password',
@@ -209,14 +194,11 @@ class _SignupPageState extends State<SignupPage> {
                                     setState(() {
                                       isLoad = true;
                                     });
-                                    var data = await ApiProvider()
-                                        .userRegistration(
-                                            email, name, password, phone);
-                                    if (data["message"] != "error") {
-                                      await MySharedPreferences().setUserData(
-                                          data["otp"],
-                                          data["api_token"],
-                                          data["id"]);
+                                    var data = await ApiProvider().userRegistration(email, name, password, phone);
+                                    if (data["status"] == "success") {
+                                      print(data["data"]["otp"]);
+                                      await MySharedPreferences()
+                                          .setUserData(data["data"]["otp"].toString(), data["data"]["api_token"], data["data"]["id"].toString());
                                       Navigator.push(
                                         context,
                                         PageTransition(
@@ -226,7 +208,8 @@ class _SignupPageState extends State<SignupPage> {
                                       );
                                     } else {
                                       Fluttertoast.showToast(
-                                          msg: "Somethimg went to wrong");
+                                        msg: data["data"][0],
+                                      );
                                     }
                                     setState(() {
                                       isLoad = false;
@@ -249,8 +232,7 @@ class _SignupPageState extends State<SignupPage> {
                           height: _height * 0.02,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                              left: _width * 0.03, right: _width * 0.03),
+                          padding: EdgeInsets.only(left: _width * 0.03, right: _width * 0.03),
                           child: Row(
                             children: [
                               Checkbox(
@@ -274,8 +256,7 @@ class _SignupPageState extends State<SignupPage> {
                           height: _height * 0.015,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                              left: _width * 0.05, right: _width * 0.05),
+                          padding: EdgeInsets.only(left: _width * 0.05, right: _width * 0.05),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -285,8 +266,7 @@ class _SignupPageState extends State<SignupPage> {
                                 color: Colors.black.withOpacity(0.3),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(
-                                    left: _width * 0.01, right: _width * 0.01),
+                                padding: EdgeInsets.only(left: _width * 0.01, right: _width * 0.01),
                                 child: Text(
                                   'Or',
                                   style: TextStyle(color: Palette.primaryColor),
@@ -352,18 +332,11 @@ class _SignupPageState extends State<SignupPage> {
                   ),
                   GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.fade,
-                                child: SigninPage()));
+                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: SigninPage()));
                       },
                       child: Text(
                         "Sign In!",
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Palette.primaryColor,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 18, color: Palette.primaryColor, fontWeight: FontWeight.bold),
                       )),
                 ],
               ),

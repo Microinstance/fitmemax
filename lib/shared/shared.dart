@@ -19,12 +19,11 @@ class MySharedPreferences {
       return otp;
     }
   }
-  
 
   Future<String> gettoken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String token = "";
-    var tokenval = prefs.getString('token');
+    var tokenval = prefs.getString('apiToken');
     if (tokenval != '') {
       token = tokenval;
       return token;

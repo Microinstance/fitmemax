@@ -17,10 +17,11 @@ class VerifyPage extends StatefulWidget {
 
 class _VerifyPageState extends State<VerifyPage> {
   bool isLoad = false;
+  final TextEditingController _pinPutController = TextEditingController();
+  final FocusNode _pinPutFocusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
-    final TextEditingController _pinPutController = TextEditingController();
-    final FocusNode _pinPutFocusNode = FocusNode();
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     Widget animatingBorders() {
@@ -32,7 +33,11 @@ class _VerifyPageState extends State<VerifyPage> {
         borderRadius: BorderRadius.circular(30),
       );
       return PinPut(
-        controller: _pinPutController,
+        onChanged: (val) {
+          setState(() {
+            _pinPutController.text = val;
+          });
+        },
         textStyle: TextStyle(
           color: Colors.black,
           fontSize: 30,
@@ -42,8 +47,7 @@ class _VerifyPageState extends State<VerifyPage> {
         eachFieldHeight: 60,
         eachFieldWidth: 60,
         // focusNode: _pinPutFocusNode,
-        submittedFieldDecoration:
-            pinPutDecoration.copyWith(borderRadius: BorderRadius.circular(20)),
+        submittedFieldDecoration: pinPutDecoration.copyWith(borderRadius: BorderRadius.circular(20)),
         pinAnimationType: PinAnimationType.slide,
         selectedFieldDecoration: pinPutDecoration,
         followingFieldDecoration: pinPutDecoration.copyWith(
@@ -87,10 +91,7 @@ class _VerifyPageState extends State<VerifyPage> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   boxShadow: [
-                    BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 5.0,
-                        spreadRadius: 5.0),
+                    BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 5.0, spreadRadius: 5.0),
                   ],
                   borderRadius: BorderRadius.all(Radius.circular(15)),
                 ),
@@ -98,8 +99,7 @@ class _VerifyPageState extends State<VerifyPage> {
                   context: context,
                   removeTop: true,
                   child: ListView(
-                    padding: EdgeInsets.only(
-                        left: _width * 0.05, right: _width * 0.05),
+                    padding: EdgeInsets.only(left: _width * 0.05, right: _width * 0.05),
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     children: [
@@ -111,10 +111,7 @@ class _VerifyPageState extends State<VerifyPage> {
                         children: [
                           Text(
                             'Verify Account!',
-                            style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.black,
-                                letterSpacing: 0.2),
+                            style: TextStyle(fontSize: 30, color: Colors.black, letterSpacing: 0.2),
                           ),
                         ],
                       ),
@@ -144,27 +141,17 @@ class _VerifyPageState extends State<VerifyPage> {
                           w_signin_button(
                             title: 'Verify',
                             onPressed: () async {
-                              String token =
-                                  await MySharedPreferences().gettoken();
+                              String token = await MySharedPreferences().gettoken();
                               String otp = await MySharedPreferences().getotp();
                               try {
                                 setState(() {
                                   isLoad = true;
                                 });
-                                var data = await ApiProvider()
-                                    .usersVerify(token, _pinPutController.text);
-
+                                var data = await ApiProvider().usersVerify(token, _pinPutController.text);
                                 if (data["success"] == true) {
-                                  Navigator.push(
-                                    context,
-                                    PageTransition(
-                                      type: PageTransitionType.fade,
-                                      child: VerifyPage(),
-                                    ),
-                                  );
+                                  Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: PhysicalCondition()));
                                 } else {
-                                  Fluttertoast.showToast(
-                                      msg: "Somethimg went to wrong");
+                                  Fluttertoast.showToast(msg: data["message"]);
                                 }
                                 setState(() {
                                   isLoad = false;
@@ -178,11 +165,6 @@ class _VerifyPageState extends State<VerifyPage> {
                                   isLoad = false;
                                 });
                               }
-                              Navigator.push(
-                                  context,
-                                  PageTransition(
-                                      type: PageTransitionType.fade,
-                                      child: PhysicalCondition()));
                             },
                           ),
                         ],
