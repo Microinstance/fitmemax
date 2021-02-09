@@ -361,13 +361,10 @@ class _SignupPageState extends State<SignupPage> {
     } else if (name.trim() == null || name.trim() == "") {
       Fluttertoast.showToast(msg: "enter name.");
       return false;
+    } else if (phone.trim() == null || phone.trim() == "") {
+      Fluttertoast.showToast(msg: "enter valid phone number");
+      return false;
     }
-    // else if (phone.trim() == null ||
-    //     phone.trim() == "" ||
-    //     phone.trim().length > 0 && phone.trim().length != 10) {
-    //   Fluttertoast.showToast(msg: "enter valid phone number");
-    //   return false;
-    // }
     return true;
   }
 }

@@ -16,6 +16,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fitmemax/ApiProvider/apiProvider.dart';
+import 'package:fitmemax/shared/shared.dart';
 
 GoogleSignIn _googleSignIn = GoogleSignIn(
   scopes: <String>[
@@ -33,6 +36,12 @@ class _SigninPageState extends State<SigninPage> {
   GoogleSignInAccount _currentUser;
   String _contactText;
   bool isLoginProsses = false;
+
+  String userId = "";
+  String password = "";
+
+  bool isLoad = false;
+
   @override
   void initState() {
     super.initState();
@@ -195,10 +204,11 @@ class _SigninPageState extends State<SigninPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Flexible(
-                        child: Image.asset(
-                      'assets/logo/splash-Screen.png',
-                      fit: BoxFit.fitWidth,
-                    )),
+                      child: Image.asset(
+                        'assets/logo/splash-Screen.png',
+                        fit: BoxFit.fitWidth,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -209,10 +219,7 @@ class _SigninPageState extends State<SigninPage> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 5.0,
-                          spreadRadius: 5.0),
+                      BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 5.0, spreadRadius: 5.0),
                     ],
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
@@ -231,10 +238,7 @@ class _SigninPageState extends State<SigninPage> {
                           children: [
                             Text(
                               'Welcome Back!',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.black,
-                                  letterSpacing: 0.2),
+                              style: TextStyle(fontSize: 30, color: Colors.black, letterSpacing: 0.2),
                             ),
                           ],
                         ),
@@ -242,13 +246,15 @@ class _SigninPageState extends State<SigninPage> {
                           height: 15,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                              left: _width * 0.05, right: _width * 0.05),
+                          padding: EdgeInsets.only(left: _width * 0.05, right: _width * 0.05),
                           child: w_textfield(
                             hint: 'User Id',
                             lable: 'User Id',
                             onChanged: (v) {
                               print(v);
+                              setState(() {
+                                userId = v;
+                              });
                             },
                           ),
                         ),
@@ -256,12 +262,14 @@ class _SigninPageState extends State<SigninPage> {
                           height: _height * 0.02,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                              left: _width * 0.05, right: _width * 0.05),
+                          padding: EdgeInsets.only(left: _width * 0.05, right: _width * 0.05),
                           child: w_textfield(
                             hint: 'Password',
                             onChanged: (v) {
                               print(v);
+                              setState(() {
+                                password = v;
+                              });
                             },
                           ),
                         ),
@@ -269,24 +277,16 @@ class _SigninPageState extends State<SigninPage> {
                           height: 15,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                              left: _width * 0.07, right: _width * 0.05),
+                          padding: EdgeInsets.only(left: _width * 0.07, right: _width * 0.05),
                           child: Row(
                             children: [
                               GestureDetector(
                                   onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        PageTransition(
-                                            type: PageTransitionType.fade,
-                                            child: Forgotpage()));
+                                    Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Forgotpage()));
                                   },
                                   child: Text(
                                     'Forgot Password?',
-                                    style: TextStyle(
-                                        color: Palette.primaryColor,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
+                                    style: TextStyle(color: Palette.primaryColor, fontSize: 18, fontWeight: FontWeight.bold),
                                   )),
                             ],
                           ),
@@ -299,14 +299,42 @@ class _SigninPageState extends State<SigninPage> {
                           children: [
                             w_signin_button(
                               title: 'Sign In',
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  PageTransition(
-                                    type: PageTransitionType.fade,
-                                    child: Dashboard(),
-                                  ),
-                                );
+                              onPressed: () async {
+                                if (checkValidation()) {
+                                  try {
+                                    setState(() {
+                                      isLoad = true;
+                                    });
+                                    var data = await ApiProvider().userLogin(userId, password);
+                                    if (data["status"] == "success") {
+                                      print(data["data"]["otp"]);
+                                      await MySharedPreferences()
+                                          .setUserData(data["data"]["otp"].toString(), data["data"]["api_token"], data["data"]["id"].toString());
+                                      Navigator.push(
+                                        context,
+                                        PageTransition(
+                                          type: PageTransitionType.fade,
+                                          child: Dashboard(),
+                                        ),
+                                      );
+                                    } else {
+                                      Fluttertoast.showToast(
+                                        msg: data["message"],
+                                      );
+                                    }
+                                    setState(() {
+                                      isLoad = false;
+                                    });
+                                  } catch (e) {
+                                    setState(() {
+                                      isLoad = false;
+                                    });
+                                  } finally {
+                                    setState(() {
+                                      isLoad = false;
+                                    });
+                                  }
+                                }
                               },
                             ),
                           ],
@@ -315,8 +343,7 @@ class _SigninPageState extends State<SigninPage> {
                           height: _height * 0.02,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                              left: _width * 0.05, right: _width * 0.05),
+                          padding: EdgeInsets.only(left: _width * 0.05, right: _width * 0.05),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -326,8 +353,7 @@ class _SigninPageState extends State<SigninPage> {
                                 color: Colors.black.withOpacity(0.3),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(
-                                    left: _width * 0.01, right: _width * 0.01),
+                                padding: EdgeInsets.only(left: _width * 0.01, right: _width * 0.01),
                                 child: Text(
                                   'Or',
                                   style: TextStyle(color: Palette.primaryColor),
@@ -411,18 +437,11 @@ class _SigninPageState extends State<SigninPage> {
                   ),
                   GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.fade,
-                                child: SignupPage()));
+                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: SignupPage()));
                       },
                       child: Text(
                         "Sign Up!",
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Palette.primaryColor,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 18, color: Palette.primaryColor, fontWeight: FontWeight.bold),
                       )),
                 ],
               ),
@@ -435,6 +454,17 @@ class _SigninPageState extends State<SigninPage> {
         value: 0.0,
       ),
     );
+  }
+
+  bool checkValidation() {
+    if (userId == null || userId == "") {
+      Fluttertoast.showToast(msg: "pleas enter Id");
+      return false;
+    } else if (password == null || password == "") {
+      Fluttertoast.showToast(msg: "pleas enter password");
+      return false;
+    }
+    return true;
   }
 
   void _handleFBSignIn() async {
@@ -452,8 +482,8 @@ class _SigninPageState extends State<SigninPage> {
       switch (result.status) {
         case FacebookLoginStatus.loggedIn:
           final token = result.accessToken.token;
-          final graphResponse = await http.get(
-              'https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email,picture.height(512)&access_token=$token');
+          final graphResponse =
+              await http.get('https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email,picture.height(512)&access_token=$token');
           //final profile = json.decode(graphResponse.body);
           print("Login SuccsessFull");
 
