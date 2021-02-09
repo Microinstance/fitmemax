@@ -10,6 +10,7 @@ import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
+
 class Dashboard extends StatefulWidget {
   @override
   _DashboardState createState() => _DashboardState();
