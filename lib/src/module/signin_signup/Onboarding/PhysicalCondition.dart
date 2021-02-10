@@ -1,10 +1,13 @@
-import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
+import 'package:fitmemax/ApiProvider/apiProvider.dart';
+import 'package:fitmemax/Data/StoryData/data.dart';
+import 'package:fitmemax/shared/shared.dart';
 import 'package:fitmemax/src/module/signin_signup/Onboarding/MedicalCondition.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:fitmemax/src/widgets/w_background.dart';
 import 'package:fitmemax/src/widgets/w_dropdown.dart';
 import 'package:fitmemax/src/widgets/w_signin_button.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -17,10 +20,13 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
   double _userAge = 15;
   double _userHeight = 2.5;
   double _userWeight = 25;
-  List _gender = ['Male', 'Femail'];
-  List _bloodGroup = ['A+','A-','B+','B-','O+','O-','AB+','AB-'];
+  bool isLoad = false;
+  List _gender = ['Male', 'Female'];
+  List _bloodGroup = ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'];
+
   String _genderValue;
   String _bloodGroupValue;
+
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -42,23 +48,25 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
                 children: [
                   Flexible(
                       child: Image.asset(
-                        'assets/logo/splash-Screen.png',
-                        fit: BoxFit.fitWidth,
-                      )),
+                    'assets/logo/splash-Screen.png',
+                    fit: BoxFit.fitWidth,
+                  )),
                 ],
               ),
             ),
             Padding(
-              padding:  EdgeInsets.all(_width*0.05),
+              padding: EdgeInsets.all(_width * 0.05),
               child: Container(
                 width: _width,
-                decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                  BoxShadow(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
                       color: Colors.black.withOpacity(0.1),
                       blurRadius: 5.0,
-                      spreadRadius: 5.0
-                  ),
-                ],
+                      spreadRadius: 5.0,
+                    ),
+                  ],
                   borderRadius: BorderRadius.all(Radius.circular(15)),
                 ),
                 child: MediaQuery.removePadding(
@@ -68,29 +76,41 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     children: [
-                      SizedBox(height: 25,),
+                      SizedBox(
+                        height: 25,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Physical Condition',style: TextStyle(fontSize: 30,color: Colors.black,letterSpacing: 0.2),),
+                          Text(
+                            'Physical Condition',
+                            style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.black,
+                                letterSpacing: 0.2),
+                          ),
                         ],
                       ),
                       SizedBox(
-                        height: 25 ,
+                        height: 25,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Select your Age",style: GoogleFonts.lato(fontSize: 22,color: Colors.black),),
+                          Text(
+                            "Select your Age",
+                            style: GoogleFonts.lato(
+                                fontSize: 22, color: Colors.black),
+                          ),
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 5,right: 5),
+                        padding: const EdgeInsets.only(left: 5, right: 5),
                         child: Slider(
                           min: 15,
                           max: 115,
                           value: _userAge,
-                          onChanged: (age){
+                          onChanged: (age) {
                             setState(() {
                               _userAge = age;
                             });
@@ -103,7 +123,13 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("${_userAge.toInt()} years",style: GoogleFonts.lato(fontSize: 18,color: Colors.black,fontWeight: FontWeight.bold),),
+                          Text(
+                            "${_userAge.toInt()} years",
+                            style: GoogleFonts.lato(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ],
                       ),
                       SizedBox(
@@ -112,18 +138,22 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Select your Height",style: GoogleFonts.lato(fontSize: 22,color: Colors.black),),
+                          Text(
+                            "Select your Height",
+                            style: GoogleFonts.lato(
+                                fontSize: 22, color: Colors.black),
+                          ),
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 5,right: 5),
+                        padding: const EdgeInsets.only(left: 5, right: 5),
                         child: Slider(
                           min: 2.5,
                           max: 12.5,
                           value: _userHeight,
-                          onChanged: (Height){
+                          onChanged: (height) {
                             setState(() {
-                              _userHeight = Height;
+                              _userHeight = height;
                             });
                           },
                           label: "${_userHeight}",
@@ -134,7 +164,13 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("${_userHeight} ft",style: GoogleFonts.lato(fontSize: 18,color: Colors.black,fontWeight: FontWeight.bold),),
+                          Text(
+                            "${_userHeight} ft",
+                            style: GoogleFonts.lato(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ],
                       ),
                       SizedBox(
@@ -143,18 +179,22 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Select your Weight",style: GoogleFonts.lato(fontSize: 22,color: Colors.black),),
+                          Text(
+                            "Select your Weight",
+                            style: GoogleFonts.lato(
+                                fontSize: 22, color: Colors.black),
+                          ),
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 5,right: 5),
+                        padding: const EdgeInsets.only(left: 5, right: 5),
                         child: Slider(
                           min: 25,
                           max: 125,
                           value: _userWeight,
-                          onChanged: (Weight){
+                          onChanged: (weight) {
                             setState(() {
-                              _userWeight = Weight;
+                              _userWeight = weight;
                             });
                           },
                           label: "${_userWeight}",
@@ -165,14 +205,20 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("${_userWeight}",style: GoogleFonts.lato(fontSize: 18,color: Colors.black,fontWeight: FontWeight.bold),),
+                          Text(
+                            "${_userWeight}",
+                            style: GoogleFonts.lato(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ],
                       ),
                       SizedBox(
                         height: 15,
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 15,right: 15),
+                        padding: const EdgeInsets.only(left: 15, right: 15),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -211,15 +257,61 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
                         children: [
                           w_signin_button(
                             title: 'Continue',
-                            onPressed: (){
-                              Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: MedicalCondition()));
+                            onPressed: () async {
+                              String token =
+                                  await MySharedPreferences().gettoken();
+                              if (token != null && token != "") {
+                                if (checkValidation()) {
+                                  try {
+                                    setState(() {
+                                      isLoad = true;
+                                    });
+                                    var data = await ApiProvider()
+                                        .userPhysicalCondition(
+                                            _userAge.toString(),
+                                            _userHeight.toString(),
+                                            _userWeight.toString(),
+                                            _bloodGroupValue,
+                                            _genderValue,
+                                            token);
+                                    if (data["success"] == true) {
+                                      Fluttertoast.showToast(
+                                        msg: data["message"],
+                                      );
+                                      Navigator.pushReplacement(
+                                          context,
+                                          PageTransition(
+                                              type: PageTransitionType.fade,
+                                              child: MedicalCondition()));
+                                    } else {
+                                      Fluttertoast.showToast(
+                                        msg: "Something Went to wrong",
+                                      );
+                                    }
+                                    setState(() {
+                                      isLoad = false;
+                                    });
+                                  } catch (e) {
+                                    setState(() {
+                                      isLoad = false;
+                                    });
+                                  } finally {
+                                    setState(() {
+                                      isLoad = false;
+                                    });
+                                  }
+                                }
+                              } else {
+                                Fluttertoast.showToast(
+                                    msg: "Something went to wrong");
+                              }
                             },
                           ),
                         ],
                       ),
-                      SizedBox(height: 25,),
-
-
+                      SizedBox(
+                        height: 25,
+                      ),
                     ],
                   ),
                 ),
@@ -230,5 +322,25 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
       ),
       value: 0.0,
     );
+  }
+
+  bool checkValidation() {
+    if (_userAge == null) {
+      Fluttertoast.showToast(msg: "pleas Select Age");
+      return false;
+    } else if (_userHeight == null) {
+      Fluttertoast.showToast(msg: "pleas Select height");
+      return false;
+    } else if (_userWeight == null) {
+      Fluttertoast.showToast(msg: "pleas Select Weight.");
+      return false;
+    } else if (_genderValue == null) {
+      Fluttertoast.showToast(msg: "pleas Select gender");
+      return false;
+    } else if (_bloodGroupValue == null) {
+      Fluttertoast.showToast(msg: "pleas Select booldGroup");
+      return false;
+    }
+    return true;
   }
 }

@@ -9,6 +9,7 @@ import 'package:fitmemax/src/widgets/w_signin_button.dart';
 import 'package:fitmemax/src/widgets/w_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:page_transition/page_transition.dart';
@@ -38,9 +39,15 @@ class _SignupPageState extends State<SignupPage> {
     return w_background(
       child: ModalProgressHUD(
         inAsyncCall: isLoad,
-        progressIndicator: CircularProgressIndicator(
-          strokeWidth: 2,
-        ),
+       progressIndicator: SpinKitCircle(
+        itemBuilder: (BuildContext context, int index) {
+          return DecoratedBox(
+            decoration: BoxDecoration(
+              color: Palette.x1Color,
+            ),
+          );
+        },
+      ),
         child: SingleChildScrollView(
           padding: EdgeInsets.only(left: _width * 0.02, right: _width * 0.02),
           child: Column(

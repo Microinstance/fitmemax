@@ -1,5 +1,3 @@
-import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
-import 'package:fitmemax/src/module/signin_signup/SigninPage.dart';
 import 'package:fitmemax/src/module/signin_signup/SignupPage.dart';
 import 'package:flutter/material.dart';
 
