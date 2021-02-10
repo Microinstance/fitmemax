@@ -1,6 +1,5 @@
 import 'package:animator/animator.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 
 class WorkoutSearch extends StatefulWidget {
   @override
