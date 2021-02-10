@@ -21,7 +21,7 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
   double _userHeight = 2.5;
   double _userWeight = 25;
   bool isLoad = false;
-  List _gender = ['Male', 'Female'];
+  List _gender = ['Male', 'Female', "Transgender"];
   List _bloodGroup = ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'];
 
   String _genderValue;
@@ -84,10 +84,7 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
                         children: [
                           Text(
                             'Physical Condition',
-                            style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.black,
-                                letterSpacing: 0.2),
+                            style: TextStyle(fontSize: 30, color: Colors.black, letterSpacing: 0.2),
                           ),
                         ],
                       ),
@@ -99,8 +96,7 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
                         children: [
                           Text(
                             "Select your Age",
-                            style: GoogleFonts.lato(
-                                fontSize: 22, color: Colors.black),
+                            style: GoogleFonts.lato(fontSize: 22, color: Colors.black),
                           ),
                         ],
                       ),
@@ -125,10 +121,7 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
                         children: [
                           Text(
                             "${_userAge.toInt()} years",
-                            style: GoogleFonts.lato(
-                                fontSize: 18,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
+                            style: GoogleFonts.lato(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -140,8 +133,7 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
                         children: [
                           Text(
                             "Select your Height",
-                            style: GoogleFonts.lato(
-                                fontSize: 22, color: Colors.black),
+                            style: GoogleFonts.lato(fontSize: 22, color: Colors.black),
                           ),
                         ],
                       ),
@@ -166,10 +158,7 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
                         children: [
                           Text(
                             "${_userHeight} ft",
-                            style: GoogleFonts.lato(
-                                fontSize: 18,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
+                            style: GoogleFonts.lato(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -181,8 +170,7 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
                         children: [
                           Text(
                             "Select your Weight",
-                            style: GoogleFonts.lato(
-                                fontSize: 22, color: Colors.black),
+                            style: GoogleFonts.lato(fontSize: 22, color: Colors.black),
                           ),
                         ],
                       ),
@@ -207,10 +195,7 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
                         children: [
                           Text(
                             "${_userWeight}",
-                            style: GoogleFonts.lato(
-                                fontSize: 18,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
+                            style: GoogleFonts.lato(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -258,31 +243,20 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
                           w_signin_button(
                             title: 'Continue',
                             onPressed: () async {
-                              String token =
-                                  await MySharedPreferences().gettoken();
+                              String token = await MySharedPreferences().gettoken();
                               if (token != null && token != "") {
                                 if (checkValidation()) {
                                   try {
                                     setState(() {
                                       isLoad = true;
                                     });
-                                    var data = await ApiProvider()
-                                        .userPhysicalCondition(
-                                            _userAge.toString(),
-                                            _userHeight.toString(),
-                                            _userWeight.toString(),
-                                            _bloodGroupValue,
-                                            _genderValue,
-                                            token);
+                                    var data = await ApiProvider().userPhysicalCondition(
+                                        _userAge.toString(), _userHeight.toString(), _userWeight.toString(), _bloodGroupValue, _genderValue, token);
                                     if (data["success"] == true) {
                                       Fluttertoast.showToast(
                                         msg: data["message"],
                                       );
-                                      Navigator.pushReplacement(
-                                          context,
-                                          PageTransition(
-                                              type: PageTransitionType.fade,
-                                              child: MedicalCondition()));
+                                      Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: MedicalCondition()));
                                     } else {
                                       Fluttertoast.showToast(
                                         msg: "Something Went to wrong",
@@ -302,8 +276,7 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
                                   }
                                 }
                               } else {
-                                Fluttertoast.showToast(
-                                    msg: "Something went to wrong");
+                                Fluttertoast.showToast(msg: "Something went to wrong");
                               }
                             },
                           ),

@@ -5,9 +5,11 @@ import 'package:fitmemax/src/module/dashboard/plan/Plan.dart';
 import 'package:fitmemax/src/module/dashboard/profile/Profile.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileHome.dart';
 import 'package:fitmemax/src/module/others/ReferEarn.dart';
+import 'package:fitmemax/src/module/signin_signup/SignupPage.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+
 
 class Dashboard extends StatefulWidget {
   @override
