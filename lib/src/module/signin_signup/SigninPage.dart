@@ -40,7 +40,7 @@ class _SigninPageState extends State<SigninPage> {
   String userId = "";
   String password = "";
 
-  bool isLoad = false;
+  // bool isLoad = false;
 
   @override
   void initState() {
@@ -303,7 +303,7 @@ class _SigninPageState extends State<SigninPage> {
                                 if (checkValidation()) {
                                   try {
                                     setState(() {
-                                      isLoad = true;
+                                      isLoginProsses = true;
                                     });
                                     var data = await ApiProvider().userLogin(userId, password);
                                     if (data["status"] == "success") {
@@ -323,15 +323,15 @@ class _SigninPageState extends State<SigninPage> {
                                       );
                                     }
                                     setState(() {
-                                      isLoad = false;
+                                      isLoginProsses = false;
                                     });
                                   } catch (e) {
                                     setState(() {
-                                      isLoad = false;
+                                      isLoginProsses = false;
                                     });
                                   } finally {
                                     setState(() {
-                                      isLoad = false;
+                                      isLoginProsses = false;
                                     });
                                   }
                                 }
@@ -436,13 +436,14 @@ class _SigninPageState extends State<SigninPage> {
                     width: 10,
                   ),
                   GestureDetector(
-                      onTap: () {
-                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: SignupPage()));
-                      },
-                      child: Text(
-                        "Sign Up!",
-                        style: TextStyle(fontSize: 18, color: Palette.primaryColor, fontWeight: FontWeight.bold),
-                      )),
+                    onTap: () {
+                      Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: SignupPage()));
+                    },
+                    child: Text(
+                      "Sign Up!",
+                      style: TextStyle(fontSize: 18, color: Palette.primaryColor, fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ],
               ),
               SizedBox(

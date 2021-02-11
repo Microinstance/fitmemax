@@ -9,14 +9,15 @@ import 'package:fitmemax/src/module/signin_signup/SignupPage.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:fitmemax/src/module/signin_signup/SigninPage.dart';
 
 class Dashboard extends StatefulWidget {
   @override
   _DashboardState createState() => _DashboardState();
 }
 
-class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMixin{
+class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMixin {
   PageController _pageController = PageController(
     initialPage: 0,
   );
@@ -55,14 +56,14 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
     screenWidth = size.width;
     return Container(
       decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.green[300],
-              Palette.primaryColor,
-            ],
-            begin: FractionalOffset.centerRight,
-            end: FractionalOffset.centerLeft,
-          ),
+        gradient: LinearGradient(
+          colors: [
+            Colors.green[300],
+            Palette.primaryColor,
+          ],
+          begin: FractionalOffset.centerRight,
+          end: FractionalOffset.centerLeft,
+        ),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -77,7 +78,7 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
               right: isCollapsed ? 0 : -0.5 * screenWidth,
               child: ScaleTransition(
                 scale: _scaleAnimation,
-                  child: Material(
+                child: Material(
                   animationDuration: duration,
                   borderRadius: BorderRadius.all(Radius.circular(0)),
                   elevation: 5,
@@ -97,14 +98,29 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                       // ),
                       title: Row(
                         children: [
-                          Text('F',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 25),),
-                          Text('i',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 22),),
-                          Text('t',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 22),),
-                          Text('Book',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 22),),
+                          Text(
+                            'F',
+                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 25),
+                          ),
+                          Text(
+                            'i',
+                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 22),
+                          ),
+                          Text(
+                            't',
+                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 22),
+                          ),
+                          Text(
+                            'Book',
+                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 22),
+                          ),
                         ],
                       ),
                       leading: IconButton(
-                        icon:  Icon(Icons.menu,size: 30,),
+                        icon: Icon(
+                          Icons.menu,
+                          size: 30,
+                        ),
                         onPressed: () {
                           setState(() {
                             if (isCollapsed)
@@ -118,22 +134,34 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                       ),
                       actions: [
                         Padding(
-                          padding:  EdgeInsets.only(right: 15),
-                          child: Icon(Icons.account_balance_wallet,size: 25,color: Colors.white,),
+                          padding: EdgeInsets.only(right: 15),
+                          child: Icon(
+                            Icons.account_balance_wallet,
+                            size: 25,
+                            color: Colors.white,
+                          ),
                         ),
                         Padding(
-                          padding:  EdgeInsets.only(right: 15),
-                          child: Icon(Icons.notifications_active,size: 25,color: Colors.amberAccent,),
+                          padding: EdgeInsets.only(right: 15),
+                          child: Icon(
+                            Icons.notifications_active,
+                            size: 25,
+                            color: Colors.amberAccent,
+                          ),
                         ),
                         Padding(
-                          padding:  EdgeInsets.only(right: 15),
-                          child: Icon(Icons.alarm,size: 25,color: Colors.cyanAccent,),
+                          padding: EdgeInsets.only(right: 15),
+                          child: Icon(
+                            Icons.alarm,
+                            size: 25,
+                            color: Colors.cyanAccent,
+                          ),
                         ),
                       ],
                     ),
                     body: PageView(
                       controller: _pageController,
-                      physics:new NeverScrollableScrollPhysics(),
+                      physics: new NeverScrollableScrollPhysics(),
                       onPageChanged: (page) {
                         setState(() {
                           selectedIndex = page;
@@ -157,16 +185,15 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                       ),
                       selectedIndex: selectedIndex,
                       onSelectTab: (index) {
-                        if(index == 2){
+                        if (index == 2) {
                           Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: ProfileHome()));
                         }
-                        if(index == 1){
+                        if (index == 1) {
                           Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Coach()));
                         }
-                        if(index == 4){
+                        if (index == 4) {
                           Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Profile()));
-                        }
-                        else{
+                        } else {
                           setState(() {
                             selectedIndex = index;
                             _pageController.jumpToPage(
@@ -207,6 +234,7 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
       ),
     );
   }
+
   Widget menu(context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
@@ -217,7 +245,7 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
         child: Align(
           alignment: Alignment.topLeft,
           child: Container(
-            width: _width*0.55,
+            width: _width * 0.55,
             child: MediaQuery.removePadding(
               context: context,
               removeTop: true,
@@ -228,10 +256,11 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                   padding: EdgeInsets.zero,
                   children: [
                     Container(
-                        height: _height*0.25,
+                        height: _height * 0.25,
                         decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.2),
-                          borderRadius: BorderRadius.only(bottomRight: Radius.circular(80),bottomLeft: Radius.circular(10),topRight: Radius.circular(10)),
+                          borderRadius:
+                              BorderRadius.only(bottomRight: Radius.circular(80), bottomLeft: Radius.circular(10), topRight: Radius.circular(10)),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -239,7 +268,7 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                           children: [
                             Container(
                               alignment: Alignment.topLeft,
-                              width:  _width*0.55,
+                              width: _width * 0.55,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -256,28 +285,39 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                             ),
                             Container(
                                 alignment: Alignment.topLeft,
-                                width:  _width*0.55,
+                                width: _width * 0.55,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text('Shivay Gorai',style: TextStyle(fontSize: 20,color: Colors.white),textAlign: TextAlign.center,),
+                                    Text(
+                                      'Shivay Gorai',
+                                      style: TextStyle(fontSize: 20, color: Colors.white),
+                                      textAlign: TextAlign.center,
+                                    ),
                                   ],
                                 )),
                           ],
-                        )
-                    ),
+                        )),
                     Padding(
                       padding: const EdgeInsets.only(left: 15),
                       child: Column(
                         children: [
-                          SizedBox(height: 30,),
+                          SizedBox(
+                            height: 30,
+                          ),
                           Padding(
                             padding: const EdgeInsets.only(bottom: 20),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Icon(Icons.chat,color: Colors.white,size: 22,),
-                                SizedBox(width: 15,),
+                                Icon(
+                                  Icons.chat,
+                                  color: Colors.white,
+                                  size: 22,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
                                 Flexible(child: Text("Chat", style: TextStyle(color: Colors.white, fontSize: 20))),
                               ],
                             ),
@@ -287,8 +327,14 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Icon(Icons.web,color: Colors.white,size: 22,),
-                                SizedBox(width: 15,),
+                                Icon(
+                                  Icons.web,
+                                  color: Colors.white,
+                                  size: 22,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
                                 Flexible(child: Text("Advertisement", style: TextStyle(color: Colors.white, fontSize: 20))),
                               ],
                             ),
@@ -298,8 +344,14 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Icon(Icons.compare,color: Colors.white,size: 22,),
-                                SizedBox(width: 15,),
+                                Icon(
+                                  Icons.compare,
+                                  color: Colors.white,
+                                  size: 22,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
                                 Flexible(child: Text("Corporate plan", style: TextStyle(color: Colors.white, fontSize: 20))),
                               ],
                             ),
@@ -309,8 +361,14 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Icon(Icons.fitness_center,color: Colors.white,size: 22,),
-                                SizedBox(width: 15,),
+                                Icon(
+                                  Icons.fitness_center,
+                                  color: Colors.white,
+                                  size: 22,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
                                 Flexible(child: Text("Diet and fitness", style: TextStyle(color: Colors.white, fontSize: 20))),
                               ],
                             ),
@@ -320,8 +378,14 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Icon(Icons.contact_mail,color: Colors.white,size: 22,),
-                                SizedBox(width: 15,),
+                                Icon(
+                                  Icons.contact_mail,
+                                  color: Colors.white,
+                                  size: 22,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
                                 Flexible(child: Text("Connect", style: TextStyle(color: Colors.white, fontSize: 20))),
                               ],
                             ),
@@ -331,8 +395,14 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Icon(Icons.nature_people,color: Colors.white,size: 22,),
-                                SizedBox(width: 15,),
+                                Icon(
+                                  Icons.nature_people,
+                                  color: Colors.white,
+                                  size: 22,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
                                 Flexible(child: Text("Coach", style: TextStyle(color: Colors.white, fontSize: 20))),
                               ],
                             ),
@@ -342,8 +412,14 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Icon(Icons.book,color: Colors.white,size: 22,),
-                                SizedBox(width: 15,),
+                                Icon(
+                                  Icons.book,
+                                  color: Colors.white,
+                                  size: 22,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
                                 Flexible(child: Text("Journal", style: TextStyle(color: Colors.white, fontSize: 20))),
                               ],
                             ),
@@ -353,13 +429,20 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Icon(Icons.share_rounded,color: Colors.white,size: 22,),
-                                SizedBox(width: 15,),
-                                Flexible(child: GestureDetector(
-                                    onTap: (){
-                                      Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: ReferEarn()));
-                                    },
-                                    child: Text("Invite friends", style: TextStyle(color: Colors.white, fontSize: 20)))),
+                                Icon(
+                                  Icons.share_rounded,
+                                  color: Colors.white,
+                                  size: 22,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Flexible(
+                                    child: GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: ReferEarn()));
+                                        },
+                                        child: Text("Invite friends", style: TextStyle(color: Colors.white, fontSize: 20)))),
                               ],
                             ),
                           ),
@@ -368,8 +451,14 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Icon(Icons.history,color: Colors.white,size: 22,),
-                                SizedBox(width: 15,),
+                                Icon(
+                                  Icons.history,
+                                  color: Colors.white,
+                                  size: 22,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
                                 Flexible(child: Text("Transaction", style: TextStyle(color: Colors.white, fontSize: 20))),
                               ],
                             ),
@@ -379,8 +468,14 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Icon(Icons.all_inclusive,color: Colors.white,size: 22,),
-                                SizedBox(width: 15,),
+                                Icon(
+                                  Icons.all_inclusive,
+                                  color: Colors.white,
+                                  size: 22,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
                                 Flexible(child: Text("About us", style: TextStyle(color: Colors.white, fontSize: 20))),
                               ],
                             ),
@@ -389,16 +484,39 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                       ),
                     ),
                     Container(
-                      height: _height*0.1,
-                      width: _width*0.55,
-                      child:  Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text("Logout",style: TextStyle(fontSize: 25,color: Colors.white,fontWeight: FontWeight.bold),),
-                          SizedBox(width: 10,),
-                          Icon(Icons.power_settings_new,color: Colors.white,size: 35,),
-                        ],
+                      height: _height * 0.1,
+                      width: _width * 0.55,
+                      child: InkWell(
+                        onTap: () async {
+                          SharedPreferences preferences = await SharedPreferences.getInstance();
+                          await preferences.clear();
+
+                          Navigator.pushReplacement(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.fade,
+                              child: SigninPage(),
+                            ),
+                          );
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Logout",
+                              style: TextStyle(fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              Icons.power_settings_new,
+                              color: Colors.white,
+                              size: 35,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -411,4 +529,3 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
     );
   }
 }
-
