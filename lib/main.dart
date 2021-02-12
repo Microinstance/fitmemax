@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
         }
       },
       child: MaterialApp(
-
         debugShowCheckedModeBanner: false,
         title: 'FitMeMax',
         theme: ThemeData(
