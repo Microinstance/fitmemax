@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 class w_textfield extends StatelessWidget {
   final String hint;
-
   final String lable;
   final Function onChanged;
   final TextInputType textInputType;
@@ -27,12 +26,8 @@ class w_textfield extends StatelessWidget {
       ),
       decoration: InputDecoration(
         // labelText: lable,
-        labelStyle: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w300,
-            letterSpacing: 0.5),
-        contentPadding: EdgeInsets.only(
-            left: _width * 0.02, top: 15, bottom: 10, right: _width * 0.039),
+        labelStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.w300, letterSpacing: 0.5),
+        contentPadding: EdgeInsets.only(left: _width * 0.02, top: 15, bottom: 10, right: _width * 0.039),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.black.withOpacity(0.5)),
           borderRadius: BorderRadius.circular(10),
