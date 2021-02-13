@@ -1,4 +1,6 @@
+import 'package:fitmemax/src/module/dashboard/CoachConsultant/CoachPick.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 
 class CoachCurrent extends StatefulWidget {
@@ -217,14 +219,18 @@ class _CoachCurrentState extends State<CoachCurrent> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                          width: _width*0.85*0.8,
+                          width: _width*0.85*0.7,
                           child: Row(
                             children: [
-                              Flexible(child: Text("3 Days Remaining on your Free Trial, Go Premium Now",style: TextStyle(color: Colors.black,fontSize: 18),)),
+                              Flexible(child: Text("3 Days Remaining on your Free Trial, Go Premium Now",style: TextStyle(color: Colors.black,fontSize: 16),)),
                             ],
                           ),
                         ),
-                        Icon(Icons.arrow_forward_rounded,size: 30,),
+                        IconButton(
+                            onPressed: (){
+                              Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: CoachPick()));
+                            },
+                            icon: Icon(Icons.arrow_forward_rounded,size: 20,)),
                       ],
                     ),
                   ),

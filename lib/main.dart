@@ -1,6 +1,6 @@
+import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'LandingPage.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           const Locale('es'),
           const Locale('en'),
         ],
-        home: LandingPage(),
+        home: Dashboard(),
       ),
     );
   }

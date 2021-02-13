@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:fitmemax/src/data/data2.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundDashBoard.dart';
@@ -6,6 +7,7 @@ import 'package:fitmemax/src/module/CalTracker/CalTrackerDashboard.dart';
 import 'package:fitmemax/src/module/Fast/FastDashboard.dart';
 import 'package:fitmemax/src/module/GoPro/GoPro.dart';
 import 'package:fitmemax/src/module/Workout/Workout.dart';
+import 'package:fitmemax/src/module/dashboard/home/Blog.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -120,9 +122,7 @@ class _HomeState extends State<Home> {
                 child: Column(
                   children: [
                     SizedBox(height: 10,),
-
                    DelayedDisplay(
-                     // slidingBeginOffset: Offset(0.35, 0),
                      delay: initialDelay,
                      child: Column(
                        children: [
@@ -193,7 +193,6 @@ class _HomeState extends State<Home> {
                        ],
                      ),
                    ),
-
                     Padding(
                       padding:  EdgeInsets.all(_width*0.06),
                       child: Stack(
@@ -567,7 +566,22 @@ class _HomeState extends State<Home> {
                                 Text(' Blogs',style: TextStyle(color: Colors.orange,fontSize: 20,letterSpacing: 1),),
                               ],
                             ),
-                            Icon(Icons.reorder,color: Colors.orange,),
+                            IconButton(icon: Icon(Icons.reorder,color: Colors.orange,), onPressed: () async{
+                              final result = await showConfirmationDialog(
+                                context: context,
+                                title: 'Select Blog Category',
+                                actions: [
+                                  ...List.generate(
+                                    Data().blogCatagory.length,
+                                        (index) => AlertDialogAction(
+                                      label: Data().blogCatagory[index],
+                                      key: index,
+                                    ),
+                                  ),
+                                ]
+                              );
+                            },
+                            ),
                           ],
                         ),
                       ),
@@ -585,79 +599,84 @@ class _HomeState extends State<Home> {
                                 child: Stack(
                                   alignment: Alignment.topRight,
                                   children: [
-                                    Container(
-                                      height: 350,
-                                      width: _width,
-                                      color: Colors.white,
-                                      child: Column(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              children: [
-                                                CircleAvatar(
-                                                  radius: 15,
-                                                  backgroundColor: Colors.orange,
-                                                  child: Icon(Icons.bubble_chart,color: Colors.white,size: 25,),
-                                                ),
-                                                SizedBox(
-                                                  width: _width*0.04,
-                                                ),
-                                                Flexible(child: Text('Life Hacks Blog',style: TextStyle(fontSize: 18,color: Colors.black),))
-                                              ],
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Row(
-                                              children: [
-                                                Flexible(child: Text('Starting the Navaratri fast today? These tips will come handy.tap to view.'),)
-                                              ],
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Container(
-                                              height: 200,
-                                              decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                  image: AssetImage('assets/blog/blog1.png'),
-                                                  fit: BoxFit.cover,
-                                                ),
-                                                borderRadius: BorderRadius.all(Radius.circular(15)),
+                                    GestureDetector(
+                                      onTap: (){
+                              Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop, child: Blog()));
+                              },
+                                      child: Container(
+                                        height: 350,
+                                        width: _width,
+                                        color: Colors.white,
+                                        child: Column(
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                children: [
+                                                  CircleAvatar(
+                                                    radius: 15,
+                                                    backgroundColor: Colors.orange,
+                                                    child: Icon(Icons.bubble_chart,color: Colors.white,size: 25,),
+                                                  ),
+                                                  SizedBox(
+                                                    width: _width*0.04,
+                                                  ),
+                                                  Flexible(child: Text('Life Hacks Blog',style: TextStyle(fontSize: 18,color: Colors.black),))
+                                                ],
                                               ),
                                             ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    Text('89 likes',style: TextStyle(color: Colors.black.withOpacity(0.5)),),
-                                                    SizedBox(width: 5,),
-                                                    Text('65 comments',style: TextStyle(color: Colors.black.withOpacity(0.5)),),
-                                                    SizedBox(width: 5),
-                                                    Text('89 shares',style: TextStyle(color: Colors.black.withOpacity(0.5)),),
-                                                    SizedBox(width: 5,),
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Icon(Icons.favorite_border,color: Colors.red,size: 20,),
-                                                    SizedBox(width: 10,),
-                                                    Icon(Icons.insert_comment,color: Colors.deepPurple,size: 20,),
-                                                    SizedBox(width: 10,),
-                                                    Icon(Icons.share,color: Colors.orange,size: 20,),
-                                                    SizedBox(width: 10,),
-                                                  ],
-                                                )
-                                              ],
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Row(
+                                                children: [
+                                                  Flexible(child: Text('Starting the Navaratri fast today? These tips will come handy.tap to view.'),)
+                                                ],
+                                              ),
                                             ),
-                                          )
-                                        ],
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Container(
+                                                height: 200,
+                                                decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                    image: AssetImage('assets/blog/blog1.png'),
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Text('89 likes',style: TextStyle(color: Colors.black.withOpacity(0.5)),),
+                                                      SizedBox(width: 5,),
+                                                      Text('65 comments',style: TextStyle(color: Colors.black.withOpacity(0.5)),),
+                                                      SizedBox(width: 5),
+                                                      Text('89 shares',style: TextStyle(color: Colors.black.withOpacity(0.5)),),
+                                                      SizedBox(width: 5,),
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Icon(Icons.favorite_border,color: Colors.red,size: 20,),
+                                                      SizedBox(width: 10,),
+                                                      Icon(Icons.insert_comment,color: Colors.deepPurple,size: 20,),
+                                                      SizedBox(width: 10,),
+                                                      Icon(Icons.share,color: Colors.orange,size: 20,),
+                                                      SizedBox(width: 10,),
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                     Padding(

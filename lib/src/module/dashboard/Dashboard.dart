@@ -1,6 +1,7 @@
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:fitmemax/src/module/dashboard/CoachConsultant/Coach.dart';
 import 'package:fitmemax/src/module/dashboard/home/Home.dart';
+import 'package:fitmemax/src/module/dashboard/home/Notifications.dart';
 import 'package:fitmemax/src/module/dashboard/plan/Plan.dart';
 import 'package:fitmemax/src/module/dashboard/profile/Profile.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileHome.dart';
@@ -13,13 +14,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fitmemax/src/module/signin_signup/SigninPage.dart';
 
 class Dashboard extends StatefulWidget {
+ final int pageStack;
+
+  const Dashboard({Key key, this.pageStack = 0}) : super(key: key);
   @override
   _DashboardState createState() => _DashboardState();
 }
 
 class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMixin {
   PageController _pageController = PageController(
-    initialPage: 0,
+    initialPage: 0
   );
 
   int selectedIndex = 0;
@@ -87,33 +91,13 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                     appBar: AppBar(
                       elevation: 0,
                       backgroundColor: Palette.primaryColor,
-                      // title: Row(
-                      //   children: [
-                      //     Text('F',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 25),),
-                      //     Text('i',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 22),),
-                      //     Text('t',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 22),),
-                      //     Text('Me',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 22),),
-                      //     Text('Max',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 22),),
-                      //   ],
-                      // ),
                       title: Row(
                         children: [
-                          Text(
-                            'F',
-                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 25),
-                          ),
-                          Text(
-                            'i',
-                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 22),
-                          ),
-                          Text(
-                            't',
-                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 22),
-                          ),
-                          Text(
-                            'Book',
-                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 22),
-                          ),
+                          Text('F',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 25),),
+                          Text('i',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 22),),
+                          Text('t',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 22),),
+                          Text('Me',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 22),),
+                          Text('Max',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 22),),
                         ],
                       ),
                       leading: IconButton(
@@ -143,10 +127,15 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                         ),
                         Padding(
                           padding: EdgeInsets.only(right: 15),
-                          child: Icon(
-                            Icons.notifications_active,
-                            size: 25,
-                            color: Colors.amberAccent,
+                          child: IconButton(
+                            onPressed: (){
+                              Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Notifications()));
+                            },
+                            icon: Icon(
+                              Icons.notifications_active,
+                              size: 25,
+                              color: Colors.amberAccent,
+                            ),
                           ),
                         ),
                         Padding(
