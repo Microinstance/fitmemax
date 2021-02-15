@@ -44,7 +44,8 @@ class _HomeState extends State<Home> {
     _controller = ScrollController();
     _controller.addListener(() {
       setState(() {
-        _isVisible = _controller.position.userScrollDirection == ScrollDirection.reverse;
+        _isVisible =
+            _controller.position.userScrollDirection == ScrollDirection.reverse;
       });
     });
   }
@@ -92,7 +93,10 @@ class _HomeState extends State<Home> {
             label: 'Go Pro',
             labelStyle: TextStyle(fontSize: 18.0),
             onTap: () {
-              Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop, child: GoPro()));
+              Navigator.push(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.bottomToTop, child: GoPro()));
             },
           ),
           SpeedDialChild(
@@ -159,7 +163,8 @@ class _HomeState extends State<Home> {
                                         color: Colors.black.withOpacity(0.5),
                                         width: 1,
                                       ),
-                                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(20)),
                                       gradient: LinearGradient(
                                         colors: [
                                           Colors.white,
@@ -169,9 +174,12 @@ class _HomeState extends State<Home> {
                                         end: FractionalOffset.centerRight,
                                       )),
                                   child: Padding(
-                                    padding: EdgeInsets.only(right: _width * 0.02, left: _width * 0.02),
+                                    padding: EdgeInsets.only(
+                                        right: _width * 0.02,
+                                        left: _width * 0.02),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Stack(
                                           alignment: Alignment.center,
@@ -182,7 +190,8 @@ class _HomeState extends State<Home> {
                                               size: 40,
                                             ),
                                             Padding(
-                                              padding: EdgeInsets.only(right: 5),
+                                              padding:
+                                                  EdgeInsets.only(right: 5),
                                               child: CircleAvatar(
                                                 radius: 5,
                                                 backgroundColor: Colors.white,
@@ -192,7 +201,9 @@ class _HomeState extends State<Home> {
                                         ),
                                         Text(
                                           "Book a live workout now",
-                                          style: TextStyle(fontSize: 20, color: Colors.black),
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.black),
                                         ),
                                         Icon(
                                           Icons.arrow_forward_ios,
@@ -213,7 +224,10 @@ class _HomeState extends State<Home> {
                               children: [
                                 Text(
                                   "Hi Shivay",
-                                  style: TextStyle(fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
+                                  style: TextStyle(
+                                      fontSize: 25,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
@@ -221,7 +235,8 @@ class _HomeState extends State<Home> {
                               height: 5,
                             ),
                             Padding(
-                              padding: EdgeInsets.only(left: _width * 0.04, right: _width * 0.04),
+                              padding: EdgeInsets.only(
+                                  left: _width * 0.04, right: _width * 0.04),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -252,9 +267,13 @@ class _HomeState extends State<Home> {
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 boxShadow: [
-                                  BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 5.0, spreadRadius: 5.0),
+                                  BoxShadow(
+                                      color: Colors.black.withOpacity(0.1),
+                                      blurRadius: 5.0,
+                                      spreadRadius: 5.0),
                                 ],
-                                borderRadius: BorderRadius.all(Radius.circular(15)),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15)),
                               ),
                               child: PageView(
                                 controller: _pageController,
@@ -272,36 +291,57 @@ class _HomeState extends State<Home> {
                                       children: [
                                         Container(
                                           child: Padding(
-                                            padding: EdgeInsets.only(left: _width * 0.02, right: _width * 0.02, top: 20, bottom: 20),
+                                            padding: EdgeInsets.only(
+                                                left: _width * 0.02,
+                                                right: _width * 0.02,
+                                                top: 20,
+                                                bottom: 20),
                                             child: Column(
                                               children: [
                                                 Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
                                                   children: [
                                                     GestureDetector(
                                                       onTap: () {
                                                         Navigator.push(
-                                                            context, PageTransition(type: PageTransitionType.fade, child: CalTrackerDashboard()));
+                                                            context,
+                                                            PageTransition(
+                                                                type:
+                                                                    PageTransitionType
+                                                                        .fade,
+                                                                child:
+                                                                    CalTrackerDashboard()));
                                                       },
                                                       child: hItem(
                                                         name: 'Track Calories',
-                                                        image: 'assets/icons/track_cal.png',
+                                                        image:
+                                                            'assets/icons/track_cal.png',
                                                         context: context,
                                                       ),
                                                     ),
                                                     hItem(
                                                       name: 'Activity',
-                                                      image: 'assets/icons/activity.png',
+                                                      image:
+                                                          'assets/icons/activity.png',
                                                       context: context,
                                                     ),
                                                     GestureDetector(
                                                       onTap: () {
                                                         Navigator.push(
-                                                            context, PageTransition(type: PageTransitionType.fade, child: BattleGroundDashBoard()));
+                                                            context,
+                                                            PageTransition(
+                                                                type:
+                                                                    PageTransitionType
+                                                                        .fade,
+                                                                child:
+                                                                    BattleGroundDashBoard()));
                                                       },
                                                       child: hItem(
                                                         name: 'Battleground',
-                                                        image: "assets/icons/battleground.png",
+                                                        image:
+                                                            "assets/icons/battleground.png",
                                                         context: context,
                                                       ),
                                                     ),
@@ -311,26 +351,37 @@ class _HomeState extends State<Home> {
                                                   height: 20,
                                                 ),
                                                 Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
                                                   children: [
                                                     hItem(
                                                       name: 'Health log',
-                                                      image: 'assets/dashboard/mainIcon/heart.png',
+                                                      image:
+                                                          'assets/dashboard/mainIcon/heart.png',
                                                       context: context,
                                                     ),
                                                     hItem(
                                                       name: 'Fitbook',
-                                                      image: 'assets/icons/fitbook3.png',
+                                                      image:
+                                                          'assets/icons/fitbook3.png',
                                                       context: context,
                                                     ),
                                                     GestureDetector(
                                                       onTap: () {
                                                         Navigator.push(
-                                                            context, PageTransition(type: PageTransitionType.fade, child: FastDashboard()));
+                                                            context,
+                                                            PageTransition(
+                                                                type:
+                                                                    PageTransitionType
+                                                                        .fade,
+                                                                child:
+                                                                    FastDashboard()));
                                                       },
                                                       child: hItem(
                                                         name: 'Fast',
-                                                        image: 'assets/icons/fast.png',
+                                                        image:
+                                                            'assets/icons/fast.png',
                                                         context: context,
                                                       ),
                                                     ),
@@ -358,30 +409,46 @@ class _HomeState extends State<Home> {
                                       children: [
                                         Container(
                                           child: Padding(
-                                            padding: EdgeInsets.only(left: _width * 0.02, right: _width * 0.02, top: 20, bottom: 20),
+                                            padding: EdgeInsets.only(
+                                                left: _width * 0.02,
+                                                right: _width * 0.02,
+                                                top: 20,
+                                                bottom: 20),
                                             child: Column(
                                               children: [
                                                 Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
                                                   children: [
                                                     hItem(
                                                       name: 'Yoga',
-                                                      image: "assets/icons/yoga1.png",
+                                                      image:
+                                                          "assets/icons/yoga1.png",
                                                       context: context,
                                                     ),
                                                     GestureDetector(
                                                       onTap: () {
-                                                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Workout()));
+                                                        Navigator.push(
+                                                            context,
+                                                            PageTransition(
+                                                                type:
+                                                                    PageTransitionType
+                                                                        .fade,
+                                                                child:
+                                                                    Workout()));
                                                       },
                                                       child: hItem(
                                                         name: 'Workout',
-                                                        image: "assets/icons/workout.png",
+                                                        image:
+                                                            "assets/icons/workout.png",
                                                         context: context,
                                                       ),
                                                     ),
                                                     hItem(
                                                       name: 'Mediation',
-                                                      image: "assets/icons/meditation.png",
+                                                      image:
+                                                          "assets/icons/meditation.png",
                                                       context: context,
                                                     ),
                                                   ],
@@ -390,21 +457,26 @@ class _HomeState extends State<Home> {
                                                   height: 20,
                                                 ),
                                                 Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
                                                   children: [
                                                     hItem(
                                                       name: 'Cal burnt',
-                                                      image: "assets/icons/cal burnt.png",
+                                                      image:
+                                                          "assets/icons/cal burnt.png",
                                                       context: context,
                                                     ),
                                                     hItem(
                                                       name: 'Musclebaba',
-                                                      image: "assets/icons/musscelbaba.png",
+                                                      image:
+                                                          "assets/icons/musscelbaba.png",
                                                       context: context,
                                                     ),
                                                     hItem(
                                                       name: 'Run',
-                                                      image: "assets/icons/run.png",
+                                                      image:
+                                                          "assets/icons/run.png",
                                                       context: context,
                                                     ),
                                                   ],
@@ -428,7 +500,10 @@ class _HomeState extends State<Home> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   for (int i = 0; i < 2; i++)
-                                    if (i == _currentPage) OnboardingDots(true) else OnboardingDots(false)
+                                    if (i == _currentPage)
+                                      OnboardingDots(true)
+                                    else
+                                      OnboardingDots(false)
                                 ],
                               ),
                             ),
@@ -451,7 +526,12 @@ class _HomeState extends State<Home> {
                                 icon: Icons.call,
                                 lebel: 'Book free call',
                               ),
-                              hBar(color: Colors.orange, context: context, gColor: Colors.orange[50], icon: Icons.book, lebel: 'eBook Courses'),
+                              hBar(
+                                  color: Colors.orange,
+                                  context: context,
+                                  gColor: Colors.orange[50],
+                                  icon: Icons.book,
+                                  lebel: 'eBook Courses'),
                               hBar(
                                 color: Colors.deepPurple,
                                 context: context,
@@ -473,18 +553,26 @@ class _HomeState extends State<Home> {
                         height: 50,
                         color: Colors.white,
                         child: Padding(
-                          padding: EdgeInsets.only(top: 8.0, right: 10.0, left: 10.0),
+                          padding: EdgeInsets.only(
+                              top: 8.0, right: 10.0, left: 10.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
                                 children: [
-                                  Text('Fit', style: TextStyle(fontSize: 20, letterSpacing: 1)),
+                                  Text('Fit',
+                                      style: TextStyle(
+                                          fontSize: 20, letterSpacing: 1)),
                                   Text(
                                     'Book',
-                                    style: TextStyle(color: Colors.pinkAccent[100], fontSize: 20, letterSpacing: 1),
+                                    style: TextStyle(
+                                        color: Colors.pinkAccent[100],
+                                        fontSize: 20,
+                                        letterSpacing: 1),
                                   ),
-                                  Text(' Stories', style: TextStyle(fontSize: 20, letterSpacing: 1)),
+                                  Text(' Stories',
+                                      style: TextStyle(
+                                          fontSize: 20, letterSpacing: 1)),
                                 ],
                               ),
                               Icon(
@@ -545,10 +633,15 @@ class _HomeState extends State<Home> {
                             children: [
                               Row(
                                 children: [
-                                  Text('Muscle', style: TextStyle(fontSize: 20, letterSpacing: 1)),
+                                  Text('Muscle',
+                                      style: TextStyle(
+                                          fontSize: 20, letterSpacing: 1)),
                                   Text(
                                     'Baba',
-                                    style: TextStyle(color: Colors.yellow[800], fontSize: 20, letterSpacing: 1),
+                                    style: TextStyle(
+                                        color: Colors.yellow[800],
+                                        fontSize: 20,
+                                        letterSpacing: 1),
                                   ),
                                 ],
                               ),
@@ -583,10 +676,12 @@ class _HomeState extends State<Home> {
                                       height: 130,
                                       width: 130,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10)),
                                       ), //
                                       child: Padding(
-                                        padding: const EdgeInsets.only(left: 8.0, top: 5),
+                                        padding: const EdgeInsets.only(
+                                            left: 8.0, top: 5),
                                         child: Column(
                                           children: [
                                             Container(
@@ -594,10 +689,12 @@ class _HomeState extends State<Home> {
                                               height: 80,
                                               decoration: BoxDecoration(
                                                 image: DecorationImage(
-                                                  image: AssetImage(Data().Shop[index]['image']),
+                                                  image: AssetImage(Data()
+                                                      .Shop[index]['image']),
                                                   fit: BoxFit.cover,
                                                 ),
-                                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
                                               ),
                                             ),
                                             SizedBox(
@@ -625,16 +722,22 @@ class _HomeState extends State<Home> {
                         height: 50,
                         color: Colors.white,
                         child: Padding(
-                          padding: EdgeInsets.only(top: 8.0, right: 10.0, left: 10.0),
+                          padding: EdgeInsets.only(
+                              top: 8.0, right: 10.0, left: 10.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
                                 children: [
-                                  Text('Discover', style: TextStyle(fontSize: 20, letterSpacing: 1)),
+                                  Text('Discover',
+                                      style: TextStyle(
+                                          fontSize: 20, letterSpacing: 1)),
                                   Text(
                                     ' Blogs',
-                                    style: TextStyle(color: Colors.orange, fontSize: 20, letterSpacing: 1),
+                                    style: TextStyle(
+                                        color: Colors.orange,
+                                        fontSize: 20,
+                                        letterSpacing: 1),
                                   ),
                                 ],
                               ),
@@ -648,24 +751,31 @@ class _HomeState extends State<Home> {
                                     setState(() {
                                       isLoading = true;
                                     });
-                                    var getCat = await ApiProvider().getCategories();
+                                    var getCat =
+                                        await ApiProvider().getCategories();
                                     if (getCat["success"] == true) {
                                       lstGetCategories.clear();
                                       if (getCat["data"] != null) {
                                         getCat["data"].forEach((element) {
-                                          GetCategories objGetCategories = new GetCategories();
+                                          GetCategories objGetCategories =
+                                              new GetCategories();
                                           objGetCategories.id = element["id"];
-                                          objGetCategories.name = element["name"];
-                                          lstGetCategories.add(objGetCategories);
+                                          objGetCategories.name =
+                                              element["name"];
+                                          lstGetCategories
+                                              .add(objGetCategories);
                                         });
-                                        final result = await showConfirmationDialog(
+                                        final result =
+                                            await showConfirmationDialog(
                                           context: context,
                                           title: 'Select Blog Category',
                                           actions: [
                                             ...List.generate(
                                               lstGetCategories.length,
                                               (index) => AlertDialogAction(
-                                                label: lstGetCategories[index].name.toString(),
+                                                label: lstGetCategories[index]
+                                                    .name
+                                                    .toString(),
                                                 key: lstGetCategories[index].id,
                                               ),
                                             ),
@@ -678,32 +788,46 @@ class _HomeState extends State<Home> {
                                               catName = element.name;
                                             }
                                           });
-                                          var blogs = await ApiProvider().getBlogs();
+                                          var blogs =
+                                              await ApiProvider().getBlogs();
                                           if (blogs["success"] == true) {
                                             if (blogs["data"] != null) {
                                               lstGetBlogs.clear();
                                               blogs["data"].forEach((element) {
-                                                if (element["category_name"] == catName) {
-                                                  GetBlogs objGetBlogs = new GetBlogs();
-                                                  objGetBlogs.id = element["id"];
-                                                  objGetBlogs.title = element["title"];
-                                                  objGetBlogs.categoryName = element["category_name"];
-                                                  objGetBlogs.shortDescription = element["short_description"];
-                                                  objGetBlogs.longDescription = element["long_description"];
-                                                  objGetBlogs.image = element["image"];
+                                                if (element["category_name"] ==
+                                                    catName) {
+                                                  GetBlogs objGetBlogs =
+                                                      new GetBlogs();
+                                                  objGetBlogs.id =
+                                                      element["id"];
+                                                  objGetBlogs.title =
+                                                      element["title"];
+                                                  objGetBlogs.categoryName =
+                                                      element["category_name"];
+                                                  objGetBlogs.shortDescription =
+                                                      element[
+                                                          "short_description"];
+                                                  objGetBlogs.longDescription =
+                                                      element[
+                                                          "long_description"];
+                                                  objGetBlogs.image =
+                                                      element["image"];
                                                   lstGetBlogs.add(objGetBlogs);
                                                 }
                                               });
                                             }
                                           } else {
-                                            Fluttertoast.showToast(msg: blogs["message"]);
+                                            Fluttertoast.showToast(
+                                                msg: blogs["message"]);
                                           }
                                         }
                                       } else {
-                                        Fluttertoast.showToast(msg: getCat["message"]);
+                                        Fluttertoast.showToast(
+                                            msg: getCat["message"]);
                                       }
                                     } else {
-                                      Fluttertoast.showToast(msg: getCat["message"]);
+                                      Fluttertoast.showToast(
+                                          msg: getCat["message"]);
                                     }
                                   } catch (e) {
                                     print(e);
@@ -732,7 +856,17 @@ class _HomeState extends State<Home> {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop, child: Blog()));
+                                      Navigator.push(
+                                        context,
+                                        PageTransition(
+                                          type: PageTransitionType.bottomToTop,
+                                          child: Blog(
+                                            blogId: lstGetBlogs[index]
+                                                .id
+                                                .toString(),
+                                          ),
+                                        ),
+                                      );
                                     },
                                     child: Container(
                                       height: 350,
@@ -743,11 +877,13 @@ class _HomeState extends State<Home> {
                                           Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
                                               children: [
                                                 CircleAvatar(
                                                   radius: 15,
-                                                  backgroundColor: Colors.orange,
+                                                  backgroundColor:
+                                                      Colors.orange,
                                                   child: Icon(
                                                     Icons.bubble_chart,
                                                     color: Colors.white,
@@ -760,7 +896,9 @@ class _HomeState extends State<Home> {
                                                 Flexible(
                                                   child: Text(
                                                     lstGetBlogs[index].title,
-                                                    style: TextStyle(fontSize: 18, color: Colors.black),
+                                                    style: TextStyle(
+                                                        fontSize: 18,
+                                                        color: Colors.black),
                                                   ),
                                                 )
                                               ],
@@ -772,8 +910,14 @@ class _HomeState extends State<Home> {
                                               children: [
                                                 Flexible(
                                                   child: Text(
-                                                    lstGetBlogs[index].shortDescription != null && lstGetBlogs[index].shortDescription != ""
-                                                        ? lstGetBlogs[index].shortDescription
+                                                    lstGetBlogs[index]
+                                                                    .shortDescription !=
+                                                                null &&
+                                                            lstGetBlogs[index]
+                                                                    .shortDescription !=
+                                                                ""
+                                                        ? lstGetBlogs[index]
+                                                            .shortDescription
                                                         : "",
                                                   ),
                                                 )
@@ -786,27 +930,40 @@ class _HomeState extends State<Home> {
                                               height: 200,
                                               decoration: BoxDecoration(
                                                 image: DecorationImage(
-                                                  image: lstGetBlogs[index].image != null && lstGetBlogs[index].image != ""
+                                                  image: lstGetBlogs[index]
+                                                                  .image !=
+                                                              null &&
+                                                          lstGetBlogs[index]
+                                                                  .image !=
+                                                              ""
                                                       ? NetworkImage(
-                                                          lstGetBlogs[index].image,
+                                                          lstGetBlogs[index]
+                                                              .image,
                                                         )
-                                                      : AssetImage("assets/blog/blog1.png"),
+                                                      : AssetImage(
+                                                          "assets/blog/blog1.png"),
                                                   fit: BoxFit.contain,
                                                 ),
-                                                borderRadius: BorderRadius.all(Radius.circular(15)),
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(15)),
                                               ),
                                             ),
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
                                               children: [
                                                 Row(
                                                   children: [
                                                     Text(
                                                       '89 likes',
-                                                      style: TextStyle(color: Colors.black.withOpacity(0.5)),
+                                                      style: TextStyle(
+                                                          color: Colors.black
+                                                              .withOpacity(
+                                                                  0.5)),
                                                     ),
                                                     // SizedBox(
                                                     //   width: 5,
@@ -864,7 +1021,8 @@ class _HomeState extends State<Home> {
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
                                       '05:45 Am, 17 Oct',
-                                      style: TextStyle(color: Colors.black.withOpacity(0.5)),
+                                      style: TextStyle(
+                                          color: Colors.black.withOpacity(0.5)),
                                     ),
                                   ),
                                 ],
@@ -910,7 +1068,10 @@ class _HomeState extends State<Home> {
                           Flexible(
                               child: Text(
                             'Go to Top  ',
-                            style: TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
                           )),
                           Icon(
                             Icons.arrow_upward,
@@ -933,7 +1094,12 @@ class _HomeState extends State<Home> {
   List<GetCategories> lstGetCategories = [];
   List<GetBlogs> lstGetBlogs = [];
 
-  Widget hBar({BuildContext context, String lebel, IconData icon, Color color, Color gColor}) {
+  Widget hBar(
+      {BuildContext context,
+      String lebel,
+      IconData icon,
+      Color color,
+      Color gColor}) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     return Padding(
@@ -950,10 +1116,14 @@ class _HomeState extends State<Home> {
             ),
             borderRadius: BorderRadius.all(Radius.circular(10)),
             boxShadow: [
-              BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 2.0, spreadRadius: 1.0),
+              BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  blurRadius: 2.0,
+                  spreadRadius: 1.0),
             ]),
         child: Padding(
-          padding: EdgeInsets.only(left: _width * 0.65 * 0.05, right: _width * 0.65 * 0.05),
+          padding: EdgeInsets.only(
+              left: _width * 0.65 * 0.05, right: _width * 0.65 * 0.05),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
