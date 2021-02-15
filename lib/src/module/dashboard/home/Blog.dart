@@ -133,7 +133,6 @@ class _BlogState extends State<Blog> {
         isLoading = true;
       });
       blogs = await ApiProvider().getBlogDetail(widget.blogId);
-      print(blogs);
       setState(() {
         isLoading = false;
       });
@@ -164,8 +163,7 @@ class _BlogState extends State<Blog> {
         centerTitle: false,
         title: Text(
           "Blogs",
-          style: TextStyle(
-              fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
         ),
         elevation: 0.5,
         leading: IconButton(
