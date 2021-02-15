@@ -1,4 +1,3 @@
-import 'package:fitmemax/LandingPage.dart';
 import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,7 +11,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -37,7 +35,7 @@ class MyApp extends StatelessWidget {
           const Locale('es'),
           const Locale('en'),
         ],
-        home: LandingPage(),
+        home: Dashboard(),
       ),
     );
   }

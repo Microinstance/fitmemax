@@ -2,6 +2,7 @@ import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:fitmemax/src/module/dashboard/CoachConsultant/Coach.dart';
 import 'package:fitmemax/src/module/dashboard/home/Home.dart';
 import 'package:fitmemax/src/module/dashboard/home/Notifications.dart';
+import 'package:fitmemax/src/module/dashboard/home/Settings/Settings.dart';
 import 'package:fitmemax/src/module/dashboard/plan/Plan.dart';
 import 'package:fitmemax/src/module/dashboard/profile/Profile.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileHome.dart';
@@ -118,15 +119,20 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                       ),
                       actions: [
                         Padding(
-                          padding: EdgeInsets.only(right: 15),
-                          child: Icon(
-                            Icons.account_balance_wallet,
-                            size: 25,
-                            color: Colors.white,
+                          padding: EdgeInsets.only(right: 0),
+                          child: IconButton(
+                            onPressed: (){
+                              Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Notifications()));
+                            },
+                            icon: Icon(
+                              Icons.account_balance_wallet,
+                              size: 25,
+                              color: Colors.orangeAccent,
+                            ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(right: 15),
+                          padding: EdgeInsets.only(right: 0),
                           child: IconButton(
                             onPressed: (){
                               Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Notifications()));
@@ -139,11 +145,16 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(right: 15),
-                          child: Icon(
-                            Icons.alarm,
-                            size: 25,
-                            color: Colors.cyanAccent,
+                          padding: EdgeInsets.only(right: 0),
+                          child: IconButton(
+                            onPressed: (){
+                              Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Settings()));
+                            },
+                            icon: Icon(
+                              Icons.settings,
+                              size: 25,
+                              color: Colors.cyan,
+                            ),
                           ),
                         ),
                       ],
