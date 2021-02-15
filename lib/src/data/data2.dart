@@ -11,13 +11,6 @@ class Data {
    'images/userImage8.jpeg',
  ];
 
- List blogCatagory = [
-   "All",
-   "Fitmemax",
-   "Stories",
-   "Life hacks",
-  "Q and A",
- ];
 
   List MedicalCC = [
     'Thytroid',
