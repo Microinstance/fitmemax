@@ -651,7 +651,6 @@ class _HomeState extends State<Home> {
                                     var getCat = await ApiProvider().getCategories();
                                     if (getCat["success"] == true) {
                                       lstGetCategories.clear();
-                                      print(getCat["data"][0]["id"]);
                                       if (getCat["data"] != null) {
                                         getCat["data"].forEach((element) {
                                           GetCategories objGetCategories = new GetCategories();
@@ -659,7 +658,6 @@ class _HomeState extends State<Home> {
                                           objGetCategories.name = element["name"];
                                           lstGetCategories.add(objGetCategories);
                                         });
-
                                         final result = await showConfirmationDialog(
                                           context: context,
                                           title: 'Select Blog Category',
@@ -673,7 +671,34 @@ class _HomeState extends State<Home> {
                                             ),
                                           ],
                                         );
-                                        print(result);
+                                        if (result != null) {
+                                          String catName = "";
+                                          lstGetCategories.forEach((element) {
+                                            if (element.id == result) {
+                                              catName = element.name;
+                                            }
+                                          });
+                                          var blogs = await ApiProvider().getBlogs();
+                                          if (blogs["success"] == true) {
+                                            if (blogs["data"] != null) {
+                                              lstGetBlogs.clear();
+                                              blogs["data"].forEach((element) {
+                                                if (element["category_name"] == catName) {
+                                                  GetBlogs objGetBlogs = new GetBlogs();
+                                                  objGetBlogs.id = element["id"];
+                                                  objGetBlogs.title = element["title"];
+                                                  objGetBlogs.categoryName = element["category_name"];
+                                                  objGetBlogs.shortDescription = element["short_description"];
+                                                  objGetBlogs.longDescription = element["long_description"];
+                                                  objGetBlogs.image = element["image"];
+                                                  lstGetBlogs.add(objGetBlogs);
+                                                }
+                                              });
+                                            }
+                                          } else {
+                                            Fluttertoast.showToast(msg: blogs["message"]);
+                                          }
+                                        }
                                       } else {
                                         Fluttertoast.showToast(msg: getCat["message"]);
                                       }
@@ -693,152 +718,160 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                       ),
-                      Container(
-                        child: ListView.builder(
-                            itemCount: 5,
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemBuilder: (BuildContext context, int index) {
-                              return Container(
-                                color: Colors.white,
-                                child: Padding(
-                                  padding: EdgeInsets.only(bottom: 20),
-                                  child: Stack(
-                                    alignment: Alignment.topRight,
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () {
-                                          Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop, child: Blog()));
-                                        },
-                                        child: Container(
-                                          height: 350,
-                                          width: _width,
-                                          color: Colors.white,
-                                          child: Column(
-                                            children: [
-                                              Padding(
-                                                padding: const EdgeInsets.all(8.0),
-                                                child: Row(
-                                                  mainAxisAlignment: MainAxisAlignment.start,
-                                                  children: [
-                                                    CircleAvatar(
-                                                      radius: 15,
-                                                      backgroundColor: Colors.orange,
-                                                      child: Icon(
-                                                        Icons.bubble_chart,
-                                                        color: Colors.white,
-                                                        size: 25,
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      width: _width * 0.04,
-                                                    ),
-                                                    Flexible(
-                                                        child: Text(
-                                                      'Life Hacks Blog',
-                                                      style: TextStyle(fontSize: 18, color: Colors.black),
-                                                    ))
-                                                  ],
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.all(8.0),
-                                                child: Row(
-                                                  children: [
-                                                    Flexible(
-                                                      child: Text('Starting the Navaratri fast today? These tips will come handy.tap to view.'),
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.all(8.0),
-                                                child: Container(
-                                                  height: 200,
-                                                  decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                      image: AssetImage('assets/blog/blog1.png'),
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                      ListView.builder(
+                        itemCount: lstGetBlogs.length,
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemBuilder: (BuildContext context, int index) {
+                          return Container(
+                            color: Colors.white,
+                            child: Padding(
+                              padding: EdgeInsets.only(bottom: 20),
+                              child: Stack(
+                                alignment: Alignment.topRight,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop, child: Blog()));
+                                    },
+                                    child: Container(
+                                      height: 350,
+                                      width: _width,
+                                      color: Colors.white,
+                                      child: Column(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              children: [
+                                                CircleAvatar(
+                                                  radius: 15,
+                                                  backgroundColor: Colors.orange,
+                                                  child: Icon(
+                                                    Icons.bubble_chart,
+                                                    color: Colors.white,
+                                                    size: 25,
                                                   ),
                                                 ),
+                                                SizedBox(
+                                                  width: _width * 0.04,
+                                                ),
+                                                Flexible(
+                                                  child: Text(
+                                                    lstGetBlogs[index].title,
+                                                    style: TextStyle(fontSize: 18, color: Colors.black),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Row(
+                                              children: [
+                                                Flexible(
+                                                  child: Text(
+                                                    lstGetBlogs[index].shortDescription != null && lstGetBlogs[index].shortDescription != ""
+                                                        ? lstGetBlogs[index].shortDescription
+                                                        : "",
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Container(
+                                              height: 200,
+                                              decoration: BoxDecoration(
+                                                image: DecorationImage(
+                                                  image: lstGetBlogs[index].image != null && lstGetBlogs[index].image != ""
+                                                      ? NetworkImage(
+                                                          lstGetBlogs[index].image,
+                                                        )
+                                                      : AssetImage("assets/blog/blog1.png"),
+                                                  fit: BoxFit.contain,
+                                                ),
+                                                borderRadius: BorderRadius.all(Radius.circular(15)),
                                               ),
-                                              Padding(
-                                                padding: const EdgeInsets.all(8.0),
-                                                child: Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Row(
                                                   children: [
-                                                    Row(
-                                                      children: [
-                                                        Text(
-                                                          '89 likes',
-                                                          style: TextStyle(color: Colors.black.withOpacity(0.5)),
-                                                        ),
-                                                        SizedBox(
-                                                          width: 5,
-                                                        ),
-                                                        Text(
-                                                          '65 comments',
-                                                          style: TextStyle(color: Colors.black.withOpacity(0.5)),
-                                                        ),
-                                                        SizedBox(width: 5),
-                                                        Text(
-                                                          '89 shares',
-                                                          style: TextStyle(color: Colors.black.withOpacity(0.5)),
-                                                        ),
-                                                        SizedBox(
-                                                          width: 5,
-                                                        ),
-                                                      ],
+                                                    Text(
+                                                      '89 likes',
+                                                      style: TextStyle(color: Colors.black.withOpacity(0.5)),
                                                     ),
-                                                    Row(
-                                                      children: [
-                                                        Icon(
-                                                          Icons.favorite_border,
-                                                          color: Colors.red,
-                                                          size: 20,
-                                                        ),
-                                                        SizedBox(
-                                                          width: 10,
-                                                        ),
-                                                        Icon(
-                                                          Icons.insert_comment,
-                                                          color: Colors.deepPurple,
-                                                          size: 20,
-                                                        ),
-                                                        SizedBox(
-                                                          width: 10,
-                                                        ),
-                                                        Icon(
-                                                          Icons.share,
-                                                          color: Colors.orange,
-                                                          size: 20,
-                                                        ),
-                                                        SizedBox(
-                                                          width: 10,
-                                                        ),
-                                                      ],
-                                                    )
+                                                    // SizedBox(
+                                                    //   width: 5,
+                                                    // ),
+                                                    // Text(
+                                                    //   '65 comments',
+                                                    //   style: TextStyle(color: Colors.black.withOpacity(0.5)),
+                                                    // ),
+                                                    // SizedBox(width: 5),
+                                                    // Text(
+                                                    //   '89 shares',
+                                                    //   style: TextStyle(color: Colors.black.withOpacity(0.5)),
+                                                    // ),
+                                                    // SizedBox(
+                                                    //   width: 5,
+                                                    // ),
                                                   ],
                                                 ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
+                                                Row(
+                                                  children: [
+                                                    Icon(
+                                                      Icons.favorite_border,
+                                                      color: Colors.red,
+                                                      size: 20,
+                                                    ),
+                                                    SizedBox(
+                                                      width: 10,
+                                                    ),
+                                                    // Icon(
+                                                    //   Icons.insert_comment,
+                                                    //   color: Colors.deepPurple,
+                                                    //   size: 20,
+                                                    // ),
+                                                    // SizedBox(
+                                                    //   width: 10,
+                                                    // ),
+                                                    // Icon(
+                                                    //   Icons.share,
+                                                    //   color: Colors.orange,
+                                                    //   size: 20,
+                                                    // ),
+                                                    // SizedBox(
+                                                    //   width: 10,
+                                                    // ),
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                          )
+                                        ],
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          '05:45 Am, 17 Oct',
-                                          style: TextStyle(color: Colors.black.withOpacity(0.5)),
-                                        ),
-                                      ),
-                                    ],
+                                    ),
                                   ),
-                                ),
-                              );
-                            }),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      '05:45 Am, 17 Oct',
+                                      style: TextStyle(color: Colors.black.withOpacity(0.5)),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -898,6 +931,7 @@ class _HomeState extends State<Home> {
   }
 
   List<GetCategories> lstGetCategories = [];
+  List<GetBlogs> lstGetBlogs = [];
 
   Widget hBar({BuildContext context, String lebel, IconData icon, Color color, Color gColor}) {
     double _width = MediaQuery.of(context).size.width;
@@ -1066,5 +1100,23 @@ class GetCategories {
   GetCategories({
     this.id,
     this.name,
+  });
+}
+
+class GetBlogs {
+  int id;
+  String title;
+  String categoryName;
+  String shortDescription;
+  String longDescription;
+  String image;
+
+  GetBlogs({
+    this.id,
+    this.title,
+    this.categoryName,
+    this.shortDescription,
+    this.image,
+    this.longDescription,
   });
 }
