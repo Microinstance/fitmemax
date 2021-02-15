@@ -31,8 +31,7 @@ class ApiProvider {
     return result;
   }
 
-  Future userRegistration(
-      String email, String name, String password, String mobile) async {
+  Future userRegistration(String email, String name, String password, String mobile) async {
     var result;
     try {
       var urlString = ConstanceData.BaseApiUrl + "user/user-registration";
@@ -332,8 +331,7 @@ class ApiProvider {
   Future getSubCategories(String categoryId) async {
     var result;
     try {
-      var urlString =
-          ConstanceData.BaseApiUrl + "get-sub-categories" + categoryId;
+      var urlString = ConstanceData.BaseApiUrl + "get-sub-categories" + categoryId;
       var response = await http.get(Uri.encodeFull(urlString), headers: {
         "Accept": "application/json",
       });
@@ -376,8 +374,7 @@ class ApiProvider {
   Future getBlogDetail(String blogId) async {
     var result;
     try {
-      var urlString =
-          "http://project.neutronvision.com/fitBook/public/api/v1/blog-details/$blogId";
+      var urlString = ConstanceData.BaseApiUrl + "blog-details/$blogId";
       var response = await http.get(Uri.encodeFull(urlString), headers: {
         "Accept": "application/json",
       });
