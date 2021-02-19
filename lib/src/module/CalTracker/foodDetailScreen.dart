@@ -132,13 +132,14 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                                   left: 8,
                                   right: 8,
                                 ),
+                                hintText: "1.5",
                                 hintStyle: Theme.of(context)
                                     .textTheme
                                     .caption
                                     .copyWith(
                                       color: Theme.of(context)
                                           .textTheme
-                                          .caption
+                                          .bodyText1
                                           .color,
                                       fontSize: 14,
                                     ),
@@ -178,13 +179,14 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                                   left: 8,
                                   right: 8,
                                 ),
+                                hintText: "Small",
                                 hintStyle: Theme.of(context)
                                     .textTheme
                                     .caption
                                     .copyWith(
                                       color: Theme.of(context)
                                           .textTheme
-                                          .caption
+                                          .bodyText1
                                           .color,
                                       fontSize: 14,
                                     ),
