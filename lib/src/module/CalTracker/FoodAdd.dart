@@ -1,3 +1,4 @@
+import 'package:fitmemax/src/module/CalTracker/SearchFood.dart';
 import 'package:fitmemax/src/widgets/CartItemNumber.dart';
 import 'package:fitmemax/src/widgets/loginButtonTwo.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
@@ -16,26 +17,45 @@ class _FoodAddState extends State<FoodAdd> {
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SearchFoodScreen(),
+            ),
+          );
+        },
         backgroundColor: Palette.primaryColor,
-        child: Icon(Icons.add,color: Colors.white,size: 25,),
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 25,
+        ),
       ),
       appBar: AppBar(
         leading: IconButton(
-          onPressed: (){
+          onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back,color: Colors.white,),
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
         ),
         backgroundColor: Palette.primaryColor,
-        title: Text("Lunch",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 20),),
+        title: Text(
+          "Lunch",
+          style: TextStyle(
+              fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20),
+        ),
       ),
       body: ListView.builder(
         itemCount: 3,
         shrinkWrap: true,
-        itemBuilder: (BuildContext context, int index){
+        itemBuilder: (BuildContext context, int index) {
           return Padding(
-            padding: const EdgeInsets.only(right: 15,left: 15,top: 10,bottom: 10),
+            padding:
+                const EdgeInsets.only(right: 15, left: 15, top: 10, bottom: 10),
             child: Container(
               width: _width,
               decoration: BoxDecoration(
@@ -48,59 +68,117 @@ class _FoodAddState extends State<FoodAdd> {
                   children: [
                     Row(
                       children: [
-                        Flexible(child: Text("Chicken Shawarma Roll",style: GoogleFonts.lato(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18,letterSpacing: 1),)),
+                        Flexible(
+                            child: Text(
+                          "Chicken Shawarma Roll",
+                          style: GoogleFonts.lato(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              letterSpacing: 1),
+                        )),
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 10,right: 10,top: 10,bottom: 10),
+                      padding: const EdgeInsets.only(
+                          left: 10, right: 10, top: 10, bottom: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                         Column(
-                           mainAxisAlignment: MainAxisAlignment.center,
-                           children: [
-                             Text("Protien",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: Colors.black),),
-                             SizedBox(
-                               height: 3,
-                             ),
-                             Text("29.80",style: GoogleFonts.lato(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black),),
-                           ],
-                         ),
-                         Column(
+                          Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Carbs",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: Colors.black),),
+                              Text(
+                                "Protien",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              ),
                               SizedBox(
                                 height: 3,
                               ),
-                              Text("29.80",style: GoogleFonts.lato(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black),),
+                              Text(
+                                "29.80",
+                                style: GoogleFonts.lato(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              ),
                             ],
                           ),
-                         Column(
+                          Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Fat",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: Colors.black),),
+                              Text(
+                                "Carbs",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              ),
                               SizedBox(
                                 height: 3,
                               ),
-                              Text("29.80",style: GoogleFonts.lato(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black),),
+                              Text(
+                                "29.80",
+                                style: GoogleFonts.lato(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              ),
                             ],
                           ),
-                         Column(
+                          Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Calori",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: Colors.black),),
+                              Text(
+                                "Fat",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              ),
                               SizedBox(
                                 height: 3,
                               ),
-                              Text("29.80",style: GoogleFonts.lato(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black),),
+                              Text(
+                                "29.80",
+                                style: GoogleFonts.lato(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Calori",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              ),
+                              SizedBox(
+                                height: 3,
+                              ),
+                              Text(
+                                "29.80",
+                                style: GoogleFonts.lato(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              ),
                             ],
                           ),
                         ],
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 10,bottom: 10,left: 5,right: 5),
+                      padding: const EdgeInsets.only(
+                          top: 10, bottom: 10, left: 5, right: 5),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -109,7 +187,7 @@ class _FoodAddState extends State<FoodAdd> {
                             padding: const EdgeInsets.only(top: 5),
                             child: loginButtonTwo(
                               title: "Remove",
-                              onPressed: (){},
+                              onPressed: () {},
                               colors: Colors.red,
                             ),
                           )

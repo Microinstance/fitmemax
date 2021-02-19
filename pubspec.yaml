@@ -65,8 +65,7 @@ dependencies:
   shared_preferences: ^0.5.12+4
   adaptive_dialog: ^0.9.3
   flutter_html: ^1.1.1
-  flutter_echarts: ^1.5.0
-
+  waveprogressbar_flutter: ^0.1.2
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,6 @@
 import 'package:fitmemax/src/module/CalTracker/FoodAdd.dart';
 import 'package:fitmemax/src/widgets/MacroMicroCharts.dart';
+import 'package:fitmemax/src/widgets/WaterTankChart.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_date_picker_timeline/flutter_date_picker_timeline.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
+import 'package:fitmemax/src/module/CalTracker/AddMealScreen.dart';
 
 class CalTrackerDashboard extends StatefulWidget {
   @override
@@ -24,14 +26,24 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AddMealScreen(),
+            ),
+          );
+        },
         backgroundColor: Palette.primaryColor,
-        child: Icon(Icons.add,color: Colors.white,size: 25,),
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 25,
+        ),
       ),
       backgroundColor: Colors.white,
       body: NestedScrollView(
-        headerSliverBuilder:
-            (BuildContext context, bool innerBoxIsScrolled) {
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             SliverAppBar(
               automaticallyImplyLeading: false,
@@ -41,7 +53,7 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
               expandedHeight: 300,
               floating: false,
               flexibleSpace: FlexibleSpaceBar(
-                background:  SafeArea(
+                background: SafeArea(
                   child: Stack(
                     overflow: Overflow.visible,
                     children: [
@@ -113,7 +125,8 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
                               padding: const EdgeInsets.only(
                                   top: 200, left: 25, right: 25),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   _neutrentBar(
                                       colors: Colors.yellow,
@@ -140,7 +153,8 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
                                 width: 40,
                                 decoration: BoxDecoration(
                                   color: Colors.white.withOpacity(0.8),
-                                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(30)),
                                 ),
                               ),
                             ),
@@ -152,30 +166,41 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
                         child: Container(
                           height: 5,
                           width: 40,
-                          decoration: BoxDecoration(color: Colors.white.withOpacity(0.7),borderRadius: BorderRadius.all(Radius.circular(15))),
+                          decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15))),
                         ),
                       ),
                       Align(
                         alignment: Alignment.topLeft,
                         child: Padding(
-                          padding: const EdgeInsets.only(top: 5,left: 3),
+                          padding: const EdgeInsets.only(top: 5, left: 3),
                           child: IconButton(
-                            onPressed: (){
+                            onPressed: () {
                               Navigator.pop(context);
                             },
-                            icon: Icon(Icons.arrow_back_ios_rounded,size: 25,color: Colors.white,),
+                            icon: Icon(
+                              Icons.arrow_back_ios_rounded,
+                              size: 25,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
                       Align(
                         alignment: Alignment.topRight,
                         child: Padding(
-                          padding: const EdgeInsets.only(top: 5,right: 3),
+                          padding: const EdgeInsets.only(top: 5, right: 3),
                           child: IconButton(
-                            onPressed: (){
+                            onPressed: () {
                               Navigator.pop(context);
                             },
-                            icon: Icon(Icons.settings,size: 25,color: Colors.white,),
+                            icon: Icon(
+                              Icons.settings,
+                              size: 25,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
@@ -195,73 +220,81 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
                 color: Palette.primaryColor,
                 child: SafeArea(
                   child: Container(
-                    alignment: Alignment.bottomCenter,
+                      alignment: Alignment.bottomCenter,
                       padding: const EdgeInsets.only(top: 11, bottom: 11),
-                      decoration: BoxDecoration(color: const Color(0xFFF5F5F5),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF5F5F5),
                       ),
                       child: FlutterDatePickerTimeline(
                         startDate: DateTime(2021, 01, 01),
                         endDate: DateTime(2021, 12, 00),
                         initialSelectedDate: DateTime.now(),
                         selectedItemBackgroundColor: Palette.primaryColor,
-                        selectedItemTextStyle: GoogleFonts.lato(fontSize: 17,color: Colors.white,fontWeight: FontWeight.bold),
+                        selectedItemTextStyle: GoogleFonts.lato(
+                            fontSize: 17,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
                         onSelectedDateChange: (DateTime dateTime) {
                           print(dateTime);
                         },
-                      )
-                  ),
+                      )),
                 ),
               ),
             ),
             Expanded(
-             child: Container(
-               child: MediaQuery.removePadding(
-                 context: context,
-                 removeBottom: true,
-                 removeTop: true,
-                 child: ListView(
-                   shrinkWrap: true,
-                   children: [
-                     SizedBox(height: 25,),
-                     _diat(
-                       width: _width,
-                       Titel: 'Breakfast',
-                       goall: "Goal 256 KCal",
-                       images : "assets/calori/breckfast.png",
-                       select: false,
-                     ),
-                     _diat(
-                       width: _width,
-                       Titel: 'Lunch',
-                       goall: "Goal 256 KCal",
-                       images : "assets/calori/lunch.png",
-                       select: true,
-                     ),
-                     _diat(
-                       width: _width,
-                       Titel: 'Dinner',
-                       goall: "Goal 256 KCal",
-                       images : "assets/calori/dinner.png",
-                       select: true,
-                     ),
-                     MacroMicroCharts(),
-                   ],
-                 ),
-               ),
-             ),
-           ),
+              child: Container(
+                child: MediaQuery.removePadding(
+                  context: context,
+                  removeBottom: true,
+                  removeTop: true,
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: [
+                      SizedBox(
+                        height: 25,
+                      ),
+                      _diat(
+                        width: _width,
+                        Titel: 'Breakfast',
+                        goall: "Goal 256 KCal",
+                        images: "assets/calori/breckfast.png",
+                        select: false,
+                      ),
+                      _diat(
+                        width: _width,
+                        Titel: 'Lunch',
+                        goall: "Goal 256 KCal",
+                        images: "assets/calori/lunch.png",
+                        select: true,
+                      ),
+                      _diat(
+                        width: _width,
+                        Titel: 'Dinner',
+                        goall: "Goal 256 KCal",
+                        images: "assets/calori/dinner.png",
+                        select: true,
+                      ),
+                      MacroMicroCharts(),
+                      WaterTankChart(),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _neutrentBar({String titel, String dec, double percent, Color colors}) {
+  Widget _neutrentBar(
+      {String titel, String dec, double percent, Color colors}) {
     return Column(
       children: [
         Text(
           titel,
-          style: GoogleFonts.lato(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+          style: GoogleFonts.lato(
+              fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
         ),
         Padding(
           padding: const EdgeInsets.only(top: 10, bottom: 10),
@@ -294,10 +327,17 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
       ],
     );
   }
-  Widget _diat({double width, String Titel, String goall,String images,bool select = true}){
+
+  Widget _diat(
+      {double width,
+      String Titel,
+      String goall,
+      String images,
+      bool select = true}) {
     return GestureDetector(
-      onTap: (){
-        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: FoodAdd()));
+      onTap: () {
+        Navigator.push(context,
+            PageTransition(type: PageTransitionType.fade, child: FoodAdd()));
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -308,7 +348,7 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
               alignment: Alignment.topRight,
               children: [
                 Container(
-                  width: width-40,
+                  width: width - 40,
                   // height: 170,
                   decoration: BoxDecoration(
                     color: Color(0xFFeef6f1),
@@ -318,7 +358,8 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 15,top: 15,right: 15),
+                        padding:
+                            const EdgeInsets.only(left: 15, top: 15, right: 15),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -327,16 +368,21 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
                               width: 80,
                               decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image: AssetImage(images),
-                                    fit: BoxFit.contain,
-                                    alignment: Alignment.centerLeft
-                                  )
-                              ),
+                                      image: AssetImage(images),
+                                      fit: BoxFit.contain,
+                                      alignment: Alignment.centerLeft)),
                             ),
                             SizedBox(
                               height: 10,
                             ),
-                            Text(Titel,style: GoogleFonts.lato(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 26,letterSpacing: 1),),
+                            Text(
+                              Titel,
+                              style: GoogleFonts.lato(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 26,
+                                  letterSpacing: 1),
+                            ),
                             SizedBox(
                               height: 10,
                             ),
@@ -353,59 +399,79 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
                           ],
                         ),
                       ),
-                       Container(
-                         child: select ? Column(
-                          children: [
-                            Container(
-                              height: 2,
-                              color: Colors.white,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 15,bottom: 15,right: 15,left: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      Container(
+                        child: select
+                            ? Column(
                                 children: [
-                                  Text(
-                                    "256 kCal",
-                                    style: GoogleFonts.roboto(
-                                        color: Colors.black.withOpacity(0.4),
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.bold),
+                                  Container(
+                                    height: 2,
+                                    color: Colors.white,
                                   ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Text(
-                                        "24 kCal",
-                                        style: GoogleFonts.roboto(
-                                            color: Colors.black.withOpacity(0.4),
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "  UNDER",
-                                        style: GoogleFonts.roboto(
-                                            color: Palette.primaryColor,
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 15,
+                                        bottom: 15,
+                                        right: 15,
+                                        left: 15),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "256 kCal",
+                                          style: GoogleFonts.roboto(
+                                              color:
+                                                  Colors.black.withOpacity(0.4),
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              "24 kCal",
+                                              style: GoogleFonts.roboto(
+                                                  color: Colors.black
+                                                      .withOpacity(0.4),
+                                                  fontSize: 13,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            Text(
+                                              "  UNDER",
+                                              style: GoogleFonts.roboto(
+                                                  color: Palette.primaryColor,
+                                                  fontSize: 13,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  )
                                 ],
-                              ),
-                            )
-                          ],
-                      ) : SizedBox(),
-                       )
+                              )
+                            : SizedBox(),
+                      )
                     ],
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: CircleAvatar(
-                      radius: 20,
-                      backgroundColor: Colors.white,
-                      child: select ? Icon(Icons.face,color: Colors.blue,size: 30,) : Icon(Icons.add,color: Palette.primaryColor,size: 20,),
+                    radius: 20,
+                    backgroundColor: Colors.white,
+                    child: select
+                        ? Icon(
+                            Icons.face,
+                            color: Colors.blue,
+                            size: 30,
+                          )
+                        : Icon(
+                            Icons.add,
+                            color: Palette.primaryColor,
+                            size: 20,
+                          ),
                   ),
                 ),
               ],
@@ -415,5 +481,4 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
       ),
     );
   }
-
 }
