@@ -1,9 +1,11 @@
+import 'package:fitmemax/src/module/CalTracker/FoodAdd.dart';
 import 'package:fitmemax/src/widgets/MacroMicroCharts.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_date_picker_timeline/flutter_date_picker_timeline.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 class CalTrackerDashboard extends StatefulWidget {
@@ -21,6 +23,11 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){},
+        backgroundColor: Palette.primaryColor,
+        child: Icon(Icons.add,color: Colors.white,size: 25,),
+      ),
       backgroundColor: Colors.white,
       body: NestedScrollView(
         headerSliverBuilder:
@@ -221,7 +228,7 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
                        Titel: 'Breakfast',
                        goall: "Goal 256 KCal",
                        images : "assets/calori/breckfast.png",
-                       select: true,
+                       select: false,
                      ),
                      _diat(
                        width: _width,
@@ -287,120 +294,125 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
       ],
     );
   }
-  Widget _diat({double width, String Titel, String goall,String images,bool select = false}){
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 25),
-          child: Stack(
-            alignment: Alignment.topRight,
-            children: [
-              Container(
-                width: width-40,
-                // height: 170,
-                decoration: BoxDecoration(
-                  color: Color(0xFFeef6f1),
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15,top: 15,right: 15),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 50,
-                            width: 80,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage(images),
-                                  fit: BoxFit.contain,
-                                  alignment: Alignment.centerLeft
-                                )
+  Widget _diat({double width, String Titel, String goall,String images,bool select = true}){
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: FoodAdd()));
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 25),
+            child: Stack(
+              alignment: Alignment.topRight,
+              children: [
+                Container(
+                  width: width-40,
+                  // height: 170,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFeef6f1),
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15,top: 15,right: 15),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              height: 50,
+                              width: 80,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage(images),
+                                    fit: BoxFit.contain,
+                                    alignment: Alignment.centerLeft
+                                  )
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(Titel,style: GoogleFonts.lato(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 26,letterSpacing: 1),),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 20),
-                            child: Text(
-                              goall,
-                              style: GoogleFonts.roboto(
-                                  color: Colors.black.withOpacity(0.4),
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold),
+                            SizedBox(
+                              height: 10,
                             ),
-                          ),
-                        ],
+                            Text(Titel,style: GoogleFonts.lato(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 26,letterSpacing: 1),),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 20),
+                              child: Text(
+                                goall,
+                                style: GoogleFonts.roboto(
+                                    color: Colors.black.withOpacity(0.4),
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                     Container(
-                       child: select ? Column(
-                        children: [
-                          Container(
-                            height: 2,
-                            color: Colors.white,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 15,bottom: 15,right: 15,left: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "256 kCal",
-                                  style: GoogleFonts.roboto(
-                                      color: Colors.black.withOpacity(0.4),
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      "24 kCal",
-                                      style: GoogleFonts.roboto(
-                                          color: Colors.black.withOpacity(0.4),
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(
-                                      "  UNDER",
-                                      style: GoogleFonts.roboto(
-                                          color: Palette.primaryColor,
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                       Container(
+                         child: select ? Column(
+                          children: [
+                            Container(
+                              height: 2,
+                              color: Colors.white,
                             ),
-                          )
-                        ],
-                    ) : SizedBox(),
-                     )
-                  ],
+                            Padding(
+                              padding: const EdgeInsets.only(top: 15,bottom: 15,right: 15,left: 15),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "256 kCal",
+                                    style: GoogleFonts.roboto(
+                                        color: Colors.black.withOpacity(0.4),
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Text(
+                                        "24 kCal",
+                                        style: GoogleFonts.roboto(
+                                            color: Colors.black.withOpacity(0.4),
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(
+                                        "  UNDER",
+                                        style: GoogleFonts.roboto(
+                                            color: Palette.primaryColor,
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                      ) : SizedBox(),
+                       )
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: CircleAvatar(
-                    radius: 20,
-                    backgroundColor: Colors.white,
-                    child: select ? Icon(Icons.face,color: Colors.blue,size: 30,) : Icon(Icons.add,color: Palette.primaryColor,size: 20,),
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: CircleAvatar(
+                      radius: 20,
+                      backgroundColor: Colors.white,
+                      child: select ? Icon(Icons.face,color: Colors.blue,size: 30,) : Icon(Icons.add,color: Palette.primaryColor,size: 20,),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
