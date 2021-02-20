@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
           const Locale('es'),
           const Locale('en'),
         ],
-        home: CalTrackerDashboard(),
+        home: Dashboard(),
       ),
     );
   }
