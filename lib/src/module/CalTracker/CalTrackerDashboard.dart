@@ -1,5 +1,5 @@
 import 'package:fitmemax/src/module/CalTracker/FoodAdd.dart';
-import 'package:fitmemax/src/widgets/MacroMicroCharts.dart';
+import 'package:fitmemax/src/module/CalTracker/MacrsCharts.dart';
 import 'package:fitmemax/src/widgets/WaterTankChart.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +9,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:fitmemax/src/module/CalTracker/AddMealScreen.dart';
+
+import 'MicrosCharts.dart';
 
 class CalTrackerDashboard extends StatefulWidget {
   @override
@@ -25,22 +27,22 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => AddMealScreen(),
-            ),
-          );
-        },
-        backgroundColor: Palette.primaryColor,
-        child: Icon(
-          Icons.add,
-          color: Colors.white,
-          size: 25,
-        ),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Navigator.push(
+      //       context,
+      //       MaterialPageRoute(
+      //         builder: (context) => AddMealScreen(),
+      //       ),
+      //     );
+      //   },
+      //   backgroundColor: Palette.primaryColor,
+      //   child: Icon(
+      //     Icons.add,
+      //     color: Colors.white,
+      //     size: 25,
+      //   ),
+      // ),
       backgroundColor: Colors.white,
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -254,27 +256,47 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
                         height: 25,
                       ),
                       _diat(
+                        Dec: "The first meal of the day. Usually around 6am-9am",
                         width: _width,
                         Titel: 'Breakfast',
-                        goall: "Goal 256 KCal",
+                        goal: "Goal 256 KCal",
                         images: "assets/calori/breckfast.png",
                         select: false,
                       ),
                       _diat(
+                        Dec: "A meal eaten in the late morning, instead of BReakfast and lUNCH. (informal)",
                         width: _width,
-                        Titel: 'Lunch',
-                        goall: "Goal 256 KCal",
+                        Titel: 'Brunch',
+                        goal: "Goal 256 KCal",
                         images: "assets/calori/lunch.png",
                         select: true,
                       ),
                       _diat(
+                        Dec: "A meal in the middle of the day. Usually around noon or 1pm.",
+                        width: _width,
+                        Titel: 'Lunch',
+                        goal: "Goal 256 KCal",
+                        images: "assets/calori/brunch.png",
+                        select: true,
+                      ),
+                      _diat(
+                        Dec: "A light or informal evening meal. Around 5pm-6pm.",
+                        width: _width,
+                        Titel: 'Supper',
+                        goal: "Goal 256 KCal",
+                        images: "assets/calori/supper.png",
+                        select: true,
+                      ),
+                      _diat(
+                        Dec: "The main meal of the day, eaten either in the middle of the day or in the evening. Usually when people say 'Dinner', they mean an evening meal, around 8pm-9:30pm",
                         width: _width,
                         Titel: 'Dinner',
-                        goall: "Goal 256 KCal",
+                        goal: "Goal 256 KCal",
                         images: "assets/calori/dinner.png",
                         select: true,
                       ),
-                      MacroMicroCharts(),
+                      MacrsCharts(),
+                      MicrosCharts(),
                       WaterTankChart(),
                     ],
                   ),
@@ -331,7 +353,8 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
   Widget _diat(
       {double width,
       String Titel,
-      String goall,
+      String Dec,
+      String goal,
       String images,
       bool select = true}) {
     return GestureDetector(
@@ -349,7 +372,6 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
               children: [
                 Container(
                   width: width - 40,
-                  // height: 170,
                   decoration: BoxDecoration(
                     color: Color(0xFFeef6f1),
                     borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -383,13 +405,20 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
                                   fontSize: 26,
                                   letterSpacing: 1),
                             ),
-                            SizedBox(
-                              height: 10,
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 10,top: 5),
+                              child: Text(
+                               Dec,
+                                style: GoogleFonts.roboto(
+                                    color: Colors.black.withOpacity(0.3),
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(bottom: 20),
                               child: Text(
-                                goall,
+                                goal,
                                 style: GoogleFonts.roboto(
                                     color: Colors.black.withOpacity(0.4),
                                     fontSize: 15,

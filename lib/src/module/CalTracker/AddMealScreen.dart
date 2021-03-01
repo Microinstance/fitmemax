@@ -22,7 +22,7 @@ class _AddMealScreenState extends State<AddMealScreen> {
         ),
         backgroundColor: Palette.primaryColor,
         title: Text(
-          "Add Food",
+          "Add Meal Catagory",
           style: TextStyle(
               fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20),
         ),

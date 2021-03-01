@@ -1,4 +1,14 @@
+
+
 class Data {
+
+ List Micros = [
+   'Fiber',
+   'Sugar',
+   'Sodium',
+   'Potassium',
+ ];
+
 
  List User = [
    'images/userImage1.jpeg',

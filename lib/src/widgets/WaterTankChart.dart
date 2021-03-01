@@ -9,7 +9,7 @@ class WaterTankChart extends StatefulWidget {
 }
 
 class _WaterTankChartState extends State<WaterTankChart> {
-  double waterHeight = 0.0;
+  double waterHeight = 1;
   WaterController waterController = WaterController();
 
   @override
@@ -50,24 +50,28 @@ class _WaterTankChartState extends State<WaterTankChart> {
               ),
             ],
           ),
-          Container(
-            margin: EdgeInsets.only(top: 30.0),
-            child: Center(
-              child: WaveProgressBar(
-                strokeCircleColor: Palette.primaryColor,
-                flowSpeed: 3.0,
-                waveDistance: 50.0,
-                waterColor: Color(0xFF68BEFC),
-                heightController: waterController,
-                percentage: waterHeight,
-                size: Size(300, 300),
-                textStyle: TextStyle(
-                  color: Palette.primaryColor,
-                  fontSize: 40.0,
-                  fontWeight: FontWeight.bold,
+          Row(
+            children: [
+              Container(
+                margin: EdgeInsets.only(top: 30.0),
+                child: Center(
+                  child: WaveProgressBar(
+                    strokeCircleColor: Colors.blue,
+                    flowSpeed: 1.0,
+                    waveDistance: 25.0,
+                    waterColor: Colors.blue,
+                    heightController: waterController,
+                    percentage: waterHeight,
+                    size: Size(100, 100),
+                    textStyle: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
-            ),
+            ],
           ),
         ],
       ),

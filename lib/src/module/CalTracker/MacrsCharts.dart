@@ -3,12 +3,12 @@ import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class MacroMicroCharts extends StatefulWidget {
+class MacrsCharts extends StatefulWidget {
   @override
-  _MacroMicroChartsState createState() => _MacroMicroChartsState();
+  _MacrsChartsState createState() => _MacrsChartsState();
 }
 
-class _MacroMicroChartsState extends State<MacroMicroCharts> {
+class _MacrsChartsState extends State<MacrsCharts> {
   List timeLineOne = ['Weekly', 'Monthly'];
   String _timeLineOneValue = 'Weekly';
   String _timeLineTwoValue = 'Weekly';
@@ -41,7 +41,7 @@ class _MacroMicroChartsState extends State<MacroMicroCharts> {
                       width: 10,
                     ),
                     Text(
-                      "Macros and Micros",
+                      "Macros",
                       style: GoogleFonts.lato(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),
                     ),
                   ],
