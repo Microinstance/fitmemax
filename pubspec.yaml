@@ -24,8 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_localizations:
-    sdk: flutter
+#  flutter_localizations:
+#    sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -37,7 +37,7 @@ dependencies:
   page_transition: ^1.1.7+2
   liquid_swipe: ^1.5.0
   carousel_slider: ^2.3.1
-  calendar_timeline: ^0.6.3
+  calendar_timeline: ^0.7.0
   flutter_speed_dial_material_design: ^2.0.0
   font_awesome_flutter: ^8.10.0
   dotted_border: ^1.0.6
@@ -51,14 +51,13 @@ dependencies:
   google_fonts: ^1.1.1
   sleek_circular_slider: ^1.2.0+web
   flutter_date_picker_timeline: ^0.1.3
-  date_picker_timeline: ^1.2.1
   inview_notifier_list: ^1.0.0
   flutter_sparkline: ^0.1.0
   google_sign_in: ^4.5.6
   flutter_facebook_login: ^3.0.0
   sign_in_with_apple: ^2.5.4
   lottie: ^0.7.0+1
-  flutter_staggered_animations: ^0.1.2
+  flutter_staggered_animations: ^0.1.3
   delayed_display: ^1.1.0
   animator: ^2.0.2
   http: ^0.12.2
@@ -66,22 +65,26 @@ dependencies:
   adaptive_dialog: ^0.9.3
   flutter_html: ^1.1.1
   waveprogressbar_flutter: ^0.1.2
+  flutter_svg: ^0.19.3
+#  intl: 0.17.0-nullsafety.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+
+#dependency_overrides:
+#  intl: ">=0.16.0 <0.17.0"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
+
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
+
   assets:
     - assets/background/
     - assets/logo/

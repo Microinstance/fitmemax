@@ -9,7 +9,7 @@ class WaterTankChart extends StatefulWidget {
 }
 
 class _WaterTankChartState extends State<WaterTankChart> {
-  double waterHeight = 1;
+  double waterHeight = 0.4;
   WaterController waterController = WaterController();
 
   @override
@@ -50,27 +50,47 @@ class _WaterTankChartState extends State<WaterTankChart> {
               ),
             ],
           ),
-          Row(
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Text("As per your BMI you have to drink 10 glass of watter every day",style: GoogleFonts.lato(fontSize: 18,color: Colors.black.withOpacity(0.5),),),
+          ),
+          Stack(
+            alignment: Alignment.center,
             children: [
-              Container(
-                margin: EdgeInsets.only(top: 30.0),
-                child: Center(
-                  child: WaveProgressBar(
-                    strokeCircleColor: Colors.blue,
-                    flowSpeed: 1.0,
-                    waveDistance: 25.0,
-                    waterColor: Colors.blue,
-                    heightController: waterController,
-                    percentage: waterHeight,
-                    size: Size(100, 100),
-                    textStyle: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(top: 20.0,bottom: 20),
+                    child: Center(
+                      child: WaveProgressBar(
+                        strokeCircleColor: Colors.blue,
+                        flowSpeed: 1.0,
+                        waveDistance: 50.0,
+                        waterColor: Colors.blue,
+                        heightController: waterController,
+                        percentage: waterHeight,
+                        size: Size(200, 200),
+                        textStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
-                ),
+                ],
               ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15,right: 15,bottom: 20),
+                child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(icon: Icon(Icons.remove,size: 30,color: Colors.red,), onPressed: (){}),
+                    IconButton(icon: Icon(Icons.add,size: 30,color: Colors.blue,), onPressed: (){}),
+           ],
+                ),
+              )
             ],
           ),
         ],

@@ -1,3 +1,4 @@
+
 import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,6 @@ class _CoachChangeTimeState extends State<CoachChangeTime> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-
           Container(
             child: Padding(
               padding: const EdgeInsets.only(top: 5,left: 10,right: 10),
@@ -40,6 +40,8 @@ class _CoachChangeTimeState extends State<CoachChangeTime> {
               ),
             ),
           ),
+
+
          Container(
            height: 415,
            child: MediaQuery.removePadding(

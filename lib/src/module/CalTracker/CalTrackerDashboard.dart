@@ -1,3 +1,4 @@
+import 'package:fitmemax/src/module/CalTracker/CalSettings.dart';
 import 'package:fitmemax/src/module/CalTracker/FoodAdd.dart';
 import 'package:fitmemax/src/module/CalTracker/MacrsCharts.dart';
 import 'package:fitmemax/src/widgets/WaterTankChart.dart';
@@ -8,8 +9,8 @@ import 'package:flutter_date_picker_timeline/flutter_date_picker_timeline.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
-import 'package:fitmemax/src/module/CalTracker/AddMealScreen.dart';
 
+import 'GoPremium.dart';
 import 'MicrosCharts.dart';
 
 class CalTrackerDashboard extends StatefulWidget {
@@ -27,22 +28,6 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     Navigator.push(
-      //       context,
-      //       MaterialPageRoute(
-      //         builder: (context) => AddMealScreen(),
-      //       ),
-      //     );
-      //   },
-      //   backgroundColor: Palette.primaryColor,
-      //   child: Icon(
-      //     Icons.add,
-      //     color: Colors.white,
-      //     size: 25,
-      //   ),
-      // ),
       backgroundColor: Colors.white,
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -196,7 +181,8 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
                           padding: const EdgeInsets.only(top: 5, right: 3),
                           child: IconButton(
                             onPressed: () {
-                              Navigator.pop(context);
+                              Navigator.push(context,
+                                  PageTransition(type: PageTransitionType.fade, child: CalSettings()));
                             },
                             icon: Icon(
                               Icons.settings,
@@ -291,10 +277,12 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
                         Dec: "The main meal of the day, eaten either in the middle of the day or in the evening. Usually when people say 'Dinner', they mean an evening meal, around 8pm-9:30pm",
                         width: _width,
                         Titel: 'Dinner',
+
                         goal: "Goal 256 KCal",
                         images: "assets/calori/dinner.png",
                         select: true,
                       ),
+                      GoPremium(),
                       MacrsCharts(),
                       MicrosCharts(),
                       WaterTankChart(),
