@@ -1,6 +1,6 @@
 import 'package:fitmemax/src/module/CalTracker/CalSettings.dart';
 import 'package:fitmemax/src/module/CalTracker/FoodAdd.dart';
-import 'package:fitmemax/src/module/CalTracker/MacrsCharts.dart';
+import 'package:fitmemax/src/module/CalTracker/NutritionCharts.dart';
 import 'package:fitmemax/src/widgets/WaterTankChart.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 import 'GoPremium.dart';
-import 'MicrosCharts.dart';
+import 'MacrosMicros.dart';
 
 class CalTrackerDashboard extends StatefulWidget {
   @override
@@ -283,8 +283,8 @@ class _CalTrackerDashboardState extends State<CalTrackerDashboard> {
                         select: true,
                       ),
                       GoPremium(),
-                      MacrsCharts(),
-                      MicrosCharts(),
+                      NutritionCharts(),
+                      MacrosMicros(),
                       WaterTankChart(),
                     ],
                   ),

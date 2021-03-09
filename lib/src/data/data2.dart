@@ -2,11 +2,35 @@
 
 class Data {
 
- List Micros = [
-   'Fiber',
-   'Sugar',
-   'Sodium',
-   'Potassium',
+ List Nutrition = [
+   {
+     'titel':'Protein',
+     'percentage':'0.7',
+   },
+   {
+     'titel':'Fat',
+     'percentage':'0.2',
+   },
+   {
+     'titel':'Carbs',
+     'percentage':'0.4',
+   },
+   {
+     'titel':'Fiber',
+     'percentage':'0.6',
+   },
+   {
+     'titel':'Sugar',
+     'percentage':'0.35',
+   },
+   {
+     'titel':'Sodium',
+     'percentage':'0.15',
+   },
+   {
+     'titel':'Potassium',
+     'percentage':'0.88',
+   }
  ];
 
 
@@ -51,55 +75,61 @@ class Data {
     }
   ];
 
- List mmWeekly =
-     [
-       {
-         'name': 'Sun',
-         'P_position': '1',
-         'F_position': '0.65',
-         'C_position': '0.87',
-       },
-       {
-         'name': 'Mon',
-         'P_position': '0.40',
-         'F_position': '0.60',
-         'C_position': '0.90',
-       },
-       {
-         'name': 'Tue',
-         'P_position': '0.50',
-         'F_position': '0.70',
-         'C_position': '0.80',
-       },
-       {
-
-         'name': 'Wed',
-         'P_position': '0.30',
-         'F_position': '0.40',
-         'C_position': '0.55',
-       },
-       {
-         'name': 'Thu',
-         'P_position': '0.25',
-         'F_position': '0.40',
-         'C_position': '0.35',
-       },
-
-       {
-         'name': 'Fry',
-         'P_position': '0.80',
-         'F_position': '0.50',
-         'C_position': '0.35',
-       },
-
-       {
-         'name': 'Sat',
-         'P_position': '0.85',
-         'F_position': '0.75',
-         'C_position': '0.95',
-       },
-
-     ];
+ List MonthName = [
+ 'Jan',
+ 'Feb',
+ 'Mar',
+ 'Apr',
+ 'May',
+ 'Jun',
+ 'Jul',
+ 'Aug',
+ 'Sep',
+ 'Oct',
+ 'Nov',
+ 'Dec',
+ ];
+ List WeekName = [
+   'Sun',
+   'Mon',
+   'Tue',
+   'Wed',
+   'Thu',
+   'Fry',
+   'Sat',
+ ];
+ List DateName = [
+   '01',
+   '02',
+   '03',
+   '04',
+   '05',
+   '06',
+   '07',
+   '08',
+   '09',
+   '10',
+   '11',
+   '12',
+   '13',
+   '14',
+   '15',
+   '16',
+   '17',
+   '18',
+   '19',
+   '20',
+   '21',
+   '22',
+   '23',
+   '24',
+   '25',
+   '26',
+   '27',
+   '28',
+   '29',
+   '30',
+ ];
 
 
 

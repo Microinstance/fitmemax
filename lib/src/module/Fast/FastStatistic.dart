@@ -1,4 +1,4 @@
-import 'package:fitmemax/src/module/CalTracker/MacrsCharts.dart';
+import 'package:fitmemax/src/module/CalTracker/NutritionCharts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'package:google_fonts/google_fonts.dart';

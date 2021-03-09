@@ -7,25 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
+import 'MacrosMicrosBars.dart';
+
 class FoodAdd extends StatefulWidget {
   @override
   _FoodAddState createState() => _FoodAddState();
 }
 
 class _FoodAddState extends State<FoodAdd> {
-  Color _get({String id}){
-    if(id == 'Fiber'){
-      return Colors.orangeAccent;
-    } else if(id == 'Sugar'){
-      return Colors.black45;
-    }else if(id == 'Sodium'){
-      return Colors.lightBlueAccent;
-    }else if(id == 'Potassium'){
-      return Colors.deepPurple;
-    }
-  }
   @override
   Widget build(BuildContext context) {
+
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -105,133 +97,62 @@ class _FoodAddState extends State<FoodAdd> {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10,bottom: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                children: [
-                                  CircleAvatar(
-                                    backgroundColor: Colors.red[400],
-                                    radius: 9,
-                                  ),
-                                  SizedBox(
-                                    width: 7,
-                                  ),
-                                  Text(
-                                    "Protein",
-                                    style: GoogleFonts.lato(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 18,
-                                        color: Colors.black),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 3,),
-                              Text("1.85gm",style: GoogleFonts.roboto(fontSize: 16,color: Colors.black,fontWeight: FontWeight.bold),),
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Row(
-                                children: [
-                                  CircleAvatar(
-                                    backgroundColor: Colors.yellow,
-                                    radius: 9,
-                                  ),
-                                  SizedBox(
-                                    width: 7,
-                                  ),
-                                  Text(
-                                    "Fat",
-                                    style: GoogleFonts.lato(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 18,
-                                        color: Colors.black),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 3,),
-                              Text("1.85gm",style: GoogleFonts.roboto(fontSize: 16,color: Colors.black,fontWeight: FontWeight.bold),),
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Row(
-                                children: [
-                                  CircleAvatar(
-                                    backgroundColor: Colors.green,
-                                    radius: 9,
-                                  ),
-                                  SizedBox(
-                                    width: 7,
-                                  ),
-                                  Text(
-                                    "Carbs",
-                                    style: GoogleFonts.lato(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 18,
-                                        color: Colors.black),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 3,),
-                              Text("1.85gm",style: GoogleFonts.roboto(fontSize: 16,color: Colors.black,fontWeight: FontWeight.bold),),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10,),
-                      child: Container(
-                        child: GridView.count(
-                          physics: NeverScrollableScrollPhysics(),
-                          crossAxisCount: 4,
-                          shrinkWrap: true,
-                          childAspectRatio: 1/0.4,
-                          children: List.generate(Data().Micros.length, (index) =>
-                              Container(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        CircleAvatar(
-                                          radius: 5,
-                                          backgroundColor: _get(id:   Data().Micros[index]),
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          Data().Micros[index],
-                                          style: GoogleFonts.lato(fontWeight: FontWeight.w500, fontSize: 16, color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 3,),
-                                    Row(
-                                      children: [
-                                        Text("1.85gm",style: GoogleFonts.roboto(fontSize: 12,color: Colors.black,fontWeight: FontWeight.bold),),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    FoodAddMicrosMacros(),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(bottom: 5,top: 20),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //     children: [
+                    //       Row(
+                    //         children: [
+                    //           CircleAvatar(
+                    //             backgroundColor: Palette.primaryColor.withOpacity(0.15),
+                    //             radius: 18,
+                    //             child: Icon(
+                    //               Icons.accessibility,
+                    //               color: Palette.primaryColor,
+                    //               size: 23,
+                    //             ),
+                    //           ),
+                    //           SizedBox(
+                    //             width: 10,
+                    //           ),
+                    //           Text(
+                    //             "Macros & Micros",
+                    //             style: GoogleFonts.lato(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),
+                    //           ),
+                    //         ],
+                    //       ),
+                    //       IconButton(icon: isShow ? Icon(Icons.keyboard_arrow_down,size: 20,color: Colors.black,) : Icon(Icons.keyboard_arrow_up,size: 20,color: Colors.black,), onPressed: (){
+                    //         setState(() {
+                    //           if(isShow == true){
+                    //             isShow = false;
+                    //           }else{
+                    //             isShow = true;
+                    //           }
+                    //         });
+                    //       })
+                    //     ],
+                    //   ),
+                    // ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(top: 15,right: 5,left: 5),
+                    //   child: ListView.builder(
+                    //       physics: NeverScrollableScrollPhysics(),
+                    //       shrinkWrap: true,
+                    //       itemCount: Data().Nutrition.length,
+                    //       itemBuilder: (BuildContext context, int index){
+                    //         return MacrosMicrosBars(
+                    //           id: Data().Nutrition[index]['titel'],
+                    //           percent: double.parse(Data().Nutrition[index]['percentage']),
+                    //           titel: Data().Nutrition[index]['titel'],
+                    //         );
+                    //       }
+                    //   ),
+                    // ),
                     Padding(
                       padding: const EdgeInsets.only(
-                          top: 20, bottom: 10, left: 5, right: 5),
+                          top: 10, bottom: 7, left: 5, right: 5),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -254,6 +175,76 @@ class _FoodAddState extends State<FoodAdd> {
           );
         },
       ),
+    );
+  }
+}
+
+class FoodAddMicrosMacros extends StatefulWidget {
+  @override
+  _FoodAddMicrosMacrosState createState() => _FoodAddMicrosMacrosState();
+}
+
+class _FoodAddMicrosMacrosState extends State<FoodAddMicrosMacros> {
+  bool isShow = false;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 5,top: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: Palette.primaryColor.withOpacity(0.15),
+                    radius: 18,
+                    child: Icon(
+                      Icons.accessibility,
+                      color: Palette.primaryColor,
+                      size: 23,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    "Macros & Micros",
+                    style: GoogleFonts.lato(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),
+                  ),
+                ],
+              ),
+              IconButton(icon: isShow ? Icon(Icons.keyboard_arrow_down,size: 20,color: Colors.black,) : Icon(Icons.keyboard_arrow_up,size: 20,color: Colors.black,), onPressed: (){
+                if(isShow == true){
+                  setState(() {
+                    isShow = false;
+                  });
+                } else{
+                  setState(() {
+                    isShow = true;
+                  });
+                }
+              })
+            ],
+          ),
+        ),
+        isShow ? Padding(
+          padding: const EdgeInsets.only(top: 15,right: 5,left: 5),
+          child: ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: Data().Nutrition.length,
+              itemBuilder: (BuildContext context, int index){
+                return MacrosMicrosBars(
+                  id: Data().Nutrition[index]['titel'],
+                  percent: double.parse(Data().Nutrition[index]['percentage']),
+                  titel: Data().Nutrition[index]['titel'],
+                );
+              }
+          ),
+        ) : SizedBox(),
+      ],
     );
   }
 }
