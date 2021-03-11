@@ -31,12 +31,14 @@ class w_dropdown extends StatelessWidget {
           child: DropdownButton(
             // isExpanded: true,
             isDense: true,
-            hint: Text(hint),
+            hint: Text(hint,style: TextStyle(
+              fontSize: 15,
+            ),),
             value: select,
             items: list.map((value) {
               return DropdownMenuItem(
                 value: value,
-                child: Text(value),
+                child: Text(value,style: TextStyle(fontSize: 15),),
               );
             }).toList(),
           onChanged: onChanged,

@@ -38,10 +38,13 @@ class _CartItemNumber2State extends State<CartItemNumber2> {
                 }
               });
             },
-            child: Icon(Icons.remove,color: Colors.black,size: 16,)),
+            child: CircleAvatar(
+                radius: 10,
+                backgroundColor: Palette.primaryColor,
+                child: Icon(Icons.remove,color: Colors.white,size: 16,))),
         Padding(
-          padding: const EdgeInsets.only(left: 15,right: 15),
-          child: Text("${widget.initial.toStringAsFixed(2)} ${widget.unit}",style: GoogleFonts.lato(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),
+          padding: const EdgeInsets.only(left: 10,right: 10),
+          child: Text("${widget.initial.toStringAsFixed(2)} ${widget.unit}",style: GoogleFonts.lato(fontSize: 14,color: Colors.black,fontWeight: FontWeight.bold),),
         ),
         GestureDetector(
             onTap: (){
@@ -57,7 +60,10 @@ class _CartItemNumber2State extends State<CartItemNumber2> {
                 }
               });
             },
-            child: Icon(Icons.add,color: Colors.black,size: 20,)),
+            child: CircleAvatar(
+                radius: 10,
+                backgroundColor: Palette.primaryColor,
+                child: Icon(Icons.add,color: Colors.white,size: 16,))),
       ],
     );
   }

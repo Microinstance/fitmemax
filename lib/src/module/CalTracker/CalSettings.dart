@@ -47,7 +47,7 @@ class _SettingsState extends State<CalSettings> {
                 children: [
                   Text(
                     'Update Height',
-                    style: GoogleFonts.roboto(fontSize: 18, color: Colors.black,),
+                    style: GoogleFonts.roboto(fontSize: 16, color: Colors.black,),
                   ),
                   CartItemNumber2(
                     initial: 5.7,
@@ -63,7 +63,7 @@ class _SettingsState extends State<CalSettings> {
                 children: [
                   Text(
                     'Update Weight',
-                    style: GoogleFonts.roboto(fontSize: 18, color: Colors.black,),
+                    style: GoogleFonts.roboto(fontSize: 16, color: Colors.black,),
                   ),
                   CartItemNumber2(
                     initial: 70.2,
@@ -79,7 +79,7 @@ class _SettingsState extends State<CalSettings> {
                 children: [
                   Text(
                     'Watter Consume',
-                    style: GoogleFonts.roboto(fontSize: 18, color: Colors.black,),
+                    style: GoogleFonts.roboto(fontSize: 16, color: Colors.black,),
                   ),
                   CartItemNumber2(
                     initial: 2.5,
@@ -95,7 +95,7 @@ class _SettingsState extends State<CalSettings> {
                 children: [
                   Text(
                     'Daily Calori Target',
-                    style: GoogleFonts.roboto(fontSize: 18, color: Colors.black,),
+                    style: GoogleFonts.roboto(fontSize: 16, color: Colors.black,),
                   ),
                   CartItemNumber2(
                     initial: 1250,
@@ -111,7 +111,7 @@ class _SettingsState extends State<CalSettings> {
                 children: [
                   Text(
                     'Breckfast Time',
-                    style: GoogleFonts.roboto(fontSize: 18, color: Colors.black,),
+                    style: GoogleFonts.roboto(fontSize: 16, color: Colors.black,),
                   ),
                   Container(
                     child: w_dropdown(
@@ -135,7 +135,7 @@ class _SettingsState extends State<CalSettings> {
                 children: [
                   Text(
                     'Breckfast Calori contain',
-                    style: GoogleFonts.roboto(fontSize: 18, color: Colors.black,),
+                    style: GoogleFonts.roboto(fontSize: 16, color: Colors.black,),
                   ),
                   CartItemNumber2(
                     initial: 250.2,
@@ -151,7 +151,7 @@ class _SettingsState extends State<CalSettings> {
                 children: [
                   Text(
                     'Brunch Time',
-                    style: GoogleFonts.roboto(fontSize: 18, color: Colors.black,),
+                    style: GoogleFonts.roboto(fontSize: 16, color: Colors.black,),
                   ),
                   Container(
                     child: w_dropdown(
@@ -175,7 +175,7 @@ class _SettingsState extends State<CalSettings> {
                 children: [
                   Text(
                     'Brunch Calori contain',
-                    style: GoogleFonts.roboto(fontSize: 18, color: Colors.black,),
+                    style: GoogleFonts.roboto(fontSize: 16, color: Colors.black,),
                   ),
                   CartItemNumber2(
                     initial: 250.2,
@@ -191,7 +191,7 @@ class _SettingsState extends State<CalSettings> {
                 children: [
                   Text(
                     'Lunch Time',
-                    style: GoogleFonts.roboto(fontSize: 18, color: Colors.black,),
+                    style: GoogleFonts.roboto(fontSize: 16, color: Colors.black,),
                   ),
                   Container(
                     child: w_dropdown(
@@ -215,7 +215,7 @@ class _SettingsState extends State<CalSettings> {
                 children: [
                   Text(
                     'Lunch Calori contain',
-                    style: GoogleFonts.roboto(fontSize: 18, color: Colors.black,),
+                    style: GoogleFonts.roboto(fontSize: 16, color: Colors.black,),
                   ),
                   CartItemNumber2(
                     initial: 250.2,
@@ -231,7 +231,7 @@ class _SettingsState extends State<CalSettings> {
                 children: [
                   Text(
                     'Supper Time',
-                    style: GoogleFonts.roboto(fontSize: 18, color: Colors.black,),
+                    style: GoogleFonts.roboto(fontSize: 16, color: Colors.black,),
                   ),
                   Container(
                     child: w_dropdown(
@@ -255,7 +255,7 @@ class _SettingsState extends State<CalSettings> {
                 children: [
                   Text(
                     'Supper Calori contain',
-                    style: GoogleFonts.roboto(fontSize: 18, color: Colors.black,),
+                    style: GoogleFonts.roboto(fontSize: 16, color: Colors.black,),
                   ),
                   CartItemNumber2(
                     initial: 250.2,
@@ -271,7 +271,7 @@ class _SettingsState extends State<CalSettings> {
                 children: [
                   Text(
                     'Dinner Time',
-                    style: GoogleFonts.roboto(fontSize: 18, color: Colors.black,),
+                    style: GoogleFonts.roboto(fontSize: 16, color: Colors.black,),
                   ),
                   Container(
                     child: w_dropdown(
@@ -295,7 +295,7 @@ class _SettingsState extends State<CalSettings> {
                 children: [
                   Text(
                     'Dinner Calori contain',
-                    style: GoogleFonts.roboto(fontSize: 18, color: Colors.black,),
+                    style: GoogleFonts.roboto(fontSize: 16, color: Colors.black,),
                   ),
                   CartItemNumber2(
                     initial: 250.2,
@@ -313,8 +313,8 @@ class _SettingsState extends State<CalSettings> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 20,right: 20,bottom: 10,top: 10),
-                  child: Text("Start Your Workout",style: GoogleFonts.lato(fontSize: 18,color:Colors.white,fontWeight: FontWeight.bold ),),
+                  padding: const EdgeInsets.only(left: 15,right: 15,bottom: 10,top: 10),
+                  child: Text("Save Changes",style: GoogleFonts.lato(fontSize: 18,color:Colors.white,fontWeight: FontWeight.bold ),),
                 ),
               ),
             ),

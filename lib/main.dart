@@ -1,4 +1,4 @@
-import 'package:fitmemax/src/module/CalTracker/CalTrackerDashboard.dart';
+import 'package:fitmemax/src/module/CalTracker/CalSettings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         //   const Locale('es'),
         //   const Locale('en'),
         // ],
-        home: CalTrackerDashboard(),
+        home: CalSettings(),
       ),
     );
   }
