@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'Fast.dart';
+import 'FastSettings.dart';
 import 'FastStatistic.dart';
 
 class FastDashboard extends StatefulWidget {
@@ -26,7 +26,6 @@ class _FastDashboardState extends State<FastDashboard> {
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Color(0xFF1f1e23),
-
       body: PageView(
         controller: _pageController,
         onPageChanged: (page) {
@@ -37,7 +36,7 @@ class _FastDashboardState extends State<FastDashboard> {
         children: <Widget>[
          Fast(),
          FastStatistic(),
-         Icon(Icons.shopping_cart_outlined,color: Colors.white,),
+         FastSettings(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -71,9 +70,9 @@ class _FastDashboardState extends State<FastDashboard> {
               label: 'Statistic'
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.insert_chart_outlined_rounded),
-            backgroundColor: Colors.black,
-              label: 'History'
+               icon: Icon(Icons.insert_chart_outlined_rounded),
+               backgroundColor: Colors.black,
+               label: 'Settings'
           ),
         ],
       ),

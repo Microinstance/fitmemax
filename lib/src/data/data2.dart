@@ -1,6 +1,32 @@
 
 
 class Data {
+  List FastDashboard = [
+    {
+      'titel' : 'Fast Count',
+      'Value' : '6',
+    },
+    {
+      'titel' : 'Fast Timw',
+      'Value' : '35.0',
+    },
+    {
+      'titel' : 'Longest Fast',
+      'Value' : '8.2',
+    },
+    {
+      'titel' : 'Weight',
+      'Value' : '71.2',
+    },
+    {
+      'titel' : 'Weight Loss',
+      'Value' : '154',
+    },
+    {
+      'titel' : 'Coins Earned',
+      'Value' : '154',
+    },
+  ];
 
  List Nutrition = [
    {
