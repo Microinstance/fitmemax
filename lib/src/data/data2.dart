@@ -14,6 +14,7 @@ class Data {
       'titel' : 'Longest Fast',
       'Value' : '8.2',
     },
+
     {
       'titel' : 'Weight',
       'Value' : '71.2',

@@ -74,7 +74,7 @@ class _FastSettingsState extends State<FastSettings> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Upgrade to Premium",style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.yellow[700],
                               fontWeight: FontWeight.bold,
                               fontSize: 22,),),
                           SizedBox(height: 7,),
@@ -120,7 +120,7 @@ class _FastSettingsState extends State<FastSettings> {
                           backgroundColor: Color(0xFF1c1c1e),
                           child: Center(child: Text("5.8h",style: TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.bold),))),
                       title: Text("Circadian Rhythm TRF",style: TextStyle(fontSize: 16,color: Colors.white,),),
-                      subtitle: Text("Start - 09:00",style: TextStyle(fontSize: 16,color: Colors.white,),),
+                      subtitle: Text("Start - 09:00 02:06:21",style: TextStyle(fontSize: 12,color: Colors.white,),),
                     ),
                   );
                 },
