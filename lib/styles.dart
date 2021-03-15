@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-//This is where TextStyles belongs
-
 class TextStyles {
 
   static const BodyBlack = TextStyle(fontWeight: FontWeight.w400,fontSize: 13,color: Palette.GreyDarkest,fontFamily: 'Helvetica Light');
@@ -86,7 +84,4 @@ class Palette {
 
   static const Color PrimaryColor =  PurpleDarkest;
   static const Color SecondaryColor =  Red;
-
-
-
 }

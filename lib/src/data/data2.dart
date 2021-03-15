@@ -1,6 +1,32 @@
 
 
 class Data {
+  List Weight = [
+    {
+      'date': '01',
+      'weight': '55.6',
+    },
+    {
+      'date': '01',
+      'weight': '42',
+    },
+    {
+      'date': '01',
+      'weight': '88.6',
+    },
+    {
+      'date': '01',
+      'weight': '55.6',
+    },
+    {
+      'date': '01',
+      'weight': '55.6',
+    },
+    {
+      'date': '01',
+      'weight': '22.6',
+    },
+  ];
   List FastDashboard = [
     {
       'titel' : 'Fast Count',

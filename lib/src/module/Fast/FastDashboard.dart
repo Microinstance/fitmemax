@@ -11,9 +11,9 @@ class FastDashboard extends StatefulWidget {
 
 class _FastDashboardState extends State<FastDashboard> {
   PageController _pageController = PageController(
-    initialPage: 0,
+    initialPage: 1,
   );
-  int currentIndex = 0;
+  int currentIndex = 1;
 
   @override
   void dispose() {
@@ -27,6 +27,7 @@ class _FastDashboardState extends State<FastDashboard> {
     return Scaffold(
       backgroundColor: Color(0xFF1f1e23),
       body: PageView(
+        physics: NeverScrollableScrollPhysics(),
         controller: _pageController,
         onPageChanged: (page) {
           setState(() {
