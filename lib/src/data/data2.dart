@@ -4,27 +4,48 @@ class Data {
   List Weight = [
     {
       'date': '01',
-      'weight': '55.6',
+      'weight': '75.6',
     },
     {
-      'date': '01',
-      'weight': '42',
+      'date': '02',
+      'weight': '74.55',
     },
     {
-      'date': '01',
-      'weight': '88.6',
+      'date': '03',
+      'weight': '72.53',
     },
     {
-      'date': '01',
-      'weight': '55.6',
+      'date': '04',
+      'weight': '72.54',
     },
     {
-      'date': '01',
-      'weight': '55.6',
+      'date': '05',
+      'weight': '79.51',
     },
     {
-      'date': '01',
-      'weight': '22.6',
+      'date': '06',
+      'weight': '115.50',
+    },
+
+    {
+      'date': '07',
+      'weight': '72.43',
+    },
+    {
+      'date': '08',
+      'weight': '71.45',
+    },
+    {
+      'date': '09',
+      'weight': '76.41',
+    },
+    {
+      'date': '11',
+      'weight': '73.38',
+    },
+    {
+      'date': '11',
+      'weight': '79.3',
     },
   ];
   List FastDashboard = [
