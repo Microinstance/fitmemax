@@ -1,4 +1,5 @@
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
+import 'package:fitmemax/src/module/Authentication/SigninPage.dart';
 import 'package:fitmemax/src/module/dashboard/CoachConsultant/Coach.dart';
 import 'package:fitmemax/src/module/dashboard/home/Home.dart';
 import 'package:fitmemax/src/module/dashboard/home/Notifications.dart';
@@ -7,12 +8,11 @@ import 'package:fitmemax/src/module/dashboard/plan/Plan.dart';
 import 'package:fitmemax/src/module/dashboard/profile/Profile.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileHome.dart';
 import 'package:fitmemax/src/module/others/ReferEarn.dart';
-import 'package:fitmemax/src/module/signin_signup/SignupPage.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:fitmemax/src/module/signin_signup/SigninPage.dart';
+
 
 class Dashboard extends StatefulWidget {
  final int pageStack;

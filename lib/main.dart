@@ -1,7 +1,7 @@
-import 'package:fitmemax/src/module/Fast/FastDashboard.dart';
-import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
+import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'LandingPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,20 +22,12 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'FitMeMax',
         theme: ThemeData(
-          primarySwatch: Colors.green,
+          primaryColor : ColorPalette.PrimaryColor,
+
           scaffoldBackgroundColor: Colors.white,
-          fontFamily: 'Raleway',
+          fontFamily: 'Lato',
         ),
-        // localizationsDelegates: [
-        //   GlobalMaterialLocalizations.delegate,
-        //   GlobalWidgetsLocalizations.delegate,
-        //   GlobalCupertinoLocalizations.delegate,
-        // ],
-        // supportedLocales: [
-        //   const Locale('es'),
-        //   const Locale('en'),
-        // ],
-        home: FastDashboard(),
+        home: LandingPage(),
       ),
     );
   }

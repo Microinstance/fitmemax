@@ -1,3 +1,4 @@
+import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 
 class w_dropdown extends StatelessWidget {
@@ -15,30 +16,28 @@ class w_dropdown extends StatelessWidget {
     double _height = MediaQuery.of(context).size.height;
     return   Container(
       padding: EdgeInsets.only(
-        top: _height * 0.01,
-        bottom: _height * 0.01,
+        top: 7,
+        bottom: 7,
       ),
       decoration: BoxDecoration(
         border: Border.all(
           width: 1,
           color: Colors.black.withOpacity(0.5),
         ),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: borderRadious.primeryRadious,
       ),
       child: DropdownButtonHideUnderline(
         child: ButtonTheme(
           alignedDropdown: true,
           child: DropdownButton(
-            // isExpanded: true,
             isDense: true,
-            hint: Text(hint,style: TextStyle(
-              fontSize: 15,
-            ),),
+            hint: Text(hint,style: TextStyles.BodyBlack,
+            ),
             value: select,
             items: list.map((value) {
               return DropdownMenuItem(
                 value: value,
-                child: Text(value,style: TextStyle(fontSize: 15),),
+                child: Text(value,style: TextStyles.BodyBlack,),
               );
             }).toList(),
           onChanged: onChanged,

@@ -1,6 +1,6 @@
+import 'package:fitmemax/Objects/PasswordFieldOne.dart';
 import 'package:fitmemax/src/widgets/loginButtonTwo.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
-import 'package:fitmemax/src/widgets/passwordTextfieldOne.dart';
 import 'package:flutter/material.dart';
 
 class ChangePassword extends StatefulWidget {
@@ -40,7 +40,7 @@ class _ChangePasswordState extends State<ChangePassword> {
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 15,left: 15,right: 15),
-              child: passwordTextfieldOne(
+              child: PasswordFieldOne(
                 onChanged: (value){
                   print(value);
                 },
@@ -62,7 +62,7 @@ class _ChangePasswordState extends State<ChangePassword> {
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 15,left: 15,right: 15),
-              child: passwordTextfieldOne(
+              child: PasswordFieldOne(
                 onChanged: (value){
                   print(value);
                 },
@@ -84,7 +84,7 @@ class _ChangePasswordState extends State<ChangePassword> {
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 15,left: 15,right: 15),
-              child: passwordTextfieldOne(
+              child: PasswordFieldOne(
                 onChanged: (value){
                   print(value);
                 },

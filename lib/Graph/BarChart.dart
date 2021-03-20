@@ -4,7 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class BarChart extends StatefulWidget {
   final List listData;
-  BarChart({@required this.listData});
+  final String Titel;
+  final String Dec;
+  final Color color1;
+  final Color color2;
+  BarChart({@required this.listData, this.Titel = 'Weight', this.Dec = 'Current Weight', this.color1 = const Color(0xFFffbb92), this.color2 = const Color(0xFFff7171)});
   @override
   _BarChartState createState() => _BarChartState();
 }
@@ -42,7 +46,7 @@ class _BarChartState extends State<BarChart> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: List.generate(y.length, (index) {
-        return Text("${y[index]}",style: TextStyle(fontSize: 10,color: Color(0xFFffbb92),fontWeight: FontWeight.bold),);
+        return Text("${y[index]}",style: TextStyle(fontSize: 10,color: widget.color1,fontWeight: FontWeight.bold),);
       }),
     );
   }
@@ -62,7 +66,7 @@ class _BarChartState extends State<BarChart> {
               height: 300*weight/xLast,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(7.5),
-                color: Color(0xFFff7171),
+                color: widget.color2,
               ),
             ),
             SizedBox(
@@ -71,7 +75,7 @@ class _BarChartState extends State<BarChart> {
                 children: [
                   Spacer(),
                   Text(
-                    "${date}",style: TextStyle(fontSize: 10,color: Color(0xFFff7171),fontWeight: FontWeight.bold),),
+                    "${date}",style: TextStyle(fontSize: 10,color: widget.color2,fontWeight: FontWeight.bold),),
                 ],
               ),
             )
@@ -134,7 +138,7 @@ class _BarChartState extends State<BarChart> {
                           padding: const EdgeInsets.only(right: 10),
                           child: CircleAvatar(
                             radius: 5,
-                            backgroundColor: Color(0xFFffbb92),
+                            backgroundColor: widget.color1,
                           ),
                         ),
                         Text("Date",style: TextStyle(fontSize: 15,color: Colors.white),),
@@ -149,10 +153,10 @@ class _BarChartState extends State<BarChart> {
                           padding: const EdgeInsets.only(right: 10),
                           child: CircleAvatar(
                             radius: 5,
-                            backgroundColor: Color(0xFFff7171),
+                            backgroundColor: widget.color2,
                           ),
                         ),
-                        Text("Weight",style: TextStyle(fontSize: 15,color: Colors.white),),
+                        Text(widget.Titel,style: TextStyle(fontSize: 15,color: Colors.white),),
                       ],
                     ),
                   ],
@@ -195,7 +199,7 @@ class _BarChartState extends State<BarChart> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("Update Current Weight",style: GoogleFonts.lato(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.white),),
+                                    Text("Update ${widget.Dec}",style: GoogleFonts.lato(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.white),),
                                   ],
                                 ),
                               ),
@@ -212,7 +216,7 @@ class _BarChartState extends State<BarChart> {
                                   child: MaterialButton(
                                     onPressed: (){},
                                     height: 45,
-                                    color: Color(0xFFff7171),
+                                    color: widget.color2,
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(15)),
                                     child: Padding(
@@ -232,7 +236,7 @@ class _BarChartState extends State<BarChart> {
                   child: Container(
                     decoration: BoxDecoration(
                       color: Colors.black,
-                      border: Border.all(width: 1,color: Color(0xFFff7171),),
+                      border: Border.all(width: 1,color: widget.color2,),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Padding(
