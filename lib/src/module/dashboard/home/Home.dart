@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:delayed_display/delayed_display.dart';
-import 'package:fitmemax/ApiProvider/apiProvider.dart';
+import 'package:fitmemax/Services/apiProvider.dart';
 import 'package:fitmemax/src/data/data2.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundDashBoard.dart';
 import 'package:fitmemax/src/module/CalTracker/CalTrackerDashboard.dart';

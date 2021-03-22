@@ -1,4 +1,4 @@
-import 'package:fitmemax/ApiProvider/apiProvider.dart';
+import 'package:fitmemax/Services/apiProvider.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';

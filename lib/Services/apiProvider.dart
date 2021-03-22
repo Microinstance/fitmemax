@@ -1,7 +1,13 @@
 import 'dart:convert';
-import 'package:fitmemax/constance/constance.dart';
 import 'package:http/http.dart' as http;
 
+class ConstanceData {
+  static const BaseApiUrl =
+      "http://project.neutronvision.com/fitBook/public/api/v1/";
+
+  static const BaseApiUrl2 =
+      "http://project.neutronvision.com/fitBook/public/api/";
+}
 class ApiProvider {
   Future userLogin(String email, String password) async {
     var result;
