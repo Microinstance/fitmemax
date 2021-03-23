@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:fitmemax/src/data/data2.dart';
+import 'package:fitmemax/src/ListData/ListData.dart';
 import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileActivity.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileHome.dart';

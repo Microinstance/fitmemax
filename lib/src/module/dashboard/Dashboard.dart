@@ -1,5 +1,4 @@
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
-import 'package:fitmemax/src/module/Authentication/SigninPage.dart';
 import 'package:fitmemax/src/module/dashboard/CoachConsultant/Coach.dart';
 import 'package:fitmemax/src/module/dashboard/home/Home.dart';
 import 'package:fitmemax/src/module/dashboard/home/Notifications.dart';
@@ -9,26 +8,21 @@ import 'package:fitmemax/src/module/dashboard/profile/Profile.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileHome.dart';
 import 'package:fitmemax/src/module/others/ReferEarn.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
+import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 
 class Dashboard extends StatefulWidget {
- final int pageStack;
+  int pageStack;
 
-  const Dashboard({Key key, this.pageStack = 0}) : super(key: key);
+  Dashboard({Key key, this.pageStack = 3}) : super(key: key);
   @override
   _DashboardState createState() => _DashboardState();
 }
 
-class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMixin {
-  PageController _pageController = PageController(
-    initialPage: 0
-  );
-
-  int selectedIndex = 0;
-  double screenWidth, screenHeight;
+class _DashboardState extends State<Dashboard>
+    with SingleTickerProviderStateMixin {
+  PageController _pageController = PageController();
   bool isCollapsed = true;
   final Duration duration = const Duration(milliseconds: 250);
   AnimationController _controller;
@@ -41,8 +35,10 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
     super.initState();
     _controller = AnimationController(vsync: this, duration: duration);
     _scaleAnimation = Tween<double>(begin: 1, end: 0.8).animate(_controller);
-    _menuScaleAnimation = Tween<double>(begin: 0.5, end: 1).animate(_controller);
-    _slideAnimation = Tween<Offset>(begin: Offset(-1, 0), end: Offset(0, 0)).animate(_controller);
+    _menuScaleAnimation =
+        Tween<double>(begin: 0.5, end: 1).animate(_controller);
+    _slideAnimation = Tween<Offset>(begin: Offset(-1, 0), end: Offset(0, 0))
+        .animate(_controller);
   }
 
   @override
@@ -57,18 +53,11 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     Size size = MediaQuery.of(context).size;
-    screenHeight = size.height;
-    screenWidth = size.width;
+    double screenHeight = size.height;
+    double screenWidth = size.width;
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Colors.green[300],
-            Palette.primaryColor,
-          ],
-          begin: FractionalOffset.centerRight,
-          end: FractionalOffset.centerLeft,
-        ),
+        color: ColorPalette.PrimaryColor,
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -91,14 +80,19 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                     backgroundColor: Colors.transparent,
                     appBar: AppBar(
                       elevation: 0,
+                      centerTitle: false,
                       backgroundColor: Palette.primaryColor,
                       title: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text('F',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 25),),
-                          Text('i',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 22),),
-                          Text('t',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 22),),
-                          Text('Me',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 22),),
-                          Text('Max',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 22),),
+                          Text(
+                            'F',
+                            style: TextStyles.TitleWhite,
+                          ),
+                          Text('i', style: TextStyles.TitleBlack),
+                          Text('t', style: TextStyles.TitleWhite),
+                          Text('Me', style: TextStyles.TitleWhite),
+                          Text('Max', style: TextStyles.TitleBlack),
                         ],
                       ),
                       leading: IconButton(
@@ -121,40 +115,46 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                         Padding(
                           padding: EdgeInsets.only(right: 0),
                           child: IconButton(
-                            onPressed: (){
-                              Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Notifications()));
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.fade,
+                                      child: Notifications()));
                             },
                             icon: Icon(
                               Icons.account_balance_wallet,
                               size: 25,
-                              color: Colors.orangeAccent,
+                              color: ColorPalette.GreyLightest,
                             ),
                           ),
                         ),
                         Padding(
                           padding: EdgeInsets.only(right: 0),
                           child: IconButton(
-                            onPressed: (){
-                              Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Notifications()));
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.fade,
+                                      child: Notifications()));
                             },
-                            icon: Icon(
-                              Icons.notifications_active,
-                              size: 25,
-                              color: Colors.amberAccent,
-                            ),
+                            icon: Icon(Icons.notifications_active,
+                                size: 25, color: ColorPalette.GreyLightest),
                           ),
                         ),
                         Padding(
                           padding: EdgeInsets.only(right: 0),
                           child: IconButton(
-                            onPressed: (){
-                              Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Settings()));
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.fade,
+                                      child: Settings()));
                             },
-                            icon: Icon(
-                              Icons.settings,
-                              size: 25,
-                              color: Colors.cyan,
-                            ),
+                            icon: Icon(Icons.settings,
+                                size: 25, color: ColorPalette.GreyLightest),
                           ),
                         ),
                       ],
@@ -164,7 +164,7 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                       physics: new NeverScrollableScrollPhysics(),
                       onPageChanged: (page) {
                         setState(() {
-                          selectedIndex = page;
+                          widget.pageStack = page;
                         });
                       },
                       children: <Widget>[
@@ -178,24 +178,37 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                     bottomNavigationBar: FFNavigationBar(
                       theme: FFNavigationBarTheme(
                         barBackgroundColor: Colors.white,
-                        selectedItemBorderColor: Colors.green[100],
+                        selectedItemBorderColor:
+                            ColorPalette.PrimaryColor.withOpacity(0.2),
                         selectedItemBackgroundColor: Colors.white,
-                        selectedItemIconColor: Palette.primaryColor,
+                        selectedItemIconColor: ColorPalette.PrimaryColor,
                         selectedItemLabelColor: Colors.black,
                       ),
-                      selectedIndex: selectedIndex,
+                      selectedIndex: widget.pageStack,
                       onSelectTab: (index) {
                         if (index == 2) {
-                          Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: ProfileHome()));
+                          Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: ProfileHome()));
                         }
                         if (index == 1) {
-                          Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Coach()));
+                          Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: Coach()));
                         }
                         if (index == 4) {
-                          Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Profile()));
+                          Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: Profile()));
                         } else {
                           setState(() {
-                            selectedIndex = index;
+                            widget.pageStack = index;
                             _pageController.jumpToPage(
                               index,
                             );
@@ -255,56 +268,56 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                   shrinkWrap: true,
                   padding: EdgeInsets.zero,
                   children: [
-                    Container(
-                        height: _height * 0.25,
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
-                          borderRadius:
-                              BorderRadius.only(bottomRight: Radius.circular(80), bottomLeft: Radius.circular(10), topRight: Radius.circular(10)),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              alignment: Alignment.topLeft,
-                              width: _width * 0.55,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  CircleAvatar(
-                                    radius: 55,
-                                    backgroundColor: Colors.white.withOpacity(0.5),
-                                    child: CircleAvatar(
-                                      radius: 53,
-                                      backgroundImage: AssetImage("assets/profile/me.png"),
-                                    ),
+                    SafeArea(
+                      child: SizedBox(),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          alignment: Alignment.topLeft,
+                          width: _width * 0.55,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 15),
+                                child: CircleAvatar(
+                                  radius: 55,
+                                  backgroundColor:
+                                      Colors.white.withOpacity(0.5),
+                                  child: CircleAvatar(
+                                    radius: 53,
+                                    backgroundImage:
+                                        AssetImage("assets/profile/me.png"),
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
-                            Container(
-                                alignment: Alignment.topLeft,
-                                width: _width * 0.55,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Shivay Gorai',
-                                      style: TextStyle(fontSize: 20, color: Colors.white),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ],
-                                )),
-                          ],
-                        )),
+                            ],
+                          ),
+                        ),
+                        Container(
+                            alignment: Alignment.topLeft,
+                            width: _width * 0.55,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    'Shivay Gorai',
+                                    style: TextStyles.TitleWhite,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ],
+                            )),
+                      ],
+                    ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 15),
+                      padding: const EdgeInsets.only(left: 15, top: 25),
                       child: Column(
                         children: [
-                          SizedBox(
-                            height: 30,
-                          ),
                           Padding(
                             padding: const EdgeInsets.only(bottom: 20),
                             child: Row(
@@ -318,7 +331,9 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                                 SizedBox(
                                   width: 15,
                                 ),
-                                Flexible(child: Text("Chat", style: TextStyle(color: Colors.white, fontSize: 20))),
+                                Flexible(
+                                    child: Text("Chat",
+                                        style: TextStyles.RegulerBIGWhite)),
                               ],
                             ),
                           ),
@@ -335,24 +350,9 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                                 SizedBox(
                                   width: 15,
                                 ),
-                                Flexible(child: Text("Advertisement", style: TextStyle(color: Colors.white, fontSize: 20))),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.compare,
-                                  color: Colors.white,
-                                  size: 22,
-                                ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                Flexible(child: Text("Corporate plan", style: TextStyle(color: Colors.white, fontSize: 20))),
+                                Flexible(
+                                    child: Text("Advertisement",
+                                        style: TextStyles.RegulerBIGWhite)),
                               ],
                             ),
                           ),
@@ -369,58 +369,9 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                                 SizedBox(
                                   width: 15,
                                 ),
-                                Flexible(child: Text("Diet and fitness", style: TextStyle(color: Colors.white, fontSize: 20))),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.contact_mail,
-                                  color: Colors.white,
-                                  size: 22,
-                                ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                Flexible(child: Text("Connect", style: TextStyle(color: Colors.white, fontSize: 20))),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.nature_people,
-                                  color: Colors.white,
-                                  size: 22,
-                                ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                Flexible(child: Text("Coach", style: TextStyle(color: Colors.white, fontSize: 20))),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.book,
-                                  color: Colors.white,
-                                  size: 22,
-                                ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                Flexible(child: Text("Journal", style: TextStyle(color: Colors.white, fontSize: 20))),
+                                Flexible(
+                                    child: Text("Diet and Fitness",
+                                        style: TextStyles.RegulerBIGWhite)),
                               ],
                             ),
                           ),
@@ -440,9 +391,15 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                                 Flexible(
                                     child: GestureDetector(
                                         onTap: () {
-                                          Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: ReferEarn()));
+                                          Navigator.push(
+                                              context,
+                                              PageTransition(
+                                                  type: PageTransitionType.fade,
+                                                  child: ReferEarn()));
                                         },
-                                        child: Text("Invite friends", style: TextStyle(color: Colors.white, fontSize: 20)))),
+                                        child: Text("Invite friends",
+                                            style:
+                                                TextStyles.RegulerBIGWhite))),
                               ],
                             ),
                           ),
@@ -459,12 +416,14 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                                 SizedBox(
                                   width: 15,
                                 ),
-                                Flexible(child: Text("Transaction", style: TextStyle(color: Colors.white, fontSize: 20))),
+                                Flexible(
+                                    child: Text("Transaction",
+                                        style: TextStyles.RegulerBIGWhite)),
                               ],
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
+                            padding: const EdgeInsets.only(bottom: 20),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
@@ -476,7 +435,47 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                                 SizedBox(
                                   width: 15,
                                 ),
-                                Flexible(child: Text("About us", style: TextStyle(color: Colors.white, fontSize: 20))),
+                                Flexible(
+                                    child: Text("About us",
+                                        style: TextStyles.RegulerBIGWhite)),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 20),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Icons.account_tree_outlined,
+                                  color: Colors.white,
+                                  size: 22,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Flexible(
+                                    child: Text("Terms & Condition",
+                                        style: TextStyles.RegulerBIGWhite)),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 20),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Icons.privacy_tip_outlined,
+                                  color: Colors.white,
+                                  size: 22,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Flexible(
+                                    child: Text("Privacy Policy",
+                                        style: TextStyles.RegulerBIGWhite)),
                               ],
                             ),
                           ),
@@ -484,39 +483,25 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                       ),
                     ),
                     Container(
-                      height: _height * 0.1,
+                      height: 50,
                       width: _width * 0.55,
-                      child: InkWell(
-                        onTap: () async {
-                          SharedPreferences preferences = await SharedPreferences.getInstance();
-                          await preferences.clear();
-
-                          Navigator.pushReplacement(
-                            context,
-                            PageTransition(
-                              type: PageTransitionType.fade,
-                              child: SigninPage(),
-                            ),
-                          );
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Logout",
-                              style: TextStyle(fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Icon(
-                              Icons.power_settings_new,
-                              color: Colors.white,
-                              size: 35,
-                            ),
-                          ],
-                        ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Logout",
+                            style: TextStyles.TitleWhite,
+                          ),
+                          SizedBox(
+                            width: 7,
+                          ),
+                          Icon(
+                            Icons.power_settings_new,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                        ],
                       ),
                     ),
                   ],

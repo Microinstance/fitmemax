@@ -3,13 +3,14 @@ import 'package:fitmemax/Objects/ButtonOne.dart';
 import 'package:fitmemax/Objects/PasswordFieldOne.dart';
 import 'package:fitmemax/Objects/SocialButton.dart';
 import 'package:fitmemax/Objects/TextFieldOne.dart';
+import 'package:fitmemax/src/ListData/ListData.dart';
 import 'package:fitmemax/src/module/Authentication/SigninPage.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:page_transition/page_transition.dart';
-
 import 'SignupVerify.dart';
+
 
 class SignupPage extends StatefulWidget {
   @override
@@ -17,6 +18,7 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
+  String _CountryValue = "+91";
 
   @override
   Widget build(BuildContext context) {
@@ -101,11 +103,61 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 20, right: 20,top: 10),
-                        child: TextFieldOne(
-                          hint: 'Phone Number',
-                          onChanged: (v) {
-                            print(v);
-                          },
+                        child: SizedBox(
+                          width: _width-80,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                width: 75,
+                                child: Container(
+                                  padding: EdgeInsets.only(
+                                    top: 8,
+                                    bottom: 8,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      width: 1,
+                                      color: Colors.black.withOpacity(0.5),
+                                    ),
+                                    borderRadius: borderRadious.primeryRadious,
+                                  ),
+                                  child: DropdownButtonHideUnderline(
+                                    child: ButtonTheme(
+                                      alignedDropdown: true,
+                                      child: DropdownButton(
+                                        isDense: true,
+                                        hint: Text("+91",style: TextStyles.BodyBlack,
+                                        ),
+                                        value: _CountryValue,
+                                        items: Data().countryCode.map((value) {
+                                          return DropdownMenuItem(
+                                            value: value,
+                                            child: Text(value,style: TextStyles.BodyBlack,
+                                            ),
+                                          );
+                                        }).toList(),
+                                        onChanged: (value) {
+                                          setState(() {
+                                            _CountryValue = value;
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: _width-80-95,
+                                child: TextFieldOne(
+                                  hint: 'Phone Number',
+                                  onChanged: (v) {
+                                    print(v);
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       Padding(

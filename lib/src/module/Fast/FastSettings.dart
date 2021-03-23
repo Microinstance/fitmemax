@@ -1,4 +1,4 @@
-import 'package:fitmemax/src/data/data2.dart';
+import 'package:fitmemax/src/ListData/ListData.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

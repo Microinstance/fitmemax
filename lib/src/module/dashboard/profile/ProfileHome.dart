@@ -1,5 +1,5 @@
-import 'package:fitmemax/Data/StoryData/data.dart';
-import 'package:fitmemax/src/data/data2.dart';
+import 'package:fitmemax/StoryData/data.dart';
+import 'package:fitmemax/src/ListData/ListData.dart';
 import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
 import 'package:fitmemax/src/module/dashboard/profile/Chat/page/ProfileChatPage.dart';
 import 'package:fitmemax/src/module/dashboard/profile/Profile.dart';

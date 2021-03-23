@@ -1,6 +1,12 @@
 
 
 class Data {
+  List countryCode = ['+91', '+1', "+4","+44"];
+
+  List menuItem = [
+    'Chat','Advertisement','Diet & Fitness','Trasaction','Invite Friends','About Us','Terms & Condition','Privacy Policy'
+  ];
+
   List Weight = [
     {
       'date': '01',
@@ -106,6 +112,7 @@ class Data {
      'percentage':'0.88',
    }
  ];
+
 
 
  List User = [

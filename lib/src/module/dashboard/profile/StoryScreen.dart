@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:fitmemax/Data/StoryData/story_model.dart';
-import 'package:fitmemax/Data/StoryData/user_model.dart';
+import 'package:fitmemax/StoryData/story_model.dart';
+import 'package:fitmemax/StoryData/user_model.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';

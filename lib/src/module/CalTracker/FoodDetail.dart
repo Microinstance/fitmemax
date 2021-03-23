@@ -1,11 +1,7 @@
-import 'package:fitmemax/src/data/data2.dart';
-import 'package:fitmemax/src/widgets/CartItemNumber.dart';
-import 'package:fitmemax/src/widgets/loginButtonTwo.dart';
+import 'package:fitmemax/src/ListData/ListData.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'FoodAdd.dart';
 import 'MacrosMicrosBars.dart';
 
 class FoodDetail extends StatefulWidget {

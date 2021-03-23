@@ -1,4 +1,4 @@
-import 'package:fitmemax/src/data/data2.dart';
+import 'package:fitmemax/src/ListData/ListData.dart';
 import 'package:fitmemax/src/module/Fast/FastDetailsPage.dart';
 import 'package:fitmemax/src/module/Fast/FastStart.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
