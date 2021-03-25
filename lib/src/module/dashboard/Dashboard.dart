@@ -15,7 +15,7 @@ import 'package:page_transition/page_transition.dart';
 class Dashboard extends StatefulWidget {
   int pageStack;
 
-  Dashboard({Key key, this.pageStack = 3}) : super(key: key);
+  Dashboard({Key key, this.pageStack = 0}) : super(key: key);
   @override
   _DashboardState createState() => _DashboardState();
 }
@@ -81,7 +81,7 @@ class _DashboardState extends State<Dashboard>
                     appBar: AppBar(
                       elevation: 0,
                       centerTitle: false,
-                      backgroundColor: Palette.primaryColor,
+                      backgroundColor: ColorPalette.PrimaryColor,
                       title: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -259,19 +259,14 @@ class _DashboardState extends State<Dashboard>
           alignment: Alignment.topLeft,
           child: Container(
             width: _width * 0.55,
-            child: MediaQuery.removePadding(
-              context: context,
-              removeTop: true,
-              child: Container(
-                height: _height,
-                child: ListView(
-                  shrinkWrap: true,
-                  padding: EdgeInsets.zero,
-                  children: [
-                    SafeArea(
-                      child: SizedBox(),
-                    ),
-                    Column(
+            child: Container(
+              height: _height,
+              child: ListView(
+                shrinkWrap: true,
+                padding: EdgeInsets.zero,
+                children: [
+                  SafeArea(
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -282,7 +277,7 @@ class _DashboardState extends State<Dashboard>
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(top: 15),
+                                padding: const EdgeInsets.only(top: 20),
                                 child: CircleAvatar(
                                   radius: 55,
                                   backgroundColor:
@@ -314,198 +309,198 @@ class _DashboardState extends State<Dashboard>
                             )),
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15, top: 25),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.chat,
-                                  color: Colors.white,
-                                  size: 22,
-                                ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                Flexible(
-                                    child: Text("Chat",
-                                        style: TextStyles.RegulerBIGWhite)),
-                              ],
-                            ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15, top: 25),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.chat,
+                                color: Colors.white,
+                                size: 22,
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Flexible(
+                                  child: Text("Chat",
+                                      style: TextStyles.RegulerBIGWhite)),
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.web,
-                                  color: Colors.white,
-                                  size: 22,
-                                ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                Flexible(
-                                    child: Text("Advertisement",
-                                        style: TextStyles.RegulerBIGWhite)),
-                              ],
-                            ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.web,
+                                color: Colors.white,
+                                size: 22,
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Flexible(
+                                  child: Text("Advertisement",
+                                      style: TextStyles.RegulerBIGWhite)),
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.fitness_center,
-                                  color: Colors.white,
-                                  size: 22,
-                                ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                Flexible(
-                                    child: Text("Diet and Fitness",
-                                        style: TextStyles.RegulerBIGWhite)),
-                              ],
-                            ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.fitness_center,
+                                color: Colors.white,
+                                size: 22,
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Flexible(
+                                  child: Text("Diet and Fitness",
+                                      style: TextStyles.RegulerBIGWhite)),
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.share_rounded,
-                                  color: Colors.white,
-                                  size: 22,
-                                ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                Flexible(
-                                    child: GestureDetector(
-                                        onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              PageTransition(
-                                                  type: PageTransitionType.fade,
-                                                  child: ReferEarn()));
-                                        },
-                                        child: Text("Invite friends",
-                                            style:
-                                                TextStyles.RegulerBIGWhite))),
-                              ],
-                            ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.share_rounded,
+                                color: Colors.white,
+                                size: 22,
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Flexible(
+                                  child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            PageTransition(
+                                                type: PageTransitionType.fade,
+                                                child: ReferEarn()));
+                                      },
+                                      child: Text("Invite friends",
+                                          style:
+                                              TextStyles.RegulerBIGWhite))),
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.history,
-                                  color: Colors.white,
-                                  size: 22,
-                                ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                Flexible(
-                                    child: Text("Transaction",
-                                        style: TextStyles.RegulerBIGWhite)),
-                              ],
-                            ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.history,
+                                color: Colors.white,
+                                size: 22,
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Flexible(
+                                  child: Text("Transaction",
+                                      style: TextStyles.RegulerBIGWhite)),
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.all_inclusive,
-                                  color: Colors.white,
-                                  size: 22,
-                                ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                Flexible(
-                                    child: Text("About us",
-                                        style: TextStyles.RegulerBIGWhite)),
-                              ],
-                            ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.all_inclusive,
+                                color: Colors.white,
+                                size: 22,
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Flexible(
+                                  child: Text("About us",
+                                      style: TextStyles.RegulerBIGWhite)),
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.account_tree_outlined,
-                                  color: Colors.white,
-                                  size: 22,
-                                ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                Flexible(
-                                    child: Text("Terms & Condition",
-                                        style: TextStyles.RegulerBIGWhite)),
-                              ],
-                            ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.account_tree_outlined,
+                                color: Colors.white,
+                                size: 22,
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Flexible(
+                                  child: Text("Terms & Condition",
+                                      style: TextStyles.RegulerBIGWhite)),
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.privacy_tip_outlined,
-                                  color: Colors.white,
-                                  size: 22,
-                                ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                Flexible(
-                                    child: Text("Privacy Policy",
-                                        style: TextStyles.RegulerBIGWhite)),
-                              ],
-                            ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.privacy_tip_outlined,
+                                color: Colors.white,
+                                size: 22,
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Flexible(
+                                  child: Text("Privacy Policy",
+                                      style: TextStyles.RegulerBIGWhite)),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    Container(
-                      height: 50,
-                      width: _width * 0.55,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Logout",
-                            style: TextStyles.TitleWhite,
-                          ),
-                          SizedBox(
-                            width: 7,
-                          ),
-                          Icon(
-                            Icons.power_settings_new,
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                        ],
-                      ),
+                  ),
+                  Container(
+                    height: 50,
+                    width: _width * 0.55,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Logout",
+                          style: TextStyles.TitleWhite,
+                        ),
+                        SizedBox(
+                          width: 7,
+                        ),
+                        Icon(
+                          Icons.power_settings_new,
+                          color: Colors.white,
+                          size: 20,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class BlogCard extends StatefulWidget {
@@ -32,7 +33,7 @@ class _BlogCardState extends State<BlogCard> {
                       Icon(Icons.whatshot_rounded,color: ColorPalette.PrimaryColor,size: 25,),
                       Padding(
                         padding: const EdgeInsets.only(left: 10),
-                        child: Text("Healthy Lifestyle",style: TextStyles.TitleBlack,),
+                        child: Text("Healthy Lifestyle",style: TextStyles.TitleBlackBold,),
                       ),
                     ],
                   ),
@@ -46,7 +47,7 @@ class _BlogCardState extends State<BlogCard> {
                 padding: const EdgeInsets.only(top: 10),
                 child: Row(
                   children: [
-                    Flexible(child: Text("10 Healthy Foods to Keep Your Hunger Pangs Away",style: TextStyles.RegulerBlack,textAlign: TextAlign.start,)),
+                    Flexible(child: Text("10 Healthy Foods to Keep Your Hunger Pangs Away",style: TextStyles.ParaBlack,textAlign: TextAlign.start,)),
                   ],
                 ),
               ),
@@ -77,6 +78,41 @@ class _BlogCardState extends State<BlogCard> {
                     child: Text("256",style: TextStyles.BodySmallBlack,),
                   ),
                 ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 4,),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8,),
+                      child: CircleAvatar(
+                        radius: 15,
+                        backgroundImage: AssetImage(
+                          "images/userImage2.jpeg"
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: _width-70,
+                      child: RichText(
+                        text: TextSpan(
+                         children: [
+                           TextSpan(
+                             text: 'Vijay Tiwari  ',
+                             style: TextStyles.BodyBlackBold,
+                           ),
+                           TextSpan(
+                             text: 'My heart beats per miniut at rest is 110 to 120...',
+                             style: TextStyles.BodyBlack,
+                           ),
+                         ]
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               )
             ],
           ),

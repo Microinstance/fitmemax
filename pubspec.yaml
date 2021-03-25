@@ -50,6 +50,7 @@ dependencies:
   flutter_html: ^1.1.1
   waveprogressbar_flutter: ^0.1.2
   flutter_svg: ^0.19.3
+  intl: ^0.16.1
 
 dev_dependencies:
   flutter_test:
@@ -94,6 +95,7 @@ flutter:
     - assets/battleground/
     - assets/lottie/
     - assets/workout/
+    - assets/icon/
 
   fonts:
     - family: Lato

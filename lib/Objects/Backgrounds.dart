@@ -18,6 +18,7 @@ class _BackgroundsState extends State<Backgrounds> {
       body: Stack(
         children: [
           Container(
+            height: _height*0.6,
             width: _width,
             child: Image.asset('assets/background/signin_up.png',fit: BoxFit.fitWidth,color: ColorPalette.PrimaryColor,),
           ),

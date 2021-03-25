@@ -3,6 +3,7 @@ import 'package:fitmemax/Objects/ButtonOne.dart';
 import 'package:fitmemax/Objects/PasswordFieldOne.dart';
 import 'package:fitmemax/Objects/SocialButton.dart';
 import 'package:fitmemax/Objects/TextFieldOne.dart';
+import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -131,6 +132,7 @@ class _SigninPageState extends State<SigninPage> {
                                 title: 'Sign In',
                                 colors: ColorPalette.PrimaryColor,
                                 onPressed: ()  {
+                                  Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Dashboard(pageStack: 0,)));
                                 },
                               ),
                             ),

@@ -1,21 +1,16 @@
 import 'dart:async';
-import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:fitmemax/Objects/Backgrounds.dart';
-import 'package:fitmemax/Services/apiProvider.dart';
 import 'package:fitmemax/src/ListData/ListData.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundDashBoard.dart';
 import 'package:fitmemax/src/module/CalTracker/CalTrackerDashboard.dart';
 import 'package:fitmemax/src/module/Fast/FastDashboard.dart';
 import 'package:fitmemax/src/module/Workout/Workout.dart';
-import 'package:fitmemax/src/module/dashboard/home/Blog.dart';
 import 'package:fitmemax/src/module/dashboard/home/BlogCard.dart';
-import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Home extends StatefulWidget {
@@ -813,7 +808,6 @@ class _HomeState extends State<Home> {
           ],
         ));
   }
-
   Widget hItem({BuildContext context, String name, String image}) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
@@ -854,10 +848,10 @@ class OnboardingDots extends StatelessWidget {
       height: isActive ? 12 : 8,
       width: isActive ? 12 : 8,
       decoration: BoxDecoration(
-        color: isActive ? Colors.white : Palette.primaryColor,
+        color: isActive ? Colors.white : ColorPalette.PrimaryColor,
         border: isActive
             ? Border.all(
-                color: Palette.primaryColor,
+                color: ColorPalette.PrimaryColor,
                 width: 1.5,
               )
             : Border.all(
