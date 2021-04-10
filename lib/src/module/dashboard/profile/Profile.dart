@@ -8,10 +8,10 @@ import 'package:fitmemax/src/module/dashboard/profile/ProfilePost.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileSearch.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileSettings.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
+import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
-
 import 'Chat/page/ProfileChatPage.dart';
 
 class Profile extends StatefulWidget {
@@ -20,7 +20,6 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
-
   TabController _tabController;
   int _currentPage = 0;
   final PageController _pageController = PageController(initialPage: 0);
@@ -28,13 +27,15 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    Timer.periodic(Duration(seconds: 5), (Timer timer) {
-      if (_currentPage < 2) {
-        _currentPage++;
-      } else {
-        _currentPage = 0;
-      }
-    },
+    Timer.periodic(
+      Duration(seconds: 5),
+      (Timer timer) {
+        if (_currentPage < 2) {
+          _currentPage++;
+        } else {
+          _currentPage = 0;
+        }
+      },
     );
     _tabController = TabController(length: 5, vsync: this);
   }
@@ -144,12 +145,16 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                                       const EdgeInsets.only(left: 15, top: 10),
                                   child: GestureDetector(
                                       onTap: () {
-                                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Dashboard()));
+                                        Navigator.push(
+                                            context,
+                                            PageTransition(
+                                                type: PageTransitionType.fade,
+                                                child: Dashboard()));
                                       },
                                       child: Icon(
-                                        Icons.arrow_back_ios,
-                                        color: Palette.x1Color,
-                                        size: 25,
+                                        Icons.arrow_back,
+                                        color: ColorPalette.ProfileGreen,
+                                        size: 20,
                                       )),
                                 )),
                               ),
@@ -160,11 +165,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                                     padding: EdgeInsets.only(top: 15),
                                     child: Text(
                                       "shivay.paradox",
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.white,
-                                          fontFamily: 'Roboto',
-                                          fontWeight: FontWeight.bold),
+                                      style: TextStyles.TitleWhite,
                                     ),
                                   ),
                                 ),
@@ -175,70 +176,78 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                                   child: Padding(
                                     padding: EdgeInsets.only(top: 5, right: 10),
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
                                       children: [
                                         Stack(
                                           overflow: Overflow.visible,
                                           alignment: Alignment.bottomRight,
                                           children: [
                                             CircleAvatar(
-                                              radius: 23,
-                                              backgroundColor:
-                                                  Colors.grey[50].withOpacity(0.1),
+                                              radius: 22,
+                                              backgroundColor: Colors.grey[50]
+                                                  .withOpacity(0.1),
                                               child: CircleAvatar(
-                                                radius: 21,
-                                                backgroundColor: Colors.transparent,
+                                                radius: 20,
+                                                backgroundColor:
+                                                    Colors.transparent,
                                                 backgroundImage: AssetImage(
                                                     "assets/profile/me.png"),
                                               ),
                                             ),
                                             Positioned(
-                                                bottom: -5,
-                                                child: Icon(
-                                                  Icons.check_circle,
-                                                  color: Colors.blueAccent,
-                                                ),
+                                              bottom: -2,
+                                              child: Icon(
+                                                Icons.check_circle,
+                                                color:
+                                                    ColorPalette.ProfileGreen,
+                                                size: 18,
+                                              ),
                                             )
                                           ],
                                         ),
-                                        SizedBox(height: 20,),
+                                        SizedBox(
+                                          height: 22,
+                                        ),
                                         Stack(
                                           alignment: Alignment.topRight,
                                           children: [
                                             IconButton(
                                               icon: Icon(
                                                 Icons.favorite_border,
-                                                size: 30,
-                                                // color: Palette.x1Color,
+                                                size: 25,
                                                 color: Colors.white,
                                               ),
                                               onPressed: () {
                                                 Navigator.push(
                                                   context,
                                                   PageTransition(
-                                                    type: PageTransitionType.fade,
-                                                    child: ProfileActivity(),),);
+                                                    type:
+                                                        PageTransitionType.fade,
+                                                    child: ProfileActivity(),
+                                                  ),
+                                                );
                                               },
                                             ),
-                                            CircleAvatar(
-                                                radius: 10,
-                                                backgroundColor: Palette.x1Color,
-                                                child: Center(
-                                                    child: Text(
-                                                  "3",
-                                                  style: TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize: 15,
-                                                      fontFamily: 'Roboto',
-                                                      fontWeight: FontWeight.bold),
-                                                ))),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 2, right: 3),
+                                              child: CircleAvatar(
+                                                  radius: 9,
+                                                  backgroundColor:
+                                                      Palette.x1Color,
+                                                  child: Center(
+                                                      child: Text(
+                                                    "3",
+                                                    style: TextStyles.BodyBlack,
+                                                  ))),
+                                            ),
                                           ],
                                         ),
                                         IconButton(
                                           icon: Icon(
                                             Icons.settings_rounded,
                                             size: 25,
-                                            // color: Palette.x1Color,
                                             color: Colors.white,
                                           ),
                                           onPressed: () {
@@ -246,7 +255,9 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                                               context,
                                               PageTransition(
                                                 type: PageTransitionType.fade,
-                                                child: ProfileSettings(),),);
+                                                child: ProfileSettings(),
+                                              ),
+                                            );
                                           },
                                         ),
                                       ],
@@ -255,57 +266,35 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                                 ),
                               ),
                               Align(
-                                  alignment: Alignment.bottomLeft,
-                                  child: Padding(
-                                    padding:
-                                        EdgeInsets.only(left: 15, bottom: 30),
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        SizedBox(
-                                          height: _height * 0.5 * 0.4,
-                                          width: _width * 0.6,
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: [
-                                              Row(
-                                                    crossAxisAlignment:
-                                                    CrossAxisAlignment.end,
-                                                children: [
-                                                  Flexible(
-                                                    child: Text(
-                                                    "Piyush ",
-                                                    style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontWeight:
-                                                    FontWeight.bold,
-                                                    fontFamily: 'Roboto',
-                                                    fontSize: 25,),
-                                                    textAlign: TextAlign.start,
-                                                   ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                crossAxisAlignment:
-                                                CrossAxisAlignment.end,
-                                                children: [
-                                                  Flexible(
-                                                      child: Text(
-                                                    "Kumar",
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontWeight:
-                                                        FontWeight.bold,
-                                                        fontFamily: 'Roboto',
-                                                        fontSize: 40,
-                                                    ),
-                                                  textAlign: TextAlign.start,
+                                alignment: Alignment.bottomLeft,
+                                child: Padding(
+                                  padding:
+                                      EdgeInsets.only(left: 15, bottom: 30),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      SizedBox(
+                                        height: _height * 0.5 * 0.4,
+                                        width: _width * 0.6,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            RichText(
+                                              text: TextSpan(children: [
+                                                TextSpan(
+                                                  text: "Shivay",
+                                                  style: TextStyles.TitleWhite,
                                                 ),
+                                                TextSpan(
+                                                  text: "\nKumar",
+                                                  style:
+                                                      TextStyles.DisplayWhite,
                                                 ),
-                                              ],
-                                            ),
+                                              ]),
+                                            )
                                           ],
                                         ),
                                       ),
@@ -341,29 +330,21 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                Column(
+                                  Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
                                         "543k",
-                                        style: TextStyle(
-                                            fontSize: 25,
-                                            fontFamily: 'Roboto',
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
+                                        style: TextStyles.TitleWhite,
                                       ),
                                       SizedBox(
                                         height: 5,
                                       ),
                                       Text(
                                         "Followers",
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            fontFamily: 'Roboto',
-                                            color: Palette.x1Color,
-                                            fontWeight: FontWeight.bold),
+                                        style: TextStyles.RegulerProfile,
                                       ),
                                     ],
                                   ),
@@ -374,22 +355,14 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                                     children: [
                                       Text(
                                         "842",
-                                        style: TextStyle(
-                                            fontSize: 25,
-                                            fontFamily: 'Roboto',
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
+                                        style: TextStyles.TitleWhite,
                                       ),
                                       SizedBox(
                                         height: 5,
                                       ),
                                       Text(
                                         "Following",
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontFamily: 'Roboto',
-                                            color: Palette.x1Color,
-                                            fontWeight: FontWeight.bold),
+                                        style: TextStyles.RegulerProfile,
                                       ),
                                     ],
                                   ),
@@ -400,22 +373,14 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                                     children: [
                                       Text(
                                         "173",
-                                        style: TextStyle(
-                                            fontSize: 25,
-                                            fontFamily: 'Roboto',
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
+                                        style: TextStyles.TitleWhite,
                                       ),
                                       SizedBox(
                                         height: 5,
                                       ),
                                       Text(
                                         "Posts",
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            fontFamily: 'Roboto',
-                                            color: Palette.x1Color,
-                                            fontWeight: FontWeight.bold),
+                                        style: TextStyles.RegulerProfile,
                                       ),
                                     ],
                                   ),
@@ -435,54 +400,34 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                               indicatorWeight: 2.0,
                               indicatorColor: Palette.x1Color,
                               tabs: [
-                                SizedBox(
-                                  height: 50,
-                                  child: Center(
-                                    child: Text('Posts',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 15)),
+                                Tab(
+                                  child: Text(
+                                    'Posts',
+                                    style: TextStyles.ParaWhite,
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 50,
-                                  child: Center(
-                                    child: Text('Achievements',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 15)),
+                                Tab(
+                                  child: Text(
+                                    'Achievements',
+                                    style: TextStyles.ParaWhite,
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 50,
-                                  child: Center(
-                                    child: Text('Plans',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 15)),
+                                Tab(
+                                  child: Text(
+                                    'Plans',
+                                    style: TextStyles.ParaWhite,
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 50,
-                                  child: Center(
-                                    child: Text('Coins',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 15)),
+                                Tab(
+                                  child: Text(
+                                    'Coins',
+                                    style: TextStyles.ParaWhite,
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 50,
-                                  child: Center(
-                                    child: Text('Offers',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 15)),
+                                Tab(
+                                  child: Text(
+                                    'Offers',
+                                    style: TextStyles.ParaWhite,
                                   ),
                                 ),
                               ],
@@ -597,7 +542,9 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                         context,
                         PageTransition(
                           type: PageTransitionType.fade,
-                          child: ProfileSearch(),),);
+                          child: ProfileSearch(),
+                        ),
+                      );
                     },
                   ),
                   // Stack(
@@ -638,7 +585,9 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                         context,
                         PageTransition(
                           type: PageTransitionType.fade,
-                          child: ProfilePost(),),);
+                          child: ProfilePost(),
+                        ),
+                      );
                     },
                   ),
                   IconButton(
@@ -653,7 +602,9 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                         context,
                         PageTransition(
                           type: PageTransitionType.fade,
-                          child: ProfileChatPage(),),);
+                          child: ProfileChatPage(),
+                        ),
+                      );
                     },
                   ),
                   IconButton(
@@ -736,7 +687,9 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
               ],
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Container(
             height: 150,
             child: ListView.builder(
@@ -744,9 +697,9 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
               itemCount: Data().Badges.length,
-              itemBuilder: (BuildContext context, int index){
+              itemBuilder: (BuildContext context, int index) {
                 return Padding(
-                  padding: const EdgeInsets.only(right: 10,left: 10),
+                  padding: const EdgeInsets.only(right: 10, left: 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -757,9 +710,12 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                             height: 100,
                             width: 100,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
                               color: Colors.black,
-                              border: Border.all(color: Colors.white.withOpacity(0.2),width: 1),
+                              border: Border.all(
+                                  color: Colors.white.withOpacity(0.2),
+                                  width: 1),
                               image: DecorationImage(
                                 image: AssetImage("assets/Badges/badges1.png"),
                                 fit: BoxFit.cover,
@@ -777,15 +733,23 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                           // ),
                         ],
                       ),
-                      SizedBox(height: 10,),
-                      Text(Data().Badges[index]['name'],style: GoogleFonts.italiana(fontSize: 15,color: Colors.white),),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        Data().Badges[index]['name'],
+                        style: GoogleFonts.italiana(
+                            fontSize: 15, color: Colors.white),
+                      ),
                     ],
                   ),
                 );
               },
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           SizedBox(
             height: 15,
           ),
@@ -814,7 +778,9 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
               ],
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Container(
             height: 130,
             child: ListView.builder(
@@ -822,9 +788,9 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
               itemCount: Data().Ring.length,
-              itemBuilder: (BuildContext context, int index){
+              itemBuilder: (BuildContext context, int index) {
                 return Padding(
-                  padding: const EdgeInsets.only(right: 10,left: 15),
+                  padding: const EdgeInsets.only(right: 10, left: 15),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -848,15 +814,23 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                           // Icon(Icons.lock_outline_rounded,color: Colors.grey,)
                         ],
                       ),
-                      SizedBox(height: 10,),
-                      Text(Data().Ring[index]['name'],style: GoogleFonts.stylish(fontSize: 16,color: Colors.white),),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        Data().Ring[index]['name'],
+                        style: GoogleFonts.stylish(
+                            fontSize: 16, color: Colors.white),
+                      ),
                     ],
                   ),
                 );
               },
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 15, right: 15),
             child: Row(
@@ -865,9 +839,9 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                 Text(
                   "Diamonds",
                   style: TextStyle(
-                      fontSize: 22,
-                      color: Palette.x1Color,
-                      fontFamily: 'Roboto',
+                    fontSize: 22,
+                    color: Palette.x1Color,
+                    fontFamily: 'Roboto',
                   ),
                 ),
                 Row(
@@ -883,7 +857,9 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
               ],
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Container(
             height: 150,
             child: ListView.builder(
@@ -891,9 +867,9 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
               itemCount: Data().Badges.length,
-              itemBuilder: (BuildContext context, int index){
+              itemBuilder: (BuildContext context, int index) {
                 return Padding(
-                  padding: const EdgeInsets.only(right: 10,left: 10),
+                  padding: const EdgeInsets.only(right: 10, left: 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -904,11 +880,15 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                             height: 100,
                             width: 100,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
                               color: Colors.black,
-                              border: Border.all(color: Colors.white.withOpacity(0.2),width: 1),
+                              border: Border.all(
+                                  color: Colors.white.withOpacity(0.2),
+                                  width: 1),
                               image: DecorationImage(
-                                image: AssetImage("assets/gif/image_processing20200908-14153-18rh6ev.gif"),
+                                image: AssetImage(
+                                    "assets/gif/image_processing20200908-14153-18rh6ev.gif"),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -924,15 +904,23 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                           // ),
                         ],
                       ),
-                      SizedBox(height: 10,),
-                      Text(Data().Badges[index]['name'],style: GoogleFonts.italiana(fontSize: 15,color: Colors.white),),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        Data().Badges[index]['name'],
+                        style: GoogleFonts.italiana(
+                            fontSize: 15, color: Colors.white),
+                      ),
                     ],
                   ),
                 );
               },
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 15, right: 15),
             child: Row(
@@ -958,17 +946,19 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
               ],
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Container(
             height: 150,
             child: ListView.builder(
               physics: BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
-              itemCount:5,
-              itemBuilder: (BuildContext context, int index){
+              itemCount: 5,
+              itemBuilder: (BuildContext context, int index) {
                 return Padding(
-                  padding: const EdgeInsets.only(left: 15,right: 15,top: 10),
+                  padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
                   child: Container(
                     width: 260,
                     decoration: BoxDecoration(
@@ -978,7 +968,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                     child: Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 15,right: 15),
+                          padding: const EdgeInsets.only(left: 15, right: 15),
                           child: CircleAvatar(
                             radius: 35,
                             backgroundImage: AssetImage("assets/gif/gym.gif"),
@@ -989,11 +979,30 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("40 pts",style: GoogleFonts.roboto(fontSize: 22,color: Colors.yellow[700],fontWeight: FontWeight.bold),),
-                              SizedBox(height: 7,),
-                              Text("Jym Check in",style: GoogleFonts.roboto(fontSize: 15,color: Colors.white.withOpacity(0.8)),),
-                              SizedBox(height: 25,),
-                              Text("Tue - Mar 15, 2020",style: GoogleFonts.openSans(fontSize: 15,color: Colors.yellow[700]),),
+                              Text(
+                                "40 pts",
+                                style: GoogleFonts.roboto(
+                                    fontSize: 22,
+                                    color: Colors.yellow[700],
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                height: 7,
+                              ),
+                              Text(
+                                "Jym Check in",
+                                style: GoogleFonts.roboto(
+                                    fontSize: 15,
+                                    color: Colors.white.withOpacity(0.8)),
+                              ),
+                              SizedBox(
+                                height: 25,
+                              ),
+                              Text(
+                                "Tue - Mar 15, 2020",
+                                style: GoogleFonts.openSans(
+                                    fontSize: 15, color: Colors.yellow[700]),
+                              ),
                             ],
                           ),
                         )
@@ -1004,7 +1013,9 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
               },
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: Container(
@@ -1023,26 +1034,56 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text("LEVEL",style: GoogleFonts.raleway(fontSize: 30,fontWeight: FontWeight.bold,color: Colors.white,fontStyle: FontStyle.italic),),
+                            Text(
+                              "LEVEL",
+                              style: GoogleFonts.raleway(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontStyle: FontStyle.italic),
+                            ),
                             Padding(
                               padding: const EdgeInsets.only(bottom: 5),
-                              child: Text(" 2",style: GoogleFonts.arimo(fontSize: 40,fontWeight: FontWeight.bold,color: Palette.x1Color,fontStyle: FontStyle.italic),),
+                              child: Text(
+                                " 2",
+                                style: GoogleFonts.arimo(
+                                    fontSize: 40,
+                                    fontWeight: FontWeight.bold,
+                                    color: Palette.x1Color,
+                                    fontStyle: FontStyle.italic),
+                              ),
                             ),
-                            SizedBox(width: 15,),
-                            Icon(Icons.check_circle_rounded,size: 30,color: Palette.x1Color,),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Icon(
+                              Icons.check_circle_rounded,
+                              size: 30,
+                              color: Palette.x1Color,
+                            ),
                           ],
                         ),
                         Padding(
                           padding: const EdgeInsets.only(bottom: 15),
-                          child: Text("Know More",style: GoogleFonts.raleway(fontSize: 18,color: Palette.x1Color,fontStyle: FontStyle.italic),),
+                          child: Text(
+                            "Know More",
+                            style: GoogleFonts.raleway(
+                                fontSize: 18,
+                                color: Palette.x1Color,
+                                fontStyle: FontStyle.italic),
+                          ),
                         ),
                       ],
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Flexible(
-                        child: Text(
-                          "Reach 5 coins, for 3 days in row, to upgrade to level 3",
-                          style: TextStyle(fontSize: 18,color: Colors.white.withOpacity(0.8)),),
+                      child: Text(
+                        "Reach 5 coins, for 3 days in row, to upgrade to level 3",
+                        style: TextStyle(
+                            fontSize: 18, color: Colors.white.withOpacity(0.8)),
+                      ),
                     ),
                   ],
                 ),
@@ -1054,88 +1095,109 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
             child: Container(
               height: 250,
               decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-                image: DecorationImage(
-                  image: AssetImage("assets/gif/trophy.gif"),
-                  fit: BoxFit.cover,
-                )
-              ),
+                  color: Colors.black,
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  image: DecorationImage(
+                    image: AssetImage("assets/gif/trophy.gif"),
+                    fit: BoxFit.cover,
+                  )),
             ),
           ),
-          SizedBox(height: 140,),
+          SizedBox(
+            height: 140,
+          ),
         ],
       ),
     );
   }
 
-  Widget _Offers(x){
+  Widget _Offers(x) {
     return SingleChildScrollView(
       child: Column(
         children: [
           Column(
-                 children: List.generate(5,(index){
-                 return Column(
-                   children: [
-                     Padding(
-                       padding: const EdgeInsets.only(left: 15,right: 15,top: 20,bottom: 20),
-                       child: Row(
-                         children: [
-                           Flexible(child: Text("For Noise Makers",style: GoogleFonts.roboto(fontSize: 23,color: Colors.white,fontWeight: FontWeight.w500),)),
-                         ],
-                       ),
-                     ),
-                     Container(
-                       height: 320,
-                       child: ListView.builder(
-                         itemCount: 4,
-                         scrollDirection: Axis.horizontal,
-                         shrinkWrap: true,
-                         physics: BouncingScrollPhysics(),
-                         itemBuilder: (BuildContext context, int index){
-                           return _OfferCard(x);
-                         },
-                       ),
-                     ),
-                   ],
-                 );
-             },
+            children: List.generate(
+              5,
+              (index) {
+                return Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 15, right: 15, top: 20, bottom: 20),
+                      child: Row(
+                        children: [
+                          Flexible(
+                              child: Text(
+                            "For Noise Makers",
+                            style: GoogleFonts.roboto(
+                                fontSize: 23,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500),
+                          )),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 320,
+                      child: ListView.builder(
+                        itemCount: 4,
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        physics: BouncingScrollPhysics(),
+                        itemBuilder: (BuildContext context, int index) {
+                          return _OfferCard(x);
+                        },
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
-          SizedBox(height: 140,)
+          SizedBox(
+            height: 140,
+          )
         ],
       ),
     );
   }
 }
-Widget _OfferCard(context){
+
+Widget _OfferCard(context) {
   return Padding(
-    padding: const EdgeInsets.only(left: 15,right: 15,top: 15,bottom: 15),
+    padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
     child: Container(
       // height: 340,
-      width:  200,
+      width: 200,
       decoration: BoxDecoration(
         color: Colors.black,
         borderRadius: BorderRadius.all(Radius.circular(15)),
-        border: Border.all(width: 1,color: Colors.white.withOpacity(0.3)),
+        border: Border.all(width: 1, color: Colors.white.withOpacity(0.3)),
       ),
       child: Column(
         children: [
           GestureDetector(
-            onTap: (){
-              Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: ProfileOfferDetails()));
+            onTap: () {
+              Navigator.push(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.rightToLeft,
+                      child: ProfileOfferDetails()));
             },
             child: Container(
               height: 200,
-              width:  200,
+              width: 200,
               decoration: BoxDecoration(
                 color: Colors.transparent,
                 image: DecorationImage(
                   image: AssetImage("assets/banner/banner1.png"),
                   fit: BoxFit.cover,
                 ),
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15)),
-                border: Border.all(width: 1,color: Colors.white.withOpacity(0.3)),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15)),
+                border:
+                    Border.all(width: 1, color: Colors.white.withOpacity(0.3)),
               ),
             ),
           ),
@@ -1143,19 +1205,28 @@ Widget _OfferCard(context){
             height: 30,
             child: Center(
               child: Padding(
-                padding: const EdgeInsets.only(left: 5,right: 5,top: 5,bottom: 5),
+                padding:
+                    const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Flexible(child: Text("Macbook Pro Sale",style: GoogleFonts.raleway(fontSize: 14,color: Colors.white,fontWeight: FontWeight.w500),)),
+                    Flexible(
+                        child: Text(
+                      "Macbook Pro Sale",
+                      style: GoogleFonts.raleway(
+                          fontSize: 14,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500),
+                    )),
                   ],
                 ),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10,right: 10,top: 5,bottom: 5),
+            padding:
+                const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
             child: Stack(
               alignment: Alignment.centerLeft,
               children: [
@@ -1171,7 +1242,7 @@ Widget _OfferCard(context){
                   alignment: Alignment.centerRight,
                   children: [
                     Container(
-                      width: 190*0.5,
+                      width: 190 * 0.5,
                       height: 7,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
@@ -1195,12 +1266,18 @@ Widget _OfferCard(context){
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10,right: 10),
+            padding: const EdgeInsets.only(left: 10, right: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('200',style: TextStyle(fontSize: 10,color: Colors.white),),
-                Text('1000',style: TextStyle(fontSize: 10,color: Colors.white),),
+                Text(
+                  '200',
+                  style: TextStyle(fontSize: 10, color: Colors.white),
+                ),
+                Text(
+                  '1000',
+                  style: TextStyle(fontSize: 10, color: Colors.white),
+                ),
               ],
             ),
           )
@@ -1221,7 +1298,7 @@ class OnboardingDots extends StatelessWidget {
       height: isActive ? 9 : 9,
       width: isActive ? 9 : 9,
       decoration: BoxDecoration(
-        color: isActive ? Palette.x1Color : Colors.grey[600],
+        color: isActive ? ColorPalette.ProfileGreen : ColorPalette.Grey,
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
     );

@@ -6,15 +6,13 @@ import 'package:fitmemax/src/module/dashboard/profile/Profile.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfilePost.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileSearch.dart';
 import 'package:fitmemax/src/module/dashboard/profile/StoryScreen.dart';
-import 'package:fitmemax/src/widgets/palette.dart';
-import 'package:fitmemax/src/widgets/w_post_image_asset.dart';
 import 'package:fitmemax/src/widgets/w_post_video_asset.dart';
+import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:inview_notifier_list/inview_notifier_list.dart';
 import 'package:page_transition/page_transition.dart';
-
 import 'ProfileActivity.dart';
+import 'ProfileFeedImage.dart';
 
 class ProfileHome extends StatefulWidget {
   @override
@@ -26,7 +24,7 @@ class _ProfileHomeState extends State<ProfileHome> {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Palette.profileColor,
+      backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
         elevation: 0,
@@ -42,9 +40,9 @@ class _ProfileHomeState extends State<ProfileHome> {
             );
           },
           icon: Icon(
-            Icons.arrow_back_ios_rounded,
-            color: Colors.white,
-            size: 25,
+            Icons.arrow_back,
+            color: ColorPalette.ProfileGreen,
+            size: 20,
           ),
         ),
         actions: [
@@ -56,58 +54,57 @@ class _ProfileHomeState extends State<ProfileHome> {
                 IconButton(
                   icon: Icon(
                     Icons.favorite_border,
-                    size: 30,
-                    // color: Palette.x1Color,
+                    size: 25,
                     color: Colors.white,
                   ),
                   onPressed: () {
                     Navigator.push(
                       context,
                       PageTransition(
-                        type: PageTransitionType.fade,
+                        type:
+                        PageTransitionType.fade,
                         child: ProfileActivity(),
                       ),
                     );
                   },
                 ),
-                CircleAvatar(
-                    radius: 10,
-                    backgroundColor: Palette.x1Color,
-                    child: Center(
-                        child: Text(
-                      "3",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.bold),
-                    ))),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: 2, right: 3),
+                  child: CircleAvatar(
+                      radius: 9,
+                      backgroundColor: ColorPalette.ProfileGreen,
+                      child: Center(
+                          child: Text(
+                            "3",
+                            style: TextStyles.BodyBlack,
+                          ))),
+                ),
               ],
             ),
           ),
         ],
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              "Fit",
-              style: TextStyle(color: Palette.x1Color, fontSize: 25, fontWeight: FontWeight.w600),
+        title: RichText(
+          text: TextSpan(children: [
+            TextSpan(
+              text: "Fit",
+              style: TextStyles.TitleProfile,
             ),
-            Text(
-              "Book",
-              style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.w600),
+            TextSpan(
+              text: "Book",
+              style:
+              TextStyles.TitleWhite,
             ),
-          ],
-        ),
+          ]),
+        )
       ),
       body: Stack(
         children: [
           InViewNotifierList(
               scrollDirection: Axis.vertical,
               initialInViewIds: ['0'],
-              isInViewPortCondition:
-                  (double deltaTop, double deltaBottom, double viewPortDimension) {
+              isInViewPortCondition: (double deltaTop, double deltaBottom,
+                  double viewPortDimension) {
                 return deltaTop < (0.4 * viewPortDimension) &&
                     deltaBottom > (0.45 * viewPortDimension);
               },
@@ -124,79 +121,19 @@ class _ProfileHomeState extends State<ProfileHome> {
                           color: Colors.white.withOpacity(0.3),
                         ),
                         Container(
-                          height: 110,
+                          height: 115,
                           decoration: BoxDecoration(
                             color: Colors.black,
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 15),
+                            padding: const EdgeInsets.only(right: 10,top: 10,bottom: 10),
                             child: ListView.builder(
                               shrinkWrap: true,
                               scrollDirection: Axis.horizontal,
                               itemCount: 8,
                               itemBuilder: (BuildContext context, int index1) {
                                 if (index1 == 0) {
-                                  return Padding(
-                                    padding: const EdgeInsets.only(left: 15),
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          PageTransition(
-                                            type: PageTransitionType.bottomToTop,
-                                            child: StoryScreen(stories: stories),
-                                          ),
-                                        );
-                                      },
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          Stack(
-                                            alignment: Alignment.bottomRight,
-                                            children: [
-                                              CircleAvatar(
-                                                radius: 37,
-                                                backgroundColor: Palette.x1Color.withOpacity(0.7),
-                                                child: CircleAvatar(
-                                                  radius: 35,
-                                                  backgroundImage:
-                                                      AssetImage("assets/profile/me.png"),
-                                                ),
-                                              ),
-                                              CircleAvatar(
-                                                  radius: 13,
-                                                  backgroundColor: Colors.blue,
-                                                  child: Center(
-                                                      child: Icon(
-                                                    Icons.add,
-                                                    color: Colors.white,
-                                                    size: 25,
-                                                  )))
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          SizedBox(
-                                            width: 80,
-                                            height: 16,
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Flexible(
-                                                    child: Text(
-                                                  "Your Story",
-                                                  style: GoogleFonts.roboto(
-                                                      color: Colors.white, fontSize: 14),
-                                                )),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  );
+                                  return _yourStory();
                                 } else
                                   return _StoryCircle();
                               },
@@ -209,6 +146,7 @@ class _ProfileHomeState extends State<ProfileHome> {
                           color: Colors.white.withOpacity(0.1),
                         ),
                         Container(
+                          color: Colors.black,
                           child: MediaQuery.removePadding(
                             context: context,
                             removeTop: true,
@@ -220,8 +158,8 @@ class _ProfileHomeState extends State<ProfileHome> {
                               scrollDirection: Axis.vertical,
                               physics: NeverScrollableScrollPhysics(),
                               itemCount: Data().posts.length,
-                              itemBuilder: (BuildContext context, int index2) {
-                                if (index2 == 7) {
+                              itemBuilder: (BuildContext context, int index) {
+                                if (index == 7) {
                                   return Column(
                                     children: [
                                       SizedBox(
@@ -235,7 +173,9 @@ class _ProfileHomeState extends State<ProfileHome> {
                                               padding: const EdgeInsets.only(
                                                   left: 20, right: 20, top: 15),
                                               child: Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
                                                   Text(
                                                     "Suggested For You",
@@ -245,8 +185,9 @@ class _ProfileHomeState extends State<ProfileHome> {
                                                         fontFamily: 'Roboto'),
                                                   ),
                                                   Icon(
-                                                    Icons.arrow_forward_ios_outlined,
-                                                    color: Palette.x1Color,
+                                                    Icons
+                                                        .arrow_forward_ios_outlined,
+                                                    color: ColorPalette.ProfileGreen,
                                                   )
                                                 ],
                                               ),
@@ -261,9 +202,12 @@ class _ProfileHomeState extends State<ProfileHome> {
                                                 removeRight: true,
                                                 child: ListView.builder(
                                                   shrinkWrap: true,
-                                                  scrollDirection: Axis.horizontal,
+                                                  scrollDirection:
+                                                      Axis.horizontal,
                                                   itemCount: 10,
-                                                  itemBuilder: (BuildContext context, int index3) {
+                                                  itemBuilder:
+                                                      (BuildContext context,
+                                                          int index3) {
                                                     return _Suggetions();
                                                   },
                                                 ),
@@ -272,29 +216,34 @@ class _ProfileHomeState extends State<ProfileHome> {
                                           ],
                                         ),
                                       ),
-                                      (Data().posts[index2]['type'] == 'image')
+                                      (Data().posts[index]['type'] == 'image')
                                           ? Container(
-                                              margin: EdgeInsets.symmetric(vertical: 10.0),
-                                              child: w_post_image_asset(
-                                                imageURL: Data().posts[index2]['url'],
+                                              margin: EdgeInsets.symmetric(
+                                                  vertical: 10.0),
+                                              child: ProfileFeedImage(
+                                                imageURL: Data().posts[index]
+                                                    ['url'],
                                               ),
                                             )
                                           : Container(
-                                              margin: EdgeInsets.symmetric(vertical: 10.0),
+                                              margin: EdgeInsets.symmetric(
+                                                  vertical: 10.0),
                                               child: InViewNotifierWidget(
-                                                id: '$index2',
-                                                builder: (BuildContext context, bool isInView,
+                                                id: '$index',
+                                                builder: (BuildContext context,
+                                                    bool isInView,
                                                     Widget child) {
                                                   return w_post_video_asset(
                                                     play: isInView,
-                                                    url: Data().posts[index2]['url'],
+                                                    url: Data().posts[index]
+                                                        ['url'],
                                                   );
                                                 },
                                               ),
                                             ),
                                     ],
                                   );
-                                } else if (index2 == 11) {
+                                } else if (index == 11) {
                                   return Column(
                                     children: [
                                       SizedBox(
@@ -308,7 +257,9 @@ class _ProfileHomeState extends State<ProfileHome> {
                                               padding: const EdgeInsets.only(
                                                   left: 20, right: 20, top: 15),
                                               child: Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
                                                   Text(
                                                     "Recent Stories",
@@ -330,9 +281,12 @@ class _ProfileHomeState extends State<ProfileHome> {
                                                 removeRight: true,
                                                 child: ListView.builder(
                                                   shrinkWrap: true,
-                                                  scrollDirection: Axis.horizontal,
+                                                  scrollDirection:
+                                                      Axis.horizontal,
                                                   itemCount: 10,
-                                                  itemBuilder: (BuildContext context, int index5) {
+                                                  itemBuilder:
+                                                      (BuildContext context,
+                                                          int index5) {
                                                     return _StoryBox();
                                                   },
                                                 ),
@@ -341,22 +295,27 @@ class _ProfileHomeState extends State<ProfileHome> {
                                           ],
                                         ),
                                       ),
-                                      (Data().posts[index2]['type'] == 'image')
+                                      (Data().posts[index]['type'] == 'image')
                                           ? Container(
-                                              margin: EdgeInsets.symmetric(vertical: 10.0),
-                                              child: w_post_image_asset(
-                                                imageURL: Data().posts[index2]['url'],
+                                              margin: EdgeInsets.symmetric(
+                                                  vertical: 10.0),
+                                              child: ProfileFeedImage(
+                                                imageURL: Data().posts[index]
+                                                    ['url'],
                                               ),
                                             )
                                           : Container(
-                                              margin: EdgeInsets.symmetric(vertical: 10.0),
+                                              margin: EdgeInsets.symmetric(
+                                                  vertical: 10.0),
                                               child: InViewNotifierWidget(
-                                                id: '$index2',
-                                                builder: (BuildContext context, bool isInView,
+                                                id: '$index',
+                                                builder: (BuildContext context,
+                                                    bool isInView,
                                                     Widget child) {
                                                   return w_post_video_asset(
                                                     play: isInView,
-                                                    url: Data().posts[index2]['url'],
+                                                    url: Data().posts[index]
+                                                        ['url'],
                                                   );
                                                 },
                                               ),
@@ -364,22 +323,27 @@ class _ProfileHomeState extends State<ProfileHome> {
                                     ],
                                   );
                                 } else {
-                                  return (Data().posts[index2]['type'] == 'image')
+                                  return (Data().posts[index]['type'] ==
+                                          'image')
                                       ? Container(
-                                          margin: EdgeInsets.symmetric(vertical: 10.0),
-                                          child: w_post_image_asset(
-                                            imageURL: Data().posts[index2]['url'],
+                                          margin: EdgeInsets.symmetric(
+                                              vertical: 10.0),
+                                          child: ProfileFeedImage(
+                                            imageURL: Data().posts[index]
+                                                ['url'],
                                           ),
                                         )
                                       : Container(
-                                          margin: EdgeInsets.symmetric(vertical: 10.0),
+                                          margin: EdgeInsets.symmetric(
+                                              vertical: 10.0),
                                           child: InViewNotifierWidget(
-                                            id: '$index2',
-                                            builder: (BuildContext context, bool isInView,
-                                                Widget child) {
+                                            id: '$index',
+                                            builder: (BuildContext context,
+                                                bool isInView, Widget child) {
                                               return w_post_video_asset(
                                                 play: isInView,
-                                                url: Data().posts[index2]['url'],
+                                                url: Data().posts[index]
+                                                    ['url'],
                                               );
                                             },
                                           ),
@@ -389,129 +353,6 @@ class _ProfileHomeState extends State<ProfileHome> {
                             ),
                           ),
                         ),
-                        // SizedBox(
-                        //   height: 10,
-                        // ),
-                        // Container(
-                        //   color: Colors.black,
-                        //   child: Column(
-                        //     children: [
-                        //       Padding(
-                        //         padding: const EdgeInsets.only(left: 20, right: 20, top: 15),
-                        //         child: Row(
-                        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //           children: [
-                        //             Text(
-                        //               "Suggested For You",
-                        //               style: TextStyle(
-                        //                   color: Colors.white, fontSize: 18, fontFamily: 'Roboto'),
-                        //             ),
-                        //             Icon(
-                        //               Icons.arrow_forward_ios_outlined,
-                        //               color: Palette.x1Color,
-                        //             )
-                        //           ],
-                        //         ),
-                        //       ),
-                        //       Container(
-                        //         height: 250,
-                        //         child: MediaQuery.removePadding(
-                        //           context: context,
-                        //           removeTop: true,
-                        //           removeBottom: true,
-                        //           removeLeft: true,
-                        //           removeRight: true,
-                        //           child: ListView.builder(
-                        //             shrinkWrap: true,
-                        //             scrollDirection: Axis.horizontal,
-                        //             itemCount: 10,
-                        //             itemBuilder: (BuildContext context, int index3) {
-                        //               return _Suggetions();
-                        //             },
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        //
-                        // Container(
-                        //   child: MediaQuery.removePadding(
-                        //     context: context,
-                        //     removeTop: true,
-                        //     removeBottom: true,
-                        //     removeLeft: true,
-                        //     removeRight: true,
-                        //     child: ListView.builder(
-                        //       shrinkWrap: true,
-                        //       scrollDirection: Axis.vertical,
-                        //       physics: NeverScrollableScrollPhysics(),
-                        //       itemCount: 2,
-                        //       itemBuilder: (BuildContext context, int index4) {
-                        //         return w_post_image_asset();
-                        //       },
-                        //     ),
-                        //   ),
-                        // ),
-                        // SizedBox(
-                        //   height: 10,
-                        // ),
-                        // Container(
-                        //   color: Colors.black,
-                        //   child: Column(
-                        //     children: [
-                        //       Padding(
-                        //         padding: const EdgeInsets.only(left: 20, right: 20, top: 15),
-                        //         child: Row(
-                        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //           children: [
-                        //             Text(
-                        //               "Recent Stories",
-                        //               style: TextStyle(
-                        //                   color: Colors.white, fontSize: 18, fontFamily: 'Roboto'),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //       Container(
-                        //         height: 300,
-                        //         child: MediaQuery.removePadding(
-                        //           context: context,
-                        //           removeTop: true,
-                        //           removeBottom: true,
-                        //           removeLeft: true,
-                        //           removeRight: true,
-                        //           child: ListView.builder(
-                        //             shrinkWrap: true,
-                        //             scrollDirection: Axis.horizontal,
-                        //             itemCount: 10,
-                        //             itemBuilder: (BuildContext context, int index5) {
-                        //               return _StoryBox();
-                        //             },
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        // Container(
-                        //   child: MediaQuery.removePadding(
-                        //     context: context,
-                        //     removeTop: true,
-                        //     removeBottom: true,
-                        //     removeLeft: true,
-                        //     removeRight: true,
-                        //     child: ListView.builder(
-                        //       shrinkWrap: true,
-                        //       scrollDirection: Axis.vertical,
-                        //       physics: NeverScrollableScrollPhysics(),
-                        //       itemCount: 2,
-                        //       itemBuilder: (BuildContext context, int index6) {
-                        //         return w_post_image_asset();
-                        //       },
-                        //     ),
-                        //   ),
-                        // ),
                         SizedBox(
                           height: 140,
                         ),
@@ -521,13 +362,6 @@ class _ProfileHomeState extends State<ProfileHome> {
                 );
               }),
           Align(
-            alignment: Alignment.center,
-            child: Container(
-              height: 1.0,
-              color: Colors.redAccent,
-            ),
-          ),
-          Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
               padding: EdgeInsets.only(bottom: 50),
@@ -535,7 +369,7 @@ class _ProfileHomeState extends State<ProfileHome> {
                 height: 60,
                 width: _width * 0.8,
                 decoration: BoxDecoration(
-                  color: Palette.x2Color,
+                  color: ColorPalette.ProfileBackground,
                   borderRadius: BorderRadius.all(Radius.circular(30)),
                 ),
                 child: Row(
@@ -545,8 +379,7 @@ class _ProfileHomeState extends State<ProfileHome> {
                       icon: Icon(
                         Icons.home_outlined,
                         size: 30,
-                        color: Palette.x1Color,
-                        // color: Colors.white,
+                        color:ColorPalette.ProfileGreen,
                       ),
                       onPressed: () {},
                     ),
@@ -608,8 +441,11 @@ class _ProfileHomeState extends State<ProfileHome> {
                         color: Colors.white,
                       ),
                       onPressed: () {
-                        Navigator.pushReplacement(context,
-                            PageTransition(type: PageTransitionType.fade, child: Profile()));
+                        Navigator.pushReplacement(
+                            context,
+                            PageTransition(
+                                type: PageTransitionType.fade,
+                                child: Profile()));
                       },
                     ),
                   ],
@@ -628,7 +464,7 @@ class _ProfileHomeState extends State<ProfileHome> {
       child: Container(
         width: 150,
         decoration: BoxDecoration(
-          color: Palette.profileColor,
+          color: ColorPalette.ProfileGreen,
           borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         child: Column(
@@ -637,7 +473,7 @@ class _ProfileHomeState extends State<ProfileHome> {
           children: [
             CircleAvatar(
               radius: 50,
-              backgroundColor: Palette.x1Color.withOpacity(0.7),
+              backgroundColor: ColorPalette.ProfileGreen.withOpacity(0.7),
               child: CircleAvatar(
                 radius: 48,
                 backgroundImage: AssetImage("assets/profile/profile1.png"),
@@ -655,9 +491,10 @@ class _ProfileHomeState extends State<ProfileHome> {
             ),
             MaterialButton(
               height: 30,
-              color: Palette.x1Color,
+              color: ColorPalette.ProfileGreen,
               onPressed: () {},
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5)),
               child: Text("Follow"),
             )
           ],
@@ -715,10 +552,11 @@ class _ProfileHomeState extends State<ProfileHome> {
                     children: [
                       CircleAvatar(
                         radius: 40,
-                        backgroundColor: Palette.x1Color.withOpacity(0.7),
+                        backgroundColor:ColorPalette.ProfileGreen.withOpacity(0.7),
                         child: CircleAvatar(
                           radius: 38,
-                          backgroundImage: AssetImage("assets/profile/profile1.png"),
+                          backgroundImage:
+                              AssetImage("assets/profile/profile1.png"),
                         ),
                       ),
                       SizedBox(
@@ -726,7 +564,10 @@ class _ProfileHomeState extends State<ProfileHome> {
                       ),
                       Text(
                         "s_paradox",
-                        style: TextStyle(color: Colors.white, fontSize: 18, fontFamily: 'Roboto'),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontFamily: 'Roboto'),
                       ),
                       SizedBox(
                         height: 15,
@@ -742,7 +583,7 @@ class _ProfileHomeState extends State<ProfileHome> {
 
   Widget _StoryCircle() {
     return Padding(
-      padding: const EdgeInsets.only(left: 15),
+      padding: const EdgeInsets.only(left: 5),
       child: GestureDetector(
         onTap: () {
           Navigator.push(
@@ -758,10 +599,10 @@ class _ProfileHomeState extends State<ProfileHome> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CircleAvatar(
-              radius: 37,
-              backgroundColor: Palette.x1Color.withOpacity(0.7),
+              radius: 32,
+              backgroundColor: ColorPalette.ProfileGreen.withOpacity(0.7),
               child: CircleAvatar(
-                radius: 35,
+                radius: 30,
                 backgroundImage: AssetImage("assets/profile/profile1.png"),
               ),
             ),
@@ -777,8 +618,73 @@ class _ProfileHomeState extends State<ProfileHome> {
                   Flexible(
                       child: Text(
                     "s_paradox",
-                    style: GoogleFonts.roboto(color: Colors.white, fontSize: 15),
+                    style: TextStyles.BodyWhite
                   )),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+  Widget _yourStory(){
+    return Padding(
+      padding: const EdgeInsets.only(left: 15),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            PageTransition(
+              type:
+              PageTransitionType.bottomToTop,
+              child:
+              StoryScreen(stories: stories),
+            ),
+          );
+        },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Stack(
+              alignment: Alignment.bottomRight,
+              children: [
+                CircleAvatar(
+                  radius: 32,
+                  backgroundColor: ColorPalette.ProfileGreen.withOpacity(0.7),
+                  child: CircleAvatar(
+                    radius: 30,
+                    backgroundImage: AssetImage(
+                        "assets/profile/me.png"),
+                  ),
+                ),
+                CircleAvatar(
+                    radius: 13,
+                    backgroundColor: Colors.blue,
+                    child: Center(
+                        child: Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 25,
+                        )))
+              ],
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            SizedBox(
+              width: 80,
+              height: 16,
+              child: Row(
+                mainAxisAlignment:
+                MainAxisAlignment.center,
+                children: [
+                  Flexible(
+                      child: Text(
+                        "Your Story",
+                        style: TextStyles.BodyWhite,
+                      )),
                 ],
               ),
             ),

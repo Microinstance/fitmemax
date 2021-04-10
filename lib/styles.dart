@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/style.dart';
 
 class borderRadious{
   static const primeryRadious =   BorderRadius.all(Radius.circular(7.5));
@@ -8,6 +9,7 @@ class borderRadious{
 class TextStyles {
 
   static const BodyBlack = TextStyle(fontWeight: FontWeight.w400,fontSize: 14,color: ColorPalette.GreyDarkest);
+  static const BodySmallWhite = TextStyle(fontWeight: FontWeight.w400,fontSize: 12,color: ColorPalette.GreyLightest);
   static const ParaBlack = TextStyle(fontWeight: FontWeight.w500,fontSize: 16,color: ColorPalette.GreyDarkest);
   static const ParaWhite = TextStyle(fontWeight: FontWeight.w500,fontSize: 16,color: Colors.white);
   static const BodyBlackBold = TextStyle(fontWeight: FontWeight.bold,fontSize: 14,color: ColorPalette.GreyDarkest);
@@ -18,8 +20,11 @@ class TextStyles {
   static const RegulerBlack = TextStyle(fontWeight: FontWeight.w400,fontSize: 18,color: ColorPalette.GreyDarkest,);
   static const RegulerPrimary = TextStyle(fontWeight: FontWeight.w400,fontSize: 18,color: ColorPalette.PrimaryColor,);
   static const RegulerBIGWhite = TextStyle(fontWeight: FontWeight.w400,fontSize: 18,color: Colors.white,);
+  static const RegulerProfile = TextStyle(fontWeight: FontWeight.w400,fontSize: 18,color: ColorPalette.ProfileGreen,);
   static const HeadingBlack = TextStyle(fontWeight: FontWeight.w500,fontSize: 22,color: ColorPalette.GreyDarkest,);
   static const TitleWhite = TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.white,);
+  static const TitleProfile = TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: ColorPalette.ProfileGreen,);
+  static const DisplayWhite = TextStyle(fontWeight: FontWeight.bold,fontSize: 35,color: Colors.white,);
   static const TitlePink = TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: ColorPalette.Pink,);
   static const TitleFluracentGreen = TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: ColorPalette.FluracentGreen,);
   static const TitleBlack = TextStyle(fontWeight: FontWeight.w500,fontSize: 20,color: ColorPalette.GreyDarkest,);
@@ -34,12 +39,18 @@ class ColorPalette {
 
   static const Color GreenLight = Color(0xFF66CD00);
   static const Color FluracentGreen = Color(0xFF6cfa98);
-
+  static const Color ProfileGreen = Color(0xFF6cfa98);
+  static const Color ProfileBackground = Color(0xFF060606);
   static const Color Pink = Color(0xFFff45ac);
   static const Color Red = Color(0xFFFB2B11);
 
+  static const Color BlackLight =  Color(0xFF1f1e23);
+
   static const Color GrediantRed1 = Color(0xFFfe7748);
   static const Color GrediantRed2 = Color(0xFFfb2d6d);
+
+  static const Color Grediantblue1 = Color(0xFF8E2DE2);
+  static const Color Grediantblue2 = Color(0xFF4A00E0);
 
   static const Color GreyDarkest = Color(0xFF333333);
   static const Color Grey = Color(0xFF9A9A9A);

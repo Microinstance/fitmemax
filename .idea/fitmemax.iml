@@ -69,6 +69,12 @@
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/sqflite/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/sqflite/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/sqflite/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/vibration/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/vibration/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/vibration/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/vibration/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/vibration/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/vibration/example/build" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/video_player/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/video_player/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/video_player/build" />

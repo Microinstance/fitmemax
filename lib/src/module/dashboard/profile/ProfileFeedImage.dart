@@ -1,20 +1,19 @@
-import 'package:fitmemax/src/module/dashboard/profile/ProfileComment.dart';
-import 'package:fitmemax/src/module/dashboard/profile/ProfileVisit.dart';
-import 'package:fitmemax/src/widgets/palette.dart';
+import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'ProfileComment.dart';
+import 'ProfilePostOption.dart';
+import 'ProfileVisit.dart';
 
-class w_post_image_asset extends StatefulWidget {
-
+class ProfileFeedImage extends StatefulWidget {
   final String imageURL;
 
-  const w_post_image_asset({Key key, this.imageURL}) : super(key: key);
-
+  const ProfileFeedImage({Key key, this.imageURL}) : super(key: key);
   @override
-  _w_post_image_assetState createState() => _w_post_image_assetState();
+  _ProfileFeedImageState createState() => _ProfileFeedImageState();
 }
 
-class _w_post_image_assetState extends State<w_post_image_asset> {
+class _ProfileFeedImageState extends State<ProfileFeedImage> {
   bool  _expanded = false;
   bool  _like = false;
   bool  _bookmark = false;
@@ -42,8 +41,8 @@ class _w_post_image_assetState extends State<w_post_image_asset> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Shivay Kumar",style: TextStyle(fontSize: 18,color: Colors.white,),),
-                            Text("Level 1",style: TextStyle(fontSize: 15,color: Colors.white.withOpacity(0.7),),),
+                            Text("Shivay Kumar",style: TextStyles.ParaWhite,),
+                            Text("Level 1",style: TextStyles.BodyWhite,),
                           ],
                         ),
                         GestureDetector(
@@ -52,7 +51,7 @@ class _w_post_image_assetState extends State<w_post_image_asset> {
                                 backgroundColor: Colors.transparent,
                                 context: context,
                                 builder: (BuildContext context) {
-                                  return _postOption(context);
+                                  return ProfilePostOption();
                                 },
                                 isScrollControlled: true,
                               );
@@ -66,15 +65,15 @@ class _w_post_image_assetState extends State<w_post_image_asset> {
                     aspectRatio: 1,
                     child: Container(
                       decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.white.withOpacity(0.1),
-                            width: 1,
-                          ),
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          image: DecorationImage(
-                            image: AssetImage("assets/profile/Post/post1.jpg"),
-                            fit: BoxFit.cover,
-                          ),
+                        border: Border.all(
+                          color: Colors.white.withOpacity(0.1),
+                          width: 1,
+                        ),
+                        borderRadius: borderRadious.primeryRadious,
+                        image: DecorationImage(
+                          image: AssetImage("assets/profile/Post/post1.jpg"),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
@@ -88,15 +87,15 @@ class _w_post_image_assetState extends State<w_post_image_asset> {
                               _like = false;
                             });
                           },
-                          child: Icon(Icons.favorite,color: Palette.x1Color,)) : GestureDetector(
+                          child: Icon(Icons.favorite,color: ColorPalette.ProfileGreen,)) : GestureDetector(
                           onTap: (){
                             setState(() {
                               _like = true;
                             });
                           },
-                          child: Icon(Icons.favorite_outline_rounded,color: Palette.x1Color,)),
+                          child: Icon(Icons.favorite_outline_rounded,color: ColorPalette.ProfileGreen,)),
                       SizedBox(width: 5,),
-                      Text("3.45k",style: TextStyle(color: Colors.white,fontFamily: 'Roboto'),),
+                      Text("3.45k",style: TextStyles.BodyWhite),
                       SizedBox(width: 20,),
                       GestureDetector(
                           onTap: (){
@@ -106,27 +105,27 @@ class _w_post_image_assetState extends State<w_post_image_asset> {
                                 type: PageTransitionType.bottomToTop,
                                 child: ProfileComment(),),);
                           },
-                          child: Icon(Icons.chat_bubble_outline_rounded,color: Palette.x1Color,)),
+                          child: Icon(Icons.chat_bubble_outline_rounded,color: ColorPalette.ProfileGreen)),
                       SizedBox(width: 5,),
-                      Text("125",style: TextStyle(color: Colors.white,fontFamily: 'Roboto'),),
+                      Text("125",style: TextStyles.BodyWhite),
                       Spacer(),
                       Padding(
                         padding: const EdgeInsets.only(right: 10),
-                        child: Text("35 min ago",style: TextStyle(color: Colors.white.withOpacity(0.5),fontFamily: 'Roboto',fontSize: 12),),
+                        child: Text("35 min ago",style: TextStyles.BodySmallWhite),
                       ),
                       _bookmark ? GestureDetector(
-                          onTap: (){
-                            setState(() {
-                              _bookmark = false;
-                            });
-                          },
-                          child: Icon(Icons.bookmark,color: Palette.x1Color,size: 25,),) : GestureDetector(
-                          onTap: (){
-                            setState(() {
-                              _bookmark = true;
-                            });
-                          },
-                          child: Icon(Icons.bookmark,color: Colors.white,size: 25,),),
+                        onTap: (){
+                          setState(() {
+                            _bookmark = false;
+                          });
+                        },
+                        child: Icon(Icons.bookmark,color: ColorPalette.ProfileGreen,size: 25,),) : GestureDetector(
+                        onTap: (){
+                          setState(() {
+                            _bookmark = true;
+                          });
+                        },
+                        child: Icon(Icons.bookmark,color: Colors.white,size: 25,),),
                     ],
                   ),
                   SizedBox(height: 5,),
@@ -141,7 +140,7 @@ class _w_post_image_assetState extends State<w_post_image_asset> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Flexible(child: Text("What Was that, Really Great View! ...",style: TextStyle(fontSize: 15,color: Colors.white),)),
+                                Flexible(child: Text("What Was that, Really Great View! ...",style: TextStyles.BodySmallWhite,)),
                               ],
                             ),
                             SizedBox(height: 3,),
@@ -156,7 +155,7 @@ class _w_post_image_assetState extends State<w_post_image_asset> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Text("...more",style: TextStyle(fontSize: 15,color: Palette.x1Color),),
+                                  Text("...more",style: TextStyles.BodyMediumPrimary,),
                                 ],
                               ),
                             ),
@@ -181,10 +180,10 @@ class _w_post_image_assetState extends State<w_post_image_asset> {
                   },
                   child: CircleAvatar(
                     radius: 34,
-                    backgroundColor: Palette.x2Color,
+                    backgroundColor: Colors.black,
                     child: CircleAvatar(
                       radius: 32,
-                      backgroundColor: Palette.x1Color.withOpacity(0.7),
+                      backgroundColor: ColorPalette.ProfileGreen.withOpacity(0.7),
                       child: CircleAvatar(
                         radius: 30,
                         backgroundImage: AssetImage(
@@ -212,7 +211,7 @@ class _w_post_image_assetState extends State<w_post_image_asset> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Flexible(child: Text("Bleh, sucks. The secret to coming up with the best Instagram captions the first time around is to write a bunch of captions first before choosing one. You can create a short list of ideas, browse hashtags for inspo, or look up puns for your keyword.",
-                style: TextStyle(fontSize: 16,color: Colors.white),
+                style: TextStyles.BodyWhite,
               ),
               ),
             ],
@@ -225,7 +224,7 @@ class _w_post_image_assetState extends State<w_post_image_asset> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Flexible(child: Text("#love #instagood#me #cute #tbt #photooftheday #instamood #iphonesia #tweegram #picoftheday #igers",
-                style: TextStyle(fontSize: 16,color: Palette.x1Color),
+                style: TextStyles.RegulerProfile,
               ),
               ),
             ],
@@ -243,37 +242,12 @@ class _w_post_image_assetState extends State<w_post_image_asset> {
           child:Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("...less",style: TextStyle(fontSize: 15,color:Colors.white),),
-              Text("14 Oct",style: TextStyle(fontSize: 15,color:Colors.white),),
+              Text("...less",style: TextStyles.BodyGreyLightest,),
+              Text("14 Oct",style: TextStyles.BodyGreyLightest,),
             ],
           ),
         )
       ],
-    );
-  }
-
-  Widget _postOption(context){
-    return Container(
-      height: 280,
-      decoration: BoxDecoration(
-        color: Colors.black,
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30)),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.only(top: 20,bottom: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text("Report",style: TextStyle(fontSize: 20,color: Palette.x1Color),),
-            Text("Copy Link",style: TextStyle(fontSize: 20,color: Palette.x1Color),),
-            Text("Share",style: TextStyle(fontSize: 20,color: Palette.x1Color),),
-            Text("Unfollow ",style: TextStyle(fontSize: 20,color: Palette.x1Color),),
-            Text("Mute",style: TextStyle(fontSize: 20,color: Palette.x1Color),),
-            Text("Block",style: TextStyle(fontSize: 20,color: Palette.x1Color),),
-          ],
-        ),
-      ),
     );
   }
 }

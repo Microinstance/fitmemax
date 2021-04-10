@@ -382,77 +382,71 @@ class _PlanState extends State<Plan> {
                   onTap: (){
                     Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: PlanDetails()));
                   },
-                  child: Stack(
-                    alignment: Alignment.topRight,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(7.0),
-                        child: Container(
-                            height: 200,
-                            width: _width - (_width * 0.05) * 2,
-                            decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.black.withOpacity(0.3),
-                                    blurRadius: 3,
-                                    spreadRadius: 1)
-                              ],
-                              gradient: LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                                colors: <Color>[
-                                  Colors.blue[700],
-                                  Colors.blue[300],
-                                ],
+                  child: Padding(
+                    padding: const EdgeInsets.all(7.0),
+                    child: Container(
+                        height: 200,
+                        width: _width - (_width * 0.05) * 2,
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.3),
+                                blurRadius: 3,
+                                spreadRadius: 1)
+                          ],
+                          gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: <Color>[
+                              Colors.blue[700],
+                              Colors.blue[300],
+                            ],
+                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              top: 25, left: 15, right: 20, bottom: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Hypertension Plan",
+                                style: TextStyle(
+                                    fontSize: 23,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 1,
+                                    fontFamily: 'Roboto'),
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(15)),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  top: 25, left: 15, right: 20, bottom: 20),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Hypertension Plan",
-                                    style: TextStyle(
-                                        fontSize: 23,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        letterSpacing: 1,
-                                        fontFamily: 'Roboto'),
-                                  ),
-                                  SizedBox(
-                                    height: 15,
-                                  ),
-                                  Text(
-                                    "USD80/m",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w400,
-                                        letterSpacing: 1,
-                                        fontFamily: 'Roboto'),
-                                  ),
-                                  SizedBox(
-                                    height: 25,
-                                  ),
-                                  Flexible(
-                                      child: Text(
-                                    "2 Premiere Hypertension Coaches, Unlimited Consultation Calls, Unlimited On-on-one Chat",
-                                    style: TextStyle(
-                                        fontSize: 10,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w400,
-                                        letterSpacing: 1,
-                                        fontFamily: 'Roboto'),
-                                  )),
-                                ],
+                              SizedBox(
+                                height: 15,
                               ),
-                            )),
-                      ),
-                      // Image.asset("assets/plans/plan1.png"),
-                    ],
+                              Text(
+                                "USD80/m",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w400,
+                                    letterSpacing: 1,
+                                    fontFamily: 'Roboto'),
+                              ),
+                              SizedBox(
+                                height: 25,
+                              ),
+                              Flexible(
+                                  child: Text(
+                                "2 Premiere Hypertension Coaches, Unlimited Consultation Calls, Unlimited On-on-one Chat",
+                                style: TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w400,
+                                    letterSpacing: 1,
+                                    fontFamily: 'Roboto'),
+                              )),
+                            ],
+                          ),
+                        )),
                   ),
                 ),
                 GestureDetector(

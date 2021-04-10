@@ -1,4 +1,7 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:fitmemax/src/module/HealthLog/HealthLogDetails.dart';
 import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
+import 'package:fitmemax/src/module/dashboard/plan/PlanDetails.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +13,7 @@ class HealthLog extends StatefulWidget {
 }
 
 class _HealthLogState extends State<HealthLog> {
+  int _current = 0;
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -53,6 +57,7 @@ class _HealthLogState extends State<HealthLog> {
         ),
       ),
       body: SingleChildScrollView(
+        physics: ClampingScrollPhysics(),
         child: Column(
           children: [
             Padding(
@@ -97,6 +102,7 @@ class _HealthLogState extends State<HealthLog> {
                 ],
               ),
             ),
+
             Padding(
               padding: const EdgeInsets.only(left: 20,right: 20,top: 25,bottom: 0),
               child: Container(
@@ -212,6 +218,7 @@ class _HealthLogState extends State<HealthLog> {
                 ),
               ),
             ),
+
             MediaQuery.removePadding(
               context: context,
               removeTop: true,
@@ -226,42 +233,47 @@ class _HealthLogState extends State<HealthLog> {
                     if(index == 0){
                       return Padding(
                         padding: const EdgeInsets.only(left: 20),
-                        child: Container(
-                          height: 230,
-                          width: 150,
-                          decoration: BoxDecoration(
-                              borderRadius: borderRadious.primeryRadious,
-                              color: Colors.blue,
-                              gradient: LinearGradient(
-                                colors: [
-                                  ColorPalette.GrediantRed2,
-                                  ColorPalette.GrediantRed1,
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: HealthLogDetails()));
+                          },
+                          child: Container(
+                            height: 230,
+                            width: 150,
+                            decoration: BoxDecoration(
+                                borderRadius: borderRadious.primeryRadious,
+                                color: Colors.blue,
+                                gradient: LinearGradient(
+                                  colors: [
+                                    ColorPalette.GrediantRed2,
+                                    ColorPalette.GrediantRed1,
+                                  ],
+                                  begin: Alignment.bottomCenter,
+                                  end: Alignment.topCenter,
+                                )
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CircleAvatar(
+                                      radius: 22,
+                                      backgroundColor: Colors.white.withOpacity(0.1),
+                                      child: Center(child: Image.asset("assets/icon/watter.png",height: 25))),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 20),
+                                    child: Text("Blood Presure",style: TextStyles.TitleWhite,),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 10),
+                                    child: Text("30%",style: TextStyles.BodyWhite,),
+                                  ),
+                                  Spacer(),
+                                  Text("141/91 mmhg",style: TextStyles.BodyWhite,),
                                 ],
-                                begin: Alignment.bottomCenter,
-                                end: Alignment.topCenter,
-                              )
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                CircleAvatar(
-                                    radius: 22,
-                                    backgroundColor: Colors.white.withOpacity(0.1),
-                                    child: Center(child: Image.asset("assets/icon/watter.png",height: 25))),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 20),
-                                  child: Text("Blood Presure",style: TextStyles.TitleWhite,),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 10),
-                                  child: Text("30%",style: TextStyles.BodyWhite,),
-                                ),
-                                Spacer(),
-                                Text("141/91 mmhg",style: TextStyles.BodyWhite,),
-                              ],
+                              ),
                             ),
                           ),
                         ),
@@ -303,6 +315,83 @@ class _HealthLogState extends State<HealthLog> {
                   },
                 ),
               ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(top: 25),
+              child: Text("Recomended Plans For you",style: TextStyles.TitleWhite,),
+            ),
+
+            Column(
+              children: List.generate(3, (index) => GestureDetector(
+                onTap: (){
+                  Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: PlanDetails()));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20,right: 20,top: 25),
+                  child: Container(
+                      height: 160,
+                      width: _width -40,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: <Color>[
+                            ColorPalette.Grediantblue1,
+                            ColorPalette.Grediantblue2,
+                          ],
+                        ),
+                        borderRadius: borderRadious.primeryRadious,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                            top: 25, left: 15, right: 20, bottom: 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Hypertension Plan",
+                              style: TextStyle(
+                                  fontSize: 23,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 1,
+                                  fontFamily: 'Roboto'),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Text(
+                              "USD80/m",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w400,
+                                  letterSpacing: 1,
+                                  fontFamily: 'Roboto'),
+                            ),
+                            SizedBox(
+                              height: 25,
+                            ),
+                            Flexible(
+                                child: Text(
+                                  "2 Premiere Hypertension Coaches, Unlimited Consultation Calls, Unlimited On-on-one Chat",
+                                  style: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w400,
+                                      letterSpacing: 1,
+                                      fontFamily: 'Roboto'),
+                                )),
+                          ],
+                        ),
+                      )),
+                ),
+              ),),
+            ),
+
+            SizedBox(
+              height: 50,
             ),
           ],
         ),
