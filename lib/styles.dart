@@ -45,6 +45,8 @@ class ColorPalette {
   static const Color Red = Color(0xFFFB2B11);
 
   static const Color BlackLight =  Color(0xFF1f1e23);
+  static const Color ActivityTrackerBlackBack =  Color(0xFF1b1b1b);
+  static const Color ActivityTrackerCard =  Color(0xFF101010);
 
   static const Color GrediantRed1 = Color(0xFFfe7748);
   static const Color GrediantRed2 = Color(0xFFfb2d6d);
