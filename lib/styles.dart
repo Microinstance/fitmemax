@@ -3,6 +3,7 @@ import 'package:flutter_html/style.dart';
 
 class borderRadious{
   static const primeryRadious =   BorderRadius.all(Radius.circular(7.5));
+  static const secendaryRadious =   BorderRadius.all(Radius.circular(15));
 }
 
 
@@ -23,6 +24,7 @@ class TextStyles {
   static const RegulerProfile = TextStyle(fontWeight: FontWeight.w400,fontSize: 18,color: ColorPalette.ProfileGreen,);
   static const HeadingBlack = TextStyle(fontWeight: FontWeight.w500,fontSize: 22,color: ColorPalette.GreyDarkest,);
   static const TitleWhite = TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.white,);
+  static const TitleBlue = TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: ColorPalette.Grediantblue2,);
   static const TitleProfile = TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: ColorPalette.ProfileGreen,);
   static const DisplayWhite = TextStyle(fontWeight: FontWeight.bold,fontSize: 35,color: Colors.white,);
   static const TitlePink = TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: ColorPalette.Pink,);
@@ -30,6 +32,7 @@ class TextStyles {
   static const TitleBlack = TextStyle(fontWeight: FontWeight.w500,fontSize: 20,color: ColorPalette.GreyDarkest,);
   static const TitleBlackBold = TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: ColorPalette.GreyDarkest,);
   static const BodyMediumPrimary = TextStyle(fontWeight: FontWeight.w400,fontSize: 14,color: ColorPalette.PrimaryColor);
+  static const FluracentGreenMedium = TextStyle(fontWeight: FontWeight.w400,fontSize: 18,color: ColorPalette.FluracentGreen);
 }
 
 

@@ -7,6 +7,67 @@ class Data {
     'Chat','Advertisement','Diet & Fitness','Trasaction','Invite Friends','About Us','Terms & Condition','Privacy Policy'
   ];
 
+
+  List Walking = [
+    {
+      'date': 'Sun',
+      'weight': '256',
+    },
+    {
+      'date': 'Mon',
+      'weight': '286',
+    },
+    {
+      'date': 'Tue',
+      'weight': '210',
+    },
+    {
+      'date': 'Wed',
+      'weight': '180',
+    },
+    {
+      'date': 'Thu',
+      'weight': '235',
+    },
+    {
+      'date': 'Fry',
+      'weight': '247',
+    },
+    {
+      'date': 'Sat',
+      'weight': '275',
+    },
+    {
+      'date': 'Sun',
+      'weight': '256',
+    },
+    {
+      'date': 'Mon',
+      'weight': '286',
+    },
+    {
+      'date': 'Tue',
+      'weight': '210',
+    },
+    {
+      'date': 'Wed',
+      'weight': '180',
+    },
+    {
+      'date': 'Thu',
+      'weight': '235',
+    },
+    {
+      'date': 'Fry',
+      'weight': '247',
+    },
+    {
+      'date': 'Sat',
+      'weight': '275',
+    },
+
+  ];
+
   List Weight = [
     {
       'date': '01',

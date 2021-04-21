@@ -2,10 +2,12 @@ import 'dart:async';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:fitmemax/Objects/Backgrounds.dart';
 import 'package:fitmemax/src/ListData/ListData.dart';
+import 'package:fitmemax/src/module/ActivityTracker/ActivityTracker.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundDashBoard.dart';
 import 'package:fitmemax/src/module/CalTracker/CalTrackerDashboard.dart';
 import 'package:fitmemax/src/module/Fast/FastDashboard.dart';
 import 'package:fitmemax/src/module/HealthLog/HealthLog.dart';
+import 'package:fitmemax/src/module/Run/Run.dart';
 import 'package:fitmemax/src/module/Workout/Workout.dart';
 import 'package:fitmemax/src/module/dashboard/home/BlogCard.dart';
 import 'package:fitmemax/styles.dart';
@@ -235,11 +237,23 @@ class _HomeState extends State<Home> {
                                                     context: context,
                                                   ),
                                                 ),
-                                                hItem(
-                                                  name: 'Activity',
-                                                  image:
-                                                  'assets/icons/activity.png',
-                                                  context: context,
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    Navigator.push(
+                                                        context,
+                                                        PageTransition(
+                                                            type:
+                                                            PageTransitionType
+                                                                .fade,
+                                                            child:
+                                                            ActivityTracker()));
+                                                  },
+                                                  child: hItem(
+                                                    name: 'Activity',
+                                                    image:
+                                                    'assets/icons/activity.png',
+                                                    context: context,
+                                                  ),
                                                 ),
                                                 GestureDetector(
                                                   onTap: () {
@@ -399,11 +413,23 @@ class _HomeState extends State<Home> {
                                                   "assets/icons/musscelbaba.png",
                                                   context: context,
                                                 ),
-                                                hItem(
-                                                  name: 'Run',
-                                                  image:
-                                                  "assets/icons/run.png",
-                                                  context: context,
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    Navigator.push(
+                                                        context,
+                                                        PageTransition(
+                                                            type:
+                                                            PageTransitionType
+                                                                .fade,
+                                                            child:
+                                                            Run()));
+                                                  },
+                                                  child: hItem(
+                                                    name: 'Run',
+                                                    image:
+                                                    "assets/icons/run.png",
+                                                    context: context,
+                                                  ),
                                                 ),
                                               ],
                                             ),

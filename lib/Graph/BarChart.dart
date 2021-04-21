@@ -67,6 +67,14 @@ class _BarChartState extends State<BarChart> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(7.5),
                 color: widget.color2,
+                  gradient: LinearGradient(
+                    colors: [
+                      widget.color1,
+                      widget.color2,
+                    ],
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                  )
               ),
             ),
             SizedBox(
@@ -206,7 +214,7 @@ class _BarChartState extends State<BarChart> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 20,right: 20,bottom: 10),
                                 child: IncrementDecrement(
-                                  unit: "Kg",
+                                  unit: " ",
                                   initial: 75.00,
                                 ),
                               ),

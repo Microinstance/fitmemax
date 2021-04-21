@@ -89,7 +89,8 @@ class _DashboardState extends State<Dashboard>
                             'F',
                             style: TextStyles.TitleWhite,
                           ),
-                          Text('i', style: TextStyles.TitleBlack),
+                          Text(''
+                              '', style: TextStyles.TitleBlack),
                           Text('t', style: TextStyles.TitleWhite),
                           Text('Me', style: TextStyles.TitleWhite),
                           Text('Max', style: TextStyles.TitleBlack),

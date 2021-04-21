@@ -52,6 +52,7 @@ dependencies:
   flutter_svg: ^0.19.3
   fl_chart: ^0.35.0
   slider_button: ^0.6.0
+  slide_digital_clock: ^1.0.0
 
 dev_dependencies:
   flutter_test:
