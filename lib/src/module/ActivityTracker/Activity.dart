@@ -60,7 +60,7 @@ class _ActivityState extends State<Activity> {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: "2.5",
+                          text: "620",
                           style: TextStyles.DisplayWhite,
                         ),
                         TextSpan(
@@ -82,102 +82,51 @@ class _ActivityState extends State<Activity> {
               Titel: "Activity",
               Dec: "Activity",
             ),
-            // Padding(
-            //   padding: const EdgeInsets.only(left: 20,right: 20),
-            //   child: Container(
-            //     decoration: BoxDecoration(
-            //         color: ColorPalette.ActivityTrackerCard,
-            //         borderRadius: borderRadious.secendaryRadious
-            //     ),
-            //     child: Padding(
-            //       padding: const EdgeInsets.all(20),
-            //       child: Row(
-            //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //         children: [
-            //           Column(
-            //             crossAxisAlignment: CrossAxisAlignment.start,
-            //             children: [
-            //               Text("Total Steps",style: TextStyles.BodyGreyLightest,),
-            //               SizedBox(height: 7,),
-            //               Text("10,758",style: TextStyles.TitleWhite,),
-            //             ],
-            //           ),
-            //           Stack(
-            //             alignment: Alignment.center,
-            //             children: [
-            //               SizedBox(
-            //                 height:60,
-            //                 width: 60,
-            //                 child: CircularProgressIndicator(
-            //                   value: 0.31,
-            //                   strokeWidth: 3,
-            //                   backgroundColor: Colors.white.withOpacity(0.2),
-            //                   valueColor: AlwaysStoppedAnimation<Color>(ColorPalette.GrediantRed2),
-            //                 ),
-            //               ),
-            //               Text.rich(
-            //                 TextSpan(
-            //                   children: <TextSpan>[
-            //                     TextSpan(
-            //                       text: "31%",
-            //                       style: TextStyles.ParaWhite,
-            //                     ),
-            //                   ],
-            //                 ),
-            //                 textAlign: TextAlign.center,
-            //               ),
-            //             ],
-            //           ),
-            //         ],
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.only(left: 20,right: 20,top: 20,bottom: 50),
-            //   child: Column(
-            //     children: [
-            //       Row(
-            //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //         children: [
-            //           _detailBox(
-            //             count: "2020",
-            //             dec: "steps",
-            //             imageIcon: "assets/icons/steps.png",
-            //             titel: "Average",
-            //             width: _width,
-            //           ),
-            //           _detailBox(
-            //             count: "15000",
-            //             dec: "mt",
-            //             imageIcon: "assets/icons/distance.png",
-            //             titel: "Distance ",
-            //             width: _width,
-            //           ),
-            //         ],
-            //       ),
-            //       SizedBox(height: 20,),
-            //       Row(
-            //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //         children: [
-            //           _detailBox(
-            //             count: "60%",
-            //             dec: "",
-            //             imageIcon: "assets/icons/walking.png",
-            //             titel: "Walking",
-            //             width: _width,
-            //           ),
-            //           _detailBox(
-            //             count: "40%",
-            //             dec: "",
-            //             imageIcon: "assets/icons/running.png",
-            //             titel: "Running",
-            //             width: _width,
-            //           ),
-            //         ],
-            //       ),
-            //     ],),
-            // ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20,right: 20,top: 0,bottom: 50),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _detailBox(
+                        count: "200",
+                        dec: "hr",
+                        imageIcon: "assets/icons/steps.png",
+                        titel: "FitBook",
+                        width: _width,
+                      ),
+                      _detailBox(
+                        count: "240",
+                        dec: "hr",
+                        imageIcon: "assets/icons/steps.png",
+                        titel: "Workout",
+                        width: _width,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _detailBox(
+                        count: "140",
+                        dec: "hr",
+                        imageIcon: "assets/icons/steps.png",
+                        titel: "Caloric",
+                        width: _width,
+                      ),
+                      _detailBox(
+                        count: "40",
+                        dec: "hr",
+                        imageIcon: "assets/icons/steps.png",
+                        titel: "Steps",
+                        width: _width,
+                      ),
+                    ],
+                  ),
+                ],),
+            ),
           ],
         ),
       ),

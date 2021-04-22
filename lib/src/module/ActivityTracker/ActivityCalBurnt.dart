@@ -4,12 +4,12 @@ import 'package:fitmemax/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ActivityHeartRate extends StatefulWidget {
+class ActivityCalBurnt extends StatefulWidget {
   @override
-  _ActivityHeartRateState createState() => _ActivityHeartRateState();
+  _ActivityCalBurntState createState() => _ActivityCalBurntState();
 }
 
-class _ActivityHeartRateState extends State<ActivityHeartRate> {
+class _ActivityCalBurntState extends State<ActivityCalBurnt> {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -26,7 +26,7 @@ class _ActivityHeartRateState extends State<ActivityHeartRate> {
         ),
         elevation: 0,
         title: Text(
-          "Heart Rate",style: TextStyles.TitleWhite,
+          "Caloric Burnt",style: TextStyles.TitleWhite,
         ),
         brightness: Brightness.dark,
       ),
@@ -60,11 +60,11 @@ class _ActivityHeartRateState extends State<ActivityHeartRate> {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: "102",
+                          text: "160",
                           style: TextStyles.DisplayWhite,
                         ),
                         TextSpan(
-                          text: "   Bpm",
+                          text: "   kCal",
                           style: TextStyles.BodySmallWhite,
                         ),
                       ],
@@ -80,27 +80,75 @@ class _ActivityHeartRateState extends State<ActivityHeartRate> {
               color1:  ColorPalette.GrediantRed1,
               color2:  ColorPalette.GrediantRed2,
               Titel: "BPM",
-              Dec: "Bpm",
+              Dec: "kCal",
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 20,right: 20,top: 0,bottom: 50),
+              padding: const EdgeInsets.only(left: 20,right: 20,),
+              child: Container(
+                width: _width-40,
+                decoration: BoxDecoration(
+                    color: ColorPalette.ActivityTrackerCard,
+                    borderRadius: borderRadious.secendaryRadious
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                    Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "Total Caloric burnt",
+                            style: TextStyles.RegulerBIGWhite,
+                          ),
+                          TextSpan(
+                            text: "\n160",
+                            style: TextStyles.TitleWhite,
+                          ),
+                          TextSpan(
+                            text: "  kCal",
+                            style: TextStyles.BodySmallWhite,
+                          ),
+                        ],
+
+                      ),
+                      textAlign: TextAlign.start,
+                    ),
+                      SizedBox(
+                        height: 50,
+                        width: 50,
+                        child: CircularProgressIndicator(
+                          value: 0.85,
+                          strokeWidth: 5,
+                          backgroundColor: Colors.white.withOpacity(0.2),
+                          valueColor: AlwaysStoppedAnimation<Color>(ColorPalette.GrediantRed2),
+                        ),
+                      ),
+                  ],),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20,right: 20,top: 20,bottom: 50),
               child: Column(
                 children: [
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       _detailBox(
-                        count: "60-100",
-                        dec: "bpm",
+                        count: "45",
+                        dec: "min",
                         imageIcon: "assets/icons/steps.png",
-                        titel: "Bpm Range",
+                        titel: "Workout",
                         width: _width,
                       ),
                       _detailBox(
-                        count: "40",
-                        dec: "bpm",
+                        count: "1600",
+                        dec: "kCal",
                         imageIcon: "assets/icons/distance.png",
-                        titel: "Rasting",
+                        titel: "Cal. Eaten",
                         width: _width,
                       ),
                     ],
@@ -109,8 +157,29 @@ class _ActivityHeartRateState extends State<ActivityHeartRate> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      _detailBox(
+                        count: "120",
+                        dec: "kCal",
+                        imageIcon: "assets/icons/distance.png",
+                        titel: "Cal. Burnt",
+                        width: _width,
+                      ),
+                      _detailBox(
+                        count: "3650",
+                        dec: "",
+                        imageIcon: "assets/icons/steps.png",
+                        titel: "Steps",
+                        width: _width,
+                      ),
+
+                    ],
+                  ),
+                  SizedBox(height: 20,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
                       Text("High Today",style: TextStyles.RegulerBIGWhite,),
-                      Text("100",style: TextStyles.BodySmallWhite,),
+                      Text("100 kCal",style: TextStyles.BodySmallWhite,),
                     ],
                   ),
                   Padding(
@@ -130,8 +199,8 @@ class _ActivityHeartRateState extends State<ActivityHeartRate> {
                           width: (_width-40)*0.75,
                           height: 15,
                           decoration: BoxDecoration(
-                            borderRadius: borderRadious.secendaryRadious,
-                            color: ColorPalette.GrediantRed2
+                              borderRadius: borderRadious.secendaryRadious,
+                              color: ColorPalette.GrediantRed2
                           ),
                         ),
                       ],
@@ -141,7 +210,7 @@ class _ActivityHeartRateState extends State<ActivityHeartRate> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text("Low Today",style: TextStyles.RegulerBIGWhite,),
-                      Text("40",style: TextStyles.BodySmallWhite,),
+                      Text("40 kCal",style: TextStyles.BodySmallWhite,),
                     ],
                   ),
                   Padding(

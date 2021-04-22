@@ -11,6 +11,9 @@ class TextStyles {
 
   static const BodyBlack = TextStyle(fontWeight: FontWeight.w400,fontSize: 14,color: ColorPalette.GreyDarkest);
   static const BodySmallWhite = TextStyle(fontWeight: FontWeight.w400,fontSize: 12,color: ColorPalette.GreyLightest);
+  static const BodySmallGrediantRed1 = TextStyle(fontWeight: FontWeight.w400,fontSize: 12,color: ColorPalette.GrediantRed1);
+  static const BodySmallGrediantblue1 = TextStyle(fontWeight: FontWeight.w400,fontSize: 12,color: ColorPalette.Grediantblue1);
+  static const BodySmallFluracentGreen = TextStyle(fontWeight: FontWeight.w400,fontSize: 12,color: ColorPalette.FluracentGreen);
   static const ParaBlack = TextStyle(fontWeight: FontWeight.w500,fontSize: 16,color: ColorPalette.GreyDarkest);
   static const ParaWhite = TextStyle(fontWeight: FontWeight.w500,fontSize: 16,color: Colors.white);
   static const BodyBlackBold = TextStyle(fontWeight: FontWeight.bold,fontSize: 14,color: ColorPalette.GreyDarkest);
@@ -56,6 +59,11 @@ class ColorPalette {
 
   static const Color Grediantblue1 = Color(0xFF8E2DE2);
   static const Color Grediantblue2 = Color(0xFF4A00E0);
+
+  static const Color BMIColor1 = Color(0xFF438dba);
+  static const Color BMIColor2 = Color(0xFF24cac0);
+  static const Color BMIColor3 = Color(0xFFb59f66);
+  static const Color BMIColor4 = Color(0xFFb63752);
 
   static const Color GreyDarkest = Color(0xFF333333);
   static const Color Grey = Color(0xFF9A9A9A);

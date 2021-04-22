@@ -18,7 +18,6 @@ class ActivityTracker extends StatefulWidget {
 }
 
 class _ActivityTrackerState extends State<ActivityTracker> {
-
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;

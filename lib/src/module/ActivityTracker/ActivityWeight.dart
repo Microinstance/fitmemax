@@ -10,10 +10,27 @@ class ActivityWeight extends StatefulWidget {
 }
 
 class _ActivityWeightState extends State<ActivityWeight> {
+
+  Color _getColor({int index, int count}){
+    int xCount = (count/6).round();
+    if(index <= xCount) {
+      return ColorPalette.BMIColor1;
+    }if(index <= xCount*2.2) {
+      return ColorPalette.BMIColor2;
+    }if(index <= xCount*3.5) {
+      return ColorPalette.BMIColor3;
+    } else return ColorPalette.BMIColor4;
+  }
+
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
+    double _boxspace = (_width-80);
+    double _bmi = 24.14;
+    double _bmiNet = _bmi-10;
+    int _BMI = _bmiNet.round();
+    int barCount = (_boxspace/6).toInt();
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -82,102 +99,229 @@ class _ActivityWeightState extends State<ActivityWeight> {
               Titel: "Weight",
               Dec: "Weight",
             ),
-            // Padding(
-            //   padding: const EdgeInsets.only(left: 20,right: 20),
-            //   child: Container(
-            //     decoration: BoxDecoration(
-            //         color: ColorPalette.ActivityTrackerCard,
-            //         borderRadius: borderRadious.secendaryRadious
-            //     ),
-            //     child: Padding(
-            //       padding: const EdgeInsets.all(20),
-            //       child: Row(
-            //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //         children: [
-            //           Column(
-            //             crossAxisAlignment: CrossAxisAlignment.start,
-            //             children: [
-            //               Text("Total Steps",style: TextStyles.BodyGreyLightest,),
-            //               SizedBox(height: 7,),
-            //               Text("10,758",style: TextStyles.TitleWhite,),
-            //             ],
-            //           ),
-            //           Stack(
-            //             alignment: Alignment.center,
-            //             children: [
-            //               SizedBox(
-            //                 height:60,
-            //                 width: 60,
-            //                 child: CircularProgressIndicator(
-            //                   value: 0.31,
-            //                   strokeWidth: 3,
-            //                   backgroundColor: Colors.white.withOpacity(0.2),
-            //                   valueColor: AlwaysStoppedAnimation<Color>(ColorPalette.GrediantRed2),
-            //                 ),
-            //               ),
-            //               Text.rich(
-            //                 TextSpan(
-            //                   children: <TextSpan>[
-            //                     TextSpan(
-            //                       text: "31%",
-            //                       style: TextStyles.ParaWhite,
-            //                     ),
-            //                   ],
-            //                 ),
-            //                 textAlign: TextAlign.center,
-            //               ),
-            //             ],
-            //           ),
-            //         ],
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.only(left: 20,right: 20,top: 20,bottom: 50),
-            //   child: Column(
-            //     children: [
-            //       Row(
-            //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //         children: [
-            //           _detailBox(
-            //             count: "2020",
-            //             dec: "steps",
-            //             imageIcon: "assets/icons/steps.png",
-            //             titel: "Average",
-            //             width: _width,
-            //           ),
-            //           _detailBox(
-            //             count: "15000",
-            //             dec: "mt",
-            //             imageIcon: "assets/icons/distance.png",
-            //             titel: "Distance ",
-            //             width: _width,
-            //           ),
-            //         ],
-            //       ),
-            //       SizedBox(height: 20,),
-            //       Row(
-            //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //         children: [
-            //           _detailBox(
-            //             count: "60%",
-            //             dec: "",
-            //             imageIcon: "assets/icons/walking.png",
-            //             titel: "Walking",
-            //             width: _width,
-            //           ),
-            //           _detailBox(
-            //             count: "40%",
-            //             dec: "",
-            //             imageIcon: "assets/icons/running.png",
-            //             titel: "Running",
-            //             width: _width,
-            //           ),
-            //         ],
-            //       ),
-            //     ],),
-            // ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20,right: 20),
+              child: Row(
+                children: [
+                  Text("BMI Calculater",style: TextStyles.RegulerBIGWhite,),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20,right: 20,top: 20,bottom: 20),
+              child: Container(
+                width: _width-40,
+                decoration: BoxDecoration(
+                  borderRadius: borderRadious.secendaryRadious,
+                  color: ColorPalette.ActivityTrackerCard,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text.rich(
+                            TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: "23.14",
+                                  style: TextStyles.TitleWhite,
+                                ),
+                                TextSpan(
+                                  text: "   You are healthy",
+                                  style: TextStyles.BodySmallFluracentGreen,
+                                ),
+                              ],
+
+                            ),
+                            textAlign: TextAlign.start,
+                          ),
+                          Row(
+                            children: List.generate(3, (index) => Padding(
+                              padding: const EdgeInsets.only(left: 2),
+                              child: CircleAvatar(radius: 2,backgroundColor: ColorPalette.Grediantblue1,),
+                            )),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      SizedBox(
+                        width: _boxspace,
+                        child: Column(
+                          children: [
+                            Row(
+                              children: List.generate(barCount, (index) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(left: 1.5,right: 1.5),
+                                  child: Container(
+                                    height: (index == _BMI) ? 35 : 20,
+                                    width: 3,
+                                    decoration: BoxDecoration(
+                                      borderRadius: borderRadious.secendaryRadious,
+                                      color: _getColor(count: barCount,index: index),
+                                    ),
+                                  ),
+                                );
+                              }
+
+                              ),
+                            ),
+                            SizedBox(height: 5,),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: List.generate(6, (index) => Text("${15 + index*5}",style: TextStyles.BodySmallGrediantblue1,)),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20,right: 20),
+              child: Row(
+                children: [
+                  Text("Your Progress",style: TextStyles.RegulerBIGWhite,),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Container(
+                width: _width-40,
+                decoration: BoxDecoration(
+                  borderRadius: borderRadious.secendaryRadious,
+                  color: ColorPalette.ActivityTrackerCard,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            children: [
+                              Text("Current",style: TextStyles.BodySmallWhite,),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text.rich(
+                                TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: "80",
+                                      style: TextStyles.TitleWhite,
+                                    ),
+                                    TextSpan(
+                                      text: "  kg",
+                                      style: TextStyles.BodyGreyLightest,
+                                    ),
+                                  ],
+
+                                ),
+                                textAlign: TextAlign.start,
+                              ),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text("Target",style: TextStyles.BodySmallWhite,),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text.rich(
+                                TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: "65",
+                                      style: TextStyles.TitleWhite,
+                                    ),
+                                    TextSpan(
+                                      text: "  kg",
+                                      style: TextStyles.BodyGreyLightest,
+                                    ),
+                                  ],
+
+                                ),
+                                textAlign: TextAlign.start,
+                              ),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text("Current",style: TextStyles.BodySmallWhite,),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text.rich(
+                                TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: "78",
+                                      style: TextStyles.TitleWhite,
+                                    ),
+                                    TextSpan(
+                                      text: "  kg",
+                                      style: TextStyles.BodyGreyLightest,
+                                    ),
+                                  ],
+
+                                ),
+                                textAlign: TextAlign.start,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Stack(
+                        alignment: Alignment.centerLeft,
+                        children: [
+                          Container(
+                            width: _width-80,
+                            height: 7,
+                            decoration: BoxDecoration(
+                              borderRadius: borderRadious.secendaryRadious,
+                              color: Colors.white.withOpacity(0.15),
+                            ),
+                          ),
+                          Container(
+                            width: (_width-80)*0.3,
+                            height: 7,
+                            decoration: BoxDecoration(
+                              borderRadius: borderRadious.secendaryRadious,
+                                gradient: new LinearGradient(
+                                    colors: [
+                                      ColorPalette.GrediantRed1,
+                                      ColorPalette.GrediantRed2,
+                                    ],
+                                    begin: Alignment.centerLeft,
+                                    end: Alignment.centerRight,
+                                )
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 50,
+            ),
           ],
         ),
       ),
