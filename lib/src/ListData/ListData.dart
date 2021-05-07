@@ -7,6 +7,65 @@ class Data {
     'Chat','Advertisement','Diet & Fitness','Trasaction','Invite Friends','About Us','Terms & Condition','Privacy Policy'
   ];
 
+  List Activity = [
+    {
+      'date': '01',
+      'weight': '139',
+    },
+    {
+      'date': '02',
+      'weight': '111',
+    },
+    {
+      'date': '03',
+      'weight': '165',
+    },
+    {
+      'date': '04',
+      'weight': '146',
+    },
+    {
+      'date': '05',
+      'weight': '219',
+    },
+    {
+      'date': '06',
+      'weight': '197',
+    },
+    {
+      'date': '07',
+      'weight': '145',
+    },
+    {
+      'date': '08',
+      'weight': '147',
+    },
+    {
+      'date': '09',
+      'weight': '265',
+    },
+    {
+      'date': '10',
+      'weight': '85',
+    },
+    {
+      'date': '11',
+      'weight': '175',
+    },
+    {
+      'date': '12',
+      'weight': '120',
+    },
+    {
+      'date': '13',
+      'weight': '185',
+    },
+    {
+      'date': '14',
+      'weight': '156',
+    },
+
+  ];
 
   List Walking = [
     {

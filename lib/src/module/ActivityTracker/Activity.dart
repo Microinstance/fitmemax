@@ -39,11 +39,11 @@ class _ActivityState extends State<Activity> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _graphButton(
-                      isSelected: false,
+                      isSelected: true,
                       Titel: "Day"
                   ),
                   _graphButton(
-                      isSelected: true,
+                      isSelected: false,
                       Titel: "Week"
                   ),
                   _graphButton(
@@ -76,7 +76,7 @@ class _ActivityState extends State<Activity> {
               ),
             ),
             BarChart(
-              listData: Data().Walking,
+              listData: Data().Activity,
               color1:  ColorPalette.GrediantRed1,
               color2:  ColorPalette.GrediantRed2,
               Titel: "Activity",

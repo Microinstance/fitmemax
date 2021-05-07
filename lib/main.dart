@@ -2,6 +2,7 @@ import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'LandingPage.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,7 +11,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);

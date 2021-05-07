@@ -3,7 +3,7 @@ import 'package:delayed_display/delayed_display.dart';
 import 'package:fitmemax/Objects/Backgrounds.dart';
 import 'package:fitmemax/src/ListData/ListData.dart';
 import 'package:fitmemax/src/module/ActivityTracker/ActivityTracker.dart';
-import 'package:fitmemax/src/module/BattleGround/BattleGroundDashBoard.dart';
+import 'package:fitmemax/src/module/BattleGround/BattleGround.dart';
 import 'package:fitmemax/src/module/CalTracker/CalTrackerDashboard.dart';
 import 'package:fitmemax/src/module/Fast/FastDashboard.dart';
 import 'package:fitmemax/src/module/HealthLog/HealthLog.dart';
@@ -264,7 +264,7 @@ class _HomeState extends State<Home> {
                                                             PageTransitionType
                                                                 .fade,
                                                             child:
-                                                            BattleGroundDashBoard()));
+                                                            BattleGround()));
                                                   },
                                                   child: hItem(
                                                     name: 'Battleground',

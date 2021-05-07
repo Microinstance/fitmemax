@@ -53,6 +53,7 @@ dependencies:
   fl_chart: ^0.35.0
   slider_button: ^0.6.0
   slide_digital_clock: ^1.0.0
+  clay_containers: ^0.3.2
 
 dev_dependencies:
   flutter_test:
@@ -103,4 +104,7 @@ flutter:
     - family: Lato
       fonts:
         - asset: fonts/Lato-Regular.ttf
+    - family: Ghost Clan
+      fonts:
+        - asset: fonts/ghostclan.ttf
 

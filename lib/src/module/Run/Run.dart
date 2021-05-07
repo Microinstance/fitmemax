@@ -1,4 +1,5 @@
 import 'package:calendar_timeline/calendar_timeline.dart';
+import 'package:fitmemax/src/module/Run/RunDetails.dart';
 import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/cupertino.dart';
@@ -53,19 +54,41 @@ class _RunState extends State<Run> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              child: CalendarTimeline(
-                initialDate: DateTime.now(),
-                firstDate: DateTime(2021, 1, 1),
-                lastDate: DateTime(2022, 12, 31),
-                onDateSelected: (date) => print(date),
-                leftMargin: 20,
-                monthColor:  Colors.white,
-                dayColor: ColorPalette.Grediantblue1,
-                activeDayColor: Colors.white,
-                activeBackgroundDayColor: ColorPalette.Grediantblue1,
-                dotsColor: Colors.white,
-                locale: 'en_IN',
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                RichText(text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: "Good Morning",
+                        style: TextStyles.ParaWhite,
+                      ),
+                      TextSpan(
+                        text: "  ",
+                        style: TextStyles.TitleWhite,
+                      ),
+                      TextSpan(
+                        text: "Shivay",
+                        style: TextStyles.TitleWhite,
+                      ),
+                    ]
+                )),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  RichText(text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "26 march, 2021",
+                          style: TextStyles.BodyWhite,
+                        ),
+                      ]
+                  )),
+                ],
               ),
             ),
             Padding(
@@ -80,7 +103,14 @@ class _RunState extends State<Run> {
                   baseColor: ColorPalette.Grediantblue1,
                   alignLabel:  Alignment(0, 0),
                   action: () {
-
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type:
+                            PageTransitionType
+                                .fade,
+                            child:
+                            RunDetails()));
                   },
                   label: Text(
                     "Slide Start Runing",

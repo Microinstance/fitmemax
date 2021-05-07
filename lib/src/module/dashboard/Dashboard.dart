@@ -1,5 +1,7 @@
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:fitmemax/src/module/dashboard/CoachConsultant/Coach.dart';
+import 'package:fitmemax/src/module/dashboard/Sidebar/SupportUs.dart';
+import 'package:fitmemax/src/module/dashboard/Sidebar/WalletPage.dart';
 import 'package:fitmemax/src/module/dashboard/home/Home.dart';
 import 'package:fitmemax/src/module/dashboard/home/Notifications.dart';
 import 'package:fitmemax/src/module/dashboard/home/Settings/Settings.dart';
@@ -121,7 +123,7 @@ class _DashboardState extends State<Dashboard>
                                   context,
                                   PageTransition(
                                       type: PageTransitionType.fade,
-                                      child: Notifications()));
+                                      child: WalletPage()));
                             },
                             icon: Icon(
                               Icons.account_balance_wallet,
@@ -402,21 +404,30 @@ class _DashboardState extends State<Dashboard>
                         ),
                         Padding(
                           padding: const EdgeInsets.only(bottom: 20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Icon(
-                                Icons.history,
-                                color: Colors.white,
-                                size: 22,
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Flexible(
-                                  child: Text("Transaction",
-                                      style: TextStyles.RegulerBIGWhite)),
-                            ],
+                          child: GestureDetector(
+                            onTap: (){
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.fade,
+                                      child: WalletPage()));
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Icons.account_balance_wallet,
+                                  color: Colors.white,
+                                  size: 22,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Flexible(
+                                    child: Text("Wallet",
+                                        style: TextStyles.RegulerBIGWhite)),
+                              ],
+                            ),
                           ),
                         ),
                         Padding(
@@ -436,6 +447,34 @@ class _DashboardState extends State<Dashboard>
                                   child: Text("About us",
                                       style: TextStyles.RegulerBIGWhite)),
                             ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: GestureDetector(
+                            onTap: (){
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.fade,
+                                      child: SupportUs()));
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Icons.support,
+                                  color: Colors.white,
+                                  size: 22,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Flexible(
+                                    child: Text("Support us",
+                                        style: TextStyles.RegulerBIGWhite)),
+                              ],
+                            ),
                           ),
                         ),
                         Padding(
