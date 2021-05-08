@@ -20,6 +20,7 @@ class _BattleGroundProfileState extends State<BattleGroundProfile> {
       DeviceOrientation.landscapeRight,
     ]);
     double _width = MediaQuery.of(context).size.width;
+
     double _height = MediaQuery.of(context).size.height;
     final Duration initialDelay = Duration(milliseconds: 1000);
     final Duration SendoryDelay = Duration(milliseconds: 300);
