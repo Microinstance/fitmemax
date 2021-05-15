@@ -41,18 +41,19 @@ class TextStyles {
   static const FluracentGreenMedium = TextStyle(fontWeight: FontWeight.w400,fontSize: 18,color: ColorPalette.FluracentGreen);
 
 
-  static const GameRegulerWhite = TextStyle(fontFamily: "Ghost Clan",fontSize: 15,color: Colors.white,);
-  static const GameRegulerYellow = TextStyle(fontFamily: "Ghost Clan",fontSize: 15,color: Colors.yellow,);
-  static const GameRegulerBlack = TextStyle(fontFamily: "Ghost Clan",fontSize: 15,color: Colors.black,);
-  static const GameParaYellow= TextStyle(fontFamily: "Ghost Clan",fontSize: 13,color: ColorPalette.Yellow,);
-  static const GameParaWhite= TextStyle(fontFamily: "Ghost Clan",fontSize: 13,color: Colors.white,);
-  static const GameBodywhite= TextStyle(fontFamily: "Ghost Clan",fontSize: 10,color:  Colors.white,);
-  static const GameBodyBlack= TextStyle(fontFamily: "Ghost Clan",fontSize: 10,color:  Colors.black,);
-
-  static const GameSemiBoldBlack= TextStyle(fontFamily: "Ghost Clan",fontSize: 18,color:  Colors.yellow,);
-
-  static const GameShadowWhite1= TextStyle(fontFamily: "Ghost Clan",fontSize: 12,color: Colors.white,);
-  static const GameShadowblack1= TextStyle(fontFamily: "Ghost Clan",fontSize: 14,color: Colors.black,);
+  static const GameRegulerWhite = TextStyle(fontFamily: "Adora",fontSize: 15,color: Colors.white,);
+  static const GameRegulerBigWhite = TextStyle(fontFamily: "Adora",fontSize: 18,color: Colors.white,);
+  static const GameRegulerYellow = TextStyle(fontFamily: "Adora",fontSize: 15,color: Colors.yellow,);
+  static const GameRegulerBlack = TextStyle(fontFamily: "Adora",fontSize: 15,color: Colors.black,);
+  static const GameParaYellow= TextStyle(fontFamily: "Adora",fontSize: 13,color: ColorPalette.Yellow,);
+  static const GameParaWhite= TextStyle(fontFamily: "Adora",fontSize: 13,color: Colors.white,);
+  static const GameBodywhite= TextStyle(fontFamily: "Adora",fontSize: 10,color:  Colors.white,);
+  static const GameBodyBlack= TextStyle(fontFamily: "Adora",fontSize: 10,color:  Colors.black,);
+  static const GameBodyYellow= TextStyle(fontFamily: "Adora",fontSize: 10,color:  Colors.yellow,);
+  static const GameSemiBoldyellow= TextStyle(fontFamily: "Adora",fontSize: 18,color:  Colors.yellow,);
+  static const GameSemiBoldWhite= TextStyle(fontFamily: "Adora",fontSize: 18,color:  Colors.white,);
+  static const GameShadowWhite1= TextStyle(fontFamily: "Adora",fontSize: 12,color: Colors.white,);
+  static const GameShadowblack1= TextStyle(fontFamily: "Adora",fontSize: 14,color: Colors.black,);
 }
 
 
@@ -63,6 +64,7 @@ class ColorPalette {
 
   static const Color BattleGroundBackground = Color(0xFF2a2a36);
   static const Color BattleGroundBackground2 = Color(0xFF282633);
+  static const Color BattleGroundBackground3 = Color(0xFF3e3d4b);
   static const Color BattleGroundAppBar = Color(0xFF363543);
 
   static const Color BattleGroundGredientRed1 = Color(0xFFd70c00);
@@ -83,8 +85,14 @@ class ColorPalette {
   static const Color GrediantRed1 = Color(0xFFfe7748);
   static const Color GrediantRed2 = Color(0xFFfb2d6d);
 
+  static const Color GrediantOrrange1 = Color(0xFFfdc830);
+  static const Color GrediantOrrange2 = Color(0xFFf37335);
+
   static const Color GrediantGreen1= Color(0xFF11998e);
   static const Color GrediantGreen2= Color(0xFF38ef7d);
+
+  static const Color BattleGroundFriendsGreen1= Color(0xFF2a5b1a);
+  static const Color BattleGroundFriendsGreen2= Color(0xFF70b631);
 
   static const Color GrediantGreen3= Color(0xFF09e006);
   static const Color GrediantGreen4= Color(0xFF009e00);
@@ -92,6 +100,9 @@ class ColorPalette {
 
   static const Color Grediantblue1 = Color(0xFF8E2DE2);
   static const Color Grediantblue2 = Color(0xFF4A00E0);
+
+  static const Color Grediantblue3 = Color(0xFF0072ff);
+  static const Color Grediantblue4 = Color(0xFF1488cc);
 
   static const Color BMIColor1 = Color(0xFF438dba);
   static const Color BMIColor2 = Color(0xFF24cac0);

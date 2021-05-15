@@ -36,6 +36,7 @@ class _BarChartState extends State<BarChart> {
       arr[i]=start;
       start=(start+no);
     }
+    print(arr.toList());
     return arr.toList();
   }
 

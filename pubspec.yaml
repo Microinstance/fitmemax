@@ -107,4 +107,7 @@ flutter:
     - family: Ghost Clan
       fonts:
         - asset: fonts/ghostclan.ttf
+    - family: Adora
+      fonts:
+        - asset: fonts/AdoraFresh.ttf
 

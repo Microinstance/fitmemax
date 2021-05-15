@@ -19,7 +19,7 @@ class _BattleGroundState extends State<BattleGround> {
     ]);
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
-    final Duration initialDelay = Duration(milliseconds: 1000);
+    final Duration initialDelay = Duration(milliseconds: 800);
     final Duration SendoryDelay = Duration(milliseconds: 300);
     return Scaffold(
       backgroundColor: ColorPalette.BattleGroundBackground,
@@ -58,7 +58,7 @@ class _BattleGroundState extends State<BattleGround> {
                             children: [
                               Container(
                                 height: 60,
-                                width: _width*0.07,
+                                width: _width*0.08,
                                 decoration: BoxDecoration(
                                   color: Colors.transparent,
                                 ),
@@ -68,7 +68,7 @@ class _BattleGroundState extends State<BattleGround> {
                                     children: [
                                       Image.asset("assets/battleground/clan.png",height: 30,width: _width*0.07-20),
                                       Spacer(),
-                                      Text("Clan",style: TextStyles.GameRegulerWhite)
+                                      Text("Clan",style: TextStyles.GameRegulerWhite),
                                     ],
                                   ),
                                 ),
@@ -575,6 +575,56 @@ class _BattleGroundState extends State<BattleGround> {
                           ),
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25,right: 25),
+                        child: DelayedDisplay(
+                          delay: initialDelay,
+                          slidingBeginOffset: Offset(-0.35, 0,),
+                          child: Stack(
+                            alignment: Alignment.topRight,
+                            overflow: Overflow.visible,
+                            children: [
+                              Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                    borderRadius: borderRadious.secendaryRadious,
+                                    border: Border.all(color: Colors.white.withOpacity(0.2),width: 2),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.white.withOpacity(0.2),
+                                        blurRadius: 3,
+                                        spreadRadius: 3,
+                                      )
+                                    ]
+                                ),
+                                child: Center(
+                                  child: Icon(Icons.people_outline_sharp,color:Colors.white.withOpacity(0.8),size: 25,),
+                                ),
+                              ),
+                              Positioned(
+                                top: -3,
+                                right: -10,
+                                child: CircleAvatar(
+                                  radius: 9,
+                                  backgroundColor: ColorPalette.Red,
+                                  child: Center(child: Padding(
+                                    padding: const EdgeInsets.only(bottom: 1.1,right: 0.2),
+                                    child: Text(
+                                      '3',
+                                      style: TextStyle(
+                                        fontSize: 10,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
                       Spacer(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -584,6 +634,56 @@ class _BattleGroundState extends State<BattleGround> {
                             child: _boxSlot())),
                       ),
                       Spacer(),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25,right: 25),
+                        child: DelayedDisplay(
+                          delay: initialDelay,
+                          slidingBeginOffset: Offset(0.35, 0,),
+                          child: Stack(
+                            alignment: Alignment.topRight,
+                            overflow: Overflow.visible,
+                            children: [
+                              Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                    borderRadius: borderRadious.secendaryRadious,
+                                    border: Border.all(color: Colors.white.withOpacity(0.2),width: 2),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.white.withOpacity(0.2),
+                                        blurRadius: 3,
+                                        spreadRadius: 3,
+                                      )
+                                    ]
+                                ),
+                                child: Center(
+                                  child: Icon(Icons.bar_chart_rounded,color:Colors.white.withOpacity(0.8),size: 25,),
+                                ),
+                              ),
+                              Positioned(
+                                top: -3,
+                                right: -10,
+                                child: CircleAvatar(
+                                  radius: 9,
+                                  backgroundColor: ColorPalette.Red,
+                                  child: Center(child: Padding(
+                                    padding: const EdgeInsets.only(bottom: 1.1,right: 0.2),
+                                    child: Text(
+                                      '3',
+                                      style: TextStyle(
+                                        fontSize: 10,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(left: 25,right: 25),
                         child: DelayedDisplay(
