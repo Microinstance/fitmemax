@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
         title: 'FitMeMax',
         theme: ThemeData(
           primaryColor : ColorPalette.PrimaryColor,
-
           scaffoldBackgroundColor: Colors.white,
           fontFamily: 'Lato',
         ),

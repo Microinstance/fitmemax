@@ -46,6 +46,7 @@ class TextStyles {
   static const GameRegulerYellow = TextStyle(fontFamily: "Adora",fontSize: 15,color: Colors.yellow,);
   static const GameRegulerBlack = TextStyle(fontFamily: "Adora",fontSize: 15,color: Colors.black,);
   static const GameParaYellow= TextStyle(fontFamily: "Adora",fontSize: 13,color: ColorPalette.Yellow,);
+  static const GameParaYellowLIneThrough= TextStyle(fontFamily: "Adora",fontSize: 13,color: ColorPalette.Yellow,decoration: TextDecoration.lineThrough,);
   static const GameParaWhite= TextStyle(fontFamily: "Adora",fontSize: 13,color: Colors.white,);
   static const GameBodywhite= TextStyle(fontFamily: "Adora",fontSize: 10,color:  Colors.white,);
   static const GameBodyBlack= TextStyle(fontFamily: "Adora",fontSize: 10,color:  Colors.black,);
@@ -93,6 +94,18 @@ class ColorPalette {
 
   static const Color BattleGroundFriendsGreen1= Color(0xFF2a5b1a);
   static const Color BattleGroundFriendsGreen2= Color(0xFF70b631);
+  static const Color BattleGroundFriendsGreen3= Color(0xFF025036);
+  static const Color BattleGroundFriendsGreen4= Color(0xFF2b8649);
+  static const Color BattleGroundFriendsGreen5= Color(0xFF189551);
+
+
+
+
+  static const Color BattleGroundGreenShade1 = Color(0xFF37e671);
+  static const Color BattleGroundGreenShade2 =  Color(0xFF29c965);
+  static const Color BattleGroundGreenShade3 =  Color(0xFF19a55c);
+  static const Color BattleGroundGreenShade4 =   Color(0xFF12794c);
+  static const Color BattleGroundGreenShade5 =  Color(0xFF05553c);
 
   static const Color GrediantGreen3= Color(0xFF09e006);
   static const Color GrediantGreen4= Color(0xFF009e00);

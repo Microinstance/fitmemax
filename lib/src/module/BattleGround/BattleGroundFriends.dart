@@ -52,6 +52,8 @@ class _BattleGroundFriendsState extends State<BattleGroundFriends> {
                       height: _height,
                       width: _width,
                       isOnline: (index > 1) ? false : true,
+                      isChallange: (index > 0) ? false : true,
+                      isFollow: (index > 0) ? false : true,
                     );
                   },
                 ),
@@ -82,8 +84,7 @@ class _BattleGroundFriendsState extends State<BattleGroundFriends> {
                       height: 40,
                       width: 40,
                       decoration: BoxDecoration(
-                        // borderRadius: borderRadious.primeryRadious,
-                          borderRadius: BorderRadius.all(Radius.circular(7.5)),
+                        borderRadius: borderRadious.primeryRadious,
                           gradient: LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
@@ -128,6 +129,61 @@ class _BattleGroundFriendsState extends State<BattleGroundFriends> {
                           ),
                         )
                     ),
+                    SizedBox(width: 20,),
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        InnerShadow(
+                          blur: 5,
+                          color:  Colors.black.withOpacity(0.4),
+                          offset: const Offset(5, 5),
+                          child: Container(
+                            height: 35,
+                            width: 170,
+                            decoration: BoxDecoration(
+                                color: ColorPalette.BattleGroundBackground3,
+                                border: Border.all(
+                                  width: 1.5,
+                                  color: Colors.black,
+                                ),
+                                borderRadius: borderRadious.primeryRadious
+                            ),
+                          ),
+
+                        ),
+                        SizedBox(
+                          height: 35,
+                          width: 170,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10,right: 10,top: 2,bottom: 2),
+                            child: Row(
+                              children: [
+                                Icon(Icons.search,size: 18,color: Colors.white,),
+                                SizedBox(
+                                  height: 31,
+                                  width: 132,
+                                  child: TextField(
+                                    onChanged: (x){},
+                                    autofocus: false,
+                                    style: TextStyles.GameRegulerWhite,
+                                    cursorColor: ColorPalette.FluracentGreen,
+                                    decoration: InputDecoration(
+                                        isDense: false,
+                                        hintText: "Search By ID...",
+                                        hintStyle: TextStyles.GameRegulerWhite,
+                                        border: InputBorder.none,
+                                        filled: true,
+                                        fillColor: Colors.transparent,
+                                        contentPadding: EdgeInsets.only(top: 12,right: 10,left: 8,bottom: 11)
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    )
                   ],
                 ),
               ),
@@ -223,7 +279,7 @@ class _BattleGroundFriendsState extends State<BattleGroundFriends> {
       ),
     );
   }
-  Widget _friendsCard({double height, double width, bool isOnline = true}){
+  Widget _friendsCard({double height, double width, bool isOnline = true,bool isChallange = false,bool isFollow = false}){
     return Padding(
       padding: const EdgeInsets.only(left: 20,top: 10,bottom: 10),
       child: InnerShadow(
@@ -242,7 +298,7 @@ class _BattleGroundFriendsState extends State<BattleGroundFriends> {
             borderRadius: borderRadious.primeryRadious
           ),
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
                 isOnline ?   Row(
@@ -273,8 +329,8 @@ class _BattleGroundFriendsState extends State<BattleGroundFriends> {
                     alignment: Alignment.center,
                     children: [
                       SizedBox(
-                        height: 70,
-                        width: 70,
+                        height: 65,
+                        width: 65,
                         child: Padding(
                           padding: EdgeInsets.all(height*0.01),
                           child: Container(
@@ -289,8 +345,8 @@ class _BattleGroundFriendsState extends State<BattleGroundFriends> {
                         ),
                       ),
                       Container(
-                        height: 70,
-                        width: 70,
+                        height: 65,
+                        width: 65,
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage("assets/battleground/frame1.png"),
@@ -303,7 +359,7 @@ class _BattleGroundFriendsState extends State<BattleGroundFriends> {
                 ),
                 Text("Anurag",style: TextStyles.GameRegulerWhite,),
                 Padding(
-                  padding: const EdgeInsets.only(top: 3,bottom: 3),
+                  padding: const EdgeInsets.only(top: 2,bottom: 2),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -313,10 +369,20 @@ class _BattleGroundFriendsState extends State<BattleGroundFriends> {
                   ),
                 ),
                 Padding(
+                  padding: const EdgeInsets.only(top: 2,bottom: 2),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Matches: ",style: TextStyles.GameBodyYellow,),
+                      Text("2-3",style: TextStyles.GameBodywhite,),
+                    ],
+                  ),
+                ),
+                Padding(
                   padding: const EdgeInsets.only(top: 8),
                   child: Container(
-                      height: 30,
-                      width: 100,
+                      height: 25,
+                      width: 80,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(7.5)),
                           gradient: LinearGradient(
@@ -341,15 +407,16 @@ class _BattleGroundFriendsState extends State<BattleGroundFriends> {
                       ),
                       child: Center(child: Padding(
                         padding: const EdgeInsets.only(left: 5,right: 5),
-                        child: Text("Follow",style: TextStyles.GameRegulerWhite,),
+                        child:isFollow ? Text("Follow",style: TextStyles.GameParaWhite,) :
+                        Text("Unfollow",style: TextStyles.GameParaWhite,)  ,
                       ))
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8),
-                  child: Container(
-                      height: 30,
-                      width: 100,
+                  child:isChallange ? Container(
+                      height: 25,
+                      width: 80,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(7.5)),
                           gradient: LinearGradient(
@@ -373,7 +440,37 @@ class _BattleGroundFriendsState extends State<BattleGroundFriends> {
                       ),
                       child: Center(child: Padding(
                         padding: const EdgeInsets.only(left: 5,right: 5),
-                        child: Text("Challenge",style: TextStyles.GameRegulerWhite,),
+                        child: Text("Challenge",style: TextStyles.GameParaWhite,),
+                      ))
+                  ) :
+                  Container(
+                      height: 25,
+                      width: 80,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(7.5)),
+                          gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                // ColorPalette.GrediantOrrange2,
+                                ColorPalette.GrediantOrrange1,
+                                ColorPalette.GrediantOrrange2,
+                              ]
+                          ),
+                          border: Border.all(
+                            width: 1.5, color: Colors.white.withOpacity(0.3),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.white.withOpacity(0.05),
+                              spreadRadius: 1,
+                              blurRadius: 1,
+                            )
+                          ]
+                      ),
+                      child: Center(child: Padding(
+                        padding: const EdgeInsets.only(left: 5,right: 5),
+                        child: Text("Sent",style: TextStyles.GameParaWhite,),
                       ))
                   ),
                 ),
