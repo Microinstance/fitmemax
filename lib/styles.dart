@@ -66,6 +66,8 @@ class ColorPalette {
   static const Color BattleGroundBackground = Color(0xFF2a2a36);
   static const Color BattleGroundBackground2 = Color(0xFF282633);
   static const Color BattleGroundBackground3 = Color(0xFF3e3d4b);
+  static const Color BattleGroundBackground4 = Color(0xFF363543);
+  static const Color BattleGroundBackground5 = Color(0xFF25242c);
   static const Color BattleGroundAppBar = Color(0xFF363543);
 
   static const Color BattleGroundGredientRed1 = Color(0xFFd70c00);
@@ -106,31 +108,24 @@ class ColorPalette {
   static const Color BattleGroundGreenShade3 =  Color(0xFF19a55c);
   static const Color BattleGroundGreenShade4 =   Color(0xFF12794c);
   static const Color BattleGroundGreenShade5 =  Color(0xFF05553c);
-
   static const Color GrediantGreen3= Color(0xFF09e006);
   static const Color GrediantGreen4= Color(0xFF009e00);
   static const Color GrediantGreen5= Color(0xFF00a800);
-
   static const Color Grediantblue1 = Color(0xFF8E2DE2);
   static const Color Grediantblue2 = Color(0xFF4A00E0);
-
   static const Color Grediantblue3 = Color(0xFF0072ff);
   static const Color Grediantblue4 = Color(0xFF1488cc);
-
   static const Color BMIColor1 = Color(0xFF438dba);
   static const Color BMIColor2 = Color(0xFF24cac0);
   static const Color BMIColor3 = Color(0xFFb59f66);
   static const Color BMIColor4 = Color(0xFFb63752);
-
   static const Color GreyDarkest = Color(0xFF333333);
   static const Color Grey = Color(0xFF9A9A9A);
   static const Color GreyLightest = Color(0xFFF9F9F9);
   static const Color GreyMedium = Color(0xFFf7f6f3);
-
   static const Color TealDarkest = Color(0xFF008A8A);
   static const Color Teal = Color(0xFF43BAC1);
   static const Color TealLightest = Color(0xFFEDF5EB);
-
   static const Color PrimaryColor =  Green;
   static const Color SecdoryColor =  GreenLight;
 }

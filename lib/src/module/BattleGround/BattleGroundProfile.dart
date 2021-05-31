@@ -702,34 +702,39 @@ class _BattleGroundProfileState extends State<BattleGroundProfile> {
                 padding: const EdgeInsets.only(left: 30,right: 25,top: 7.5,bottom: 7.5),
                 child: Row(
                   children: [
-                    Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                        // borderRadius: borderRadious.primeryRadious,
-                          borderRadius: BorderRadius.all(Radius.circular(7.5)),
-                          gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                ColorPalette.BattleGroundGredientRed1,
-                                ColorPalette.BattleGroundGredientRed2,
-                                ColorPalette.BattleGroundGredientRed3,
-                              ]
-                          ),
-                          border: Border.all(
-                            width: 1.5, color: Colors.white.withOpacity(0.3),
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.white.withOpacity(0.05),
-                              spreadRadius: 1,
-                              blurRadius: 1,
-                            )
-                          ]
-                      ),
-                      child: Icon(
-                        Icons.arrow_back,size: 25,color: Colors.white,
+                    GestureDetector(
+                      onTap:(){
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          // borderRadius: borderRadious.primeryRadious,
+                            borderRadius: BorderRadius.all(Radius.circular(7.5)),
+                            gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  ColorPalette.BattleGroundGredientRed1,
+                                  ColorPalette.BattleGroundGredientRed2,
+                                  ColorPalette.BattleGroundGredientRed3,
+                                ]
+                            ),
+                            border: Border.all(
+                              width: 1.5, color: Colors.white.withOpacity(0.3),
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.white.withOpacity(0.05),
+                                spreadRadius: 1,
+                                blurRadius: 1,
+                              )
+                            ]
+                        ),
+                        child: Icon(
+                          Icons.arrow_back,size: 25,color: Colors.white,
+                        ),
                       ),
                     ),
                     SizedBox(width: 20,),
