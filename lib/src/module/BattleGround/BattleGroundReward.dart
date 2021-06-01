@@ -110,24 +110,78 @@ class _BattleGroundRewardState extends State<BattleGroundReward> {
                           style: TextStyles.GameSemiBoldyellow,
                         ),
                       ),
-                      InnerShadow(
-                        blur: 3,
-                        color: Colors.black.withOpacity(0.3),
-                        offset: const Offset(5, 5),
-                        child: Container(
-                          height: _height - 220,
-                          width: _width - 160,
-                          decoration: BoxDecoration(
-                              color: ColorPalette.BattleGroundBackground5,
-                              borderRadius: borderRadious.primeryRadious),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [],
-                              )
-                            ],
+                      Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          InnerShadow(
+                            blur: 3,
+                            color: Colors.black.withOpacity(0.3),
+                            offset: const Offset(5, 5),
+                            child: Container(
+                              height: _height - 220,
+                              width: _width - 160,
+                              decoration: BoxDecoration(
+                                  color: ColorPalette.BattleGroundBackground5,
+                                  borderRadius: borderRadious.primeryRadious),
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 5, bottom: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Text(
+                                          "Mission",
+                                          style: TextStyles.GameShadowWhite1,
+                                        ),
+                                        Text(
+                                          "Reward",
+                                          style: TextStyles.GameShadowWhite1,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                        ),
+                          Positioned(
+                            bottom: 5,
+                            right: 5,
+                            left: 5,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 12, bottom: 7),
+                              child: SizedBox(
+                                height: _height - 257,
+                                width: _width - 180,
+                                child: ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: 5,
+                                  scrollDirection: Axis.vertical,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 5, right: 5, bottom: 5),
+                                      child: Container(
+                                        height: 50,
+                                        width: _width - 160,
+                                        decoration: BoxDecoration(
+                                            color: ColorPalette
+                                                .BattleGroundBackground6,
+                                            borderRadius:
+                                                BorderRadius.circular(5)),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
