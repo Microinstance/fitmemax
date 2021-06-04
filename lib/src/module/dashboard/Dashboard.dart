@@ -209,7 +209,8 @@ class _DashboardState extends State<Dashboard>
                               PageTransition(
                                   type: PageTransitionType.fade,
                                   child: Profile()));
-                        } else {
+                        }
+                        else {
                           setState(() {
                             widget.pageStack = index;
                             _pageController.jumpToPage(
@@ -226,6 +227,7 @@ class _DashboardState extends State<Dashboard>
                         FFNavigationBarItem(
                           iconData: Icons.people,
                           label: 'Coach',
+
                         ),
                         FFNavigationBarItem(
                           iconData: Icons.library_books,

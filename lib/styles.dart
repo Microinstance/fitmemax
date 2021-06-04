@@ -69,6 +69,9 @@ class ColorPalette {
   static const Color BattleGroundBackground4 = Color(0xFF363543);
   static const Color BattleGroundBackground5 = Color(0xFF25242c);
   static const Color BattleGroundBackground6 = Color(0xFF515062);
+  static const Color BattleGroundBackground7 = Color(0xFF3f3c4d);
+  static const Color BattleGroundBackground8 = Color(0xFF1d1b26);
+  static const Color BattleGroundBackground9 = Color(0xFF3a3748);
   static const Color BattleGroundAppBar = Color(0xFF363543);
 
   static const Color BattleGroundGredientRed1 = Color(0xFFd70c00);
