@@ -52,53 +52,65 @@ class _BattleGroundRewardState extends State<BattleGroundReward> {
                                     MainAxisAlignment.spaceBetween,
                                 children: List.generate(
                                   4,
-                                  (index) => Container(
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(7.5)),
-                                          gradient: LinearGradient(
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                              colors: [
-                                                ColorPalette.GrediantGreen3,
-                                                ColorPalette.GrediantGreen5,
-                                              ]),
-                                          border: Border.all(
-                                            width: 1.5,
-                                            color:
-                                                Colors.white.withOpacity(0.3),
+                                  (index) => GestureDetector(
+                                    onTap: (){
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            _freeCoins(
+                                              height: _height,
+                                              width: _width,
+                                            ),
+                                      );
+                                    },
+                                    child: Container(
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(7.5)),
+                                            gradient: LinearGradient(
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                                colors: [
+                                                  ColorPalette.GrediantGreen3,
+                                                  ColorPalette.GrediantGreen5,
+                                                ]),
+                                            border: Border.all(
+                                              width: 1.5,
+                                              color:
+                                                  Colors.white.withOpacity(0.3),
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.white
+                                                    .withOpacity(0.05),
+                                                spreadRadius: 1,
+                                                blurRadius: 1,
+                                              )
+                                            ]),
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 5,
+                                              right: 5,
+                                              top: 5,
+                                              bottom: 5),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "Free Coins\n50 coins",
+                                                style:
+                                                    TextStyles.GameRegulerWhite,
+                                              ),
+                                              SizedBox(
+                                                width: 5,
+                                              ),
+                                              Image.asset(
+                                                "assets/battleground/coins1.png",
+                                                width: _width * 0.03,
+                                              ),
+                                            ],
                                           ),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: Colors.white
-                                                  .withOpacity(0.05),
-                                              spreadRadius: 1,
-                                              blurRadius: 1,
-                                            )
-                                          ]),
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 5,
-                                            right: 5,
-                                            top: 5,
-                                            bottom: 5),
-                                        child: Row(
-                                          children: [
-                                            Text(
-                                              "Free Coins\n50 coins",
-                                              style:
-                                                  TextStyles.GameRegulerWhite,
-                                            ),
-                                            SizedBox(
-                                              width: 5,
-                                            ),
-                                            Image.asset(
-                                              "assets/battleground/coins1.png",
-                                              width: _width * 0.03,
-                                            ),
-                                          ],
-                                        ),
-                                      )),
+                                        )),
+                                  ),
                                 )),
                           ),
                         ),
@@ -390,4 +402,269 @@ class _BattleGroundRewardState extends State<BattleGroundReward> {
       ),
     );
   }
+  Widget _freeCoins({double width, double height}){
+    return Material(
+      type: MaterialType.transparency,
+      child: Padding(
+        padding: EdgeInsets.only(top: 20,bottom: 20,right: (width-(width*0.5))/2,left: (width-(width*0.5))/2),
+        child: Stack(
+        alignment: Alignment.topRight,
+        overflow: Overflow.visible,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+                color: ColorPalette.BattleGroundBackground4,
+                borderRadius: borderRadious.primeryRadious,
+                border: Border.all(
+                  width: 1,
+                  color: Colors.white.withOpacity(0.2),
+                )),
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                children: [
+                  InnerShadow(
+                    blur: 3,
+                    color: Colors.black.withOpacity(0.3),
+                    offset: const Offset(5, 5),
+                    child: Container(
+                      width:( width*0.5)-20,
+                      decoration: BoxDecoration(
+                          color: ColorPalette.BattleGroundBackground5,
+                          borderRadius: borderRadious.primeryRadious),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Column(
+                          children: [
+                            Text(
+                              "Free Coins",
+                              style: TextStyles.GameSemiBoldyellow,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 5,left: 3,right: 3,bottom: 5),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: ColorPalette.BattleGroundBackground4,
+                                    borderRadius: borderRadious.primeryRadious,
+                                    border: Border.all(
+                                      width: 1,
+                                      color: Colors.white.withOpacity(0.2),
+                                    )),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Stack(
+                                        alignment: Alignment.center,
+                                        children: [
+                                          Container(
+                                            height: 30,
+                                            width: 30,
+                                            decoration: BoxDecoration(
+                                              color: Colors.black.withOpacity(0.2),
+                                              borderRadius: borderRadious.primeryRadious
+                                            ),
+                                          ),
+                                          Icon(Icons.timer,color: Colors.white,size: 20,),
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(right: 5),
+                                            child: Text("50",style: TextStyles.GameRegulerWhite,),
+                                          ),
+                                          Image.asset(
+                                            "assets/battleground/coins1.png",
+                                            width: width * 0.03,
+                                          ),
+                                        ],
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.black.withOpacity(0.2),
+                                            borderRadius: borderRadious.primeryRadious
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(6.0),
+                                          child: Text("Collect in\n3h 58min",style: TextStyles.GameParaWhite,),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        )
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                    child: Text(
+                      "Free Rewards",
+                      style: TextStyles.GameSemiBoldyellow,
+                    ),
+                  ),
+                  Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: [
+                      Container(
+                        height: height-220,
+                        decoration: BoxDecoration(
+                            color: ColorPalette.BattleGroundBackground5,
+                            borderRadius: borderRadious.primeryRadious),
+                        child: ListView.builder(
+                          itemCount: 6,
+                          shrinkWrap: true,
+                          itemBuilder: (BuildContext context, int index){
+                            return Padding(
+                              padding: const EdgeInsets.only(top: 10,left: 7,right: 7,bottom: 0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: ColorPalette.BattleGroundBackground4,
+                                    borderRadius: borderRadious.primeryRadious,
+                                    border: Border.all(
+                                      width: 1,
+                                      color: Colors.white.withOpacity(0.2),
+                                    )),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Stack(
+                                        alignment: Alignment.center,
+                                        children: [
+                                          Container(
+                                            height: 40,
+                                            width: 40,
+                                            decoration: BoxDecoration(
+                                                color: Colors.black.withOpacity(0.2),
+                                                borderRadius: borderRadious.primeryRadious
+                                            ),
+                                          ),
+                                          Text("${index+1}",style: TextStyles.GameRegulerBigWhite,)
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(right: 5),
+                                            child: Text("50",style: TextStyles.GameRegulerWhite,),
+                                          ),
+                                          Image.asset(
+                                            "assets/battleground/coins1.png",
+                                            width: width * 0.03,
+                                          ),
+                                        ],
+                                      ),
+                                      Container(
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(7.5)),
+                                              gradient: LinearGradient(
+                                                  begin: Alignment.topCenter,
+                                                  end: Alignment.bottomCenter,
+                                                  colors: [
+                                                    ColorPalette.GrediantGreen3,
+                                                    ColorPalette.GrediantGreen5,
+                                                  ]),
+                                              border: Border.all(
+                                                width: 1.5,
+                                                color:
+                                                Colors.white.withOpacity(0.3),
+                                              ),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.white
+                                                      .withOpacity(0.05),
+                                                  spreadRadius: 1,
+                                                  blurRadius: 1,
+                                                )
+                                              ]),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(6.0),
+                                            child: Row(
+                                              children: [
+                                                Text("Collect ",style: TextStyles.GameRegulerWhite,),
+                                                Icon(Icons.play_circle_fill_outlined,color: Colors.white,size: 20,)
+                                              ],
+                                            ),
+                                          )),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        )
+                      ),
+                      Positioned(
+                        bottom: 5,
+                        right: 5,
+                        left: 5,
+                        child: Padding(
+                          padding:
+                          const EdgeInsets.only(top: 12, bottom: 7),
+                          child: SizedBox(
+
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            top: -15,
+            right: -15,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: Container(
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          ColorPalette.BattleGroundGredientRed1,
+                          ColorPalette.BattleGroundGredientRed2,
+                          ColorPalette.BattleGroundGredientRed3,
+                        ]),
+                    border: Border.all(
+                      width: 1.5,
+                      color: Colors.white.withOpacity(0.3),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.white.withOpacity(0.05),
+                        spreadRadius: 1,
+                        blurRadius: 1,
+                      )
+                    ]),
+                child: Icon(
+                  Icons.arrow_back,
+                  size: 20,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+      ),
+    );
+  }
+
 }
