@@ -12,6 +12,7 @@ import 'package:fitmemax/src/module/others/ReferEarn.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Dashboard extends StatefulWidget {
@@ -57,6 +58,10 @@ class _DashboardState extends State<Dashboard>
     Size size = MediaQuery.of(context).size;
     double screenHeight = size.height;
     double screenWidth = size.width;
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return Container(
       decoration: BoxDecoration(
         color: ColorPalette.PrimaryColor,

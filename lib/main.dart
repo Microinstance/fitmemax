@@ -1,5 +1,6 @@
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'LandingPage.dart';
 
 void main() {

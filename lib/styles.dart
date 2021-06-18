@@ -46,6 +46,7 @@ class TextStyles {
   static const GameRegulerYellow = TextStyle(fontFamily: "Adora",fontSize: 15,color: Colors.yellow,);
   static const GameRegulerBlack = TextStyle(fontFamily: "Adora",fontSize: 15,color: Colors.black,);
   static const GameParaYellow= TextStyle(fontFamily: "Adora",fontSize: 13,color: ColorPalette.Yellow,);
+  static const GameParaBlack= TextStyle(fontFamily: "Adora",fontSize: 13,color: Colors.black,);
   static const GameParaYellowLIneThrough= TextStyle(fontFamily: "Adora",fontSize: 13,color: ColorPalette.Yellow,decoration: TextDecoration.lineThrough,);
   static const GameParaWhite= TextStyle(fontFamily: "Adora",fontSize: 13,color: Colors.white,);
   static const GameBodywhite= TextStyle(fontFamily: "Adora",fontSize: 10,color:  Colors.white,);

@@ -3,13 +3,13 @@ import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class BattleGroundCoins extends StatefulWidget {
-  const BattleGroundCoins({Key key}) : super(key: key);
+class BattleGroundCash extends StatefulWidget {
+
   @override
-  _BattleGroundCoinsState createState() => _BattleGroundCoinsState();
+  _BattleGroundCashState createState() => _BattleGroundCashState();
 }
 
-class _BattleGroundCoinsState extends State<BattleGroundCoins> {
+class _BattleGroundCashState extends State<BattleGroundCash> {
   @override
   Widget build(BuildContext context) {
 
@@ -126,13 +126,13 @@ class _BattleGroundCoinsState extends State<BattleGroundCoins> {
                             child: Padding(
                               padding: const EdgeInsets.only(left: 15,right: 15),
                               child: Text(
-                                "Coins",style: TextStyles.GameRegulerWhite,
+                                "Cash",style: TextStyles.GameRegulerWhite,
                               ),
                             ),
                           )
                       ),
                       SizedBox(width: 20,),
-                      Text("Available Coins :  ",style: TextStyles.GameParaWhite,),
+                      Text("Available Cash :  ",style: TextStyles.GameParaWhite,),
                       Text("12054",style: TextStyles.GameSemiBoldyellow,),
                     ],
                   ),
@@ -159,7 +159,7 @@ class _BattleGroundCoinsState extends State<BattleGroundCoins> {
                   padding: const EdgeInsets.only(left: 30,right: 25,top: 7.5,bottom: 7.5),
                   child: Row(
                     children: [
-                      Text("Get 500 coins each friend who joins Battle Ground",style: TextStyles.GameSemiBoldyellow,),
+                      Text("Get 500 Cash each friend who joins Battle Ground",style: TextStyles.GameSemiBoldyellow,),
                       Spacer(),
                       Container(
                           height: 40,
@@ -251,31 +251,31 @@ class _BattleGroundCoinsState extends State<BattleGroundCoins> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                Text("Stack of Coins",style: TextStyles.GameSemiBoldWhite,),
+                Text("Stack of Cash",style: TextStyles.GameSemiBoldWhite,),
                 Padding(
                   padding: const EdgeInsets.only(top: 5,bottom: 10),
                   child: Container(
                     height: 2,
                     width: 110,
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.centerRight,
-                        end: Alignment.centerLeft,
-                        colors: [
-                          ColorPalette.BattleGroundGreenShade5,
-                          ColorPalette.BattleGroundGreenShade4,
-                          ColorPalette.BattleGroundGreenShade3,
-                          ColorPalette.BattleGroundGreenShade2,
-                          ColorPalette.BattleGroundGreenShade1,
+                        gradient: LinearGradient(
+                            begin: Alignment.centerRight,
+                            end: Alignment.centerLeft,
+                            colors: [
+                              ColorPalette.BattleGroundGreenShade5,
+                              ColorPalette.BattleGroundGreenShade4,
+                              ColorPalette.BattleGroundGreenShade3,
+                              ColorPalette.BattleGroundGreenShade2,
+                              ColorPalette.BattleGroundGreenShade1,
 
-                          ColorPalette.BattleGroundGreenShade1,
-                          ColorPalette.BattleGroundGreenShade2,
-                          ColorPalette.BattleGroundGreenShade3,
-                          ColorPalette.BattleGroundGreenShade4,
-                          ColorPalette.BattleGroundGreenShade5,
+                              ColorPalette.BattleGroundGreenShade1,
+                              ColorPalette.BattleGroundGreenShade2,
+                              ColorPalette.BattleGroundGreenShade3,
+                              ColorPalette.BattleGroundGreenShade4,
+                              ColorPalette.BattleGroundGreenShade5,
 
-                        ]
-                      )
+                            ]
+                        )
                     ),
                   ),
                 ),
@@ -289,16 +289,16 @@ class _BattleGroundCoinsState extends State<BattleGroundCoins> {
                           height: height-227,
                           width: 133,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(2),
-                            gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                ColorPalette.BattleGroundFriendsGreen3,
-                                ColorPalette.GrediantGreen2,
+                              borderRadius: BorderRadius.circular(2),
+                              gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    ColorPalette.BattleGroundFriendsGreen3,
+                                    ColorPalette.GrediantGreen2,
 
-                              ]
-                            )
+                                  ]
+                              )
                           ),
                         ),
                         Padding(
@@ -338,10 +338,10 @@ class _BattleGroundCoinsState extends State<BattleGroundCoins> {
                               height: height-340,
                               // width: 110,
                               decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage("assets/battleground/multiple_coins.png"),
-                                  fit: BoxFit.contain,
-                                )
+                                  image: DecorationImage(
+                                    image: AssetImage("assets/battleground/multiple_cash.png"),
+                                    fit: BoxFit.contain,
+                                  )
                               ),
                             ),
                           ),

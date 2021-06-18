@@ -18,11 +18,10 @@ class _BattleGroundRewardState extends State<BattleGroundReward> {
       type: MaterialType.transparency,
       child: SafeArea(
         child: Padding(
-          padding:
-              const EdgeInsets.only(top: 30, bottom: 30, right: 80, left: 80),
+          padding: const EdgeInsets.only(top: 30, bottom: 30, right: 80, left: 80),
           child: Stack(
+            clipBehavior: Clip.none,
             alignment: Alignment.topRight,
-            overflow: Overflow.visible,
             children: [
               Container(
                 decoration: BoxDecoration(
@@ -130,7 +129,7 @@ class _BattleGroundRewardState extends State<BattleGroundReward> {
                             color: Colors.black.withOpacity(0.3),
                             offset: const Offset(5, 5),
                             child: Container(
-                              height: _height - 220,
+                              height: _height - 230,
                               width: _width - 160,
                               decoration: BoxDecoration(
                                   color: ColorPalette.BattleGroundBackground5,
@@ -163,6 +162,7 @@ class _BattleGroundRewardState extends State<BattleGroundReward> {
                             bottom: 5,
                             right: 5,
                             left: 5,
+                            top: 10,
                             child: Padding(
                               padding:
                                   const EdgeInsets.only(top: 12, bottom: 7),
@@ -316,7 +316,7 @@ class _BattleGroundRewardState extends State<BattleGroundReward> {
                 child: Row(
                   children: [
                     Container(
-                        height: 45,
+                        height: 50,
                         width:( ((width - 300)*0.4)-10)/2,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(
@@ -513,7 +513,7 @@ class _BattleGroundRewardState extends State<BattleGroundReward> {
                     alignment: Alignment.bottomCenter,
                     children: [
                       Container(
-                        height: height-220,
+                        height: height-230,
                         decoration: BoxDecoration(
                             color: ColorPalette.BattleGroundBackground5,
                             borderRadius: borderRadious.primeryRadious),

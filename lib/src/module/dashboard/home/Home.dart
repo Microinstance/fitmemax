@@ -13,6 +13,7 @@ import 'package:fitmemax/src/module/dashboard/home/BlogCard.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -62,9 +63,14 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     final Duration initialDelay = Duration(milliseconds: 250);
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
+
     return Backgrounds(
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -257,7 +263,7 @@ class _HomeState extends State<Home> {
                                                 ),
                                                 GestureDetector(
                                                   onTap: () {
-                                                    Navigator.push(
+                                                    Navigator.pushReplacement(
                                                         context,
                                                         PageTransition(
                                                             type:
