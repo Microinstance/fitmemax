@@ -1,8 +1,10 @@
 import 'package:animator/animator.dart';
 import 'package:delayed_display/delayed_display.dart';
+import 'package:fitmemax/src/module/BattleGround/BattleGround1o1/ChooseBet.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundCash.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundCoins.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundFriends.dart';
+import 'package:fitmemax/src/module/BattleGround/BattleGroundGifts.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundLeaderBoard.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundProfile.dart';
 import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
@@ -265,54 +267,62 @@ class _BattleGroundState extends State<BattleGround> {
                             ),
                             Row(
                               children: [
-                                Container(
-                                  height: 60,
-                                  width: _width * 0.1,
-                                  decoration: BoxDecoration(
-                                    color: Colors.transparent,
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(5.0),
-                                    child: Column(
-                                      children: [
-                                        Stack(
-                                          clipBehavior: Clip.none,
-                                          children: [
-                                            Animator(
-                                              duration: Duration(seconds: 1),
-                                              cycles: 0,
-                                              resetAnimationOnRebuild: true,
-                                              tween:
-                                              Tween<double>(begin: 0.85, end: 1),
-                                              builder: (_, anim, __) =>
-                                                  Transform.scale(
-                                                    origin: Offset(1, 2),
-                                                    scale: anim.value,
-                                                    child: Image.asset(
-                                                        "assets/battleground/shop.png",
-                                                        height: 30,
-                                                        width: _width * 0.07 - 20),
-                                                  ),
-                                            ),
-                                            Positioned(
-                                              right: -5,
-                                              top: -5,
-                                              child: CircleAvatar(
-                                                radius: 10,
-                                                backgroundColor: Colors.white,
+                                GestureDetector(
+                                  onTap:(){
+                                    showDialog(
+                                        context: context,
+                                        builder: (_) => BattleGroundReward()
+                                    );
+                                  },
+                                  child: Container(
+                                    height: 60,
+                                    width: _width * 0.1,
+                                    decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Column(
+                                        children: [
+                                          Stack(
+                                            clipBehavior: Clip.none,
+                                            children: [
+                                              Animator(
+                                                duration: Duration(seconds: 1),
+                                                cycles: 0,
+                                                resetAnimationOnRebuild: true,
+                                                tween:
+                                                Tween<double>(begin: 0.85, end: 1),
+                                                builder: (_, anim, __) =>
+                                                    Transform.scale(
+                                                      origin: Offset(1, 2),
+                                                      scale: anim.value,
+                                                      child: Image.asset(
+                                                          "assets/battleground/shop.png",
+                                                          height: 30,
+                                                          width: _width * 0.07 - 20),
+                                                    ),
+                                              ),
+                                              Positioned(
+                                                right: -5,
+                                                top: -5,
                                                 child: CircleAvatar(
-                                                  radius: 8,
-                                                  backgroundColor: Colors.yellow,
-                                                  child: Text("2",style: TextStyles.GameParaBlack,),
+                                                  radius: 10,
+                                                  backgroundColor: Colors.white,
+                                                  child: CircleAvatar(
+                                                    radius: 8,
+                                                    backgroundColor: Colors.yellow,
+                                                    child: Text("2",style: TextStyles.GameParaBlack,),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                        Spacer(),
-                                        Text("Rewards",
-                                            style: TextStyles.GameRegulerWhite)
-                                      ],
+                                            ],
+                                          ),
+                                          Spacer(),
+                                          Text("Rewards",
+                                              style: TextStyles.GameRegulerWhite)
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -606,36 +616,45 @@ class _BattleGroundState extends State<BattleGround> {
                             ),
                             Row(
                               children: [
-                                Container(
-                                  height: 60,
-                                  width: _width * 0.07,
-                                  decoration: BoxDecoration(
-                                    color: Colors.transparent,
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(5.0),
-                                    child: Column(
-                                      children: [
-                                        Animator(
-                                          duration: Duration(seconds: 1),
-                                          cycles: 0,
-                                          resetAnimationOnRebuild: true,
-                                          tween:
-                                              Tween<double>(begin: 0.85, end: 1),
-                                          builder: (_, anim, __) =>
-                                              Transform.scale(
-                                            origin: Offset(1, 2),
-                                            scale: anim.value,
-                                            child: Image.asset(
-                                                "assets/battleground/reward.png",
-                                                height: 30,
-                                                width: _width * 0.07 - 20),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        PageTransition(
+                                            type: PageTransitionType.fade,
+                                            child: BattleGroundGifts()));
+                                  },
+                                  child: Container(
+                                    height: 60,
+                                    width: _width * 0.07,
+                                    decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Column(
+                                        children: [
+                                          Animator(
+                                            duration: Duration(seconds: 1),
+                                            cycles: 0,
+                                            resetAnimationOnRebuild: true,
+                                            tween:
+                                                Tween<double>(begin: 0.85, end: 1),
+                                            builder: (_, anim, __) =>
+                                                Transform.scale(
+                                              origin: Offset(1, 2),
+                                              scale: anim.value,
+                                              child: Image.asset(
+                                                  "assets/battleground/reward.png",
+                                                  height: 30,
+                                                  width: _width * 0.07 - 20),
+                                            ),
                                           ),
-                                        ),
-                                        Spacer(),
-                                        Text("Gifts",
-                                            style: TextStyles.GameRegulerWhite)
-                                      ],
+                                          Spacer(),
+                                          Text("Gifts",
+                                              style: TextStyles.GameRegulerWhite)
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -694,7 +713,15 @@ class _BattleGroundState extends State<BattleGround> {
                               duration: const Duration(milliseconds: 2000),
                               child: ScaleAnimation(
                                   scale: 0.8,
-                                  child: FadeInAnimation(child: _play())),
+                                  child: FadeInAnimation(child:(index == 0) ? _play(
+                                    image: "assets/battleground/1o1.png",
+                                      onTap:(){
+                                        showDialog(
+                                            context: context,
+                                            builder: (_) => ChooseBet()
+                                        );
+                                      },
+                                  ) : _play())),
                             );
                           },
                         ),
@@ -918,31 +945,32 @@ class _BattleGroundState extends State<BattleGround> {
       ],
     );
   }
-
-  Widget _play() {
+  Widget _play({String image = "assets/battleground/play.png", Function onTap}) {
     return Padding(
       padding: const EdgeInsets.only(right: 20, top: 5, bottom: 5, left: 20),
-      child: Container(
-        height: 120,
-        width: 200,
-        decoration: BoxDecoration(
-            borderRadius: borderRadious.secendaryRadious,
-            image: DecorationImage(
-              image: AssetImage("assets/battleground/play.png"),
-              fit: BoxFit.cover,
-            ),
-            border: Border.all(color: Colors.white.withOpacity(0.2), width: 2),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.white.withOpacity(0.2),
-                blurRadius: 3,
-                spreadRadius: 3,
-              )
-            ]),
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          height: 120,
+          width: 200,
+          decoration: BoxDecoration(
+              borderRadius: borderRadious.secendaryRadious,
+              image: DecorationImage(
+                image: AssetImage(image),
+                fit: BoxFit.cover,
+              ),
+              border: Border.all(color: Colors.white.withOpacity(0.2), width: 2),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.white.withOpacity(0.2),
+                  blurRadius: 3,
+                  spreadRadius: 3,
+                )
+              ]),
+        ),
       ),
     );
   }
-
   Widget _boxSlot() {
     return Padding(
       padding: const EdgeInsets.only(left: 10, right: 10),

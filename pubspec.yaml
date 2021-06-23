@@ -13,10 +13,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-#  flutter_localizations:
-#    sdk: flutter
-
-
   cupertino_icons: ^1.0.0
   pinput: ^0.2.4
   ff_navigation_bar: ^0.1.4
@@ -54,19 +50,15 @@ dependencies:
   slider_button: ^0.6.0
   slide_digital_clock: ^1.0.0
   clay_containers: ^0.3.2
+  flip_card: ^0.5.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
-#dependency_overrides:
-#  intl: ">=0.16.0 <0.17.0"
-
 flutter:
 
   uses-material-design: true
-
 
   assets:
     - assets/background/
@@ -87,7 +79,6 @@ flutter:
     - assets/profile/Post/
     - assets/gif/
     - images/
-    - assets/Video/
     - assets/Badges/
     - assets/Rings/
     - assets/banner/
@@ -96,7 +87,6 @@ flutter:
     - assets/calori/
     - assets/fast/
     - assets/battleground/
-    - assets/lottie/
     - assets/workout/
     - assets/icon/
 
@@ -110,4 +100,3 @@ flutter:
     - family: Adora
       fonts:
         - asset: fonts/AdoraFresh.ttf
-
