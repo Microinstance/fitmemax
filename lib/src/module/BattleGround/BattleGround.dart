@@ -1,6 +1,7 @@
 import 'package:animator/animator.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGround1o1/ChooseBet.dart';
+import 'package:fitmemax/src/module/BattleGround/BattleGround1o1/OneOone.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundCash.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundCoins.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundFriends.dart';
@@ -53,10 +54,7 @@ class _BattleGroundState extends State<BattleGround> {
                 children: [
                   DelayedDisplay(
                     delay: initialDelay,
-                    slidingBeginOffset: Offset(
-                      0,
-                      -0.35,
-                    ),
+                    slidingBeginOffset: Offset(0, -0.35,),
                     child: Container(
                       height: 60,
                       width: _width,
@@ -713,15 +711,16 @@ class _BattleGroundState extends State<BattleGround> {
                               duration: const Duration(milliseconds: 2000),
                               child: ScaleAnimation(
                                   scale: 0.8,
-                                  child: FadeInAnimation(child:(index == 0) ? _play(
-                                    image: "assets/battleground/1o1.png",
+                                  child: FadeInAnimation(child: _play(
+                                    image: _image(index),
                                       onTap:(){
-                                        showDialog(
-                                            context: context,
-                                            builder: (_) => ChooseBet()
-                                        );
+                                        // showDialog(
+                                        //     context: context,
+                                        //     builder: (_) => ChooseBet()
+                                        // );
+                                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: OneOone()));
                                       },
-                                  ) : _play())),
+                                  ))),
                             );
                           },
                         ),
@@ -951,20 +950,20 @@ class _BattleGroundState extends State<BattleGround> {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          height: 120,
-          width: 200,
+          height: 140,
+          width: 240,
           decoration: BoxDecoration(
               borderRadius: borderRadious.secendaryRadious,
               image: DecorationImage(
                 image: AssetImage(image),
                 fit: BoxFit.cover,
               ),
-              border: Border.all(color: Colors.white.withOpacity(0.2), width: 2),
+              border: Border.all(color: Colors.white.withOpacity(0.1), width: 1),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.white.withOpacity(0.2),
-                  blurRadius: 3,
-                  spreadRadius: 3,
+                  color: Colors.white.withOpacity(0.1),
+                  blurRadius: 1,
+                  spreadRadius: 1,
                 )
               ]),
         ),
@@ -997,5 +996,14 @@ class _BattleGroundState extends State<BattleGround> {
         ),
       ),
     );
+  }
+  String _image(int index){
+    if (index == 0){
+      return "assets/battleground/1o1.png" ;
+    } if (index == 1){
+      return "assets/battleground/beast.png" ;
+    } if (index == 2){
+      return "assets/battleground/clanwar.png" ;
+    } else return "assets/battleground/solo.png" ;
   }
 }

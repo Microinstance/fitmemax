@@ -1,6 +1,4 @@
 import 'package:animator/animator.dart';
-import 'package:clay_containers/constants.dart';
-import 'package:clay_containers/widgets/clay_container.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

@@ -120,6 +120,10 @@ class ColorPalette {
   static const Color Grediantblue2 = Color(0xFF4A00E0);
   static const Color Grediantblue3 = Color(0xFF0072ff);
   static const Color Grediantblue4 = Color(0xFF1488cc);
+  static const Color Grediantblue5 = Color(0xFF034292);
+  static const Color Grediantblue6 = Color(0xFF0093f0);
+
+
   static const Color BMIColor1 = Color(0xFF438dba);
   static const Color BMIColor2 = Color(0xFF24cac0);
   static const Color BMIColor3 = Color(0xFFb59f66);

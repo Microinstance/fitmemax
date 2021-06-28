@@ -4,6 +4,8 @@ import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'ChooseBet.dart';
+
 class OneOone extends StatefulWidget {
   @override
   _OneOoneState createState() => _OneOoneState();
@@ -45,11 +47,12 @@ class _OneOoneState extends State<OneOone> {
                   child: GridView.count(
                     shrinkWrap: true,
                     crossAxisCount: 3,
+                    childAspectRatio: 1/0.75,
                     children: List.generate(6, (index) => _Catagory(
                       width: _width,
                       height: _height,
                       titel: "Running",
-                      Image: ""
+                      image: ""
                     )),
                   )),
             ),
@@ -258,11 +261,62 @@ class _OneOoneState extends State<OneOone> {
       ),
     );
   }
-  Widget _Catagory({double width, double height, String titel,String Image}){
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(7.5),
-        border: Border.all(color: Colors.white.withOpacity(0.4),
-    )));
+  Widget _Catagory({double width, double height, String titel,String image}){
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: GestureDetector(
+        onTap:(){
+          showDialog(
+              context: context,
+              builder: (_) => ChooseBet()
+          );
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(7.5),
+            border: Border.all(color: Colors.white.withOpacity(0.4),
+        )),
+          child: Column(
+            children: [
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  InnerShadow(
+                    blur: 5,
+                    color: Colors.black.withOpacity(0.1),
+                    offset: const Offset(5, 5),
+                    child: Container(
+                      height: 135,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(topRight: Radius.circular(7.5),topLeft:Radius.circular(7.5) ),
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              ColorPalette.Grediantblue5,
+                              ColorPalette.Grediantblue6,
+                              ColorPalette.Grediantblue5,
+                            ]
+                          )),
+                    ),
+                  ),
+                  Image.asset('assets/battleground/onooone_cat1.png',height: 100,),
+                ],
+              ),
+              Container(
+                height: 0.5,
+                decoration: BoxDecoration(
+                    color: Colors.white),
+              ),
+              Spacer(),
+              Text("Running",style: TextStyles.GameSemiBoldyellow,),
+              Spacer(),
+            ],
+          ),
+
+        ),
+      ),
+
+    );
   }
 }
