@@ -53,6 +53,7 @@ class TextStyles {
   static const GameBodyBlack= TextStyle(fontFamily: "Adora",fontSize: 10,color:  Colors.black,);
   static const GameBodyYellow= TextStyle(fontFamily: "Adora",fontSize: 10,color:  Colors.yellow,);
   static const GameSemiBoldyellow= TextStyle(fontFamily: "Adora",fontSize: 18,color:  Colors.yellow,);
+  static const GameBigBoldyellow= TextStyle(fontFamily: "Adora",fontSize: 25,color:  Colors.yellow,);
   static const GameSemiBoldWhite= TextStyle(fontFamily: "Adora",fontSize: 18,color:  Colors.white,);
   static const GameShadowWhite1= TextStyle(fontFamily: "Adora",fontSize: 12,color: Colors.white,);
   static const GameShadowblack1= TextStyle(fontFamily: "Adora",fontSize: 14,color: Colors.black,);
