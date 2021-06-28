@@ -44,79 +44,82 @@ class _OneoOneVsState extends State<OneoOneVs> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(right: 25),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        DelayedDisplay(
-                          delay: initialDelay,
-                          slidingBeginOffset: Offset(-0.35, 0,),
-                          child: _profile(
+                    child: DelayedDisplay(
+                      delay: initialDelay,
+                      slidingBeginOffset: Offset(-0.35, 0,),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          _profile(
                             isLeft: true,
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 15),
-                          child: DelayedDisplay(
-                            delay: initialDelay,
-                            slidingBeginOffset: Offset(-0.35, 0,),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 15),
                             child: _profileCoin(
                               isLef: true,
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-
-                      Stack(
-                        alignment: Alignment.topCenter,
-                        clipBehavior: Clip.none,
-                        children: [
-                          InnerShadow(
-                            blur: 5,
-                            color: Colors.black.withOpacity(0.5),
-                            offset: const Offset(5, 5),
-                            child: Container(
-                              height: 100,
-                              width: 100,
-                              decoration: BoxDecoration(
-                                color: ColorPalette.BattleGroundBackground2,
-                                borderRadius: BorderRadius.circular(7.5),
-                                border: Border.all(
-                                  width: 2,
-                                  color: ColorPalette.Yellow,
-                                )
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                              top: -50,
-                              child: Text("Vs",style: TextStyles.GameBigBoldyellow,)),
                         ],
                       ),
-                    ],
+                    ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25),
+                  DelayedDisplay(
+                    delay: initialDelay,
+                    slidingBeginOffset: Offset(0,0.35),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        _profile(
-                          isLeft: false,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 15),
-                          child: _profileCoin(
-                            isLef: false,
-                          ),
+                        Stack(
+                          alignment: Alignment.topCenter,
+                          clipBehavior: Clip.none,
+                          children: [
+                            InnerShadow(
+                              blur: 5,
+                              color: Colors.black.withOpacity(0.5),
+                              offset: const Offset(5, 5),
+                              child: Container(
+                                height: 100,
+                                width: 100,
+                                decoration: BoxDecoration(
+                                  color: ColorPalette.BattleGroundBackground2,
+                                  borderRadius: BorderRadius.circular(7.5),
+                                  border: Border.all(
+                                    width: 2,
+                                    color: ColorPalette.Yellow,
+                                  )
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                                top: -50,
+                                child: Text("Vs",style: TextStyles.GameBigBoldyellow,)),
+                          ],
                         ),
                       ],
+                    ),
+                  ),
+                  DelayedDisplay(
+                    delay: initialDelay,
+                    slidingBeginOffset: Offset(0.35, 0,),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 25),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          _profile(
+                            isLeft: false,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 15),
+                            child: _profileCoin(
+                              isLef: false,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
