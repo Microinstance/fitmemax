@@ -1,5 +1,6 @@
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Backgrounds extends StatefulWidget {
   final Widget child;
@@ -13,6 +14,10 @@ class _BackgroundsState extends State<Backgrounds> {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return Scaffold(
       backgroundColor: ColorPalette.GreyLightest,
       body: Stack(

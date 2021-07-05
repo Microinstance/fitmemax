@@ -26,7 +26,7 @@ class _BattleGroundState extends State<BattleGround> {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
-      DeviceOrientation.landscapeRight,
+      // DeviceOrientation.landscapeRight,
     ]);
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
@@ -661,30 +661,28 @@ class _BattleGroundState extends State<BattleGround> {
                             ),
                             Row(
                               children: [
-                                Container(
-                                  height: 60,
-                                  width: _width * 0.05,
-                                  decoration: BoxDecoration(
-                                    color: Colors.transparent,
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(5.0),
-                                    child: Column(
-                                      children: [
-                                        Spacer(),
-                                        // Image.asset("assets/battleground/clan.png",height: 30,width: _width*0.07-20),
-                                        GestureDetector(
-                                          onTap: (){
-                                            Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: Dashboard(pageStack: 0,)));
-                                          },
-                                          child: Icon(
+                                GestureDetector(
+                                  onTap: (){
+                                    Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: Dashboard()));
+                                  },
+                                  child: Container(
+                                    height: 60,
+                                    width: _width * 0.05,
+                                    decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
                                             Icons.power_settings_new_rounded,
                                             size: 25,
                                             color: ColorPalette.Red,
                                           ),
-                                        ),
-                                        Spacer(),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -896,7 +894,6 @@ class _BattleGroundState extends State<BattleGround> {
       ),
     );
   }
-
   Widget _deviders() {
     return Row(
       children: [
@@ -997,7 +994,7 @@ class _BattleGroundState extends State<BattleGround> {
       ),
     );
   }
-  String _image(int index){
+  String _image(int index) {
     if (index == 0){
       return "assets/battleground/1o1.png" ;
     } if (index == 1){

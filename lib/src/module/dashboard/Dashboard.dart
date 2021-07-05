@@ -53,15 +53,15 @@ class _DashboardState extends State<Dashboard>
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     Size size = MediaQuery.of(context).size;
     double screenHeight = size.height;
     double screenWidth = size.width;
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
     return Container(
       decoration: BoxDecoration(
         color: ColorPalette.PrimaryColor,
