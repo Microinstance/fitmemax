@@ -20,6 +20,7 @@ class _SigninPageState extends State<SigninPage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top, SystemUiOverlay.bottom]);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarBrightness: Brightness.dark,
     ));
@@ -132,7 +133,7 @@ class _SigninPageState extends State<SigninPage> {
                                 title: 'Sign In',
                                 colors: ColorPalette.PrimaryColor,
                                 onPressed: ()  {
-                                  Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Dashboard(pageStack: 0,)));
+                                  Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: Dashboard(pageStack: 0,)));
                                 },
                               ),
                             ),

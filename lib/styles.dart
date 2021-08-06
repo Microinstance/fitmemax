@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_html/style.dart';
 
 class borderRadious{
   static const primeryRadious =   BorderRadius.all(Radius.circular(7.5));
@@ -53,7 +52,9 @@ class TextStyles {
   static const GameBodyBlack= TextStyle(fontFamily: "Adora",fontSize: 10,color:  Colors.black,);
   static const GameBodyYellow= TextStyle(fontFamily: "Adora",fontSize: 10,color:  Colors.yellow,);
   static const GameSemiBoldyellow= TextStyle(fontFamily: "Adora",fontSize: 18,color:  Colors.yellow,);
+  static const GameSemiBoldblack= TextStyle(fontFamily: "Adora",fontSize: 18,color:  Colors.black,);
   static const GameBigBoldyellow= TextStyle(fontFamily: "Adora",fontSize: 25,color:  Colors.yellow,);
+  static const GameBigBoldwhite= TextStyle(fontFamily: "Adora",fontSize: 25,color:  Colors.white,);
   static const GameSemiBoldWhite= TextStyle(fontFamily: "Adora",fontSize: 18,color:  Colors.white,);
   static const GameShadowWhite1= TextStyle(fontFamily: "Adora",fontSize: 12,color: Colors.white,);
   static const GameShadowblack1= TextStyle(fontFamily: "Adora",fontSize: 14,color: Colors.black,);

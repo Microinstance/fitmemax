@@ -457,7 +457,6 @@ class _ProfileHomeState extends State<ProfileHome> {
       ),
     );
   }
-
   Widget _Suggetions() {
     return Padding(
       padding: const EdgeInsets.only(left: 20, top: 20, bottom: 20),
@@ -502,7 +501,6 @@ class _ProfileHomeState extends State<ProfileHome> {
       ),
     );
   }
-
   Widget _StoryBox() {
     return Padding(
         padding: const EdgeInsets.only(left: 20, top: 20, bottom: 20),
@@ -580,7 +578,6 @@ class _ProfileHomeState extends State<ProfileHome> {
           ),
         ));
   }
-
   Widget _StoryCircle() {
     return Padding(
       padding: const EdgeInsets.only(left: 5),

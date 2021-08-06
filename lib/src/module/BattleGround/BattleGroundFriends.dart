@@ -23,6 +23,7 @@ class _BattleGroundFriendsState extends State<BattleGroundFriends> {
     double _height = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      resizeToAvoidBottomInset : false,
       backgroundColor: ColorPalette.BattleGroundBackground,
       body: SafeArea(
         child: Stack(

@@ -57,6 +57,8 @@ class _DashboardState extends State<Dashboard>
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top, SystemUiOverlay.bottom]);
+
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     Size size = MediaQuery.of(context).size;
@@ -310,7 +312,7 @@ class _DashboardState extends State<Dashboard>
                               children: [
                                 Flexible(
                                   child: Text(
-                                    'Shivay Gorai',
+                                    'Anurag',
                                     style: TextStyles.TitleWhite,
                                     textAlign: TextAlign.center,
                                   ),

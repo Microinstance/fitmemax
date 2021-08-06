@@ -4,6 +4,7 @@ import 'package:fitmemax/src/module/dashboard/CoachConsultant/CoachPick.dart';
 import 'package:fitmemax/src/module/dashboard/plan/PlanDetails.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
+import 'package:liquid_swipe/PageHelpers/LiquidController.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:page_transition/page_transition.dart';
 
