@@ -1,5 +1,6 @@
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:fitmemax/src/module/dashboard/CoachConsultant/Coach.dart';
+import 'package:fitmemax/src/module/dashboard/CorporatePlan.dart';
 import 'package:fitmemax/src/module/dashboard/Sidebar/SupportUs.dart';
 import 'package:fitmemax/src/module/dashboard/Sidebar/WalletPage.dart';
 import 'package:fitmemax/src/module/dashboard/home/Home.dart';
@@ -385,34 +386,6 @@ class _DashboardState extends State<Dashboard>
                         ),
                         Padding(
                           padding: const EdgeInsets.only(bottom: 20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Icon(
-                                Icons.share_rounded,
-                                color: Colors.white,
-                                size: 22,
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Flexible(
-                                  child: GestureDetector(
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            PageTransition(
-                                                type: PageTransitionType.fade,
-                                                child: ReferEarn()));
-                                      },
-                                      child: Text("Invite friends",
-                                          style:
-                                              TextStyles.RegulerBIGWhite))),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 20),
                           child: GestureDetector(
                             onTap: (){
                               Navigator.push(
@@ -437,6 +410,146 @@ class _DashboardState extends State<Dashboard>
                                         style: TextStyles.RegulerBIGWhite)),
                               ],
                             ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: GestureDetector(
+                            onTap: (){
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.fade,
+                                      child: WalletPage()));
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Icons.wifi_protected_setup,
+                                  color: Colors.white,
+                                  size: 22,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Flexible(
+                                    child: Text("Go Pro",
+                                        style: TextStyles.RegulerBIGWhite)),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: GestureDetector(
+                            onTap: (){
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.fade,
+                                      child: WalletPage()));
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Icons.connected_tv,
+                                  color: Colors.white,
+                                  size: 22,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Flexible(
+                                    child: Text("Connect",
+                                        style: TextStyles.RegulerBIGWhite)),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: GestureDetector(
+                            onTap: (){
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.fade,
+                                      child: CorporatePlan()));
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Icons.corporate_fare,
+                                  color: Colors.white,
+                                  size: 22,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Flexible(
+                                    child: Text("Corporate Plan",
+                                        style: TextStyles.RegulerBIGWhite)),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: GestureDetector(
+                            onTap: (){
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.fade,
+                                      child: WalletPage()));
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Icons.feedback_outlined,
+                                  color: Colors.white,
+                                  size: 22,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Flexible(
+                                    child: Text("Feedback",
+                                        style: TextStyles.RegulerBIGWhite)),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.share_rounded,
+                                color: Colors.white,
+                                size: 22,
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Flexible(
+                                  child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            PageTransition(
+                                                type: PageTransitionType.fade,
+                                                child: ReferEarn()));
+                                      },
+                                      child: Text("Invite friends",
+                                          style:
+                                          TextStyles.RegulerBIGWhite))),
+                            ],
                           ),
                         ),
                         Padding(
@@ -547,6 +660,22 @@ class _DashboardState extends State<Dashboard>
                           size: 20,
                         ),
                       ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 50),
+                    child: Container(
+                      height: 50,
+                      width: _width * 0.55,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                        Image.asset("assets/icon/facebook.png",height: 23,fit: BoxFit.contain,color: Colors.white,),
+                        Image.asset("assets/icon/instagram.png",height: 23,fit: BoxFit.contain,color: Colors.white,),
+                        Image.asset("assets/icon/twitter.png",height: 23,fit: BoxFit.contain,color: Colors.white,),
+                        ],
+                      ),
                     ),
                   ),
                 ],

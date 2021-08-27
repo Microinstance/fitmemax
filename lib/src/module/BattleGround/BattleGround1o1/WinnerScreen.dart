@@ -51,19 +51,27 @@ class _WinnerScreenState extends State<WinnerScreen> {
                     child: DelayedDisplay(
                       delay: initialDelay,
                       slidingBeginOffset: Offset(-0.35, 0,),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                      child: Row(
                         children: [
-                          _profile(
-                            isLeft: true,
-                            isWin: false,
-                          ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 15),
-                            child: _profileCoin(
-                              isLef: true,
-                            ),
+                            padding: const EdgeInsets.only(right: 15),
+                            child: _playVideo(),
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              _profile(
+                                isLeft: true,
+                                isWin: false,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 15),
+                                child: _profileCoin(
+                                  isLef: true,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -98,7 +106,14 @@ class _WinnerScreenState extends State<WinnerScreen> {
                           padding: const EdgeInsets.only(top: 10),
                           child: GestureDetector(
                             onTap: (){
-                              Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: BattleGround()));
+
+                              showDialog(
+                                  context: context,
+                                  builder: (_) => _dispute(
+                                    width: _width,
+                                    height: _height,
+                                  )
+                              );
                             },
                             child: Container(
                               decoration: BoxDecoration(
@@ -125,19 +140,27 @@ class _WinnerScreenState extends State<WinnerScreen> {
                     child: DelayedDisplay(
                       delay: initialDelay,
                       slidingBeginOffset: Offset(0.35, 0,),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                      child: Row(
                         children: [
-                          _profile(
-                            isLeft: false,
-                            isWin: true,
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              _profile(
+                                isLeft: false,
+                                isWin: true,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 15),
+                                child: _profileCoin(
+                                  isLef: false,
+                                ),
+                              ),
+                            ],
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 15),
-                            child: _profileCoin(
-                              isLef: false,
-                            ),
+                            padding: const EdgeInsets.only(left: 15),
+                            child: _playVideo(),
                           ),
                         ],
                       ),
@@ -297,6 +320,120 @@ class _WinnerScreenState extends State<WinnerScreen> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+  Widget _playVideo(){
+    return Container(
+      height: 40,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.white.withOpacity(0.5),
+          width: 1,
+        ),
+        borderRadius: BorderRadius.circular(7.5),
+        color: Colors.transparent.withOpacity(0.9),
+       boxShadow: [
+         BoxShadow(
+             color: Colors.white.withOpacity(0.1),
+           blurRadius: 2,
+           spreadRadius: 2,
+         )
+       ]
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 15,right: 15,top: 5,bottom: 5),
+        child: Row(
+          children: [
+            Text("Play Video  ",style: TextStyles.GameParaWhite,),
+            Icon(Icons.play_circle_fill,size: 20,color: Colors.white.withOpacity(0.9),),
+          ],
+        ),
+      ),
+    );
+  }
+  Widget _dispute({double width, double height}){
+    return Material(
+      type: MaterialType.transparency,
+      child: Padding(
+        padding: EdgeInsets.only(left: width*0.3,right: width*0.3,top: height*0.35,bottom: height*0.35),
+        child: Container(
+          height: 200,
+          decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.white.withOpacity(0.5),
+                width: 1,
+              ),
+              borderRadius: BorderRadius.circular(7.5),
+              color: Colors.transparent.withOpacity(0.9),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.white.withOpacity(0.1),
+                  blurRadius: 2,
+                  spreadRadius: 2,
+                )
+              ]
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text("Dispute in the basis of ?",style: TextStyles.GameRegulerYellow,),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: BattleGround()));
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: borderRadious.primeryRadious,
+                            color: ColorPalette.Yellow,
+                            border: Border.all(color: Colors.black,width: 1),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10,right: 10,top: 4,bottom: 4),
+                            child: Row(
+                              children: [
+                                Text("Workout Form",style: TextStyles.GameRegulerBlack,),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: BattleGround()));
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: borderRadious.primeryRadious,
+                            color: ColorPalette.Yellow,
+                            border: Border.all(color: Colors.black,width: 1),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10,right: 10,top: 4,bottom: 4),
+                            child: Row(
+                              children: [
+                                Text("Workout Stats",style: TextStyles.GameRegulerBlack,),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
         ),
       ),
     );

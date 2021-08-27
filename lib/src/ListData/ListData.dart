@@ -64,7 +64,6 @@ class Data {
       'date': '14',
       'weight': '156',
     },
-
   ];
 
   List Walking = [

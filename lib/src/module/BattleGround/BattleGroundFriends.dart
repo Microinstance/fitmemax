@@ -336,6 +336,8 @@ class _BattleGroundFriendsState extends State<BattleGroundFriends> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 isOnline ?   Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -443,70 +445,7 @@ class _BattleGroundFriendsState extends State<BattleGroundFriends> {
                       ),
                       child: Center(child: Padding(
                         padding: const EdgeInsets.only(left: 5,right: 5),
-                        child:isFollow ? Text("Follow",style: TextStyles.GameParaWhite,) :
-                        Text("Unfollow",style: TextStyles.GameParaWhite,)  ,
-                      ))
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child:isChallange ? Container(
-                      height: 25,
-                      width: 80,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(7.5)),
-                          gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                ColorPalette.GrediantGreen3,
-                                ColorPalette.GrediantGreen5,
-                              ]
-                          ),
-                          border: Border.all(
-                            width: 1.5, color: Colors.white.withOpacity(0.3),
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.white.withOpacity(0.05),
-                              spreadRadius: 1,
-                              blurRadius: 1,
-                            )
-                          ]
-                      ),
-                      child: Center(child: Padding(
-                        padding: const EdgeInsets.only(left: 5,right: 5),
-                        child: Text("Challenge",style: TextStyles.GameParaWhite,),
-                      ))
-                  ) :
-                  Container(
-                      height: 25,
-                      width: 80,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(7.5)),
-                          gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                // ColorPalette.GrediantOrrange2,
-                                ColorPalette.GrediantOrrange1,
-                                ColorPalette.GrediantOrrange2,
-                              ]
-                          ),
-                          border: Border.all(
-                            width: 1.5, color: Colors.white.withOpacity(0.3),
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.white.withOpacity(0.05),
-                              spreadRadius: 1,
-                              blurRadius: 1,
-                            )
-                          ]
-                      ),
-                      child: Center(child: Padding(
-                        padding: const EdgeInsets.only(left: 5,right: 5),
-                        child: Text("Sent",style: TextStyles.GameParaWhite,),
+                        child: Text("Follow",style: TextStyles.GameParaWhite,),
                       ))
                   ),
                 ),
@@ -536,7 +475,7 @@ class _BattleGroundFriendsState extends State<BattleGroundFriends> {
             borderRadius: borderRadious.primeryRadious
           ),
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(7.0),
             child: Column(
               children: [
                 isOnline ?   Row(
@@ -607,7 +546,7 @@ class _BattleGroundFriendsState extends State<BattleGroundFriends> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 2,bottom: 3),
+                  padding: const EdgeInsets.only(top: 2,bottom: 2),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -686,6 +625,40 @@ class _BattleGroundFriendsState extends State<BattleGroundFriends> {
                       child: Center(child: Padding(
                         padding: const EdgeInsets.only(left: 5,right: 5),
                         child: Text("Sent",style: TextStyles.GameParaWhite,),
+                      ))
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 5),
+                  child: Container(
+                      height: 23,
+                      width: 80,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(7.5)),
+                          gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                ColorPalette.Grediantblue3,
+                                ColorPalette.Grediantblue4,
+                                ColorPalette.Grediantblue3,
+                              ]
+                          ),
+                          border: Border.all(
+                            width: 1.5, color: Colors.white.withOpacity(0.3),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.white.withOpacity(0.05),
+                              spreadRadius: 1,
+                              blurRadius: 1,
+                            )
+                          ]
+                      ),
+                      child: Center(child: Padding(
+                        padding: const EdgeInsets.only(left: 5,right: 5),
+                        child:
+                        Text("Unfollow",style: TextStyles.GameParaWhite,)  ,
                       ))
                   ),
                 ),

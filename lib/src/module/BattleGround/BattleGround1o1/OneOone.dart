@@ -1,8 +1,12 @@
 import 'package:animator/animator.dart';
 import 'package:fitmemax/Objects/InnerShadow.dart';
+import 'package:fitmemax/src/module/BattleGround/BattleGround.dart';
+import 'package:fitmemax/src/module/BattleGround/BattleGroundCoins.dart';
+import 'package:fitmemax/src/module/BattleGround/BattleGroundFriends.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:page_transition/page_transition.dart';
 
 import 'ChooseBet.dart';
 
@@ -266,9 +270,13 @@ class _OneOoneState extends State<OneOone> {
       padding: const EdgeInsets.all(10.0),
       child: GestureDetector(
         onTap:(){
+          // showDialog(
+          //     context: context,
+          //     builder: (_) => ChooseBet()
+          // );
           showDialog(
               context: context,
-              builder: (_) => ChooseBet()
+              builder: (_) => _option(height: height,width: width)
           );
         },
         child: Container(
@@ -317,6 +325,95 @@ class _OneOoneState extends State<OneOone> {
         ),
       ),
 
+    );
+  }
+  Widget _option({double width, double height}){
+    return Material(
+      type: MaterialType.transparency,
+      child: Padding(
+        padding: EdgeInsets.only(left: width*0.3,right: width*0.3,top: height*0.35,bottom: height*0.35),
+        child: Container(
+          height: 200,
+          decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.white.withOpacity(0.5),
+                width: 1,
+              ),
+              borderRadius: BorderRadius.circular(7.5),
+              color: Colors.transparent.withOpacity(0.9),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.white.withOpacity(0.1),
+                  blurRadius: 2,
+                  spreadRadius: 2,
+                )
+              ]
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text("How you want Play",style: TextStyles.GameRegulerYellow,),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.pop(context);
+                          showDialog(
+                              context: context,
+                              builder: (_) => ChooseBet()
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: borderRadious.primeryRadious,
+                            color: ColorPalette.Yellow,
+                            border: Border.all(color: Colors.black,width: 1),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10,right: 10,top: 4,bottom: 4),
+                            child: Row(
+                              children: [
+                                Text("Random Selection",style: TextStyles.GameRegulerBlack,),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: BattleGroundFriends()));
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: borderRadious.primeryRadious,
+                            color: ColorPalette.Yellow,
+                            border: Border.all(color: Colors.black,width: 1),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10,right: 10,top: 4,bottom: 4),
+                            child: Row(
+                              children: [
+                                Text("Manual Selection",style: TextStyles.GameRegulerBlack,),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

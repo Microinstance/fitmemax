@@ -9,6 +9,7 @@ import 'package:fitmemax/src/module/Fast/FastDashboard.dart';
 import 'package:fitmemax/src/module/HealthLog/HealthLog.dart';
 import 'package:fitmemax/src/module/Run/Run.dart';
 import 'package:fitmemax/src/module/Workout/Workout.dart';
+import 'package:fitmemax/src/module/Yoga/Yoga.dart';
 import 'package:fitmemax/src/module/dashboard/home/BlogCard.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
@@ -367,11 +368,23 @@ class _HomeState extends State<Home> {
                                               MainAxisAlignment
                                                   .spaceBetween,
                                               children: [
-                                                hItem(
-                                                  name: 'Yoga',
-                                                  image:
-                                                  "assets/icons/yoga1.png",
-                                                  context: context,
+                                                GestureDetector(
+                                                  onTap:(){
+                                                    Navigator.push(
+                                                        context,
+                                                        PageTransition(
+                                                            type:
+                                                            PageTransitionType
+                                                                .fade,
+                                                            child:
+                                                            Yoga()));
+                                                  },
+                                                  child: hItem(
+                                                    name: 'Yoga',
+                                                    image:
+                                                    "assets/icons/yoga1.png",
+                                                    context: context,
+                                                  ),
                                                 ),
                                                 GestureDetector(
                                                   onTap: () {
