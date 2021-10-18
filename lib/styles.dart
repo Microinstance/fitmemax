@@ -23,11 +23,13 @@ class TextStyles {
   static const BodySmallBlack = TextStyle(fontWeight: FontWeight.w400,fontSize: 12,color: ColorPalette.GreyDarkest);
   static const BodyGreyLightest = TextStyle(fontWeight: FontWeight.w400,fontSize: 14,color: ColorPalette.GreyLightest);
   static const BodyGrey = TextStyle(fontWeight: FontWeight.w400,fontSize: 14,color: ColorPalette.Grey,);
+
   static const RegulerBlack = TextStyle(fontWeight: FontWeight.w400,fontSize: 18,color: Colors.black,);
   static const RegulerBoldBlack = TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.black,);
   static const RegulerOrrange = TextStyle(fontWeight: FontWeight.w400,fontSize: 18,color: Colors.orange,);
   static const RegulerPrimary = TextStyle(fontWeight: FontWeight.w400,fontSize: 18,color: ColorPalette.PrimaryColor,);
   static const RegulerBIGWhite = TextStyle(fontWeight: FontWeight.w400,fontSize: 18,color: Colors.white,);
+  static const RegulerBIGOrange = TextStyle(fontWeight: FontWeight.w400,fontSize: 18,color: Colors.orange,);
   static const RegulerProfile = TextStyle(fontWeight: FontWeight.w400,fontSize: 18,color: ColorPalette.ProfileGreen,);
   static const HeadingBlack = TextStyle(fontWeight: FontWeight.w500,fontSize: 22,color: ColorPalette.GreyDarkest,);
   static const HeadingPrimery = TextStyle(fontWeight: FontWeight.bold,fontSize: 22,color: ColorPalette.PrimaryColor,);
@@ -65,6 +67,7 @@ class TextStyles {
   static const GameSemiBoldWhite= TextStyle(fontFamily: "Adora",fontSize: 18,color:  Colors.white,);
   static const GameShadowWhite1= TextStyle(fontFamily: "Adora",fontSize: 12,color: Colors.white,);
   static const GameShadowblack1= TextStyle(fontFamily: "Adora",fontSize: 14,color: Colors.black,);
+
 }
 
 

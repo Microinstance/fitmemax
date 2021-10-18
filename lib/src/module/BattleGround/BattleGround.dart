@@ -1,6 +1,5 @@
 import 'package:animator/animator.dart';
 import 'package:delayed_display/delayed_display.dart';
-import 'package:fitmemax/src/module/BattleGround/BattleGround1o1/ChooseBet.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGround1o1/OneOone.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundCash.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundCoins.dart';
@@ -8,7 +7,6 @@ import 'package:fitmemax/src/module/BattleGround/BattleGroundFriends.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundGifts.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundLeaderBoard.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundProfile.dart';
-import 'package:fitmemax/src/module/BattleGround/BattleGroundSpin.dart';
 import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
@@ -739,11 +737,11 @@ class _BattleGroundState extends State<BattleGround> {
                           ),
                           child: GestureDetector(
                             onTap: (){
-                              Navigator.push(
-                                  context,
-                                  PageTransition(
-                                      type: PageTransitionType.fade,
-                                      child: BattleGroundSpin()));
+                              // Navigator.push(
+                              //     context,
+                              //     PageTransition(
+                              //         type: PageTransitionType.fade,
+                              //         child: BattleGroundSpin()));
                             },
                             child: Stack(
                               alignment: Alignment.topRight,

@@ -7,6 +7,7 @@ import 'package:fitmemax/src/module/BattleGround/BattleGround.dart';
 import 'package:fitmemax/src/module/CalTracker/CalTrackerDashboard.dart';
 import 'package:fitmemax/src/module/Fast/FastDashboard.dart';
 import 'package:fitmemax/src/module/HealthLog/HealthLog.dart';
+import 'package:fitmemax/src/module/Meditation/Meditation.dart';
 import 'package:fitmemax/src/module/Run/Run.dart';
 import 'package:fitmemax/src/module/Workout/Workout.dart';
 import 'package:fitmemax/src/module/Yoga/Yoga.dart';
@@ -404,11 +405,23 @@ class _HomeState extends State<Home> {
                                                     context: context,
                                                   ),
                                                 ),
-                                                hItem(
-                                                  name: 'Mediation',
-                                                  image:
-                                                  "assets/icons/meditation.png",
-                                                  context: context,
+                                                GestureDetector(
+                                                  onTap: (){
+                                                    Navigator.push(
+                                                        context,
+                                                        PageTransition(
+                                                            type:
+                                                            PageTransitionType
+                                                                .fade,
+                                                            child:
+                                                            Meditation()));
+                                                  },
+                                                  child: hItem(
+                                                    name: 'Mediation',
+                                                    image:
+                                                    "assets/icons/meditation.png",
+                                                    context: context,
+                                                  ),
                                                 ),
                                               ],
                                             ),

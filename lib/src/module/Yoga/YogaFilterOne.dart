@@ -7,6 +7,7 @@ class YogaFilterOne extends StatefulWidget {
 }
 
 class _YogaFilterOneState extends State<YogaFilterOne> {
+  double _duration = 0;
   List _price = ['All','Free','Premium'];
   List _level = ['All','Level 1','Level 2','Level 3','Level 4','Level 5'];
   @override
@@ -134,6 +135,88 @@ class _YogaFilterOneState extends State<YogaFilterOne> {
               ],
             ),
           ),
+          Stack(
+            overflow: Overflow.visible,
+            alignment: Alignment.bottomRight,
+            children: [
+              Slider(
+                min: 0,
+                max: 60,
+                value: _duration,
+                onChanged: (age) {
+                  setState(() {
+                    _duration = age;
+                  });
+                },
+                label: "${_duration.toInt()}",
+                divisions: 59,
+                inactiveColor: Colors.orange.withOpacity(0.2),
+                activeColor: Colors.orange,
+              ),
+              Positioned(
+                bottom: -7,
+                child: SizedBox(
+                  width: _width,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 20,top: 20,left: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                            "0 min",
+                            style:TextStyles.BodyBlack
+                        ),
+                        Text(
+                            "${_duration.toInt()}  min",
+                            style:TextStyles.BodyBlack
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 20,bottom: 20,left: 20,right: 20),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: ((_width-40)/2)-10,
+                  child: MaterialButton(
+                    onPressed: (){},
+                    height: 40,
+                    color: Colors.white,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(side: BorderSide(
+                        color: Colors.orange,
+                        width: 2,
+                        style: BorderStyle.solid
+                    ), borderRadius: BorderRadius.circular(7.5)),
+                    child: Text("Reset",style: TextStyles.RegulerBIGOrange,),
+                  ),
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                SizedBox(
+                  width: ((_width-40)/2)-10,
+                  child: MaterialButton(
+                    onPressed: (){},
+                    height: 40,
+                    color: Colors.orange,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(side: BorderSide(
+                        color: Colors.orange,
+                        width: 2,
+                        style: BorderStyle.solid
+                    ), borderRadius: BorderRadius.circular(7.5)),
+                    child: Text("Done",style: TextStyles.RegulerBIGWhite,),
+                  ),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );

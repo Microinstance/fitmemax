@@ -81,7 +81,7 @@ class _StoryScreenState extends State<StoryScreen> with SingleTickerProviderStat
 
                   case MediaType.video:
                     if (_videoController != null &&
-                        _videoController.value.initialized) {
+                        _videoController.value.isInitialized) {
                       return FittedBox(
                         fit: BoxFit.cover,
                         child: SizedBox(
@@ -182,7 +182,7 @@ class _StoryScreenState extends State<StoryScreen> with SingleTickerProviderStat
         _videoController = VideoPlayerController.network(story.url)
           ..initialize().then((_) {
             setState(() {});
-            if (_videoController.value.initialized) {
+            if (_videoController.value.isInitialized) {
               _animController.duration = _videoController.value.duration;
               _videoController.play();
               _animController.forward();
@@ -264,7 +264,6 @@ class AnimatedBar extends StatelessWidget {
 
 class UserInfo extends StatelessWidget {
   final User user;
-
   const UserInfo({
     Key key,
     @required this.user,

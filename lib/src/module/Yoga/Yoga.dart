@@ -1,8 +1,12 @@
 import 'package:blinking_text/blinking_text.dart';
+import 'package:fitmemax/src/module/Yoga/YogaCategoryDetailPage.dart';
+import 'package:fitmemax/src/module/Yoga/YogaCategoryViewAll.dart';
 import 'package:fitmemax/src/module/Yoga/YogaSearchPage.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+
+import 'YogaCategoryDetailPagePremium.dart';
 
 class Yoga extends StatefulWidget {
   @override
@@ -44,7 +48,7 @@ class _YogaState extends State<Yoga> {
           ),
           IconButton(
             onPressed: (){
-              Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop, child: YogaSearchPage()));
+              Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: YogaSearchPage()));
             },
             icon: Icon(Icons.search,color: Colors.white,size: 20,),
           ),
@@ -171,7 +175,11 @@ class _YogaState extends State<Yoga> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("CATEGORY",style: TextStyles.TitleBlack,),
-                  Text("View all",style: TextStyles.BodyBlack,),
+                  GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: YogaCategoryViewAll()));
+                      },
+                      child: Text("View all",style: TextStyles.BodyBlack,)),
                 ],
               ),
             ),
@@ -183,18 +191,39 @@ class _YogaState extends State<Yoga> {
                 shrinkWrap: true,
                 crossAxisCount: 2,
                 mainAxisSpacing: 15,
-                crossAxisSpacing: 15,
+                crossAxisSpacing: 10,
                 childAspectRatio: 0.8/1.2,
-                children: List.generate(10, (index) => Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage("assets/yoga/yoga-model01.png"),
-                      fit: BoxFit.cover,
+                children: List.generate(10, (index) => GestureDetector(
+                  onTap: (){
+                    (index == 0 ) ? Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: YogaCategoryDetailPagePremium(
+                      isPremium: false,
+                    ))) : Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: YogaCategoryDetailPagePremium(
+                      isPremium: true,
+                    )));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage("assets/yoga/yoga-model01.png"),
+                              fit: BoxFit.cover,
+                            ),
+                            borderRadius: borderRadious.primeryRadious,
+                          ),
+                          child: Center(
+                            child: Text("Health Care",style: TextStyles.HeadingWhite,),
+                          ),
+                        ),
+                        (index == 0 ) ? SizedBox() :  Positioned(
+                            top: -7,
+                            right: -7,
+                            child: Image.asset("assets/yoga/premium-quality.png",height: 25,fit: BoxFit.contain,)),
+                      ],
                     ),
-                    borderRadius: borderRadious.primeryRadious,
-                  ),
-                  child: Center(
-                    child: Text("Health Care",style: TextStyles.HeadingWhite,),
                   ),
                 )),
               ),
