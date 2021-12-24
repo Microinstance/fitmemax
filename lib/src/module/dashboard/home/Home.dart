@@ -4,14 +4,21 @@ import 'package:fitmemax/Objects/Backgrounds.dart';
 import 'package:fitmemax/src/ListData/ListData.dart';
 import 'package:fitmemax/src/module/ActivityTracker/ActivityTracker.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGround.dart';
+import 'package:fitmemax/src/module/CalBurnt/CalBurnt.dart';
 import 'package:fitmemax/src/module/CalTracker/CalTrackerDashboard.dart';
+import 'package:fitmemax/src/module/Connect/Connect.dart';
 import 'package:fitmemax/src/module/Fast/FastDashboard.dart';
 import 'package:fitmemax/src/module/HealthLog/HealthLog.dart';
+import 'package:fitmemax/src/module/Journal/Journal.dart';
 import 'package:fitmemax/src/module/Meditation/Meditation.dart';
+import 'package:fitmemax/src/module/Mood/Mood.dart';
+import 'package:fitmemax/src/module/Mood/MoodDashBoard.dart';
+import 'package:fitmemax/src/module/Reminder/Reminder.dart';
 import 'package:fitmemax/src/module/Run/Run.dart';
 import 'package:fitmemax/src/module/Workout/Workout.dart';
 import 'package:fitmemax/src/module/Yoga/Yoga.dart';
 import 'package:fitmemax/src/module/dashboard/home/BlogCard.dart';
+import 'package:fitmemax/src/module/e-book/EBook.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -433,11 +440,23 @@ class _HomeState extends State<Home> {
                                               MainAxisAlignment
                                                   .spaceBetween,
                                               children: [
-                                                hItem(
-                                                  name: 'Cal burnt',
-                                                  image:
-                                                  "assets/icons/cal burnt.png",
-                                                  context: context,
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    Navigator.push(
+                                                        context,
+                                                        PageTransition(
+                                                            type:
+                                                            PageTransitionType
+                                                                .fade,
+                                                            child:
+                                                            CalBurnt()));
+                                                  },
+                                                  child: hItem(
+                                                    name: 'Cal burnt',
+                                                    image:
+                                                    "assets/icons/cal burnt.png",
+                                                    context: context,
+                                                  ),
                                                 ),
                                                 hItem(
                                                   name: 'Musclebaba',
@@ -503,17 +522,92 @@ class _HomeState extends State<Home> {
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
                         children: [
-                          hBar(
-                            color: ColorPalette.PrimaryColor,
-                            context: context,
-                            icon: Icons.call,
-                            lebel: 'Book free call',
-                          ),
-                          hBar(
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type:
+                                      PageTransitionType
+                                          .fade,
+                                      child:
+                                      MoodDashBoard()));
+                            },
+                            child: hBar(
                               color: ColorPalette.PrimaryColor,
                               context: context,
-                              icon: Icons.book,
-                              lebel: 'eBook Courses'),
+                              icon: Icons.face,
+                              lebel: 'Mood',
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type:
+                                      PageTransitionType
+                                          .fade,
+                                      child:
+                                      Journal()));
+                            },
+                            child: hBar(
+                                color: ColorPalette.PrimaryColor,
+                                context: context,
+                                icon: Icons.book,
+                                lebel: 'Journal'),
+                          ),
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type:
+                                      PageTransitionType
+                                          .fade,
+                                      child:
+                                      EBook()));
+                            },
+                            child: hBar(
+                                color: ColorPalette.PrimaryColor,
+                                context: context,
+                                icon: Icons.book,
+                                lebel: 'eBook'),
+                          ),
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type:
+                                      PageTransitionType
+                                          .fade,
+                                      child:
+                                      Connect()));
+                            },
+                            child: hBar(
+                                color: ColorPalette.PrimaryColor,
+                                context: context,
+                                icon: Icons.book,
+                                lebel: 'Connect'),
+                          ),
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type:
+                                      PageTransitionType
+                                          .fade,
+                                      child:
+                                      Reminder()));
+                            },
+                            child: hBar(
+                                color: ColorPalette.PrimaryColor,
+                                context: context,
+                                icon: Icons.book,
+                                lebel: 'Reminder'),
+                          ),
                           hBar(
                             color: ColorPalette.PrimaryColor,
                             context: context,

@@ -11,10 +11,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
-          FocusManager.instance.primaryFocus.unfocus();
-        }
+        // FocusScopeNode currentFocus = FocusScope.of(context);
+        // if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+        //   FocusManager.instance.primaryFocus.unfocus();
+        // }
       },
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -27,7 +27,7 @@ class _BattleGroundState extends State<BattleGround> {
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
-    SystemChrome.setEnabledSystemUIOverlays([]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     final Duration initialDelay = Duration(milliseconds: 800);

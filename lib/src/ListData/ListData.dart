@@ -2,6 +2,8 @@
 
 class Data {
   List countryCode = ['+91', '+1', "+4","+44"];
+  List journal = ['Shoulder Press', 'Bench Press', "Abdominal Crunches","Custom Name"];
+  List journal2 = ['Weight',"Distance"];
 
   List menuItem = [
     'Chat','Advertisement','Diet & Fitness','Trasaction','Invite Friends','About Us','Terms & Condition','Privacy Policy'
@@ -64,6 +66,69 @@ class Data {
       'date': '14',
       'weight': '156',
     },
+  ];
+
+  List mood = [
+    {
+      'date': '01',
+      'mood': '2',
+    },
+    {
+      'date': '01',
+      'mood': '10',
+    },
+    {
+      'date': '01',
+      'mood': '4',
+    },
+    {
+      'date': '01',
+      'mood': '2',
+    },
+    {
+      'date': '01',
+      'mood': '1',
+    },
+    {
+      'date': '01',
+      'mood': '1',
+    },
+    {
+      'date': '01',
+      'mood': '1',
+    },
+    {
+      'date': '01',
+      'mood': '1',
+    },
+    {
+      'date': '01',
+      'mood': '1',
+    },
+    {
+      'date': '01',
+      'mood': '1',
+    },
+    {
+      'date': '01',
+      'mood': '1',
+    },    {
+      'date': '01',
+      'mood': '1',
+    },    {
+      'date': '01',
+      'mood': '1',
+    },    {
+      'date': '01',
+      'mood': '1',
+    },    {
+      'date': '01',
+      'mood': '1',
+    },
+
+
+
+
   ];
 
   List Walking = [

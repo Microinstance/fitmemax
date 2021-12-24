@@ -9,7 +9,10 @@ class borderRadious{
 class TextStyles {
 
   static const BodyBlack = TextStyle(fontWeight: FontWeight.w400,fontSize: 14,color: ColorPalette.GreyDarkest);
+  static const BodyRed = TextStyle(fontWeight: FontWeight.w400,fontSize: 14,color: Colors.red);
   static const BodyBoldWhite = TextStyle(fontWeight: FontWeight.bold,fontSize: 7,color: Colors.white);
+  static const BodyBoldBlack = TextStyle(fontWeight: FontWeight.bold,fontSize: 10,color: Colors.black);
+  static const BodySemiBoldBlack = TextStyle(fontWeight: FontWeight.w500,fontSize: 10,color: Colors.black);
   static const BodySmallWhite = TextStyle(fontWeight: FontWeight.w400,fontSize: 12,color: ColorPalette.GreyLightest);
   static const BodySmallGrediantRed1 = TextStyle(fontWeight: FontWeight.w400,fontSize: 12,color: ColorPalette.GrediantRed1);
   static const BodySmallGrediantblue1 = TextStyle(fontWeight: FontWeight.w400,fontSize: 12,color: ColorPalette.Grediantblue1);
