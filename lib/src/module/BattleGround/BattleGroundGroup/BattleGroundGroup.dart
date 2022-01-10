@@ -1,474 +1,655 @@
-import 'package:animator/animator.dart';
-import 'package:fitmemax/Objects/InnerShadow.dart';
-import 'package:fitmemax/src/module/BattleGround/BattleGroundGifts.dart';
+import 'package:delayed_display/delayed_display.dart';
+import 'package:fitmemax/src/module/BattleGround/BattleGround.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:page_transition/page_transition.dart';
 
 class BattleGroundGroup extends StatefulWidget {
-
   @override
   _BattleGroundGroupState createState() => _BattleGroundGroupState();
 }
 
 class _BattleGroundGroupState extends State<BattleGroundGroup> {
+  PageController _controller = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+    final Duration initialDelay = Duration(milliseconds: 1000);
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
-
-    return Scaffold(
-      backgroundColor: ColorPalette.BattleGroundBackground,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            InnerShadow(
-              blur: 5,
-              color: Colors.black.withOpacity(0.5),
-              offset: const Offset(5, 5),
-              child: Container(
-                height: _height,
-                width: _width,
-                // decoration: BoxDecoration(
-                //   color:
-                // ),
+    double _boxWidth = _width*1;
+    Widget listItems(){
+      return Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          Container(
+            width: 180,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.grey[800],
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                )
+              ]
+            ),
+            child: Column(
+              children: [
+                Spacer(),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10,right: 10,bottom: 15,top: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Opacity(
+                          opacity: 0.8,
+                          child: Text("Sponsored By",style: TextStyles.GameShadowWhite1,textAlign: TextAlign.center,)),
+                      Text("GNA",style: TextStyles.GameSemiBoldWhite,textAlign: TextAlign.center,),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 50),
+            child: Container(
+              width: 180,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.yellow[600],
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    blurRadius: 2,
+                    spreadRadius: 2,
+                  )
+                ]
               ),
-            ),
-            Container(
-              height: _height,
-              width: _width,
-              color: Colors.transparent,
-            ),
-            Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                height: 55,
-                width: _width,
-                decoration: BoxDecoration(
-                  color: ColorPalette.BattleGroundAppBar,
-                  boxShadow: [
-                    BoxShadow(
-                      blurRadius: 5.0,
-                      spreadRadius: 5.0,
-                      color: Colors.black.withOpacity(0.3),
-                      offset: Offset(3.0, 0),
+              child:Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  children: [
+                    Spacer(),
+                    Text("BANGALORE BLAZERS",style: TextStyles.GameBoldblack,textAlign: TextAlign.center,),
+                    Spacer(),
+                    MaterialButton(
+                      onPressed: (){},
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Text("Join Team",style: TextStyles.GameRegulerBigWhite,),
+                      ),
+                      color: Colors.black,
                     ),
                   ],
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 30, right: 25, top: 7.5, bottom: 7.5),
-                  child: Row(
+              ),
+            ),
+          ),
+        ],
+      );
+    }
+    Widget y(index){
+      if(index == 0) {
+        return Container(
+          height: 150,
+          width: 300,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.white
+          ),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Column(
+                children: [
+                  Container(
+                    height: 80,
+                    width: 300,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15)),
+                      image: DecorationImage(
+                        image: AssetImage("assets/battleground/football_ground.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Spacer(),
+                  Text("Squad Management",style: TextStyles.GameSemiBoldyellow,),
+                  Text("Make adjustment to your squad",style: TextStyles.GameParaBlack,),
+                  SizedBox(
+                    height: 7,
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: CircleAvatar(
+                  radius: 20,
+                  backgroundColor: Colors.yellow,
+                  child: Center(child: Icon(Icons.manage_accounts,color: Colors.black,size: 20,)),
+                ),
+              )
+            ],
+          ),
+        );
+      }
+      if(index == 1) {
+        return  Container(
+          height: 150,
+          width: 300,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.white
+          ),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Column(
+                children: [
+                  Container(
+                    height: 80,
+                    width: 300,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15)),
+                      image: DecorationImage(
+                        image: AssetImage("assets/battleground/football_ground.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Spacer(),
+                  Text("My Team",style: TextStyles.GameSemiBoldyellow,),
+                  Text("Browser and train your members",style: TextStyles.GameParaBlack,),
+                  SizedBox(
+                    height: 7,
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: CircleAvatar(
+                  radius: 20,
+                  backgroundColor: Colors.yellow,
+                  child: Center(child: Icon(Icons.ac_unit,color: Colors.black,size: 20,)),
+                ),
+              )
+            ],
+          ),
+        );
+      }
+    }
+    Widget z(index){
+      if(index == 0) {
+        return Container(
+          height: 100,
+          width: 300,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.white
+          ),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Row(
+                children: [
+                  Stack(
+                    alignment: Alignment.centerRight,
+                    clipBehavior: Clip.none,
                     children: [
-                      GestureDetector(
-                        onTap: (){
-                          Navigator.pop(context);
-                        },
-                        child: Container(
-                          height: 40,
-                          width: 40,
-                          decoration: BoxDecoration(
-                              borderRadius: borderRadious.primeryRadious,
-                              gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    ColorPalette.BattleGroundGredientRed1,
-                                    ColorPalette.BattleGroundGredientRed2,
-                                    ColorPalette.BattleGroundGredientRed3,
-                                  ]),
-                              border: Border.all(
-                                width: 1.5,
-                                color: Colors.white.withOpacity(0.3),
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.white.withOpacity(0.05),
-                                  spreadRadius: 1,
-                                  blurRadius: 1,
-                                )
-                              ]),
-                          child: Icon(
-                            Icons.arrow_back,
-                            size: 25,
-                            color: Colors.white,
+                      Container(
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(topLeft: Radius.circular(15),bottomLeft: Radius.circular(15)),
+                          image: DecorationImage(
+                            image: AssetImage("assets/battleground/football_ground.png"),
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      InnerShadow(
-                        blur: 2,
-                        color: Colors.yellow.withOpacity(0.7),
-                        offset: const Offset(2, 2),
-                        child: Container(
-                            height: 40,
-                            width: 130,
-                            decoration: BoxDecoration(
-                              borderRadius:
-                              BorderRadius.all(Radius.circular(7.5)),
-                              color: Colors.black,
-                            ),
-                            child: Center(
-                              child: Padding(
-                                padding:
-                                const EdgeInsets.only(left: 15, right: 15),
-                                child: Text(
-                                  "Group",
-                                  style: TextStyles.GameRegulerWhite,
-                                ),
-                              ),
-                            )),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Icon(Icons.people_alt_outlined,color: Colors.yellow,size: 22,),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Text(
-                          "120515",
-                          style: TextStyles.GameRegulerBigWhite,
+                      Positioned(
+                        right: -20,
+                        child: CircleAvatar(
+                          radius: 20,
+                          backgroundColor: Colors.yellow,
+                          child: Center(child: Icon(Icons.ac_unit,color: Colors.black,size: 20,)),
                         ),
-                      ),
-
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Icon(Icons.wine_bar_sharp,color: Colors.yellow,size: 22,),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Text(
-                          "50",
-                          style: TextStyles.GameRegulerBigWhite,
-                        ),
-                      ),
-
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              PageTransition(
-                                  type: PageTransitionType.fade,
-                                  child: BattleGroundGifts()));
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Row(
-                            children: [
-                              Animator(
-                                duration: Duration(seconds: 1),
-                                cycles: 0,
-                                resetAnimationOnRebuild: true,
-                                tween:
-                                Tween<double>(begin: 0.85, end: 1),
-                                builder: (_, anim, __) =>
-                                    Transform.scale(
-                                      origin: Offset(1, 2),
-                                      scale: anim.value,
-                                      child: Image.asset(
-                                          "assets/battleground/reward.png",
-                                          height: 30,
-                                          width: _width * 0.07 - 20),
-                                    ),
-                              ),
-                              Text(" Gifts",
-                                  style: TextStyles.GameRegulerWhite)
-                            ],
-                          ),
-                        ),
-                      ),
-
-                      Spacer(),
-                      Row(
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    width: 140,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20,right: 10),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Animator(
-                            duration: Duration(seconds: 1),
-                            cycles: 0,
-                            resetAnimationOnRebuild: true,
-                            tween: Tween<double>(begin: 0.85, end: 1),
-                            builder: (_, anim, __) => Transform.scale(
-                              origin: Offset(1, 2),
-                              scale: anim.value,
-                              child: Image.asset(
-                                  "assets/battleground/multiple_coins.png",
-                                  height: 35,
-                                  fit: BoxFit.contain),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Container(
-                                height: 55,
-                                width: 15,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(2),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.white.withOpacity(0.2),
-                                      blurRadius: 1,
-                                      spreadRadius: 1,
-                                    ),
-                                  ],
-                                  gradient: LinearGradient(
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                      colors: [
-                                        ColorPalette.GrediantGreen1,
-                                        ColorPalette.GrediantGreen2,
-                                        ColorPalette.GrediantGreen1,
-                                      ]),
-                                ),
-                                child: Center(
-                                  child: Icon(
-                                    Icons.add,
-                                    color: Colors.white,
-                                    size: 15,
-                                  ),
-                                )),
-                          )
+                          Text("Achievements",style: TextStyles.GameRegulerBlack,),
                         ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 15),
-                        child: Row(
-                          children: [
-                            Animator(
-                              duration: Duration(seconds: 1),
-                              cycles: 0,
-                              resetAnimationOnRebuild: true,
-                              tween: Tween<double>(begin: 0.85, end: 1),
-                              builder: (_, anim, __) => Transform.scale(
-                                origin: Offset(1, 2),
-                                scale: anim.value,
-                                child: Image.asset(
-                                    "assets/battleground/multiple_cash.png",
-                                    height: 35,
-                                    fit: BoxFit.contain),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
+        );
+      }
+      if(index == 1) {
+        return Container(
+          height: 100,
+          width: 300,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.white
+          ),
+          child: Row(
+            children: [
+              Stack(
+                alignment: Alignment.centerRight,
+                clipBehavior: Clip.none,
+                children: [
+                  Container(
+                    height: 100,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15),bottomLeft: Radius.circular(15)),
+                      image: DecorationImage(
+                        image: AssetImage("assets/battleground/football_ground.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    right: -20,
+                    child: CircleAvatar(
+                      radius: 20,
+                      backgroundColor: Colors.yellow,
+                      child: Center(child: Icon(Icons.ac_unit,color: Colors.black,size: 20,)),
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(
+                width: 140,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 27,right: 10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Practice",style: TextStyles.GameRegulerBlack,),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        );
+      }
+    }
+    Widget x(index){
+      if(index == 0) {
+        return GestureDetector(
+            onTap: (){
+              _controller.jumpToPage(0); // for regular jump
+            },
+            child: Text("Match",style: TextStyles.GameRegulerBigWhite,));
+      }
+      if(index == 2) {
+        return GestureDetector(
+            onTap: (){
+              _controller.jumpToPage(1); // for regular jump
+            },
+            child: Text("Club House",style: TextStyles.GameRegulerBigWhite,));
+      }
+      if(index == 4) {
+        return GestureDetector(
+            onTap: (){
+              _controller.jumpToPage(2); // for regular jump
+            },
+            child: Text("Contract",style: TextStyles.GameRegulerBigWhite,));
+      }
+      if(index == 6) {
+        return GestureDetector(
+            onTap: (){
+              _controller.jumpToPage(3); // for regular jump
+            },
+            child: Text("Extras",style: TextStyles.GameRegulerBigWhite,));
+      }
+      else return Padding(
+        padding:  EdgeInsets.only(left: _width*0.07,right: _width*0.07),
+        child: Container(
+          height: 20,
+          width: 5,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white,
+          ),
+        ),
+      );
+    }
+    Widget _list(){
+      return Container(
+        height: 270,
+        width: _boxWidth,
+        child: ListView.builder(
+          itemCount: 6,
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (BuildContext context, int index){
+            return Padding(
+              padding: EdgeInsets.only(left: 7.5,right: 7.5),
+              child: listItems(),
+              // child: Stack(
+              //   children: [
+              //     Container(
+              //       width: 180,
+              //       decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.circular(15),
+              //         color: Colors.yellow,
+              //       ),
+              //       child: Padding(
+              //         padding: const EdgeInsets.all(10),
+              //         child: Column(
+              //           children: [
+              //             Spacer(),
+              //             Text("BANGALORE BLAZERS",style: TextStyles.GameBoldblack,textAlign: TextAlign.center,),
+              //             Spacer(),
+              //             MaterialButton(
+              //               onPressed: (){},
+              //               shape: RoundedRectangleBorder(
+              //                 borderRadius: BorderRadius.circular(10),
+              //               ),
+              //               child: Padding(
+              //                 padding: const EdgeInsets.all(5.0),
+              //                 child: Text("Join Team",style: TextStyles.GameRegulerBigWhite,),
+              //               ),
+              //               color: Colors.black,
+              //             ),
+              //             Spacer(),
+              //             SizedBox(height: 30,),
+              //           ],
+              //         ),
+              //       ),
+              //     ),
+              //     Align(
+              //       alignment: Alignment.bottomCenter,
+              //       child: Container(
+              //         width: 180,
+              //         height: 50,
+              //         decoration: BoxDecoration(
+              //           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15),bottomRight: Radius.circular(15)),
+              //           color: Colors.black,
+              //         ),
+              //         child: Padding(
+              //           padding: const EdgeInsets.only(left: 10,right: 10,bottom: 15,top: 10),
+              //           child: Row(
+              //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //             children: [
+              //               Opacity(
+              //                   opacity: 0.8,
+              //                   child: Text("Sponsored By",style: TextStyles.GameShadowWhite1,textAlign: TextAlign.center,)),
+              //               Text("GNA",style: TextStyles.GameSemiBoldWhite,textAlign: TextAlign.center,),
+              //             ],
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
+            );
+          },
+        ),
+      );
+    }
+    return Scaffold(
+      backgroundColor: ColorPalette.BattleGroundBackground,
+      body:Stack(
+        children: [
+          Container(
+            height: _height,
+            width: _width,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/battleground/background.png"),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Container(
+            height: _height,
+            width: _width,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  DelayedDisplay(
+                    delay: initialDelay,
+                    slidingBeginOffset: Offset(0, -0.35,),
+                  child: SafeArea(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 15,right: 15,top: 15,bottom: 5),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 15),
+                            child: GestureDetector(
+                              onTap:(){
+                                Navigator.push(
+                                    context,
+                                    PageTransition(
+                                        type: PageTransitionType.fade,
+                                        child: BattleGround()));
+                              },
                               child: Container(
-                                  height: 55,
-                                  width: 15,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(2),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.white.withOpacity(0.2),
-                                        blurRadius: 1,
-                                        spreadRadius: 1,
-                                      ),
-                                    ],
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                  // borderRadius: borderRadious.primeryRadious,
+                                    borderRadius: BorderRadius.all(Radius.circular(7.5)),
                                     gradient: LinearGradient(
                                         begin: Alignment.topCenter,
                                         end: Alignment.bottomCenter,
                                         colors: [
-                                          ColorPalette.GrediantGreen1,
-                                          ColorPalette.GrediantGreen2,
-                                          ColorPalette.GrediantGreen1,
-                                        ]),
-                                  ),
-                                  child: Center(
-                                    child: Icon(
-                                      Icons.add,
-                                      color: Colors.white,
-                                      size: 15,
+                                          ColorPalette.BattleGroundGredientRed1,
+                                          ColorPalette.BattleGroundGredientRed2,
+                                          ColorPalette.BattleGroundGredientRed3,
+                                        ]
                                     ),
-                                  )),
-                            )
-                          ],
-                        ),
+                                    border: Border.all(
+                                      width: 1.5, color: Colors.white.withOpacity(0.3),
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.white.withOpacity(0.05),
+                                        spreadRadius: 1,
+                                        blurRadius: 1,
+                                      )
+                                    ]
+                                ),
+                                child: Icon(
+                                  Icons.arrow_back,size: 25,color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              CircleAvatar(
+                                radius: 10,
+                                backgroundColor: Colors.yellow,
+                                child: Center(child: Text("G",style: TextStyles.GameRegulerBlack,)),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Text("15054555",style: TextStyles.GameRegulerWhite,),
+                              ),
+
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20),
+                            child: Row(
+                              children: [
+                                CircleAvatar(
+                                  radius: 10,
+                                  backgroundColor: Colors.yellow,
+                                  child: Center(child: Icon(Icons.star,size: 15,color: Colors.black,)),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Text("50",style: TextStyles.GameRegulerWhite,),
+                                ),
+
+                              ],
+                            ),
+                          ),
+                          Spacer(),
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 20),
+                                child: Icon(Icons.person,size: 25,color: Colors.yellow,),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 20),
+                                child: Icon(Icons.card_giftcard,size: 25,color: Colors.yellow,),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 20),
+                                child: Icon(Icons.email,size: 25,color: Colors.yellow,),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 20),
+                                child: Icon(Icons.shopping_cart,size: 25,color: Colors.yellow,),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
-            ),
-            Positioned(
-              top: 80,
-              child: Container(
-                  height: _height-60,
-                  width: _width,
-                  child:ListView(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5,left: 20,right: 20,bottom: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(
-                              height: 170,
-                              width: (_width-60)/2,
-                              child: Stack(
-                                children: [
-                                  Container(
-                                    height: 170,
-                                    width: (_width-60)/2,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: Alignment.topCenter,
-                                    child: Container(
-                                      height: 170/1.5,
-                                      width: (_width-60)/2,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15)),
-                                        image: DecorationImage(
-                                          image: AssetImage("assets/battleground/football_ground.png"),
-                                          fit: BoxFit.cover,
-                                        )
-                                      ),
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: Alignment.bottomCenter,
-                                    child: Container(
-                                      height: 170/3.5,
-                                      width: (_width-60)/2,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15),bottomRight: Radius.circular(15)),
-                                      ),
-                                      child: Column(
-                                        children: [
-                                          Text("Squad Management",style: TextStyles.GameSemiBoldyellow,),
-                                          Opacity(
-                                              opacity: 0.5,
-                                              child: Text("Make adjustment with your squad",style: TextStyles.GameRegulerWhite,))
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15,bottom: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 20,
+                          width: _width*0.8,
+                          child: AnimationLimiter(
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 7,
+                              shrinkWrap: true,
+                              itemBuilder: (BuildContext context, int index) {
+                                return AnimationConfiguration.staggeredList(
+                                    position: index,
+                                    duration: const Duration(milliseconds: 1000),
+                                    child: ScaleAnimation(
+                                        scale: 0.8,
+                                        child: FadeInAnimation(child: x(index))));
+                              },
                             ),
-                            SizedBox(
-                              height: 170,
-                              width: (_width-60)/2,
-                              child: Stack(
-                                children: [
-                                  Container(
-                                    height: 170,
-                                    width: (_width-60)/2,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: Alignment.topCenter,
-                                    child: Container(
-                                      height: 170/1.5,
-                                      width: (_width-60)/2,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15)),
-                                        image: DecorationImage(
-                                          image: AssetImage("assets/battleground/football_ground.png"),
-                                          fit: BoxFit.cover,
-                                        )
-                                      ),
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: Alignment.bottomCenter,
-                                    child: Container(
-                                      height: 170/3.5,
-                                      width: (_width-60)/2,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15),bottomRight: Radius.circular(15)),
-                                      ),
-                                      child: Column(
-                                        children: [
-                                          Text("My Team",style: TextStyles.GameSemiBoldyellow,),
-                                          Opacity(
-                                              opacity: 0.5,
-                                              child: Text("Browse and train your members",style: TextStyles.GameRegulerWhite,))
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 50),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              height: 100,
-                              width: (_width-60)/2,
-                              child: Stack(
-                                children: [
-                                  Container(
-                                    height: 100,
-                                    width: (_width-60)/2,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Row(
-                                      children: [
-                                        Container(
-                                          height: 100,
-                                          width: ((_width-60)/2)/2,
-                                          decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.only(topLeft: Radius.circular(15),bottomLeft: Radius.circular(15)),
-                                              image: DecorationImage(
-                                                image: AssetImage("assets/battleground/football_ground.png"),
-                                                fit: BoxFit.cover,
-                                              )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    height: 270,
+                    width: _boxWidth,
+                    child: PageView.builder(
+                      controller: _controller,
+                      itemCount: 4,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (BuildContext context, int index){
+                        if(index == 0) {
+                          return _list();
+                        }else return SizedBox(
+                          width: _width*0.7,
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 190,
+                                width: _width*0.7,
+                                child: AnimationLimiter(
+                                  child: GridView.count(
+                                    crossAxisCount: 2,
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    childAspectRatio: 0.9/0.5,
+                                    mainAxisSpacing: 0.0,
+                                    crossAxisSpacing: 20.0,
+                                    children: List.generate(2, (index) =>
+                                        AnimationConfiguration.staggeredGrid(
+                                          columnCount: 2,
+                                          position: index,
+                                          duration: const Duration(milliseconds: 1500),
+                                          child: ScaleAnimation(
+                                            scale: 0.5,
+                                            child: FadeInAnimation(
+                                                child: y(index)
+                                            ),
                                           ),
                                         ),
-                                        Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            SizedBox(
-                                              width: ((_width-60)/2)/2,
-                                              child: Row(
-                                                mainAxisAlignment: MainAxisAlignment.start,
-                                                crossAxisAlignment: CrossAxisAlignment.center,
-                                                children: [
-                                                  Flexible(child: Padding(
-                                                    padding: const EdgeInsets.only(left: 15,right: 15),
-                                                    child: Text("Achievements",style: TextStyles.GameBigBoldyellow,),
-                                                  )),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
                                     ),
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  )
+                              Container(
+                                height: 80,
+                                width: _width*0.7,
+                                child: AnimationLimiter(
+                                  child: GridView.count(
+                                    crossAxisCount: 2,
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    childAspectRatio: 0.9/0.25,
+                                    mainAxisSpacing: 0.0,
+                                    crossAxisSpacing: 20.0,
+                                    children: List.generate(2, (index) =>
+                                        AnimationConfiguration.staggeredGrid(
+                                          columnCount: 2,
+                                          position: index,
+                                          duration: const Duration(milliseconds: 1500),
+                                          child: ScaleAnimation(
+                                            scale: 0.5,
+                                            child: FadeInAnimation(
+                                                child: z(index)
+                                            ),
+                                          ),
+                                        ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

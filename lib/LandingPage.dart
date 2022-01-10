@@ -1,5 +1,5 @@
+import 'package:fitmemax/src/module/BattleGround/BattleGround.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundGroup/BattleGroundGroup.dart';
-import 'package:fitmemax/src/module/BattleGround/BattleGroundSolo/BattleGroundSolo.dart';
 import 'package:flutter/material.dart';
 
 class LandingPage extends StatefulWidget {

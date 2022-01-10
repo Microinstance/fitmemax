@@ -54,6 +54,7 @@ class TextStyles {
 
   static const GameRegulerWhite = TextStyle(fontFamily: "Adora",fontSize: 15,color: Colors.white,);
   static const GameRegulerBigWhite = TextStyle(fontFamily: "Adora",fontSize: 18,color: Colors.white,);
+  static const GameRegulerBigYellow = TextStyle(fontFamily: "Adora",fontSize: 18,color: Colors.yellow,);
   static const GameRegulerYellow = TextStyle(fontFamily: "Adora",fontSize: 15,color: Colors.yellow,);
   static const GameRegulerBlack = TextStyle(fontFamily: "Adora",fontSize: 15,color: Colors.black,);
   static const GameParaYellow= TextStyle(fontFamily: "Adora",fontSize: 13,color: ColorPalette.Yellow,);
@@ -65,6 +66,7 @@ class TextStyles {
   static const GameBodyYellow= TextStyle(fontFamily: "Adora",fontSize: 10,color:  Colors.yellow,);
   static const GameSemiBoldyellow= TextStyle(fontFamily: "Adora",fontSize: 18,color:  Colors.yellow,);
   static const GameSemiBoldblack= TextStyle(fontFamily: "Adora",fontSize: 18,color:  Colors.black,);
+  static const GameBoldblack= TextStyle(fontFamily: "Adora",fontSize: 20,color:  Colors.black,);
   static const GameBigBoldyellow= TextStyle(fontFamily: "Adora",fontSize: 25,color:  Colors.yellow,);
   static const GameBigBoldwhite= TextStyle(fontFamily: "Adora",fontSize: 25,color:  Colors.white,);
   static const GameSemiBoldWhite= TextStyle(fontFamily: "Adora",fontSize: 18,color:  Colors.white,);

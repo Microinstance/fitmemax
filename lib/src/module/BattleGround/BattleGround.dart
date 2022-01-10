@@ -5,6 +5,7 @@ import 'package:fitmemax/src/module/BattleGround/BattleGroundCash.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundCoins.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundFriends.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundGifts.dart';
+import 'package:fitmemax/src/module/BattleGround/BattleGroundGroup/BattleGroundGroup.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundLeaderBoard.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGroundProfile.dart';
 import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
@@ -713,6 +714,9 @@ class _BattleGroundState extends State<BattleGround> {
                                   image: _image(index),
                                     onTap:(){
                                       Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: OneOone()));
+                                      if(index == 1){
+                                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: BattleGroundGroup()));
+                                      }
                                     },
                                 ))),
                           );
