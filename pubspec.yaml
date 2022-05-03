@@ -52,7 +52,8 @@ dependencies:
   shared_preferences: ^0.5.12+4
   video_player: ^2.2.5
   flutter_rating_bar: ^4.0.0
-
+  flutter_login_facebook: ^1.4.1
+  back_button_interceptor: ^5.0.2
 
 
 dev_dependencies:

@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:ffi';
 import 'package:delayed_display/delayed_display.dart';
+import 'package:fitmemax/API/APIClient.dart';
 import 'package:fitmemax/Objects/Backgrounds.dart';
 import 'package:fitmemax/src/ListData/ListData.dart';
 import 'package:fitmemax/src/module/ActivityTracker/ActivityTracker.dart';
@@ -38,6 +40,10 @@ class _HomeState extends State<Home> {
   bool _isVisible = false;
   bool isLoading = false;
 
+  APIClient client;
+
+  var currentUser;
+
   @override
   void initState() {
     super.initState();
@@ -55,6 +61,16 @@ class _HomeState extends State<Home> {
             _controller.position.userScrollDirection == ScrollDirection.reverse;
       });
     });
+    client = new APIClient();
+    getCurrentUserInformation();
+  }
+
+  getCurrentUserInformation() async {
+    final getLocal = await client.getLocal();
+    setState(() {
+      currentUser = getLocal;
+    });
+    print(currentUser);
   }
 
   @override
@@ -68,6 +84,7 @@ class _HomeState extends State<Home> {
     setState(() {
       _currentPage = index;
     });
+
   }
 
   @override
@@ -159,7 +176,7 @@ class _HomeState extends State<Home> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Hi Anurag",
+                                "Hi "+currentUser['name'].toString(),
                                 style: TextStyles.TitleWhite,
                               ),
                             ],
@@ -777,30 +794,85 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   ),
+
                   Container(
                     height: 50,
                     color: Colors.white,
                     child: Padding(
-                      padding: EdgeInsets.only(
-                          top: 8.0, right: 10.0, left: 10.0),
+                      padding: EdgeInsets.only(top: 8.0, right: 10.0, left: 10.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: [
-                              Text('Blogs',
-                                  style: TextStyles.TitleBlack),
+                              Text('Blogs', style: TextStyles.TitleBlack),
                             ],
                           ),
-                          IconButton(
-                            icon: Icon(
-                              Icons.reorder,
-                              color: ColorPalette.PrimaryColor,
-                            ),
-                            onPressed: ()  {
+                        ],
+                      ),
+                    ),
+                  ),
 
-                            },
+                  Container(
+                    color: Colors.white,
+                    height: 110,
+                    child: GestureDetector(
+                      child: ListView(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          blogCategory(
+                            borderWidth: 1.5,
+                            context: context,
+                            image: "assets/blog/blog1.png",
+                            name: 'Fitness',
                           ),
+                          blogCategory(
+                            borderWidth: 1.5,
+                            context: context,
+                            image: "assets/blog/blog1.png",
+                            name: 'Fitness',
+                          ),
+                          blogCategory(
+                            borderWidth: 2.5,
+                            context: context,
+                            image: "assets/blog/blog1.png",
+                            name: 'Fitness',
+                          ),
+                          blogCategory(
+                            borderWidth: 1.5,
+                            context: context,
+                            image: "assets/blog/blog1.png",
+                            name: 'Fitness',
+                          ),
+                          blogCategory(
+                            borderWidth: 1.5,
+                            context: context,
+                            image: "assets/blog/blog1.png",
+                            name: 'iamshivay',
+                          ),
+                          blogCategory(
+                            borderWidth: 1.5,
+                            context: context,
+                            image: "assets/blog/blog1.png",
+                            name: 'iamshivay',
+                          ),
+                          blogCategory(
+                            borderWidth: 1.5,
+                            context: context,
+                            image: "assets/blog/blog1.png",
+                            name: 'iamshivay',
+                          ),
+                          blogCategory(
+                            borderWidth: 1.5,
+                            context: context,
+                            image: "assets/blog/blog1.png",
+                            name: 'iamshivay',
+                          ),
+
+                          // SizedBox(
+                          //   width: _width * 0.65 * 0.04,
+                          // ),
                         ],
                       ),
                     ),
@@ -973,6 +1045,55 @@ class _HomeState extends State<Home> {
           ],
         ));
   }
+
+  Widget blogCategory({BuildContext context, String name, String image, double borderWidth}) {
+    double _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
+    return Padding(
+        padding: EdgeInsets.only(left: _width * 0.65 * 0.04, top: 5, bottom: 5),
+        child: Column(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                  border: Border.all(
+                      color: Colors.black12,
+                      width: borderWidth
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                  shape: BoxShape.rectangle,
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 2.0,
+                        spreadRadius: 1.0
+                    ),
+                  ]
+              ),
+              child: Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    shape: BoxShape.rectangle,
+                ),
+                child: Icon(
+                  Icons.audiotrack,
+                  color: Colors.green,
+                  size: 30.0,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Text(
+              name,
+              style: TextStyles.BodyBlack,
+            ),
+          ],
+        ));
+  }
+
   Widget hItem({BuildContext context, String name, String image}) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;

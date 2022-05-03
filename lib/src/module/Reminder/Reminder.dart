@@ -16,7 +16,7 @@ class _ReminderState extends State<Reminder> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back,size: 20,color: ColorPalette.PrimaryColor,),
+          icon: Icon(Icons.arrow_back,size: 20,color: ColorPalette.PrimaryColor,), onPressed: () {  },
         ),
         title: Text("Reminders",style: TextStyles.RegulerBlack,),
       ),

@@ -14,7 +14,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:page_transition/page_transition.dart';
+import 'BattleGroundBeast/BattleGroundBeast.dart';
 import 'BattleGroundReward.dart';
+import 'BattleGroundSolo/BattleGroundSolo.dart';
+import 'MyClub/MyClub.dart';
 
 class BattleGround extends StatefulWidget {
   @override
@@ -82,16 +85,17 @@ class _BattleGroundState extends State<BattleGround> {
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.all(5.0),
-                                      child: Column(
-                                        children: [
-                                          Image.asset(
-                                              "assets/battleground/clan.png",
-                                              height: 30,
-                                              width: _width * 0.07 - 20),
-                                          Spacer(),
-                                          Text("Clan",
-                                              style: TextStyles.GameRegulerWhite),
-                                        ],
+                                      child: GestureDetector(
+                                        onTap: (){
+                                          Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: MyClub()));
+                                        },
+                                        child: Column(
+                                          children: [
+                                            Image.asset("assets/battleground/clan.png", height: 30, width: _width * 0.07 - 20),
+                                            Spacer(),
+                                            Text("Clan", style: TextStyles.GameRegulerWhite),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -110,11 +114,7 @@ class _BattleGroundState extends State<BattleGround> {
                                     top: 5, bottom: 5, left: 7, right: 7),
                                 child: GestureDetector(
                                   onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        PageTransition(
-                                            type: PageTransitionType.fade,
-                                            child: BattleGroundProfile()));
+                                    Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: BattleGroundProfile()));
                                   },
                                   child: Container(
                                     height: 50,
@@ -713,9 +713,14 @@ class _BattleGroundState extends State<BattleGround> {
                                   isBeta: (index == 0) ? false : true,
                                   image: _image(index),
                                     onTap:(){
-                                      Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: OneOone()));
-                                      if(index == 1){
+                                      if(index == 0){
+                                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: OneOone()));
+                                      } else if(index == 1){
+                                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: BattleGroundSolo()));
+                                      }  else if(index == 2){
                                         Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: BattleGroundGroup()));
+                                      }else if(index == 3){
+                                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: BattleGroundBeast()));
                                       }
                                     },
                                 ))),

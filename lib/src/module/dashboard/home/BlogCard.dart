@@ -1,7 +1,10 @@
+import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
+import 'package:fitmemax/src/module/dashboard/home/Blog.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class BlogCard extends StatefulWidget {
   @override
@@ -33,7 +36,12 @@ class _BlogCardState extends State<BlogCard> {
                       Icon(Icons.whatshot_rounded,color: ColorPalette.PrimaryColor,size: 25,),
                       Padding(
                         padding: const EdgeInsets.only(left: 10),
-                        child: Text("Healthy Lifestyle",style: TextStyles.TitleBlackBold,),
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Blog()));
+                          },
+                            child: Text("Healthy Lifestyle",style: TextStyles.TitleBlackBold,)
+                        ),
                       ),
                     ],
                   ),

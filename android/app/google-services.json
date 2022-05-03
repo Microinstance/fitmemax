@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "883112733921",
+    "project_id": "fitmemax-ac5d4",
+    "storage_bucket": "fitmemax-ac5d4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:883112733921:android:a80b402e405c1b24491ba0",
+        "android_client_info": {
+          "package_name": "com.neutronvision.fitmemax"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "883112733921-vm6mmfsmtj57h4gebd5dti2lubfv95qt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.neutronvision.fitmemax",
+            "certificate_hash": "7c786e42416b145bfcaf0f3c46beee8b50ae9158"
+          }
+        },
+        {
+          "client_id": "883112733921-eotmri7qo89e3ojjm21mdpr597277qjs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNxgQBIHsHsEON27raYDuPNTwduHywjEE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "883112733921-eotmri7qo89e3ojjm21mdpr597277qjs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

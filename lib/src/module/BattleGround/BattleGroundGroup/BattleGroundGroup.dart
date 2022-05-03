@@ -1,10 +1,13 @@
 import 'package:delayed_display/delayed_display.dart';
 import 'package:fitmemax/src/module/BattleGround/BattleGround.dart';
+import 'package:fitmemax/src/module/BattleGround/SquadManagement/squad_management.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:page_transition/page_transition.dart';
+
+import '../ChampionResult/ChampionResult.dart';
 
 class BattleGroundGroup extends StatefulWidget {
   @override
@@ -107,39 +110,44 @@ class _BattleGroundGroupState extends State<BattleGroundGroup> {
               borderRadius: BorderRadius.circular(15),
               color: Colors.white
           ),
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Column(
-                children: [
-                  Container(
-                    height: 80,
-                    width: 300,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15)),
-                      image: DecorationImage(
-                        image: AssetImage("assets/battleground/football_ground.png"),
-                        fit: BoxFit.cover,
+          child: GestureDetector(
+            onTap: (){
+              Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: SquadManagement()));
+            },
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      height: 80,
+                      width: 300,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15)),
+                        image: DecorationImage(
+                          image: AssetImage("assets/battleground/football_ground.png"),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                  Spacer(),
-                  Text("Squad Management",style: TextStyles.GameSemiBoldyellow,),
-                  Text("Make adjustment to your squad",style: TextStyles.GameParaBlack,),
-                  SizedBox(
-                    height: 7,
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 5),
-                child: CircleAvatar(
-                  radius: 20,
-                  backgroundColor: Colors.yellow,
-                  child: Center(child: Icon(Icons.manage_accounts,color: Colors.black,size: 20,)),
+                    Spacer(),
+                    Text("Squad Management",style: TextStyles.GameSemiBoldyellow,),
+                    Text("Make adjustment to your squad",style: TextStyles.GameParaBlack,),
+                    SizedBox(
+                      height: 7,
+                    ),
+                  ],
                 ),
-              )
-            ],
+                Padding(
+                  padding: const EdgeInsets.only(top: 5),
+                  child: CircleAvatar(
+                    radius: 20,
+                    backgroundColor: Colors.yellow,
+                    child: Center(child: Icon(Icons.manage_accounts,color: Colors.black,size: 20,)),
+                  ),
+                )
+              ],
+            ),
           ),
         );
       }
@@ -322,9 +330,10 @@ class _BattleGroundGroupState extends State<BattleGroundGroup> {
       if(index == 6) {
         return GestureDetector(
             onTap: (){
-              _controller.jumpToPage(3); // for regular jump
+              //_controller.jumpToPage(3); // for regular jump
+              Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: ChampionResult()));
             },
-            child: Text("Extras",style: TextStyles.GameRegulerBigWhite,));
+            child: Text("IFL",style: TextStyles.GameRegulerBigWhite,));
       }
       else return Padding(
         padding:  EdgeInsets.only(left: _width*0.07,right: _width*0.07),

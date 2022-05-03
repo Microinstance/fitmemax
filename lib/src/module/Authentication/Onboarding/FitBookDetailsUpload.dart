@@ -1,3 +1,4 @@
+import 'package:fitmemax/API/APIClient.dart';
 import 'package:fitmemax/Objects/Backgrounds.dart';
 import 'package:fitmemax/Objects/ButtonOne.dart';
 import 'package:fitmemax/Objects/TextFieldOne.dart';
@@ -5,6 +6,7 @@ import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:image_picker/image_picker.dart';
 
 class FitBookDetailsUpload extends StatefulWidget {
   @override
@@ -12,6 +14,18 @@ class FitBookDetailsUpload extends StatefulWidget {
 }
 
 class _FitBookDetailsUploadState extends State<FitBookDetailsUpload> {
+
+  String imagePath = "images/userImage5.jpeg";
+  String feetbookID = "";
+  APIClient client;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    client = new APIClient();
+  }
+
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -80,12 +94,16 @@ class _FitBookDetailsUploadState extends State<FitBookDetailsUpload> {
                             Stack(
                               alignment: Alignment.bottomRight,
                               children: [
-                                CircleAvatar(
-                                  radius: 50,
-                                  backgroundColor: ColorPalette.PrimaryColor.withOpacity(0.4),
+                                GestureDetector(
+                                  onTap: pickAvatar,
                                   child: CircleAvatar(
-                                    radius: 48,
-                                    backgroundImage: AssetImage("images/userImage5.jpeg"),
+                                    radius: 50,
+                                    backgroundColor: ColorPalette.PrimaryColor.withOpacity(0.4),
+                                    child: CircleAvatar(
+                                      radius: 48,
+                                      //backgroundImage: AssetImage(imagePath),
+                                      backgroundImage: AssetImage(imagePath),
+                                    ),
                                   ),
                                 ),
                                 Padding(
@@ -105,7 +123,9 @@ class _FitBookDetailsUploadState extends State<FitBookDetailsUpload> {
                         child: TextFieldOne(
                           hint: 'FitBook Id',
                           onChanged: (v) {
-                            print(v);
+                            setState(() {
+                              feetbookID = v;
+                            });
                           },
                         ),
                       ),
@@ -119,9 +139,7 @@ class _FitBookDetailsUploadState extends State<FitBookDetailsUpload> {
                               child: ButtonOne(
                                 title: 'Finish',
                                 colors: ColorPalette.PrimaryColor,
-                                onPressed: ()  {
-                                  // Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Dashboard()));
-                                },
+                                onPressed: finishRegistration,
                               ),
                             ),
                           ],
@@ -137,4 +155,31 @@ class _FitBookDetailsUploadState extends State<FitBookDetailsUpload> {
       ),
     );
   }
+
+
+  pickAvatar() async {
+    final ImagePicker _picker = ImagePicker();
+    final image = await _picker.getImage(source: ImageSource.camera, maxWidth: 200, maxHeight: 300);
+    setState(() {
+      imagePath = image.path.toString();
+    });
+  }
+
+  finishRegistration() async {
+    if(feetbookID == ""){
+      client.error("Please enter your feetbook id");
+    } else {
+      final user = await client.getLocal();
+      final result = await client.finishRegistration({
+        'users_id' : user['id'].toString(),
+        'feetbook_id' : feetbookID
+      });
+      if(result['status'] == "success"){
+        Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: Dashboard()));
+      } else {
+        client.error(result['message']);
+      }
+    }
+  }
+
 }

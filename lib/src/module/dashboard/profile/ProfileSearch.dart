@@ -1,5 +1,6 @@
 import 'package:fitmemax/src/module/dashboard/profile/Chat/page/ProfileChatPage.dart';
 import 'package:fitmemax/src/module/dashboard/profile/Profile.dart';
+import 'package:fitmemax/src/module/dashboard/profile/ProfileFeedImage.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileHome.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
@@ -224,6 +225,7 @@ class _ProfileSearchState extends State<ProfileSearch> {
       ),
     );
   }
+
   Widget _HashTag(){
     return Padding(
       padding: EdgeInsets.only(left: 15),
@@ -243,6 +245,7 @@ class _ProfileSearchState extends State<ProfileSearch> {
       ),
     );
   }
+
   Widget _GridItem(){
     return Container(
       decoration: BoxDecoration(

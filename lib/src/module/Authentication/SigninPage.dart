@@ -1,8 +1,12 @@
+import 'package:fitmemax/API/APIClient.dart';
 import 'package:fitmemax/Objects/Backgrounds.dart';
 import 'package:fitmemax/Objects/ButtonOne.dart';
 import 'package:fitmemax/Objects/PasswordFieldOne.dart';
 import 'package:fitmemax/Objects/SocialButton.dart';
 import 'package:fitmemax/Objects/TextFieldOne.dart';
+import 'package:fitmemax/src/module/Authentication/Onboarding/GoalChoice.dart';
+import 'package:fitmemax/src/module/Authentication/Onboarding/MedicalCondition.dart';
+import 'package:fitmemax/src/module/Authentication/Onboarding/PhysicalCondition.dart';
 import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +14,9 @@ import 'package:flutter/services.dart';
 import 'package:page_transition/page_transition.dart';
 import 'ForgotPassword.dart';
 import 'SignupPage.dart';
+import 'package:flutter_login_facebook/flutter_login_facebook.dart';
+
+import 'SocialSignUP.dart';
 
 class SigninPage extends StatefulWidget {
   @override
@@ -17,6 +24,21 @@ class SigninPage extends StatefulWidget {
 }
 
 class _SigninPageState extends State<SigninPage> {
+
+  APIClient Client;
+
+  String email = "";
+  String password = "";
+
+  // Facebook
+  final plugin = FacebookLogin(debug: true);
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Client = new APIClient();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +110,9 @@ class _SigninPageState extends State<SigninPage> {
                         child: TextFieldOne(
                           hint: 'Email Or Phone Number',
                           onChanged: (v) {
-                            print(v);
+                            setState(() {
+                              email = v;
+                            });
                           },
                         ),
                       ),
@@ -97,7 +121,9 @@ class _SigninPageState extends State<SigninPage> {
                         child: PasswordFieldOne(
                           hint: 'Password',
                           onChanged: (v) {
-                            print(v);
+                            setState(() {
+                              password = v;
+                            });
                           },
                         ),
                       ),
@@ -132,9 +158,7 @@ class _SigninPageState extends State<SigninPage> {
                               child: ButtonOne(
                                 title: 'Sign In',
                                 colors: ColorPalette.PrimaryColor,
-                                onPressed: ()  {
-                                  Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: Dashboard(pageStack: 0,)));
-                                },
+                                onPressed: checkLogin,
                               ),
                             ),
                           ],
@@ -179,9 +203,7 @@ class _SigninPageState extends State<SigninPage> {
                             ),
                             SocialButton(
                               colors: Colors.blue[900],
-                              onPressed: ()  {
-
-                              },
+                              onPressed: _onPressedLogInButton,
                               image: 'assets/sign/facebook.png',
                             ),
                             SocialButton(
@@ -224,4 +246,86 @@ class _SigninPageState extends State<SigninPage> {
       ),
     );
   }
+
+  checkLogin() async {
+    if(email == ""){
+      Client.error("Please enter email id");
+    } else if(password == ""){
+      Client.error("Please enter password");
+    } else {
+      var result = await Client.authRequest(email, password);
+      print(result);
+      if(result['status'] == "success"){
+
+          final data = result['data'];
+          // Store In Local Storage
+          Client.storeLocal(data['mobile'], data['id'], data['email'], data['api_token'], data['name']);
+
+          final physical_condition = data['profile']['physical_condition'];
+          final medical_condition = data['profile']['medical_condition'];
+          final gole = data['profile']['gole'];
+
+          if(physical_condition == 0){
+            Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: PhysicalCondition()));
+          } else if(medical_condition == 0){
+            Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: MedicalCondition()));
+          } else if(gole == 0){
+            Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: GoalChoice()));
+          } else {
+            Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: Dashboard()));
+          }
+
+      } else {
+        Client.error(result['message']);
+      }
+    }
+  }
+
+  Future<void> _onPressedLogInButton() async {
+
+    await plugin.logIn(permissions: [
+      FacebookPermission.publicProfile,
+      FacebookPermission.email,
+    ]);
+
+    final token = await plugin.accessToken;
+    FacebookUserProfile profile;
+    String email;
+    String imageUrl;
+
+    if (token != null) {
+      profile = await plugin.getUserProfile();
+      if (token.permissions.contains(FacebookPermission.email.name)) {
+        email = await plugin.getUserEmail();
+      }
+      imageUrl = await plugin.getProfileImageUrl(width: 100);
+    }
+
+    print("Email ID");
+    print(profile);
+
+    final result = await Client.socialLogin({
+      'email' : email.toString()
+    });
+
+    if(result['status'] == "success"){
+      final physical_condition = result['data']['profile']['physical_condition'];
+      final medical_condition = result['data']['profile']['medical_condition'];
+      final gole = result['data']['profile']['gole'];
+
+      if(physical_condition == 0){
+        Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: PhysicalCondition()));
+      } else if(medical_condition == 0){
+        Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: MedicalCondition()));
+      } else if(gole == 0){
+        Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: GoalChoice()));
+      } else {
+        Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: Dashboard()));
+      }
+    } else {
+      Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: SocialSignUp(email: email, name: profile.name,)));
+    }
+
+  }
+
 }

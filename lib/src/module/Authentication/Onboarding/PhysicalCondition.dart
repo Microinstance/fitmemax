@@ -1,3 +1,4 @@
+import 'package:fitmemax/API/APIClient.dart';
 import 'package:fitmemax/Objects/Backgrounds.dart';
 import 'package:fitmemax/Objects/ButtonOne.dart';
 import 'package:fitmemax/src/module/Authentication/Onboarding/MedicalCondition.dart';
@@ -6,15 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:page_transition/page_transition.dart';
 
+import '../../dashboard/Dashboard.dart';
+import 'FitBookDetailsUpload.dart';
+import 'GoalChoice.dart';
+
 class PhysicalCondition extends StatefulWidget {
   @override
   _PhysicalConditionState createState() => _PhysicalConditionState();
 }
 
-
-
-
 class _PhysicalConditionState extends State<PhysicalCondition> {
+
   double _userAge = 15;
   double _userHeight = 2.5;
   double _userWeight = 25;
@@ -22,6 +25,16 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
   List _bloodGroup = ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'];
   String _genderValue;
   String _bloodGroupValue;
+
+  APIClient Client;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Client = new APIClient();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -290,9 +303,7 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
                               child: ButtonOne(
                                 title: 'Continue',
                                 colors: ColorPalette.PrimaryColor,
-                                onPressed: ()  {
-                                  Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: MedicalCondition()));
-                                },
+                                onPressed: updatePhysicalCondition,
                               ),
                             ),
                           ],
@@ -308,4 +319,48 @@ class _PhysicalConditionState extends State<PhysicalCondition> {
       ),
     );
   }
+
+  updatePhysicalCondition() async {
+    if(_bloodGroupValue == null){
+      Client.error("Please select your blud group");
+    } else if (_genderValue == null){
+      Client.error("Please select your gender");
+    } else {
+      final currentUser = await Client.getLocal();
+      print(currentUser);
+      final request = await Client.storePhysicalCondition({
+        'age' : _userAge.toString(),
+        'height' : _userHeight.toString(),
+        'weight' : _userHeight.toString(),
+        'gender' : _genderValue.toString(),
+        'blood_group' : _bloodGroupValue.toString(),
+        'users_id' : currentUser['id'].toString()
+      });
+      if(request['status'] == "success"){
+
+        final sendQuery = await Client.getProfileStatus(currentUser['id'].toString());
+        final data = sendQuery['data'];
+
+        final medical_condition = data['medical_condition'];
+        final gole = data['gole'];
+        final fitbookID = data['is_fitbook_id_set'];
+
+        if(medical_condition == 0){
+          Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: MedicalCondition()));
+        } else if(gole == 0){
+          Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: GoalChoice()));
+        } else if(fitbookID == 0) {
+          Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: FitBookDetailsUpload()));
+        } else {
+          Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: Dashboard()));
+        }
+
+      } else {
+        Client.error(request['message']);
+      }
+    }
+
+  }
+
+
 }

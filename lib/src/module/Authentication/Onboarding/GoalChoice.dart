@@ -1,9 +1,11 @@
+import 'package:fitmemax/API/APIClient.dart';
 import 'package:fitmemax/Objects/Backgrounds.dart';
 import 'package:fitmemax/Objects/ButtonOne.dart';
 import 'package:fitmemax/src/module/Authentication/Onboarding/FitBookDetailsUpload.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import '../../dashboard/Dashboard.dart';
 import 'MedicalCondition.dart';
 
 class GoalChoice extends StatefulWidget {
@@ -13,6 +15,18 @@ class GoalChoice extends StatefulWidget {
 }
 
 class _GoalChoiceState extends State<GoalChoice> {
+
+  APIClient client;
+  var goal = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    client = new APIClient();
+    getGoal();
+  }
+
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -80,7 +94,7 @@ class _GoalChoiceState extends State<GoalChoice> {
                       Padding(
                         padding: const EdgeInsets.only(left: 20,right: 12),
                         child: Column(
-                            children: List.generate(3, (index) => SwitchList(titel: 'Loss Weight',))
+                            children: List.generate(goal.length, (index) => SwitchList(titel: goal[index]['title'], id: goal[index]['id'].toString(), type: "goal",))
                         ),
                       ),
 
@@ -94,9 +108,7 @@ class _GoalChoiceState extends State<GoalChoice> {
                               child: ButtonOne(
                                 title: 'Continue',
                                 colors: ColorPalette.PrimaryColor,
-                                onPressed: ()  {
-                                  Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: FitBookDetailsUpload()));
-                                },
+                                onPressed: goNext,
                               ),
                             ),
                           ],
@@ -110,6 +122,38 @@ class _GoalChoiceState extends State<GoalChoice> {
           ],
         ),
       ),
-    );;
+    );
   }
+
+  getGoal() async {
+    final result = await client.getGoalMaster();
+    print(result);
+    setState(() {
+      goal = result['data'];
+    });
+  }
+
+  goNext() async {
+    final currentUser = await client.getLocal();
+
+    final findGoal = await client.isGoalSet({'users_id' : currentUser['id'].toString()});
+    if(findGoal['status'] == "success"){
+
+      final sendQuery = await client.getProfileStatus(currentUser['id'].toString());
+      final data = sendQuery['data'];
+      final fitbookID = data['is_fitbook_id_set'];
+
+      if(fitbookID == 0) {
+        Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: FitBookDetailsUpload()));
+      } else {
+        Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: Dashboard()));
+      }
+
+    } else {
+      client.error("Please Select One Of The Listed Goal");
+    }
+
+  }
+
+
 }

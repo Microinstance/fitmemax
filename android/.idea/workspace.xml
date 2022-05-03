@@ -3,45 +3,50 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ce2cd81-8fc4-4979-a41d-8bf4a05f9e9b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/settings_aar.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lib/src/module/Yoga/YogaCategoryViewAll.dart" afterDir="false" />
+    <list default="true" id="d9e066d0-d098-44f1-ba01-ae6e5920b4e6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../assets/Badges/player.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../assets/Badges/player2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../images/1st.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../images/my_club.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/API/APIClient.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/API/UtilityClass.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/src/module/BattleGround/ChampionResult/ChampionResult.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/src/module/BattleGround/MyClub/MyClub.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/src/module/BattleGround/SquadManagement/squad_management.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/../.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/../.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_annotation_annotation_1_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_1_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_1_3_50.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_common_1_3_50.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_jdk7_1_3_50.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/android.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/app/android.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/android.app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/com/neutronvision/fitmemax/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/com/neutronvision/fitmemax/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/LandingPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/LandingPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/src/module/BattleGround/BattleGroundSpin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/module/BattleGround/BattleGroundSpin.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/src/module/Yoga/CategoryDetailPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/module/Yoga/YogaCategoryDetailPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/src/module/Yoga/Yoga.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/module/Yoga/Yoga.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/src/module/Yoga/YogaFilterOne.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/module/Yoga/YogaFilterOne.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/src/module/dashboard/profile/StoryScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/module/dashboard/profile/StoryScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/styles.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/styles.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/src/module/Authentication/Onboarding/FitBookDetailsUpload.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/module/Authentication/Onboarding/FitBookDetailsUpload.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/src/module/Authentication/Onboarding/GoalChoice.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/module/Authentication/Onboarding/GoalChoice.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/src/module/Authentication/Onboarding/MedicalCondition.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/module/Authentication/Onboarding/MedicalCondition.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/src/module/Authentication/Onboarding/PhysicalCondition.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/module/Authentication/Onboarding/PhysicalCondition.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/src/module/Authentication/SigninPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/module/Authentication/SigninPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/src/module/Authentication/SignupPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/module/Authentication/SignupPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/src/module/BattleGround/BattleGround.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/module/BattleGround/BattleGround.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/src/module/BattleGround/BattleGroundGroup/BattleGroundGroup.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/module/BattleGround/BattleGroundGroup/BattleGroundGroup.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/src/module/Reminder/Reminder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/module/Reminder/Reminder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/src/module/dashboard/Dashboard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/module/dashboard/Dashboard.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/src/widgets/loginButtonTwo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/widgets/loginButtonTwo.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +54,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/paradox/.android/avd/Pixel_3a_API_30.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[4eda9a22]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -58,7 +63,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1v8QehPgtuFRFQCohdCFcMhDrx4" />
+  <component name="ProjectId" id="27BWggJ8laIzqLxM4OpKJAZcQ66" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -66,21 +71,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="dev.polek.adbwifi.settings.AdbWifiConfigurable" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
-      <option name="TEST_OBJECT" value="class" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="android.app" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -142,11 +138,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3ce2cd81-8fc4-4979-a41d-8bf4a05f9e9b" name="Default Changelist" comment="" />
-      <created>1625941333225</created>
+      <changelist id="d9e066d0-d098-44f1-ba01-ae6e5920b4e6" name="Default Changelist" comment="" />
+      <created>1648794071653</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1625941333225</updated>
+      <updated>1648794071653</updated>
     </task>
     <servers />
   </component>
@@ -160,24 +156,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="1475" height="264" key="GridCell.Tab.0.bottom" timestamp="1625942315317">
-      <screen x="0" y="23" width="1920" height="977" />
-    </state>
-    <state width="1475" height="264" key="GridCell.Tab.0.bottom/0.23.1920.977@0.23.1920.977" timestamp="1625942315317" />
-    <state width="1475" height="264" key="GridCell.Tab.0.center" timestamp="1625942315317">
-      <screen x="0" y="23" width="1920" height="977" />
-    </state>
-    <state width="1475" height="264" key="GridCell.Tab.0.center/0.23.1920.977@0.23.1920.977" timestamp="1625942315317" />
-    <state width="1475" height="264" key="GridCell.Tab.0.left" timestamp="1625942315317">
-      <screen x="0" y="23" width="1920" height="977" />
-    </state>
-    <state width="1475" height="264" key="GridCell.Tab.0.left/0.23.1920.977@0.23.1920.977" timestamp="1625942315317" />
-    <state width="1475" height="264" key="GridCell.Tab.0.right" timestamp="1625942315317">
-      <screen x="0" y="23" width="1920" height="977" />
-    </state>
-    <state width="1475" height="264" key="GridCell.Tab.0.right/0.23.1920.977@0.23.1920.977" timestamp="1625942315317" />
   </component>
 </project>

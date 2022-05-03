@@ -12,7 +12,7 @@ class loginButtonTwo extends StatelessWidget {
     double _width = MediaQuery.of(context).size.width;
     return SizedBox(
       height: 40,
-      width: 120,
+      width: 250,
       child: MaterialButton(
         splashColor: colors.withOpacity(0.2),
         shape: RoundedRectangleBorder(
