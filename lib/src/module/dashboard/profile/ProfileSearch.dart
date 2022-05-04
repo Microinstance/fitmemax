@@ -1,9 +1,9 @@
 import 'package:fitmemax/src/module/dashboard/profile/Chat/page/ProfileChatPage.dart';
 import 'package:fitmemax/src/module/dashboard/profile/Profile.dart';
-import 'package:fitmemax/src/module/dashboard/profile/ProfileFeedImage.dart';
 import 'package:fitmemax/src/module/dashboard/profile/ProfileHome.dart';
 import 'package:fitmemax/src/widgets/palette.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:page_transition/page_transition.dart';
 
 import 'ProfilePost.dart';
@@ -122,6 +122,7 @@ class _ProfileSearchState extends State<ProfileSearch> {
                       ),
                     ),
                   ),
+                  _SearchGrid(),
                   SizedBox(height: 140,),
                 ],
               ),
@@ -150,7 +151,7 @@ class _ProfileSearchState extends State<ProfileSearch> {
                         // color: Colors.white,
                       ),
                       onPressed: () {
-                        Navigator.pushReplacement(
+                        Navigator.push(
                           context,
                           PageTransition(
                             type: PageTransitionType.fade,
@@ -179,7 +180,7 @@ class _ProfileSearchState extends State<ProfileSearch> {
                         color: Colors.white,
                       ),
                       onPressed: () {
-                        Navigator.pushReplacement(
+                        Navigator.push(
                           context,
                           PageTransition(
                             type: PageTransitionType.fade,
@@ -194,7 +195,7 @@ class _ProfileSearchState extends State<ProfileSearch> {
                         color: Colors.white,
                       ),
                       onPressed: () {
-                        Navigator.pushReplacement(
+                        Navigator.push(
                           context,
                           PageTransition(
                             type: PageTransitionType.fade,
@@ -209,11 +210,11 @@ class _ProfileSearchState extends State<ProfileSearch> {
                         color: Colors.white,
                       ),
                       onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.fade,
-                                child: Profile(),),);
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.fade,
+                            child: Profile(),),);
                       },
                     ),
                   ],
@@ -225,7 +226,6 @@ class _ProfileSearchState extends State<ProfileSearch> {
       ),
     );
   }
-
   Widget _HashTag(){
     return Padding(
       padding: EdgeInsets.only(left: 15),
@@ -245,7 +245,28 @@ class _ProfileSearchState extends State<ProfileSearch> {
       ),
     );
   }
-
+  Widget _SearchGrid(){
+    return StaggeredGridView.countBuilder(
+      padding: EdgeInsets.only(left: 5,right: 5),
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      scrollDirection: Axis.vertical,
+      crossAxisCount: 3,
+      itemCount: 102,
+      mainAxisSpacing: 5.0,
+      crossAxisSpacing: 5.0,
+      itemBuilder: (BuildContext context, int index) {
+        return  _GridItem();
+      },
+      staggeredTileBuilder: (int index){
+        int remain  = index % 18;
+        if (remain == 1 || remain == 9 ) {
+          return StaggeredTile.count(2, 2);
+        }
+        return StaggeredTile.count(1, 1);
+      },
+    );
+  }
   Widget _GridItem(){
     return Container(
       decoration: BoxDecoration(

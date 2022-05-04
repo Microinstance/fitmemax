@@ -176,7 +176,7 @@ class _HomeState extends State<Home> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Hi "+currentUser['name'].toString(),
+                                "Hi Fitmemax",
                                 style: TextStyles.TitleWhite,
                               ),
                             ],
