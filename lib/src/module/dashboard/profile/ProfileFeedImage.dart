@@ -1,3 +1,4 @@
+import 'package:fitmemax/src/module/dashboard/profile/ProfileLike.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -91,11 +92,22 @@ class _ProfileFeedImageState extends State<ProfileFeedImage> {
                           onTap: (){
                             setState(() {
                               _like = true;
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => ProfileLike()),
+                              );
                             });
                           },
                           child: Icon(Icons.favorite_outline_rounded,color: ColorPalette.ProfileGreen,)),
                       SizedBox(width: 5,),
-                      Text("3.45k",style: TextStyles.BodyWhite),
+                      GestureDetector(
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => ProfileLike()),
+                            );
+                          },
+                          child: Text("3.45k",style: TextStyles.BodyWhite)),
                       SizedBox(width: 20,),
                       GestureDetector(
                           onTap: (){

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:slider_button/slider_button.dart';
 
+
 class Run extends StatefulWidget {
   @override
   _RunState createState() => _RunState();
@@ -94,42 +95,38 @@ class _RunState extends State<Run> {
             Padding(
               padding: const EdgeInsets.only(top: 20,left: 20,right: 20),
               child: Center(
-                child: SliderButton(
-                  vibrationFlag: false,
-                  radius: 7.5,
-                  buttonSize: 40,
-                  height: 50,
-                  width: _width-40,
-                  baseColor: ColorPalette.Grediantblue1,
-                  alignLabel:  Alignment(0, 0),
-                  action: () {
-                    Navigator.push(
-                        context,
-                        PageTransition(
-                            type:
-                            PageTransitionType
-                                .fade,
-                            child:
-                            RunDetails()));
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: RunDetails()));
                   },
-                  label: Text(
-                    "Slide Start Runing",
-                    style: TextStyles.TitleWhite
-                  ),
-                  icon: Center(
-                      child: Icon(
-                        Icons.directions_run,
-                        color: Colors.white,
-                        size: 25.0,
-                      )),
+                  child: SliderButton(
+                    shimmer: true,
+                    vibrationFlag: true,
+                    radius: 7.5,
+                    buttonSize: 40,
+                    height: 50,
+                    width: _width-40,
+                    baseColor: ColorPalette.Grediantblue1,
+                    alignLabel:  Alignment(0, 0),
+                    label: Text(
+                      "Slide Start Runing",
+                      style: TextStyles.TitleWhite
+                    ),
+                    icon: Center(
+                        child: Icon(
+                          Icons.directions_run,
+                          color: Colors.white,
+                          size: 25.0,
+                        )),
 
-                  // radius: 10,
-                  buttonColor: ColorPalette.Grediantblue2,
-                  // borderRadius: borderRadious.primeryRadious,
-                  backgroundColor: ColorPalette.Grediantblue2.withOpacity(0.2),
-                  // backgroundColor: Color(0xff534bae),
-                  // highlightedColor: Colors.white,
-                  // baseColor: Colors.red,
+                    // radius: 10,
+                    buttonColor: ColorPalette.Grediantblue2,
+                    // borderRadius: borderRadious.primeryRadious,
+                    backgroundColor: ColorPalette.Grediantblue2.withOpacity(0.2),
+                    // backgroundColor: Color(0xff534bae),
+                    // highlightedColor: Colors.white,
+                    // baseColor: Colors.red,
+                  ),
                 ),
               ),
             ),

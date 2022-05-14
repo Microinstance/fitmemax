@@ -1,7 +1,10 @@
+import 'package:fitmemax/Graph/BarChart.dart';
 import 'package:fitmemax/Objects/line_chart_sample1.dart';
+import 'package:fitmemax/src/module/HealthLog/BloodPressureBarGraph.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:fitmemax/src/ListData/ListData.dart';
 
 class HealthLogDetails extends StatefulWidget {
   @override
@@ -34,7 +37,20 @@ class _HealthLogDetailsState extends State<HealthLogDetails> {
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 20,right: 20,bottom: 30),
-              child: CustomLineCharts(),
+              child: Row(
+                children:[
+                  SingleChildScrollView(
+                    child: BloodPressueBarGraph(
+                      listData: Data().BloodPressure,
+                      color1:  ColorPalette.GrediantRed1,
+                      color2:  ColorPalette.GrediantRed2,
+                      Titel: "Steps",
+                      Dec: "Steps",
+                    ),
+                  ),
+                ]
+              ),
+              // child: CustomLineCharts(),
             ),
             MediaQuery.removePadding(
               context: context,

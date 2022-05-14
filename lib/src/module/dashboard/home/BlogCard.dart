@@ -1,10 +1,15 @@
 import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
 import 'package:fitmemax/src/module/dashboard/home/Blog.dart';
+import 'package:fitmemax/src/module/dashboard/profile/Chat/ProfileShare.dart';
+import 'package:fitmemax/src/module/dashboard/profile/ProfileComment.dart';
+import 'package:fitmemax/src/module/dashboard/profile/ProfileLike.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+
+
 
 class BlogCard extends StatefulWidget {
   @override
@@ -75,15 +80,43 @@ class _BlogCardState extends State<BlogCard> {
               ),
               Row(
                 children: [
-                  Icon(CupertinoIcons.suit_heart,color: ColorPalette.Pink,size: 25,),
+                  GestureDetector(
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ProfileLike()),
+                        );
+                      },
+                      child: Icon(CupertinoIcons.suit_heart,color: ColorPalette.Pink,size: 25,)),
                   Padding(
                     padding: const EdgeInsets.only(left: 5,right: 15),
                     child: Text("256",style: TextStyles.BodySmallBlack,),
                   ),
-                  Icon(Icons.chat,color: ColorPalette.Teal,size: 25,),
+                  GestureDetector(
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ProfileComment()),
+                        );
+                      },
+                      child: Icon(Icons.chat,color: ColorPalette.Teal,size: 25,)),
                   Padding(
                     padding: const EdgeInsets.only(left: 5),
                     child: Text("256",style: TextStyles.BodySmallBlack,),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 5),
+                    child: GestureDetector(
+                        onTap: (){
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return ProfileShare();
+                            },
+                            isScrollControlled: true,
+                          );
+                        },
+                        child: Icon(CupertinoIcons.arrowshape_turn_up_right,color: Colors.blue,)),
                   ),
                 ],
               ),

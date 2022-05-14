@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:fitmemax/API/APIClient.dart';
 import 'package:fitmemax/Objects/ButtonOne.dart';
 import 'package:fitmemax/src/module/Authentication/Onboarding/PhysicalCondition.dart';
+import 'package:fitmemax/src/module/dashboard/Dashboard.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -44,21 +45,21 @@ class _SignupVerifyState extends State<SignupVerify> {
   }
 
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    client = new APIClient();
-    sendOTP();
-    _startTimer();
-  }
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   client = new APIClient();
+  //   sendOTP();
+  //   _startTimer();
+  // }
 
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    _timer.cancel();
-  }
+  // @override
+  // void dispose() {
+  //   // TODO: implement dispose
+  //   super.dispose();
+  //   _timer.cancel();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -153,9 +154,9 @@ class _SignupVerifyState extends State<SignupVerify> {
                     children: [
                       Text("$_counter",style: TextStyles.BodyGrey,),
                       GestureDetector(
-                        onTap: () async {
-                          await reSendOTP();
-                        },
+                        // onTap: () async {
+                        //   await reSendOTP();
+                        // },
                           child: Text("Resend OTP",style: TextStyles.BodyGrey,)
                       ),
                     ],
@@ -168,7 +169,7 @@ class _SignupVerifyState extends State<SignupVerify> {
                     SizedBox(
                       width: _width-40,
                       child: ButtonOne(
-                        title: 'Varify',
+                        title: 'Verify',
                         colors: ColorPalette.PrimaryColor,
                         onPressed:verify,
                       ),
@@ -183,48 +184,54 @@ class _SignupVerifyState extends State<SignupVerify> {
     );
   }
 
-  reSendOTP() async {
-    if(_counter == 0){
-      final otpService = await client.sendOTP({ 'phone' : widget.phone});
-      client.success("Otp is sent to your phone number");
-      setState(() {
-        oneTimePassword = otpService['data']['otp'].toString();
-      });
-      _startTimer();
-    } else {
-      client.error("Please weight sometime");
-    }
-  }
+  // reSendOTP() async {
+  //   if(_counter == 0){
+  //     final otpService = await client.sendOTP({ 'phone' : widget.phone});
+  //     client.success("Otp is sent to your phone number");
+  //     setState(() {
+  //       oneTimePassword = otpService['data']['otp'].toString();
+  //     });
+  //     _startTimer();
+  //   } else {
+  //     client.error("Please weight sometime");
+  //   }
+  // }
 
-  sendOTP() async {
-    final otpService = await client.sendOTP({ 'phone' : widget.phone});
-    client.success("Otp is sent to your phone number");
-    setState(() {
-      oneTimePassword = otpService['data']['otp'].toString();
-    });
-  }
+  // sendOTP() async {
+  //   final otpService = await client.sendOTP({ 'phone' : widget.phone});
+  //   client.success("Otp is sent to your phone number");
+  //   setState(() {
+  //     oneTimePassword = otpService['data']['otp'].toString();
+  //   });
+  // }
 
   verify() async {
     if(user_otp == ""){
       client.error("Please enter otp");
-    } else {
-      if(user_otp == oneTimePassword){
-        final result = await client.signUp({
-          'name' : widget.name,
-          'email' : widget.email,
-          'phone' : widget.phone,
-          'password' : widget.password
-        });
-        if(result['status'] == "success"){
-          client.storeLocal(widget.phone, result['data']['id'], result['data']['email'], result['data']['api_token'], widget.name);
-          Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: PhysicalCondition()));
-        } else {
-          client.error(result['data'].toString());
-        }
-      } else {
-        client.error("Please enter correct otp");
-      }
     }
+    else{Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Dashboard()),
+    );}
+
+    // else {
+    //   if(user_otp == oneTimePassword){
+    //     final result = await client.signUp({
+    //       'name' : widget.name,
+    //       'email' : widget.email,
+    //       'phone' : widget.phone,
+    //       'password' : widget.password
+    //     });
+    //     if(result['status'] == "success"){
+    //       client.storeLocal(widget.phone, result['data']['id'], result['data']['email'], result['data']['api_token'], widget.name);
+    //       Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: PhysicalCondition()));
+    //     } else {
+    //       client.error(result['data'].toString());
+    //     }
+    //   } else {
+    //     client.error("Please enter correct otp");
+    //   }
+    // }
   }
 
 }

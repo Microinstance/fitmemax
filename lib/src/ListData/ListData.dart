@@ -131,6 +131,56 @@ class Data {
 
   ];
 
+  List BloodPressure = [
+    {
+      'date': 'Jan',
+      'weight': '10',
+    },
+    {
+      'date': 'Feb',
+      'weight': '8',
+    },
+    {
+      'date': 'Mar',
+      'weight': '12',
+    },
+    {
+      'date': 'Apr',
+      'weight': '15',
+    },
+    {
+      'date': 'May',
+      'weight': '6',
+    },
+    {
+      'date': 'June',
+      'weight': '11',
+    },
+    {
+      'date': 'July',
+      'weight': '18',
+    },
+    {
+      'date': 'Aug',
+      'weight': '8',
+    },
+    {
+      'date': 'Sep',
+      'weight': '10',
+    },
+    {
+      'date': 'Oct',
+      'weight': '15',
+    },
+    {
+      'date': 'Nov',
+      'weight': '5',
+    },
+    {
+      'date': 'Dec',
+      'weight': '14',
+    },
+  ];
   List Walking = [
     {
       'date': 'Sun',

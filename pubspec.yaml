@@ -84,6 +84,7 @@ flutter:
     - assets/profile/Post/
     - assets/gif/
     - images/
+    - images/gmap.jpg
     - assets/Badges/
     - assets/Rings/
     - assets/banner/

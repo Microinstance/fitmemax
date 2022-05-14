@@ -196,21 +196,17 @@ class _SigninPageState extends State<SigninPage> {
                           children: [
                             SocialButton(
                               colors: Colors.black,
-                              onPressed: ()  {
-
-                              },
+                               onPressed: checkLogin,
                               image:  'assets/sign/apple.png',
                             ),
                             SocialButton(
                               colors: Colors.blue[900],
-                              onPressed: _onPressedLogInButton,
+                              onPressed: checkLogin,
                               image: 'assets/sign/facebook.png',
                             ),
                             SocialButton(
                               colors: ColorPalette.GreyLightest,
-                              onPressed: ()  {
-
-                              },
+                              onPressed: checkLogin,
                               image:  'assets/sign/google.png',
                             ),
                           ],
@@ -247,39 +243,47 @@ class _SigninPageState extends State<SigninPage> {
     );
   }
 
-  checkLogin() async {
-    if(email == ""){
-      Client.error("Please enter email id");
-    } else if(password == ""){
-      Client.error("Please enter password");
-    } else {
-      var result = await Client.authRequest(email, password);
-      print(result);
-      if(result['status'] == "success"){
-
-          final data = result['data'];
-          // Store In Local Storage
-          Client.storeLocal(data['mobile'], data['id'], data['email'], data['api_token'], data['name']);
-
-          final physical_condition = data['profile']['physical_condition'];
-          final medical_condition = data['profile']['medical_condition'];
-          final gole = data['profile']['gole'];
-
-          if(physical_condition == 0){
-            Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: PhysicalCondition()));
-          } else if(medical_condition == 0){
-            Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: MedicalCondition()));
-          } else if(gole == 0){
-            Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: GoalChoice()));
-          } else {
-            Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: Dashboard()));
-          }
-
-      } else {
-        Client.error(result['message']);
-      }
-    }
+  checkLogin(){
+    if(email == ""){Client.error("Please enter email id");}
+    else if(password == ""){Client.error("Please enter password");}
+    else{Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Dashboard()),
+    );}
   }
+  // checkLogin() async {
+  //   if(email == ""){
+  //     Client.error("Please enter email id");
+  //   } else if(password == ""){
+  //     Client.error("Please enter password");
+  //   } else {
+  //     var result = await Client.authRequest(email, password);
+  //     print(result);
+  //     if(result['status'] == "success"){
+  //
+  //         final data = result['data'];
+  //         // Store In Local Storage
+  //         Client.storeLocal(data['mobile'], data['id'], data['email'], data['api_token'], data['name']);
+  //
+  //         final physical_condition = data['profile']['physical_condition'];
+  //         final medical_condition = data['profile']['medical_condition'];
+  //         final gole = data['profile']['gole'];
+  //
+  //         if(physical_condition == 0){
+  //           Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: PhysicalCondition()));
+  //         } else if(medical_condition == 0){
+  //           Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: MedicalCondition()));
+  //         } else if(gole == 0){
+  //           Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: GoalChoice()));
+  //         } else {
+  //           Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: Dashboard()));
+  //         }
+  //
+  //     } else {
+  //       Client.error(result['message']);
+  //     }
+  //   }
+  // }
 
   Future<void> _onPressedLogInButton() async {
 

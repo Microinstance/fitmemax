@@ -1,7 +1,11 @@
+import 'package:fitmemax/src/module/dashboard/CoachConsultant/Coach.dart';
 import 'package:fitmemax/src/module/dashboard/CoachConsultant/CoachPick.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:fitmemax/src/module/dashboard/profile/Chat/page/ProfileChatPage.dart';
+import 'package:fitmemax/src/module/dashboard/CoachConsultant/DietPlan.dart';
+
 
 class CoachCurrent extends StatefulWidget {
   @override
@@ -168,19 +172,25 @@ class _CoachCurrentState extends State<CoachCurrent> {
                                 SizedBox(
                                   width: 20,
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Diet Plan",
-                                      style: TextStyles.RegulerBlack
-                                    ),
-                                    Text(
-                                      "Click Here to access Diet plan ",
-                                      style: TextStyles.BodyBlack
-                                    ),
-                                  ],
+                                GestureDetector(
+                                  onTap: (){Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => DietPlan()),
+                                  );},
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "Diet Plan",
+                                        style: TextStyles.RegulerBlack
+                                      ),
+                                      Text(
+                                        "Click Here to access Diet plan ",
+                                        style: TextStyles.BodyBlack
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),

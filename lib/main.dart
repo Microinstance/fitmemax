@@ -1,5 +1,6 @@
 import 'package:fitmemax/src/module/Authentication/SigninPage.dart';
 import 'package:fitmemax/src/module/BattleGround/SquadManagement/squad_management.dart';
+import 'package:fitmemax/src/module/Run/RunDetails.dart';
 import 'package:fitmemax/styles.dart';
 import 'package:flutter/material.dart';
 import 'LandingPage.dart';

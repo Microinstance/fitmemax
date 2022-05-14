@@ -33,7 +33,7 @@ class CustomLineChartsState extends State<CustomLineCharts> {
                 Padding(
                   padding: const EdgeInsets.only(top: 20),
                   child: Text(
-                    'Blood Presure',
+                    'Running Analytics',
                     style: TextStyles.TitleWhite,
                     textAlign: TextAlign.center,
                   ),

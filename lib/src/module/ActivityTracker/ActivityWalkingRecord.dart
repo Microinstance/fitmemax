@@ -4,6 +4,7 @@ import 'package:fitmemax/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+
 class ActivityWalkingRecord extends StatefulWidget {
   @override
   _ActivityWalkingRecordState createState() => _ActivityWalkingRecordState();

@@ -179,9 +179,221 @@ class _AccountInformationState extends State<AccountInformation> {
                 style: TextStyle(color: Colors.black,fontSize: 18),
                 cursorColor: Palette.primaryColor,
                 decoration: InputDecoration(
-                  suffixIcon: IconButton(icon: Icon(Icons.check_circle,size: 20,color: Colors.green[700],), onPressed: (){}),
+                    suffixIcon: IconButton(icon: Icon(Icons.check_circle,size: 20,color: Colors.green[700],), onPressed: (){}),
                     isDense: false,
                     hintText: "Enter Your Phone Number",
+                    hintStyle: TextStyle(color: Colors.black.withOpacity(0.7),fontSize: 18),
+                    border: OutlineInputBorder(
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(7.5),
+                      ),
+                      borderSide: BorderSide(
+                        width: 0,
+                        style: BorderStyle.none,
+                      ),
+                    ),
+                    filled: true,
+                    fillColor: Colors.grey[100],
+                    contentPadding: EdgeInsets.only(top: 7,right: 10,left: 10,bottom: 7)
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20,right: 20,bottom: 10),
+              child: Divider(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20,left: 30,right: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text("Age",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20)),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 15,left: 30,right: 30),
+              child: TextField(
+                controller: TextEditingController(text: "39"),
+                onChanged: (x){},
+                autofocus: false,
+                style: TextStyle(color: Colors.black,fontSize: 18),
+                cursorColor: Palette.primaryColor,
+                decoration: InputDecoration(
+                    isDense: false,
+                    hintText: "Enter Your Age",
+                    hintStyle: TextStyle(color: Colors.black.withOpacity(0.7),fontSize: 18),
+                    border: OutlineInputBorder(
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(7.5),
+                      ),
+                      borderSide: BorderSide(
+                        width: 0,
+                        style: BorderStyle.none,
+                      ),
+                    ),
+                    filled: true,
+                    fillColor: Colors.grey[100],
+                    contentPadding: EdgeInsets.only(top: 7,right: 10,left: 10,bottom: 7)
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20,right: 20,bottom: 10),
+              child: Divider(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20,left: 30,right: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text("Gender",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20)),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 15,left: 30,right: 30),
+              child: TextField(
+                controller: TextEditingController(text: "Male"),
+                onChanged: (x){},
+                autofocus: false,
+                style: TextStyle(color: Colors.black,fontSize: 18),
+                cursorColor: Palette.primaryColor,
+                decoration: InputDecoration(
+                    isDense: false,
+                    hintText: "Gender",
+                    hintStyle: TextStyle(color: Colors.black.withOpacity(0.7),fontSize: 18),
+                    border: OutlineInputBorder(
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(7.5),
+                      ),
+                      borderSide: BorderSide(
+                        width: 0,
+                        style: BorderStyle.none,
+                      ),
+                    ),
+                    filled: true,
+                    fillColor: Colors.grey[100],
+                    contentPadding: EdgeInsets.only(top: 7,right: 10,left: 10,bottom: 7)
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20,right: 20,bottom: 10),
+              child: Divider(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20,left: 30,right: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text("Height",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20)),
+                  Container(
+                    padding: const EdgeInsets.only(bottom: 0,left: 10,right: 3),
+                    height: 30,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        color: Colors.grey,
+                        border: Border.all(
+                          color: Colors.grey,
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(20))
+                    ),
+                    child: FlatButton(child:Text("CM",style:TextStyle(color: Colors.white,)) ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(bottom: 0,left: 10,right: 3),
+                    height: 30,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        color: Colors.green,
+                        border: Border.all(
+                          color: Colors.green,
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(20))
+                    ),
+                    child: FlatButton(child:Text("FT",style:TextStyle(color: Colors.white,)) ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 15,left: 30,right: 30),
+              child: TextField(
+                controller: TextEditingController(text: "5.4"),
+                onChanged: (x){},
+                autofocus: false,
+                style: TextStyle(color: Colors.black,fontSize: 18),
+                cursorColor: Palette.primaryColor,
+                decoration: InputDecoration(
+                    isDense: false,
+                    hintText: "in CM",
+                    hintStyle: TextStyle(color: Colors.black.withOpacity(0.7),fontSize: 18),
+                    border: OutlineInputBorder(
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(7.5),
+                      ),
+                      borderSide: BorderSide(
+                        width: 0,
+                        style: BorderStyle.none,
+                      ),
+                    ),
+                    filled: true,
+                    fillColor: Colors.grey[100],
+                    contentPadding: EdgeInsets.only(top: 7,right: 10,left: 10,bottom: 7)
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20,right: 20,bottom: 10),
+              child: Divider(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20,left: 30,right: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text("Weight",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20)),
+                  Container(
+                    padding: const EdgeInsets.only(bottom: 0,left: 10,right: 3),
+                    height: 30,
+                    width: 80,
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                        border: Border.all(
+                          color: Colors.grey,
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(20))
+                    ),
+                    child: FlatButton(child:Text("LBS",style:TextStyle(color: Colors.white,)) ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(bottom: 0,left: 10,right: 3),
+                    height: 30,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        color: Colors.green ,
+                        border: Border.all(
+                          color: Colors.green,
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(20))
+                    ),
+                    child: FlatButton(child:Text("KG",style:TextStyle(color: Colors.white,)) ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 15,left: 30,right: 30),
+              child: TextField(
+                controller: TextEditingController(text: "60"),
+                onChanged: (x){},
+                autofocus: false,
+                style: TextStyle(color: Colors.black,fontSize: 18),
+                cursorColor: Palette.primaryColor,
+                decoration: InputDecoration(
+                    isDense: false,
+                    hintText: "in KG",
                     hintStyle: TextStyle(color: Colors.black.withOpacity(0.7),fontSize: 18),
                     border: OutlineInputBorder(
                       borderRadius: const BorderRadius.all(
@@ -203,7 +415,7 @@ class _AccountInformationState extends State<AccountInformation> {
             ),
             loginButtonTwo(
               colors: Palette.primaryColor,
-              title: "Change Settings",
+              title: "Update",
                onPressed: (){},
             )
           ],

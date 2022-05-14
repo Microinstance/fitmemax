@@ -281,12 +281,12 @@ class _SignupPageState extends State<SignupPage> {
                             ),
                             SocialButton(
                               colors: Colors.blue[900],
-                              onPressed: _onPressedLogInButton,
+                              onPressed: signUP,
                               image: 'assets/sign/facebook.png',
                             ),
                             SocialButton(
                               colors: ColorPalette.GreyLightest,
-                              onPressed: _handleSignIn,
+                              onPressed: signUP,
                               image:  'assets/sign/google.png',
                             ),
                           ],
@@ -332,17 +332,22 @@ class _SignupPageState extends State<SignupPage> {
       client.error("Please enter your phone");
     } else if(password == ""){
       client.error("Please enter your password");
-    } else {
-      showModalBottomSheet(
-        backgroundColor: Colors.transparent,
-        context: context,
-        isDismissible: false,
-        builder: (BuildContext context) {
-          return SignupVerify(name: name, email: email, password: password, phone: phone,);
-        },
-        isScrollControlled: true,
-      );
-    }
+    } else{Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Dashboard()),
+    );}
+
+    // else {
+    //   showModalBottomSheet(
+    //     backgroundColor: Colors.transparent,
+    //     context: context,
+    //     isDismissible: false,
+    //     builder: (BuildContext context) {
+    //       return SignupVerify(name: name, email: email, password: password, phone: phone,);
+    //     },
+    //     isScrollControlled: true,
+    //   );
+    // }
   }
 
 
